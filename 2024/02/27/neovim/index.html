@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>行为型的设计模式 | B1ueDrops</title>
+  <title>Neovim/Nvchad键位配置 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="行为型的设计模式 | B1ueDrops">
+  <meta name="description" content="Neovim/Nvchad键位配置 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="joshuto键位配置   键位 功能    ctrl+g 启动lazygit   ctrl+c 使用git clone   ctrl+f 使用fzf搜索文件   ctrl+s 使用zoxide进入目录   gd 去Downloads目录   gc 去.config目录   ctrl+b cd -">
 <meta property="og:type" content="article">
@@ -299,9 +299,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-behaviour_design_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-neovim" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">行为型的设计模式</h1>
+        <h1 class="article-title">Neovim/Nvchad键位配置</h1>
     
     <div class="article-meta">
         
@@ -311,7 +311,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="软件工程">软件工程</a>
+            <a  data-rel="小工具">小工具</a>
             
         </span>
         
@@ -319,7 +319,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-02-26 20:27:26'>2024-02-26 20:11</time>
+            Created At : <time class="date" title='Updated At: 2024-02-27 19:40:03'>2024-02-27 19:40</time>
         
     </div>
     <div class="article-meta">
@@ -330,7 +330,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">行为型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">策略模式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NvChad%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C"><span class="toc-text">NvChad使用手册</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -346,28 +346,69 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="行为型设计模式"><a href="#行为型设计模式" class="headerlink" title="行为型设计模式"></a>行为型设计模式</h2><p>行为型设计模式用来描述类&#x2F;对象之间如何通过协作, 以耦合度最小的前提下完成任务.</p>
-<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>如果一个需求可以用非常多的算法实现, 那么就可以考虑策略模式.</p>
-<p>实现方式:</p>
+        <h2 id="NvChad使用手册"><a href="#NvChad使用手册" class="headerlink" title="NvChad使用手册"></a>NvChad使用手册</h2><blockquote>
+<p>查看Cheetsheet可以使用<code>&lt;LEADER&gt;ch</code>.</p>
+</blockquote>
+<ol>
+<li><p>当你在很多很多作用域嵌套的时候, 如果你想到一个作用域的最外面, 可以使用<code>&lt;LEADER&gt;cc</code>.</p>
+</li>
+<li><p>快速注释和解注释是<code>&lt;LEADER&gt;/</code>.</p>
+</li>
+<li><p>关于行号:</p>
 <ul>
-<li>抽象策略接口:</li>
+<li>Toggle行号是用<code>&lt;LEADER&gt;n</code>.</li>
+<li>Toggle相对行号是用<code>&lt;LEADER&gt;rn</code>.</li>
+<li>相对行号可以快速查看一个代码块有多少行.</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  <span class="comment">// 这里面定义了实现策略的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式化:</p>
+<ul>
+<li>可以使用<code>&lt;LEADER&gt;fm</code>进行全局格式化.</li>
+</ul>
+</li>
+<li><p>关于终端:</p>
+<ul>
+<li><p>NvChad中终端的相关快捷键使用了Alt, 不同终端对于Alt键进行了不同的处理, <font color="red">iTerm2中默认禁用了终端</font>, 如果要开启终端, 需要如下设置:</p>
+<p><img src="/2024/02/27/neovim/iterm2-alt.png" alt="iTerm2关于alt键的设置"></p>
+</li>
+<li><p>Toggle水平终端: <code>Alt+h</code>.</p>
+</li>
+<li><p>Toggle垂直终端: <code>Alt+v</code>.</p>
+</li>
+<li><p>Toggle浮动终端: <code>Alt+i</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>关于Git:</p>
+<ul>
+<li>查看当前文件中的修改(NvChad中叫hunk), 可以使用<code>[c</code>和<code>]c</code>.</li>
+<li>在一处修改(尤其是删除)上, 使用<code>&lt;LEADER&gt;ph</code>, 可以对修改进行preview, 清楚的看到改动了什么.</li>
+<li>对任意文件的任意一行, 如果你想看这一行的commit信息, 可以使用<code>&lt;LEADER&gt;gb</code>, <font color="red">十分强大</font>.</li>
+<li>如果你做了删除操作, 但是你想Toggle一下, 看看自己删除了什么, 可以使用<code>&lt;LEADER&gt;td</code>, 或者你想撤销一下, 可以用<code>&lt;LEADER&gt;rh</code>.</li>
+<li>用<code>&lt;LEADER&gt;cm</code>可以通过Telescope查看所有的commit.</li>
+<li>用<code>&lt;LEADER&gt;gt</code>可以用Telescope查看所有git status.</li>
+</ul>
+</li>
+<li><p>关于文件树:</p>
+<ul>
+<li><code>&lt;LEADER&gt;e</code>是focus文件树.</li>
+<li><code>&lt;C-n&gt;</code>是Toggle文件树.</li>
+</ul>
+</li>
+<li><p>关于Tab:</p>
+<ul>
+<li>可以使用<code>&lt;Tab&gt;</code>和<code>&lt;S-Tab&gt;</code>切换不同的Tab.</li>
+</ul>
+</li>
+<li><p>关于搜索:</p>
+<ul>
+<li><code>&lt;ESC&gt;</code>用来代替<code>:nohl</code>.</li>
+<li>用<code>&lt;LEADER&gt;fw</code>可以使用ripgrep查找内容.</li>
+<li>用<code>&lt;LEADER&gt;ff</code>可以用ripgrep模糊查找文件.</li>
+</ul>
+</li>
+</ol>
 
-<ul>
-<li>具体策略类: 用于实现抽象策略接口.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteStrategy</span> <span class="keyword">implements</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;haha&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略调用者:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 成员变量是策略的抽象类</span></span><br><span class="line">  <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 设置具体策略</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStrategy</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy = strategy;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 调用策略方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy.strategyMethod();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略模式的使用方式:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">  <span class="comment">// 利用多态选择一个策略</span></span><br><span class="line">  <span class="type">Strategy</span> <span class="variable">strategy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteStrategy</span>();</span><br><span class="line">  <span class="comment">// 将选定的策略设置给Context</span></span><br><span class="line">  context.setStrategy(strategy);</span><br><span class="line">  <span class="comment">// Context执行策略</span></span><br><span class="line">  context.strategyMethod();</span><br><span class="line">  <span class="comment">// 之后换了策略, 只要给Context重新设置一个策略即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>

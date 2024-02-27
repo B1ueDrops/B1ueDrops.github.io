@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>行为型的设计模式 | B1ueDrops</title>
+  <title>joshuto的键位配置 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="行为型的设计模式 | B1ueDrops">
+  <meta name="description" content="joshuto的键位配置 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="joshuto键位配置   键位 功能    ctrl+g 启动lazygit   ctrl+c 使用git clone   ctrl+f 使用fzf搜索文件   ctrl+s 使用zoxide进入目录   gd 去Downloads目录   gc 去.config目录   ctrl+b cd -">
 <meta property="og:type" content="article">
@@ -299,9 +299,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-behaviour_design_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-joshuto" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">行为型的设计模式</h1>
+        <h1 class="article-title">joshuto的键位配置</h1>
     
     <div class="article-meta">
         
@@ -311,7 +311,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="软件工程">软件工程</a>
+            <a  data-rel="小工具">小工具</a>
             
         </span>
         
@@ -319,7 +319,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-02-26 20:27:26'>2024-02-26 20:11</time>
+            Created At : <time class="date" title='Updated At: 2024-02-27 19:47:22'>2024-02-27 19:43</time>
         
     </div>
     <div class="article-meta">
@@ -330,7 +330,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">行为型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">策略模式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#joshuto%E9%94%AE%E4%BD%8D%E9%85%8D%E7%BD%AE"><span class="toc-text">joshuto键位配置</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -346,28 +346,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="行为型设计模式"><a href="#行为型设计模式" class="headerlink" title="行为型设计模式"></a>行为型设计模式</h2><p>行为型设计模式用来描述类&#x2F;对象之间如何通过协作, 以耦合度最小的前提下完成任务.</p>
-<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>如果一个需求可以用非常多的算法实现, 那么就可以考虑策略模式.</p>
-<p>实现方式:</p>
-<ul>
-<li>抽象策略接口:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  <span class="comment">// 这里面定义了实现策略的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="joshuto键位配置"><a href="#joshuto键位配置" class="headerlink" title="joshuto键位配置"></a>joshuto键位配置</h2><table>
+<thead>
+<tr>
+<th>键位</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ctrl+g</code></td>
+<td>启动lazygit</td>
+</tr>
+<tr>
+<td><code>ctrl+c</code></td>
+<td>使用git clone</td>
+</tr>
+<tr>
+<td><code>ctrl+f</code></td>
+<td>使用fzf搜索文件</td>
+</tr>
+<tr>
+<td><code>ctrl+s</code></td>
+<td>使用zoxide进入目录</td>
+</tr>
+<tr>
+<td><code>gd</code></td>
+<td>去Downloads目录</td>
+</tr>
+<tr>
+<td><code>gc</code></td>
+<td>去<code>.config</code>目录</td>
+</tr>
+<tr>
+<td><code>ctrl+b</code></td>
+<td><code>cd -</code></td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>具体策略类: 用于实现抽象策略接口.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteStrategy</span> <span class="keyword">implements</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;haha&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略调用者:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 成员变量是策略的抽象类</span></span><br><span class="line">  <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 设置具体策略</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStrategy</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy = strategy;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 调用策略方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy.strategyMethod();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略模式的使用方式:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">  <span class="comment">// 利用多态选择一个策略</span></span><br><span class="line">  <span class="type">Strategy</span> <span class="variable">strategy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteStrategy</span>();</span><br><span class="line">  <span class="comment">// 将选定的策略设置给Context</span></span><br><span class="line">  context.setStrategy(strategy);</span><br><span class="line">  <span class="comment">// Context执行策略</span></span><br><span class="line">  context.strategyMethod();</span><br><span class="line">  <span class="comment">// 之后换了策略, 只要给Context重新设置一个策略即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
