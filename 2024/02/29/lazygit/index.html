@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>面向对象设计的基本原则 | B1ueDrops</title>
+  <title>lazygit的一些常见用法 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="面向对象设计的基本原则 | B1ueDrops">
+  <meta name="description" content="lazygit的一些常见用法 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="关闭SIP的方法 首先, 进入Mac的Recovery Mode. 进入终端: [实用工具]-[终端]. 终端中输入: csrutil disable. 重启之后, 输入csrutil disable, 查看SIP是否被disable. 之后, 在终端运行: sudo nvram boot-args&#x3D;-arm64e_preview_abi. 然后重启.  下载完yabai之后在&#x2F;etc&#x2F;sudoe">
 <meta property="og:type" content="article">
@@ -308,9 +308,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-software_rule" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-lazygit" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">面向对象设计的基本原则</h1>
+        <h1 class="article-title">lazygit的一些常见用法</h1>
     
     <div class="article-meta">
         
@@ -320,7 +320,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="软件工程">软件工程</a>
+            <a  data-rel="小工具">小工具</a>
             
         </span>
         
@@ -328,7 +328,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-02-25 15:26:18'>2024-02-25 15:14</time>
+            Created At : <time class="date" title='Updated At: 2024-02-29 17:50:10'>2024-02-29 17:44</time>
         
     </div>
     <div class="article-meta">
@@ -339,7 +339,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="toc-text">开闭原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="toc-text">里氏替换原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99"><span class="toc-text">依赖倒置原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-text">单一职责原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="toc-text">接口隔离原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99"><span class="toc-text">迪米特法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="toc-text">合成复用原则</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C"><span class="toc-text">正确的回滚操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interactive-Rebasing"><span class="toc-text">Interactive Rebasing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%86%99commit%E4%BF%A1%E6%81%AF"><span class="toc-text">改写commit信息</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -355,29 +355,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><ul>
-<li>项目需求改变时, 不修改软件源代码的情况下, 可以扩展模块的功能.</li>
-<li>通过接口&#x2F;抽象类规定架构, 然后进行不同实现.</li>
+        <blockquote>
+<p>在一个pane中使用<code>?</code>可以查看cheetsheet.</p>
+</blockquote>
+<h2 id="正确的回滚操作"><a href="#正确的回滚操作" class="headerlink" title="正确的回滚操作"></a>正确的回滚操作</h2><ul>
+<li>第一: 基于当前分支新建分支(branch pane中使用<code>n</code>).</li>
+<li>第二: 切换到新建分支 (branch pane中使用空格).</li>
+<li>第三: 回滚到特定的commit (commit pane中选中特定的commit之后, 用<code>g</code>, 基于<code>git reset</code>进行修改).</li>
+<li>第四: 选择暂存区中需要保留或舍弃的修改(file pane中使用<code>d</code>或者空格).</li>
+<li>第五: 将暂存区中的修改进行commit之后, 就可以在回滚分支进行开发.</li>
 </ul>
-<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><ul>
-<li>子类继承父类时, 可以扩展父类的功能, 但是不要重写父类的方法.</li>
+<h2 id="Interactive-Rebasing"><a href="#Interactive-Rebasing" class="headerlink" title="Interactive Rebasing"></a>Interactive Rebasing</h2><p>在commit pane中, 对于某次commit使用<code>e</code>后, 这次commit及其上面的所有commit都会进入interactive-rebasing的状态.</p>
+<p>每个commit都会有四种状态:</p>
+<ul>
+<li><code>pick</code>: 保留这次commit.</li>
+<li><code>squash</code>: 和下面的commit合并, 其中commit的信息也会被合并.</li>
+<li><code>drop</code>: 删除此次commit.</li>
+<li><code>fixup</code>: 和下面的commit合并, 但是这次commit的信息会消失.</li>
 </ul>
-<h2 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h2><ul>
-<li>抽象不应该依赖于实现, 实现应该依赖于抽象.</li>
-<li>要面向接口编程, 不应该面向实现编程.</li>
-</ul>
-<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><ul>
-<li>一个类应该有且仅有一个引起它变化的原因, 否则这个类就应该被拆分.</li>
-</ul>
-<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><ul>
-<li>一个类对另一个类的依赖应该建立在最小的接口上.</li>
-</ul>
-<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><ul>
-<li>如果两个软件实体不需要直接通信, 那么就不应该发生直接的相互调用, 可以通过第三方转发调用.</li>
-</ul>
-<h2 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h2><ul>
-<li>软件复用时, 优先使用组合, 其次再考虑继承.</li>
-</ul>
+<p>对于每个commit设置完状态之后, 使用<code>m</code>, 选择<code>continue</code>, 就可以生效.</p>
+<h2 id="改写commit信息"><a href="#改写commit信息" class="headerlink" title="改写commit信息"></a>改写commit信息</h2><p>在commit pane中, 使用<code>r</code>就可以改写commit信息.</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
