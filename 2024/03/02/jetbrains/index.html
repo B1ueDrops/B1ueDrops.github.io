@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>行为型的设计模式 | B1ueDrops</title>
+  <title>Jetbrains系列IDE的配置 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="行为型的设计模式 | B1ueDrops">
+  <meta name="description" content="Jetbrains系列IDE的配置 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="01背包问题 https:&#x2F;&#x2F;www.acwing.com&#x2F;problem&#x2F;content&#x2F;2&#x2F;  01背包问题是指一个背包只能是选&#x2F;不选. 状态表示: $f(i, j)$: 只考虑前$i$个物品, 总体积是$j$的情况下, 总重量的最大值. 状态计算:  不选第$i$个物品: $f(i, j) &#x3D; f(i - 1, j)$ 选第$i$个物品: $f(i, j) &#x3D;">
 <meta property="og:type" content="article">
@@ -359,9 +359,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-behaviour_design_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-jetbrains" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">行为型的设计模式</h1>
+        <h1 class="article-title">Jetbrains系列IDE的配置</h1>
     
     <div class="article-meta">
         
@@ -371,7 +371,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="软件工程">软件工程</a>
+            <a  data-rel="小工具">小工具</a>
             
         </span>
         
@@ -379,7 +379,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-02-26 20:27:26'>2024-02-26 20:11</time>
+            Created At : <time class="date" title='Updated At: 2024-03-02 19:00:15'>2024-03-02 19:00</time>
         
     </div>
     <div class="article-meta">
@@ -390,7 +390,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">行为型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">策略模式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%80%9A%E7%94%A8%E8%AE%BE%E7%BD%AE"><span class="toc-text">一些通用设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ideavim"><span class="toc-text">ideavim</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -406,28 +406,92 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="行为型设计模式"><a href="#行为型设计模式" class="headerlink" title="行为型设计模式"></a>行为型设计模式</h2><p>行为型设计模式用来描述类&#x2F;对象之间如何通过协作, 以耦合度最小的前提下完成任务.</p>
-<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>如果一个需求可以用非常多的算法实现, 那么就可以考虑策略模式.</p>
-<p>实现方式:</p>
+        <h2 id="一些通用设置"><a href="#一些通用设置" class="headerlink" title="一些通用设置"></a>一些通用设置</h2><ul>
+<li><p>字体, 大小</p>
+</li>
+<li><p>颜色主题</p>
+</li>
+<li><p>插件:</p>
 <ul>
-<li>抽象策略接口:</li>
+<li>Nerdtree</li>
+<li>Ideavim</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  <span class="comment">// 这里面定义了实现策略的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ideavim"><a href="#ideavim" class="headerlink" title="ideavim"></a>ideavim</h3><p>基本配置和neovim一致.</p>
+<table>
+<thead>
+<tr>
+<th>键位</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gh</code></td>
+<td>显示Hover信息</td>
+</tr>
+<tr>
+<td><code>gd</code></td>
+<td>跳转定义</td>
+</tr>
+<tr>
+<td><code>gr</code></td>
+<td>跳转reference</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;r</code></td>
+<td>重新加载配置文件</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;m</code></td>
+<td>全屏窗口</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;e</code></td>
+<td>跳转到nerdtree</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;z</code></td>
+<td>开启Zen Mode</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;b</code></td>
+<td>在这一行打断点</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;d</code></td>
+<td>Debug</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;q</code></td>
+<td>查找可用的action</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;t</code></td>
+<td>打开终端</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;p</code></td>
+<td>Project Manager</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;c</code></td>
+<td>修改运行配置</td>
+</tr>
+<tr>
+<td><code>&lt;LEADER&gt;;</code></td>
+<td>运行代码</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>具体策略类: 用于实现抽象策略接口.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteStrategy</span> <span class="keyword">implements</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;haha&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略调用者:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 成员变量是策略的抽象类</span></span><br><span class="line">  <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 设置具体策略</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStrategy</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy = strategy;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 调用策略方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy.strategyMethod();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略模式的使用方式:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">  <span class="comment">// 利用多态选择一个策略</span></span><br><span class="line">  <span class="type">Strategy</span> <span class="variable">strategy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteStrategy</span>();</span><br><span class="line">  <span class="comment">// 将选定的策略设置给Context</span></span><br><span class="line">  context.setStrategy(strategy);</span><br><span class="line">  <span class="comment">// Context执行策略</span></span><br><span class="line">  context.strategyMethod();</span><br><span class="line">  <span class="comment">// 之后换了策略, 只要给Context重新设置一个策略即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
