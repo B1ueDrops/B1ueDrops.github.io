@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>yabai窗口管理器键位配置 | B1ueDrops</title>
+  <title>并发编程的概述 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="yabai窗口管理器键位配置 | B1ueDrops">
+  <meta name="description" content="并发编程的概述 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -383,9 +383,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-yabai" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-concurrent_sketch" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">yabai窗口管理器键位配置</h1>
+        <h1 class="article-title">并发编程的概述</h1>
     
     <div class="article-meta">
         
@@ -395,7 +395,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="工具/环境">工具/环境</a>
+            <a  data-rel="并发编程">并发编程</a>
             
         </span>
         
@@ -403,7 +403,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-04 18:57:39'>2024-02-28 13:01</time>
+            Created At : <time class="date" title='Updated At: 2024-03-05 14:10:33'>2024-03-05 11:10</time>
         
     </div>
     <div class="article-meta">
@@ -414,7 +414,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%97%ADSIP%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">关闭SIP的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%8Cyabai%E4%B9%8B%E5%90%8E"><span class="toc-text">下载完yabai之后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yabai%E7%9A%84%E9%94%AE%E4%BD%8D%E9%85%8D%E7%BD%AE"><span class="toc-text">yabai的键位配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iTerm2%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E7%BD%AE"><span class="toc-text">iTerm2的一些设置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">多线程模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">协程模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await%E6%A8%A1%E5%9E%8B"><span class="toc-text">async&#x2F;await模型</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -430,90 +430,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关闭SIP的方法"><a href="#关闭SIP的方法" class="headerlink" title="关闭SIP的方法"></a>关闭SIP的方法</h2><ol>
-<li>首先, 进入Mac的Recovery Mode.</li>
-<li>进入终端: [实用工具]-[终端].</li>
-<li>终端中输入: <code>csrutil disable</code>.</li>
-<li>重启之后, 输入<code>csrutil disable</code>, 查看SIP是否被disable.</li>
-<li>之后, 在终端运行: <code>sudo nvram boot-args=-arm64e_preview_abi</code>.</li>
-<li>然后重启.</li>
-</ol>
-<h2 id="下载完yabai之后"><a href="#下载完yabai之后" class="headerlink" title="下载完yabai之后"></a>下载完yabai之后</h2><p>在<code>/etc/sudoers.d</code>中, 创建<code>yabai</code>, 写入:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;user&gt; ALL=(root) NOPASSWD: sha256:&lt;hash&gt; &lt;yabai&gt; --load-sa</span><br></pre></td></tr></table></figure>
-
+        <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2><ul>
+<li><p>最基础的模型: 单个CPU, 多个线程, 线程通过上下文切换的方式在CPU上执行.</p>
+</li>
+<li><p>多个CPU的情况:</p>
 <ul>
-<li><code>user</code>: <code>whoami</code>的输出.</li>
-<li><code>hash</code>: <code>shasum -a 256 $(which yabai)</code>的输出.</li>
-<li><code>yabai</code>: <code>which yabai</code>的输出.</li>
+<li>多个CPU提供了并行度.</li>
+<li>CPU硬件级别需要实现Cache Coherence, Memory Consistency Model, 操作系统级别需要封装, 提供互斥锁, 信号量等并发编程模型.</li>
 </ul>
-<h2 id="yabai的键位配置"><a href="#yabai的键位配置" class="headerlink" title="yabai的键位配置"></a>yabai的键位配置</h2><table>
-<thead>
-<tr>
-<th>功能</th>
-<th>键位</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>切换窗口聚焦</td>
-<td><code>cmd+alt+h,j,k,l</code></td>
-</tr>
-<tr>
-<td>旋转窗口布局90度</td>
-<td><code>cmd+alt+;</code></td>
-</tr>
-<tr>
-<td>最大化窗口</td>
-<td><code>cmd+alt+m</code></td>
-</tr>
-<tr>
-<td>关闭窗口</td>
-<td><code>cmd+alt+c</code></td>
-</tr>
-<tr>
-<td>移动窗口位置</td>
-<td><code>ctrl+cmd+alt+h,j,k,l</code></td>
-</tr>
-<tr>
-<td>切换虚拟桌面</td>
-<td><code>cmd+alt+[]</code></td>
-</tr>
-<tr>
-<td>创建虚拟桌面</td>
-<td><code>ctrl+cmd+alt+n</code></td>
-</tr>
-<tr>
-<td>销毁虚拟桌面</td>
-<td><code>ctrl+cmd+alt+c</code></td>
-</tr>
-<tr>
-<td>切换到某个虚拟桌面</td>
-<td><code>cmd+alt+1/2/3/4/5</code></td>
-</tr>
-<tr>
-<td>将当前窗口移动到某个虚拟桌面</td>
-<td><code>ctrl+cmd+alt+1/2/3/4/5</code></td>
-</tr>
-<tr>
-<td>重启yabai</td>
-<td><code>ctrl+cmd+alt+r</code></td>
-</tr>
-<tr>
-<td>将窗口布局改为浮动</td>
-<td><code>ctrl+cmd+alt+f</code></td>
-</tr>
-<tr>
-<td>隐藏某个窗口</td>
-<td><code>cmd+h</code></td>
-</tr>
-<tr>
-<td>打开某个隐藏的窗口</td>
-<td><code>cmd+tab</code></td>
-</tr>
-</tbody></table>
-<h2 id="iTerm2的一些设置"><a href="#iTerm2的一些设置" class="headerlink" title="iTerm2的一些设置"></a>iTerm2的一些设置</h2><ul>
-<li>iTerm2可以设置关闭顶部的状态栏:</li>
+</li>
 </ul>
-<p><img src="/2024/02/28/yabai/yabai-hiden-title.png" alt="iTerm2隐藏状态栏"></p>
+<p>线程的任务分为两种:</p>
+<ul>
+<li>CPU Task: 很快.</li>
+<li>I&#x2F;O Task: 包括内存I&#x2F;O, 网络I&#x2F;O等等, 相对于CPU Task极慢.</li>
+</ul>
+<p>当线程执行I&#x2F;O Task时, 如果I&#x2F;O未完成, 那么线程就会被阻塞, 直到I&#x2F;O完成, 这种情况比较低效, 优化方法是使用<font color="red">非阻塞I&#x2F;O和I&#x2F;O多路复用</font>.</p>
+<ul>
+<li>对于很多I&#x2F;O Task, 不用创建很多线程处理, 而是使用少量线程.</li>
+<li>非阻塞I&#x2F;O就是当I&#x2F;O未完成, 线程不会被阻塞, 而是可以去执行其他任务.</li>
+<li>当I&#x2F;O Task完成后, 会通知线程处理.</li>
+</ul>
+<h2 id="协程模型"><a href="#协程模型" class="headerlink" title="协程模型"></a>协程模型</h2><p>协程的出现是为了减少CPU线程上下文切换时的开销.</p>
+<p>协程是比线程更细粒度的调度单位, 协程的切换不需要切换到内核态, 可以在用户态实现轻量级的任务调度.</p>
+<h2 id="async-await模型"><a href="#async-await模型" class="headerlink" title="async&#x2F;await模型"></a>async&#x2F;await模型</h2><p>借助非阻塞I&#x2F;O和I&#x2F;O多路复用的思想, 以及协程模型, 可以实现在单线程基础上的异步编程模型, 最典型的是async&#x2F;await编程模型.</p>
+<p>在async&#x2F;await模型中, 只有一个线程, 线程中有一个部分叫做<code>EventLoop</code>, 负责调度不同的Task.</p>
+<p>对于用户而言, 一般需要定义一个协程函数(Coroutine Function), 里面写入业务逻辑.</p>
+<p>调用协程函数, 可以得到一个Coroutine Object, 此时这个函数并不会被执行.</p>
+<p>之后, 通过<code>await</code>一个Coroutine Object:</p>
+<ul>
+<li>可以将这个Coroutine Object变成Task, 注册到Event Loop中.</li>
+<li>同时建立一个Task之间的依赖关系, 当前线程执行的Task需要等待<code>await</code>的Task完成之后才能继续执行.</li>
+<li>将控制权转交给Event Loop, 等待下一步调度.</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
