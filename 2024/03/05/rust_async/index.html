@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>B1ueDrops</title>
+  <title>rust的async/await模型 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="B1ueDrops">
+  <meta name="description" content="rust的async/await模型 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简单的例子12345678910111213141516171819202122use std::time::Duration;use futures::executor::block_on;use async_std::task;async fn hello_world() &#123;    println!(&quot;hello world!&quot;);  &#x2F;&#x2F; 这里sleep后, 会">
 <meta property="og:type" content="article">
@@ -392,17 +392,27 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-rust_async" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">rust的async/await模型</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="并发编程">并发编程</a>
+            
+        </span>
+        
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-02-09 16:49:59'>2024-02-09 16:49</time>
+            Created At : <time class="date" title='Updated At: 2024-03-05 20:58:51'>2024-03-05 20:58</time>
         
     </div>
     <div class="article-meta">
@@ -413,7 +423,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%91%E9%98%B3%E8%80%8C%E7%94%9F-%E5%96%9C%E6%AC%A2%E8%81%AA%E6%98%8E%E7%9A%84%E4%BA%BA"><span class="toc-text">向阳而生, 喜欢聪明的人.</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -429,7 +439,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="向阳而生-喜欢聪明的人"><a href="#向阳而生-喜欢聪明的人" class="headerlink" title="向阳而生, 喜欢聪明的人."></a>向阳而生, 喜欢聪明的人.</h1>
+        <h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"><span class="keyword">use</span> futures::executor::block_on;</span><br><span class="line"><span class="keyword">use</span> async_std::task;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">hello_world</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">  <span class="comment">// 这里sleep后, 会调度到niubi</span></span><br><span class="line">    task::<span class="title function_ invoke__">sleep</span>(Duration::<span class="title function_ invoke__">from_millis</span>(<span class="number">1000</span>)).<span class="keyword">await</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;aba&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">niubi</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;niubi&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">async_main</span>() &#123;</span><br><span class="line">  <span class="comment">// async_main等待两个任务完成, 两个任务独立</span></span><br><span class="line">    futures::join!(<span class="title function_ invoke__">hello_world</span>(), <span class="title function_ invoke__">niubi</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="title function_ invoke__">block_on</span>(<span class="title function_ invoke__">async_main</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
