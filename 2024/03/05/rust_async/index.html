@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="rust的async/await模型 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="简单的例子12345678910111213141516171819202122use std::time::Duration;use futures::executor::block_on;use async_std::task;async fn hello_world() &#123;    println!(&quot;hello world!&quot;);  &#x2F;&#x2F; 这里sleep后, 会">
+<meta name="description" content="简单的例子12345678910111213141516171819202122use std::time::Duration;use futures::executor::block_on;use async_std::task;async fn hello_world() &#123;    println!(&quot;hello world!&quot;);  &#x2F;&#x2F; 这里异步sleep后,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rust的async&#x2F;await模型">
 <meta property="og:url" content="https://b1uedrops.github.io/2024/03/05/rust_async/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="简单的例子12345678910111213141516171819202122use std::time::Duration;use futures::executor::block_on;use async_std::task;async fn hello_world() &#123;    println!(&quot;hello world!&quot;);  &#x2F;&#x2F; 这里sleep后, 会">
+<meta property="og:description" content="简单的例子12345678910111213141516171819202122use std::time::Duration;use futures::executor::block_on;use async_std::task;async fn hello_world() &#123;    println!(&quot;hello world!&quot;);  &#x2F;&#x2F; 这里异步sleep后,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-05T12:58:51.295Z">
-<meta property="article:modified_time" content="2024-03-05T12:58:51.295Z">
+<meta property="article:modified_time" content="2024-03-06T04:33:35.970Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -412,7 +412,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-05 20:58:51'>2024-03-05 20:58</time>
+            Created At : <time class="date" title='Updated At: 2024-03-06 12:33:35'>2024-03-05 20:58</time>
         
     </div>
     <div class="article-meta">
@@ -423,7 +423,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AAFuture%E4%B9%8B%E9%97%B4%E5%B9%B6%E5%8F%91"><span class="toc-text">多个Future之间并发</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -439,12 +439,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"><span class="keyword">use</span> futures::executor::block_on;</span><br><span class="line"><span class="keyword">use</span> async_std::task;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">hello_world</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">  <span class="comment">// 这里sleep后, 会调度到niubi</span></span><br><span class="line">    task::<span class="title function_ invoke__">sleep</span>(Duration::<span class="title function_ invoke__">from_millis</span>(<span class="number">1000</span>)).<span class="keyword">await</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;aba&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">niubi</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;niubi&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">async_main</span>() &#123;</span><br><span class="line">  <span class="comment">// async_main等待两个任务完成, 两个任务独立</span></span><br><span class="line">    futures::join!(<span class="title function_ invoke__">hello_world</span>(), <span class="title function_ invoke__">niubi</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="title function_ invoke__">block_on</span>(<span class="title function_ invoke__">async_main</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"><span class="keyword">use</span> futures::executor::block_on;</span><br><span class="line"><span class="keyword">use</span> async_std::task;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">hello_world</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">  <span class="comment">// 这里异步sleep后, 会调度到niubi</span></span><br><span class="line">    task::<span class="title function_ invoke__">sleep</span>(Duration::<span class="title function_ invoke__">from_millis</span>(<span class="number">1000</span>)).<span class="keyword">await</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;aba&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">niubi</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;niubi&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">async_main</span>() &#123;</span><br><span class="line">  <span class="comment">// async_main等待两个任务完成, 两个任务独立</span></span><br><span class="line">    futures::join!(<span class="title function_ invoke__">hello_world</span>(), <span class="title function_ invoke__">niubi</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="title function_ invoke__">block_on</span>(<span class="title function_ invoke__">async_main</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h3><ul>
+<li>Rust中, 使用<code>async</code>定义的函数, 调用后会变成<code>Future</code>.</li>
+<li><code>Future</code>需要一个执行器(executor)来执行.</li>
+<li>当<code>Future</code>执行被阻塞后, 它会让出当前线程的控制权, 来执行其他<code>Future</code>, 不会导致整个线程被阻塞.</li>
+<li>在一个<code>async</code>函数中, 调用另一个<code>async</code>函数可以对<code>Future</code>调用<code>await</code>, <code>await</code>会建立<code>Future</code>之间的依赖关系.<ul>
+<li>因此, 执行<code>async</code>有两种方式:<ul>
+<li>第一, 使用Executor.</li>
+<li>第二, 在<code>async</code>函数中使用<code>.await</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="多个Future之间并发"><a href="#多个Future之间并发" class="headerlink" title="多个Future之间并发"></a>多个Future之间并发</h3><p>对于下面的代码:</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">book</span>() &#123;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">&quot;book&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">dance</span>() &#123;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">&quot;dance&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">async_main</span>() &#123;</span><br><span class="line">  <span class="title function_ invoke__">book</span>().<span class="keyword">await</span></span><br><span class="line">  <span class="title function_ invoke__">dance</span>().<span class="keyword">await</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>此处, 由于<font color="red">await是有顺序限制的</font>, <code>book</code>和<code>dance</code>之间并不是并行.</p>
+<p>如果想让<code>book</code>和<code>dance</code>两个函数并发, 需要用到<code>future::join</code></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> futures::join;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">book</span>() &#123;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">&quot;book&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">dance</span>() &#123;</span><br><span class="line">  <span class="built_in">println!</span>(<span class="string">&quot;dance&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">async_main</span>() &#123;</span><br><span class="line">  join!(<span class="title function_ invoke__">book</span>(), <span class="title function_ invoke__">dance</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>如果要执行的<code>Future</code>很多, 那么可以把<code>Future</code>放到一个数组中, 然后调用<code>futures::future::join_all</code>.</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
