@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>行为型的设计模式 | B1ueDrops</title>
+  <title>SSVEP脑机接口基础 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="行为型的设计模式 | B1ueDrops">
+  <meta name="description" content="SSVEP脑机接口基础 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -434,9 +434,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-behaviour_design_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-bci-basic" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">行为型的设计模式</h1>
+        <h1 class="article-title">SSVEP脑机接口基础</h1>
     
     <div class="article-meta">
         
@@ -446,7 +446,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="软件工程">软件工程</a>
+            <a  data-rel="科研">科研</a>
             
         </span>
         
@@ -454,7 +454,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-07 16:46:12'>2024-02-26 20:11</time>
+            Created At : <time class="date" title='Updated At: 2024-03-09 12:33:23'>2024-03-09 09:53</time>
         
     </div>
     <div class="article-meta">
@@ -465,7 +465,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">行为型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">策略模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">观察者模式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EEG"><span class="toc-text">EEG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSVEP"><span class="toc-text">SSVEP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90"><span class="toc-text">典型相关分析</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -481,52 +481,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="行为型设计模式"><a href="#行为型设计模式" class="headerlink" title="行为型设计模式"></a>行为型设计模式</h2><p>行为型设计模式用来描述类&#x2F;对象之间如何通过协作, 以耦合度最小的前提下完成任务.</p>
-<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>如果一个需求可以用非常多的代替算法实现, 那么就可以考虑策略模式.</p>
-<p>实现方式:</p>
+        <h2 id="EEG"><a href="#EEG" class="headerlink" title="EEG"></a>EEG</h2><p>EEG的全称是Electroencephalography, 中文叫脑电图. 纵轴是电压, 横轴是时间, 这种信号就是脑电信号.</p>
+<h2 id="SSVEP"><a href="#SSVEP" class="headerlink" title="SSVEP"></a>SSVEP</h2><p>SSVEP的全称是Steady-State Visual Evoked Potentials, 中文叫做稳态视觉诱发电位.</p>
+<p>当给人体施加一个周期性的视觉刺激时, 在大脑的视觉皮层处, 会记录到一个和视觉刺激频率相同, 或者是谐波关系的多个脑电信号. 这些信号就是SSVEP信号.</p>
 <ul>
-<li>抽象策略接口:</li>
+<li>当人视野中有不同的视觉刺激时, 位于大脑视觉皮层中央的刺激信号诱导产生的脑电信号的振幅最高, 这种效应叫<strong>视皮层中央放大效应</strong>.</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  <span class="comment">// 这里面定义了实现策略的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p><img src="/2024/03/09/bci-basic/image-20240309102914834.png" alt="image-20240309102914834"></p>
+<h2 id="典型相关分析"><a href="#典型相关分析" class="headerlink" title="典型相关分析"></a>典型相关分析</h2><p>典型相关分析(Canonical Correlation Analysis, CCA)是用来探究两个随机变量的相关关系的.</p>
+<p>假设有两个随机变量$X, Y$, 它们有各自的指标:</p>
 <ul>
-<li>具体策略类: 用于实现抽象策略接口.</li>
+<li>$X &#x3D; \begin{pmatrix} X_1 &amp; X_2 &amp; …&amp; X_n \end{pmatrix}$​</li>
+<li>$Y &#x3D; \begin{pmatrix} Y_1 &amp; Y_2 &amp; …&amp; Y_m \end{pmatrix}$</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteStrategy</span> <span class="keyword">implements</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;haha&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>然后, 我现在要对$X, Y$这两个随机变量进行线性组合:</p>
 <ul>
-<li>策略调用者:</li>
+<li>$U &#x3D; a_1X_1 + a_2X_2 + …+a_nX_n$</li>
+<li>$V &#x3D; b_1Y_1 + b_2Y_2 + …+b_mY_m$</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 成员变量是策略的抽象类</span></span><br><span class="line">  <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 设置具体策略</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStrategy</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy = strategy;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 调用策略方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy.strategyMethod();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>线性组合的目的, 是找出<strong>典型变量</strong>$U, V$, 使得$U, V$的相关系数最大, 这样就可以求出系数$a, b$的值, 也可以求出$U, V$相关系数, 这个相关系数叫做第一典型相关系数.</p>
+<p>之后, 我可以再选择一组线性组合, 这个线性组合和之前的$a, b$​是不相关的, 同时我也保证这个线性组合能让典型变量的相关系数最大.</p>
+<p>用算法来表述的话:</p>
 <ul>
-<li>策略模式的使用方式:</li>
+<li><p>第一, 求$a_1, b_1$, 在$D(U_1) &#x3D; D(V_1) &#x3D; 1$的前提下, 使得$\rho(U_1, V_1)$最大, 其中$\rho(U_1, V_1)$叫做第一典型相关系数.</p>
+</li>
+<li><p>第二, 求$a_2, b_2$, 在$D(U_2) &#x3D; D(V_2) &#x3D; 1, Cov(U_1, U_2) &#x3D; Cov(V_1, V_2) &#x3D; 0$的前提下, 是的$\rho(U_2, V_2)$​最大, 这个值是第二典型相关系数.</p>
+</li>
+<li><p>然后持续迭代, 典型相关系数会逐渐递减, 直到等于0结束.</p>
+</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">  <span class="comment">// 利用多态选择一个策略</span></span><br><span class="line">  <span class="type">Strategy</span> <span class="variable">strategy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteStrategy</span>();</span><br><span class="line">  <span class="comment">// 将选定的策略设置给Context</span></span><br><span class="line">  context.setStrategy(strategy);</span><br><span class="line">  <span class="comment">// Context执行策略</span></span><br><span class="line">  context.strategyMethod();</span><br><span class="line">  <span class="comment">// 之后换了策略, 只要给Context重新设置一个策略即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后, 需要对典型相关系数进行假设检验, 检验之后, 可以得到哪些典型变量是可以被使用的.</p>
 
-
-
-<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>如果当一个对象的状态发生改变时, 依赖这个对象的所有对象都需要发生变化, 就可以考虑使用观察者模式.</p>
-<p>实现方式:</p>
-<ul>
-<li>抽象观察者接口:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">  <span class="comment">// response是抽象观察者更新自己的方法</span></span><br><span class="line">  <span class="comment">// response也可以接收Subject中的参数</span></span><br><span class="line">  <span class="keyword">void</span> <span class="title function_">response</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>具体观察者:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">response</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;更新自己&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>观察者依赖的对象:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 依赖这个对象的观察者们</span></span><br><span class="line">  <span class="keyword">protected</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Observer&gt;();</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 添加一个观察者</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.observers.add(observer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 删除观察者</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">    observers.remove(observer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 通知观察者的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">notifyObserver</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现<code>Subject</code>:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyObserver</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Object obs: observers) &#123;</span><br><span class="line">      obs.response();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>

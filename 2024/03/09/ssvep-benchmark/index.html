@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>行为型的设计模式 | B1ueDrops</title>
+  <title>A Benchmark Dataset for SSVEP-Based Brain-Computer Interfaces | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="行为型的设计模式 | B1ueDrops">
+  <meta name="description" content="A Benchmark Dataset for SSVEP-Based Brain-Computer Interfaces | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -434,9 +434,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-behaviour_design_pattern" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ssvep-benchmark" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">行为型的设计模式</h1>
+        <h1 class="article-title">A Benchmark Dataset for SSVEP-Based Brain-Computer Interfaces</h1>
     
     <div class="article-meta">
         
@@ -446,7 +446,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="软件工程">软件工程</a>
+            <a  data-rel="科研">科研</a>
             
         </span>
         
@@ -454,7 +454,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-07 16:46:12'>2024-02-26 20:11</time>
+            Created At : <time class="date" title='Updated At: 2024-03-09 09:53:28'>2024-03-09 09:36</time>
         
     </div>
     <div class="article-meta">
@@ -465,7 +465,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">行为型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">策略模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">观察者模式</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -481,52 +481,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="行为型设计模式"><a href="#行为型设计模式" class="headerlink" title="行为型设计模式"></a>行为型设计模式</h2><p>行为型设计模式用来描述类&#x2F;对象之间如何通过协作, 以耦合度最小的前提下完成任务.</p>
-<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>如果一个需求可以用非常多的代替算法实现, 那么就可以考虑策略模式.</p>
-<p>实现方式:</p>
-<ul>
-<li>抽象策略接口:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  <span class="comment">// 这里面定义了实现策略的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>paper的链接: <a href="https://b1uedrops.github.io/static/papers/ssvep-benchmark.pdf">https://b1uedrops.github.io/static/papers/ssvep-benchmark.pdf</a></p>
 
-<ul>
-<li>具体策略类: 用于实现抽象策略接口.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteStrategy</span> <span class="keyword">implements</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;haha&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略调用者:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 成员变量是策略的抽象类</span></span><br><span class="line">  <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 设置具体策略</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStrategy</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy = strategy;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 调用策略方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">strategyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.strategy.strategyMethod();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>策略模式的使用方式:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">  <span class="comment">// 利用多态选择一个策略</span></span><br><span class="line">  <span class="type">Strategy</span> <span class="variable">strategy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteStrategy</span>();</span><br><span class="line">  <span class="comment">// 将选定的策略设置给Context</span></span><br><span class="line">  context.setStrategy(strategy);</span><br><span class="line">  <span class="comment">// Context执行策略</span></span><br><span class="line">  context.strategyMethod();</span><br><span class="line">  <span class="comment">// 之后换了策略, 只要给Context重新设置一个策略即可</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>如果当一个对象的状态发生改变时, 依赖这个对象的所有对象都需要发生变化, 就可以考虑使用观察者模式.</p>
-<p>实现方式:</p>
-<ul>
-<li>抽象观察者接口:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">  <span class="comment">// response是抽象观察者更新自己的方法</span></span><br><span class="line">  <span class="comment">// response也可以接收Subject中的参数</span></span><br><span class="line">  <span class="keyword">void</span> <span class="title function_">response</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>具体观察者:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">response</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;更新自己&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>观察者依赖的对象:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 依赖这个对象的观察者们</span></span><br><span class="line">  <span class="keyword">protected</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Observer&gt;();</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 添加一个观察者</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.observers.add(observer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 删除观察者</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">    observers.remove(observer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 通知观察者的方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">notifyObserver</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现<code>Subject</code>:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyObserver</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Object obs: observers) &#123;</span><br><span class="line">      obs.response();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>

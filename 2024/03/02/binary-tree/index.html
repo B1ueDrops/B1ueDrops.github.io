@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(15)</small>
+                <small>(17)</small>
             
         </div>
     </li>
@@ -143,6 +143,21 @@
             
             工具/环境
             <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="科研">
+            
+            科研
+            <small>(2)</small>
         </div>
         
     </li>
@@ -197,7 +212,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="15">
+<input type="hidden" id="yelog_site_posts_number" value="17">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -247,6 +262,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 科研 "
+           href="/2024/03/09/bci-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSVEP脑机接口基础">SSVEP脑机接口基础</span>
+            <span class="post-date" title="2024-03-09 09:53:48">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="All 科研 "
+           href="/2024/03/09/ssvep-benchmark/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="A Benchmark Dataset for SSVEP-Based Brain-Computer Interfaces">A Benchmark Dataset for SSVEP-Based Brain-Computer Interfaces</span>
+            <span class="post-date" title="2024-03-09 09:36:30">2024/03/09</span>
+        </a>
         
         
         <a  class="All 并发编程 "
@@ -421,7 +454,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-07 20:40:53'>2024-03-02 19:59</time>
+            Created At : <time class="date" title='Updated At: 2024-03-07 20:56:21'>2024-03-02 19:59</time>
         
     </div>
     <div class="article-meta">
@@ -540,6 +573,11 @@
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/45/">https://www.acwing.com/problem/content/description/45/</a></p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; path;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">    </span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">findPath</span>(TreeNode* root, <span class="type">int</span> sum) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> ans;</span><br><span class="line">        <span class="built_in">dfs</span>(root, sum);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(TreeNode *root, <span class="type">int</span> sum)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> ;</span><br><span class="line">        </span><br><span class="line">        path.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        sum -= root-&gt;val;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (!root-&gt;left &amp;&amp; !root-&gt;right &amp;&amp; !sum)</span><br><span class="line">        &#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(path);</span><br><span class="line">            path.<span class="built_in">pop_back</span>();</span><br><span class="line">            sum += root-&gt;val;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;left, sum);</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;right, sum);</span><br><span class="line">        </span><br><span class="line">        sum += root-&gt;val;</span><br><span class="line">        path.<span class="built_in">pop_back</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum/">https://leetcode.cn/problems/path-sum/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="type">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(root, targetSum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(TreeNode *root, <span class="type">int</span> sum)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        sum -= root-&gt;val;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!root-&gt;left &amp;&amp; !root-&gt;right &amp;&amp; !sum) &#123;</span><br><span class="line">            sum += root-&gt;val;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">bool</span> left = <span class="built_in">dfs</span>(root-&gt;left, sum);</span><br><span class="line">        <span class="type">bool</span> right = <span class="built_in">dfs</span>(root-&gt;right, sum);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (left || right) &#123;</span><br><span class="line">            sum += root-&gt;val;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
 
