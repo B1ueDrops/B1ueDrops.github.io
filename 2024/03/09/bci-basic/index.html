@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SSVEP脑机接口基础 | B1ueDrops</title>
+  <title>CCA实现SSVEP识别(baseline) | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="SSVEP脑机接口基础 | B1ueDrops">
+  <meta name="description" content="CCA实现SSVEP识别(baseline) | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(17)</small>
+                <small>(18)</small>
             
         </div>
     </li>
@@ -157,7 +157,7 @@
         <div data-rel="科研">
             
             科研
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -212,7 +212,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="17">
+<input type="hidden" id="yelog_site_posts_number" value="18">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -265,10 +265,19 @@
         
         
         <a  class="All 科研 "
+           href="/2024/03/10/ssvep-dnn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SSVEP和DNN结合的一种做法">SSVEP和DNN结合的一种做法</span>
+            <span class="post-date" title="2024-03-10 11:30:21">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 科研 "
            href="/2024/03/09/bci-basic/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="SSVEP脑机接口基础">SSVEP脑机接口基础</span>
+            <span class="post-title" title="CCA实现SSVEP识别(baseline)">CCA实现SSVEP识别(baseline)</span>
             <span class="post-date" title="2024-03-09 09:53:48">2024/03/09</span>
         </a>
         
@@ -436,7 +445,7 @@
     <div class="pjax">
         <article id="post-bci-basic" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">SSVEP脑机接口基础</h1>
+        <h1 class="article-title">CCA实现SSVEP识别(baseline)</h1>
     
     <div class="article-meta">
         
@@ -454,7 +463,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-09 12:33:23'>2024-03-09 09:53</time>
+            Created At : <time class="date" title='Updated At: 2024-03-10 10:52:09'>2024-03-09 09:53</time>
         
     </div>
     <div class="article-meta">
@@ -465,7 +474,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EEG"><span class="toc-text">EEG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSVEP"><span class="toc-text">SSVEP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90"><span class="toc-text">典型相关分析</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EEG"><span class="toc-text">EEG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSVEP"><span class="toc-text">SSVEP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90-CCA"><span class="toc-text">典型相关分析(CCA)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95-SSVEP-CCA"><span class="toc-text">传统方法: SSVEP + CCA</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -481,14 +490,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="EEG"><a href="#EEG" class="headerlink" title="EEG"></a>EEG</h2><p>EEG的全称是Electroencephalography, 中文叫脑电图. 纵轴是电压, 横轴是时间, 这种信号就是脑电信号.</p>
+        <p>paper链接: <a href="https://b1uedrops.github.io/static/papers/ssvep-cca.pdf">https://b1uedrops.github.io/static/papers/ssvep-cca.pdf</a></p>
+<h2 id="EEG"><a href="#EEG" class="headerlink" title="EEG"></a>EEG</h2><p>EEG的全称是Electroencephalography, 中文叫脑电图. 纵轴是电压, 横轴是时间, 这种信号就是脑电信号.</p>
 <h2 id="SSVEP"><a href="#SSVEP" class="headerlink" title="SSVEP"></a>SSVEP</h2><p>SSVEP的全称是Steady-State Visual Evoked Potentials, 中文叫做稳态视觉诱发电位.</p>
 <p>当给人体施加一个周期性的视觉刺激时, 在大脑的视觉皮层处, 会记录到一个和视觉刺激频率相同, 或者是谐波关系的多个脑电信号. 这些信号就是SSVEP信号.</p>
 <ul>
 <li>当人视野中有不同的视觉刺激时, 位于大脑视觉皮层中央的刺激信号诱导产生的脑电信号的振幅最高, 这种效应叫<strong>视皮层中央放大效应</strong>.</li>
 </ul>
 <p><img src="/2024/03/09/bci-basic/image-20240309102914834.png" alt="image-20240309102914834"></p>
-<h2 id="典型相关分析"><a href="#典型相关分析" class="headerlink" title="典型相关分析"></a>典型相关分析</h2><p>典型相关分析(Canonical Correlation Analysis, CCA)是用来探究两个随机变量的相关关系的.</p>
+<h2 id="典型相关分析-CCA"><a href="#典型相关分析-CCA" class="headerlink" title="典型相关分析(CCA)"></a>典型相关分析(CCA)</h2><p>典型相关分析(Canonical Correlation Analysis, CCA)是用来探究两个随机变量的相关关系的.</p>
 <p>假设有两个随机变量$X, Y$, 它们有各自的指标:</p>
 <ul>
 <li>$X &#x3D; \begin{pmatrix} X_1 &amp; X_2 &amp; …&amp; X_n \end{pmatrix}$​</li>
@@ -511,6 +521,17 @@
 </li>
 </ul>
 <p>之后, 需要对典型相关系数进行假设检验, 检验之后, 可以得到哪些典型变量是可以被使用的.</p>
+<h2 id="传统方法-SSVEP-CCA"><a href="#传统方法-SSVEP-CCA" class="headerlink" title="传统方法: SSVEP + CCA"></a>传统方法: SSVEP + CCA</h2><p>首先, 使用特定频率的视觉刺激信号刺激大脑产生SSVEP信号.</p>
+<p>视觉刺激信号是一个矩阵, 下面的数字表示矩阵中对应刺激信号的频率, 例如可以是下面这个5x8的矩阵:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">8.0   9.0  10.0  11.0  12.0  13.0  14.0  15.0</span><br><span class="line">8.2   9.2  10.2  11.2  12.2  13.2  14.2  15.2</span><br><span class="line">8.4   9.4  10.4  11.4  12.4  13.4  14.4  15.4</span><br><span class="line">8.6   9.6  10.6  11.6  12.6  13.6  14.6  15.6</span><br><span class="line">8.8   9.8  10.8  11.8  12.8  13.8  14.8  15.8</span><br></pre></td></tr></table></figure>
+
+<p>对应的SSVEP信号是这种数据结构:</p>
+<ul>
+<li>首先, 第一个维度一般是通道数, 通道就是测量脑电波时, 连上的电极的个数, 每一个通道都会对应一个脑电波信号.</li>
+<li>第二个维度一般是采样点的个数.</li>
+<li>第三个维度一般是实验次数, 表示第几次实验的数据.</li>
+<li>值就是电压高低, 单位一般是$\mu V$.</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
@@ -523,6 +544,46 @@
 
 
 
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
     
 
 
