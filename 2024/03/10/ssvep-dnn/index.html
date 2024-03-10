@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="SSVEP和DNN结合的一种做法 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="为什么有CNN如果用全连接的神经网络处理图像, 会有如下几个问题:  图像的输入维度很多, 全连接会导致参数过多. 图像中的物体都具有局部不变的特征., 全连接很难捕捉. 模拟人脑, 人脑在接收刺激后, 只有特定区域的神经元会响应刺激, 而不是所有神经元.  卷积如果是一维, 假设卷积核$w$的长度为$m$, 那么卷积的表达式就是: $y[i] &#x3D; \sum_{k&#x3D;0}^mw[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNN的一些基础知识">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/03/10/ai-cnn/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="为什么有CNN如果用全连接的神经网络处理图像, 会有如下几个问题:  图像的输入维度很多, 全连接会导致参数过多. 图像中的物体都具有局部不变的特征., 全连接很难捕捉. 模拟人脑, 人脑在接收刺激后, 只有特定区域的神经元会响应刺激, 而不是所有神经元.  卷积如果是一维, 假设卷积核$w$的长度为$m$, 那么卷积的表达式就是: $y[i] &#x3D; \sum_{k&#x3D;0}^mw[">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-03-10T07:57:42.281Z">
+<meta property="article:modified_time" content="2024-03-10T10:22:56.403Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(18)</small>
+                <small>(20)</small>
             
         </div>
     </li>
@@ -187,7 +187,22 @@
         <div data-rel="算法">
             
             算法
-            <small>(2)</small>
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI">
+            
+            AI
+            <small>(1)</small>
         </div>
         
     </li>
@@ -212,7 +227,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_posts_number" value="20">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -262,6 +277,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All AI "
+           href="/2024/03/10/ai-cnn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CNN的一些基础知识">CNN的一些基础知识</span>
+            <span class="post-date" title="2024-03-10 15:57:42">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/10/catalan/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡特兰数系列">卡特兰数系列</span>
+            <span class="post-date" title="2024-03-10 12:47:19">2024/03/10</span>
+        </a>
         
         
         <a  class="All 科研 "
@@ -463,7 +496,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-10 12:08:20'>2024-03-10 11:30</time>
+            Created At : <time class="date" title='Updated At: 2024-03-10 14:19:59'>2024-03-10 11:30</time>
         
     </div>
     <div class="article-meta">
@@ -474,7 +507,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">数据集的信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">模型是什么</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">数据集的信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%A4%E6%B3%A2%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">滤波预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-text">模型</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -491,6 +524,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>paper链接: <a href="https://b1uedrops.github.io/static/papers/ssvep-dnn.pdf">https://b1uedrops.github.io/static/papers/ssvep-dnn.pdf</a></p>
+<p>代码链接: </p>
 <h2 id="数据集的信息"><a href="#数据集的信息" class="headerlink" title="数据集的信息"></a>数据集的信息</h2><ul>
 <li>一个是清华的Benchmark:<ul>
 <li>论文链接: <a href="https://b1uedrops.github.io/static/papers/ssvep-benchmark.pdf">https://b1uedrops.github.io/static/papers/ssvep-benchmark.pdf</a></li>
@@ -501,7 +535,53 @@
 </ul>
 </li>
 </ul>
-<h2 id="模型是什么"><a href="#模型是什么" class="headerlink" title="模型是什么"></a>模型是什么</h2>
+<h2 id="滤波预处理"><a href="#滤波预处理" class="headerlink" title="滤波预处理"></a>滤波预处理</h2><ul>
+<li><p>采集到的数据的格式:</p>
+<ul>
+<li>第一维: 通道</li>
+<li>第二维: 采样点</li>
+<li>第三维: 字符个数</li>
+<li>第四维: 实验次数</li>
+<li>值: 电压值.</li>
+</ul>
+</li>
+<li><p>首先, 我固定字符个数和实验次数, 那么就能得到每一个通道的信号数据.</p>
+</li>
+<li><p>准备好3个带通滤波器:</p>
+<ul>
+<li>低频段为: <code>[8, 16, 24]</code></li>
+<li>高频段为: <code>[90, 90, 90]</code>.</li>
+</ul>
+</li>
+<li><p>然后, 对于每一个通道的信号数据, 我都会用这三个带通滤波器去过滤, 这样, 一个通道就会得到三种滤波后的数据.</p>
+<p>经过滤波预处理之后, 可以得到要输入到DNN中的数据:</p>
+</li>
+<li><p>原数据:</p>
+<ul>
+<li>第一维: 通道</li>
+<li>第二维: 采样点</li>
+<li>第三维: 用的哪个滤波器</li>
+<li>第四维: 哪个字符.</li>
+<li>第五维: 第几次实验</li>
+<li>第六维: 第几个人</li>
+<li>值: 电压</li>
+</ul>
+</li>
+<li><p>Label数据:</p>
+<ul>
+<li>第一维: 1</li>
+<li>第二维: 哪个字符</li>
+<li>第三维: 第几次实验</li>
+<li>第四维: 第几个人</li>
+<li>值: 字符.</li>
+</ul>
+</li>
+</ul>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><ul>
+<li>第一个CNN层: 把3个滤波通道的数据结合成1个.</li>
+<li>第二个CNN层: 叫做通道组合,</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
