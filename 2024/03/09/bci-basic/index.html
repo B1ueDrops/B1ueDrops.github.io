@@ -23,7 +23,7 @@
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/gruvbox-light.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -565,7 +565,7 @@
 <p>之后, 需要对典型相关系数进行假设检验, 检验之后, 可以得到哪些典型变量是可以被使用的.</p>
 <h2 id="传统方法-SSVEP-CCA"><a href="#传统方法-SSVEP-CCA" class="headerlink" title="传统方法: SSVEP + CCA"></a>传统方法: SSVEP + CCA</h2><p>首先, 使用特定频率的视觉刺激信号刺激大脑产生SSVEP信号.</p>
 <p>视觉刺激信号是一个矩阵, 下面的数字表示矩阵中对应刺激信号的频率, 例如可以是下面这个5x8的矩阵:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">8.0   9.0  10.0  11.0  12.0  13.0  14.0  15.0</span><br><span class="line">8.2   9.2  10.2  11.2  12.2  13.2  14.2  15.2</span><br><span class="line">8.4   9.4  10.4  11.4  12.4  13.4  14.4  15.4</span><br><span class="line">8.6   9.6  10.6  11.6  12.6  13.6  14.6  15.6</span><br><span class="line">8.8   9.8  10.8  11.8  12.8  13.8  14.8  15.8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">8.0   9.0  10.0  11.0  12.0  13.0  14.0  15.0<br>8.2   9.2  10.2  11.2  12.2  13.2  14.2  15.2<br>8.4   9.4  10.4  11.4  12.4  13.4  14.4  15.4<br>8.6   9.6  10.6  11.6  12.6  13.6  14.6  15.6<br>8.8   9.8  10.8  11.8  12.8  13.8  14.8  15.8<br></code></pre></td></tr></table></figure>
 
 <p>对应的SSVEP信号是这种数据结构:</p>
 <ul>
