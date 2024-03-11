@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>并发编程的概述 | B1ueDrops</title>
+  <title>SSVEP用template network | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="并发编程的概述 | B1ueDrops">
+  <meta name="description" content="SSVEP用template network | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -485,9 +485,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-concurrent_sketch" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ssvep-template-network" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">并发编程的概述</h1>
+        <h1 class="article-title">SSVEP用template network</h1>
     
     <div class="article-meta">
         
@@ -497,7 +497,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="并发编程">并发编程</a>
+            <a  data-rel="科研">科研</a>
             
         </span>
         
@@ -505,7 +505,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-05 15:00:50'>2024-03-05 15:00</time>
+            Created At : <time class="date" title='Updated At: 2024-03-11 13:07:11'>2024-03-11 13:06</time>
         
     </div>
     <div class="article-meta">
@@ -516,7 +516,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">多线程模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">协程模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await%E6%A8%A1%E5%9E%8B"><span class="toc-text">async&#x2F;await模型</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -532,39 +532,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2><ul>
-<li><p>最基础的模型: 单个CPU, 多个线程, 线程通过上下文切换的方式在CPU上执行.</p>
-</li>
-<li><p>多个CPU的情况:</p>
-<ul>
-<li>多个CPU提供了并行度.</li>
-<li>CPU硬件级别需要实现Cache Coherence, Memory Consistency Model, 操作系统级别需要封装, 提供互斥锁, 信号量等并发编程模型.</li>
-</ul>
-</li>
-</ul>
-<p>线程的任务分为两种:</p>
-<ul>
-<li>CPU Task: 很快.</li>
-<li>I&#x2F;O Task: 包括内存I&#x2F;O, 网络I&#x2F;O等等, 相对于CPU Task极慢.</li>
-</ul>
-<p>当线程执行I&#x2F;O Task时, 如果I&#x2F;O未完成, 那么线程就会被阻塞, 直到I&#x2F;O完成, 这种情况比较低效, 优化方法是使用<font color="red">非阻塞I&#x2F;O和I&#x2F;O多路复用</font>.</p>
-<ul>
-<li>对于很多I&#x2F;O Task, 不用创建很多线程处理, 而是使用少量线程.</li>
-<li>非阻塞I&#x2F;O就是当I&#x2F;O未完成, 线程不会被阻塞, 而是可以去执行其他任务.</li>
-<li>当I&#x2F;O Task完成后, 会通知线程处理.</li>
-</ul>
-<h2 id="协程模型"><a href="#协程模型" class="headerlink" title="协程模型"></a>协程模型</h2><p>协程的出现是为了减少CPU线程上下文切换时的开销.</p>
-<p>协程是比线程更细粒度的调度单位, 协程的切换不需要切换到内核态, 可以在用户态实现轻量级的任务调度.</p>
-<h2 id="async-await模型"><a href="#async-await模型" class="headerlink" title="async&#x2F;await模型"></a>async&#x2F;await模型</h2><p>借助非阻塞I&#x2F;O和I&#x2F;O多路复用的思想, 以及协程模型, 可以实现在单线程基础上的异步编程模型, 最典型的是async&#x2F;await编程模型.</p>
-<p>在async&#x2F;await模型中, 只有一个线程, 线程中有一个部分叫做<code>EventLoop</code>, 负责调度不同的Task.</p>
-<p>对于用户而言, 一般需要定义一个协程函数(Coroutine Function), 里面写入业务逻辑.</p>
-<p>调用协程函数, 可以得到一个Future, 此时这个Future并不会被执行.</p>
-<p>之后, 通过<code>await</code>一个Future:</p>
-<ul>
-<li>可以将这个Future变成Task, 注册到Event Loop中.</li>
-<li>同时建立一个Task之间的依赖关系, 当前线程执行的Task需要等待<code>await</code>的Task完成之后才能继续执行.</li>
-<li>将控制权转交给Event Loop, 等待下一步调度.</li>
-</ul>
+        <p>paper链接: <a href="https://b1uedrops.github.io/static/papers/ssvep-template-network.pdf">https://b1uedrops.github.io/static/papers/ssvep-template-network.pdf</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
