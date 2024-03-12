@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(21)</small>
+                <small>(22)</small>
             
         </div>
     </li>
@@ -157,7 +157,7 @@
         <div data-rel="科研">
             
             科研
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -227,7 +227,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="21">
+<input type="hidden" id="yelog_site_posts_number" value="22">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -277,6 +277,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 科研 "
+           href="/2024/03/12/eeg-artifact-remove/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="生理信号降噪">生理信号降噪</span>
+            <span class="post-date" title="2024-03-12 16:36:54">2024/03/12</span>
+        </a>
         
         
         <a  class="All 科研 "
@@ -505,7 +514,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-10 12:47:55'>2024-03-10 12:47</time>
+            Created At : <time class="date" title='Updated At: 2024-03-12 19:23:08'>2024-03-10 12:47</time>
         
     </div>
     <div class="article-meta">
@@ -516,7 +525,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B601%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">满足条件01序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E5%AF%B9%E6%8B%AC%E5%8F%B7%E7%BB%84%E6%88%90%E7%9A%84%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">n对括号组成的括号序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E4%B8%AA%E8%8A%82%E7%82%B9%E7%BB%84%E6%88%90%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">n个节点组成的二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8C%96%E6%88%90%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"><span class="toc-text">转化成括号序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">按照动态规划</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -532,7 +541,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="满足条件01序列个数"><a href="#满足条件01序列个数" class="headerlink" title="满足条件01序列个数"></a>满足条件01序列个数</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/891/">https://www.acwing.com/problem/content/description/891/</a></p>
+</blockquote>
+<ul>
+<li><p>假设现在在一个坐标轴, 一个01序列表示一条运动轨迹, 0表示向右走, 1表示向上走, 那么这个问题就可以转化成从$(0, 0)$到$(n, n)$的路径中, 有多少路径在直线$y &#x3D; x + 1$ 以下, 或者是不经过$y &#x3D; x + 1$.</p>
+</li>
+<li><p>那么取一个补集, 也就是所有从$(0, 0)$走到$(n, n)$的方案, 减去经过直线$y &#x3D; x + 1$的方案.</p>
+</li>
+<li><p>对于经过直线$y &#x3D; x + 1$的所有方案, 假设这个路径和直线$y &#x3D; x + 1$的交点是$(a, b)$, 那么这条路径从$(a, b)$到$(n, n)$这一段按照$y &#x3D; x + 1$进行反转, 最终的终点就是$(n - 1, n + 1)$.</p>
+<ul>
+<li>也就是说, 每一条经过$y &#x3D; x + 1$并且走到$(n, n)$的路径, 都和从$(0, 0)$走到$(n - 1, n + 1)$的路径一一对应.</li>
+</ul>
+</li>
+<li><p>那么最终方案就可以表示成: $C_{2n}^{n} - C_{2n}^{n-1} &#x3D; \frac{C_{2n}^n}{n+1}$​, 这个数就是卡特兰数.</p>
+</li>
+</ul>
+<h2 id="n对括号组成的括号序列个数"><a href="#n对括号组成的括号序列个数" class="headerlink" title="n对括号组成的括号序列个数"></a>n对括号组成的括号序列个数</h2><p>同理, 有$n$对括号()组成的合法的括号序列的个数也是卡特兰数.</p>
+<h2 id="n个节点组成的二叉树"><a href="#n个节点组成的二叉树" class="headerlink" title="n个节点组成的二叉树"></a>n个节点组成的二叉树</h2><h3 id="转化成括号序列"><a href="#转化成括号序列" class="headerlink" title="转化成括号序列"></a>转化成括号序列</h3><p>首先, 先不看二叉树, 先看完全二叉树的定义:</p>
+<ul>
+<li>完全二叉树除了最后一层, 其余层节点都是满的, 并且最后一层从左到右节点都是连续出现.</li>
+</ul>
+<h2 id="按照动态规划"><a href="#按照动态规划" class="headerlink" title="按照动态规划"></a>按照动态规划</h2><p>假设$f(n)$表示$n$个节点组成的二叉树的个数, 那么:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>f[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>  <span class="hljs-comment">// 遍历左子树有多少个节点</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= i - <span class="hljs-number">1</span>; j ++) &#123;<br>    f[i] = f[j] + f[i - <span class="hljs-number">1</span> - j];<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>所有符合这种递推式的方案数目, 都是卡特兰数.</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
@@ -544,6 +578,46 @@
 
 
 
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
     
 
 

@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(21)</small>
+                <small>(22)</small>
             
         </div>
     </li>
@@ -157,7 +157,7 @@
         <div data-rel="科研">
             
             科研
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -227,7 +227,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="21">
+<input type="hidden" id="yelog_site_posts_number" value="22">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -277,6 +277,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 科研 "
+           href="/2024/03/12/eeg-artifact-remove/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="生理信号降噪">生理信号降噪</span>
+            <span class="post-date" title="2024-03-12 16:36:54">2024/03/12</span>
+        </a>
         
         
         <a  class="All 科研 "
@@ -505,7 +514,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-11 19:31:15'>2024-03-02 19:59</time>
+            Created At : <time class="date" title='Updated At: 2024-03-12 19:07:06'>2024-03-02 19:59</time>
         
     </div>
     <div class="article-meta">
@@ -704,7 +713,9 @@
 <p>从$[1, n]$进行枚举, 对于状态<code>i</code>, 再从$j \in [1, i]$进行枚举, $j$作为根节点, 那么左子树和右子树的个数就分别是<code>f[j - 1]</code>和<code>f[i - (j + 1) + 1]</code>, 进行状态转移即可.</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numTrees</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        f[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= i; j ++) &#123;<br>                f[i] += f[j - <span class="hljs-number">1</span>] * f[i - j];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> f[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>本题目也有通项公式, 是卡特兰数.</p>
+<blockquote>
+<p>从1~n构成的互不相同的二叉搜索树的个数是卡特兰数.</p>
+</blockquote>
 <h2 id="不同的二叉搜索树求方案"><a href="#不同的二叉搜索树求方案" class="headerlink" title="不同的二叉搜索树求方案"></a>不同的二叉搜索树求方案</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/unique-binary-search-trees-ii/">https://leetcode.cn/problems/unique-binary-search-trees-ii/</a></p>
 </blockquote>
