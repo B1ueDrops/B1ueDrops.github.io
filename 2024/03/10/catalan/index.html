@@ -514,7 +514,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-12 19:23:08'>2024-03-10 12:47</time>
+            Created At : <time class="date" title='Updated At: 2024-03-13 16:22:41'>2024-03-10 12:47</time>
         
     </div>
     <div class="article-meta">
@@ -525,7 +525,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B601%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">满足条件01序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E5%AF%B9%E6%8B%AC%E5%8F%B7%E7%BB%84%E6%88%90%E7%9A%84%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">n对括号组成的括号序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E4%B8%AA%E8%8A%82%E7%82%B9%E7%BB%84%E6%88%90%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">n个节点组成的二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8C%96%E6%88%90%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"><span class="toc-text">转化成括号序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">按照动态规划</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B601%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">满足条件01序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E5%AF%B9%E6%8B%AC%E5%8F%B7%E7%BB%84%E6%88%90%E7%9A%84%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">n对括号组成的括号序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E4%B8%AA%E8%8A%82%E7%82%B9%E7%BB%84%E6%88%90%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">n个节点组成的二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8C%96%E6%88%9001%E5%BA%8F%E5%88%97"><span class="toc-text">转化成01序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">按照动态规划</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -558,14 +558,31 @@
 </li>
 </ul>
 <h2 id="n对括号组成的括号序列个数"><a href="#n对括号组成的括号序列个数" class="headerlink" title="n对括号组成的括号序列个数"></a>n对括号组成的括号序列个数</h2><p>同理, 有$n$对括号()组成的合法的括号序列的个数也是卡特兰数.</p>
-<h2 id="n个节点组成的二叉树"><a href="#n个节点组成的二叉树" class="headerlink" title="n个节点组成的二叉树"></a>n个节点组成的二叉树</h2><h3 id="转化成括号序列"><a href="#转化成括号序列" class="headerlink" title="转化成括号序列"></a>转化成括号序列</h3><p>首先, 先不看二叉树, 先看完全二叉树的定义:</p>
+<h2 id="n个节点组成的二叉树"><a href="#n个节点组成的二叉树" class="headerlink" title="n个节点组成的二叉树"></a>n个节点组成的二叉树</h2><h3 id="转化成01序列"><a href="#转化成01序列" class="headerlink" title="转化成01序列"></a>转化成01序列</h3><ul>
+<li><p>首先, 对于一颗由n个节点组成的二叉树, 我可以建立一个映射, 把它变成一个完全二叉树.</p>
 <ul>
-<li>完全二叉树除了最后一层, 其余层节点都是满的, 并且最后一层从左到右节点都是连续出现.</li>
+<li>对于原来的n个节点, 经过变换后都是父亲节点, 并且有两个儿子.</li>
+<li>这种映射是通过补充n+1个叶子节点实现的, 最终的完全二叉树有2n+1个节点.</li>
+<li>这种映射的逆映射是删除完全二叉树的所有叶子节点, 可以把一个2n+1个节点的完全二叉树变成一个n个节点组成的二叉树.</li>
+<li>这种映射是一种满射.</li>
+</ul>
+</li>
+<li><p>因此, 对于一个2n+1个节点的完全二叉树, 如果把所有左儿子当作0, 把所有右儿子当作1, 然后做不包含根节点的前序遍历, 那么最终得到的也是一个符合卡特兰数性质的01序列(因为前序遍历, 任何一个前缀中0一定比1多). 于是就可以转化成01序列问题.</p>
+</li>
 </ul>
 <h2 id="按照动态规划"><a href="#按照动态规划" class="headerlink" title="按照动态规划"></a>按照动态规划</h2><p>假设$f(n)$表示$n$个节点组成的二叉树的个数, 那么:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>f[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>  <span class="hljs-comment">// 遍历左子树有多少个节点</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= i - <span class="hljs-number">1</span>; j ++) &#123;<br>    f[i] = f[j] + f[i - <span class="hljs-number">1</span> - j];<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>f[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>  <span class="hljs-comment">// 遍历左子树有多少个节点</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= i - <span class="hljs-number">1</span>; j ++) &#123;<br>    <span class="hljs-comment">// 左子树和右子树是乘法原理</span><br>    f[i] = f[j] * f[i - <span class="hljs-number">1</span> - j];<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>所有符合这种递推式的方案数目, 都是卡特兰数.</p>
+<p>卡特兰数前几个数:</p>
+<ul>
+<li><code>f[0] = 1</code>.</li>
+<li><code>f[1] = 1</code>.</li>
+<li><code>f[2] = 2</code>.</li>
+<li><code>f[3] = 5</code>.</li>
+<li><code>f[4] = 14</code>.</li>
+<li><code>f[5] = 42</code>.</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
