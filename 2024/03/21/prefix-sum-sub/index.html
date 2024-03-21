@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Jetbrains系列IDE的配置 | B1ueDrops</title>
+  <title>前缀和差分系列 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Jetbrains系列IDE的配置 | B1ueDrops">
+  <meta name="description" content="前缀和差分系列 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -521,9 +521,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-jetbrains" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-prefix-sum-sub" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Jetbrains系列IDE的配置</h1>
+        <h1 class="article-title">前缀和差分系列</h1>
     
     <div class="article-meta">
         
@@ -533,7 +533,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="工具/环境">工具/环境</a>
+            <a  data-rel="算法">算法</a>
             
         </span>
         
@@ -541,7 +541,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-03 15:00:08'>2024-03-02 19:00</time>
+            Created At : <time class="date" title='Updated At: 2024-03-21 15:59:09'>2024-03-21 15:44</time>
         
     </div>
     <div class="article-meta">
@@ -552,7 +552,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%80%9A%E7%94%A8%E8%AE%BE%E7%BD%AE"><span class="toc-text">一些通用设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ideavim"><span class="toc-text">ideavim</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-text">和为K的子数组</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -568,91 +568,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一些通用设置"><a href="#一些通用设置" class="headerlink" title="一些通用设置"></a>一些通用设置</h2><ul>
-<li><p>字体, 大小</p>
-</li>
-<li><p>颜色主题</p>
-</li>
-<li><p>插件:</p>
-<ul>
-<li>Nerdtree</li>
-<li>Ideavim</li>
-</ul>
-</li>
-</ul>
-<h3 id="ideavim"><a href="#ideavim" class="headerlink" title="ideavim"></a>ideavim</h3><p>基本配置和neovim一致.</p>
-<table>
-<thead>
-<tr>
-<th>键位</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>gh</code></td>
-<td>显示Hover信息</td>
-</tr>
-<tr>
-<td><code>gd</code></td>
-<td>跳转定义</td>
-</tr>
-<tr>
-<td><code>gr</code></td>
-<td>跳转reference</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;r</code></td>
-<td>重新加载配置文件</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;m</code></td>
-<td>全屏窗口</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;e</code></td>
-<td>跳转到nerdtree</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;z</code></td>
-<td>开启Zen Mode</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;b</code></td>
-<td>在这一行打断点</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;d</code></td>
-<td>Debug</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;q</code></td>
-<td>查找可用的action</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;t</code></td>
-<td>打开终端</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;p</code></td>
-<td>Project Manager</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;c</code></td>
-<td>修改运行配置</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;;</code></td>
-<td>运行代码</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+        <h2 id="和为K的子数组"><a href="#和为K的子数组" class="headerlink" title="和为K的子数组"></a>和为K的子数组</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/">https://leetcode.cn/problems/subarray-sum-equals-k/</a></p>
+</blockquote>
+<p>要统计数组中有多少个子区间之和是$k$, 等价于在前缀和数组中, 假设固定$i$, 求有多少个$j \in [0, 1, …, i - 1]$, 使得$s[i] - s[j] &#x3D; k$, 也就是求有多少个$s[j]$, 使得$s[j] &#x3D; s[i] - k$, 这个可以用哈希表来做.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">subarraySum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">s</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) s[i] = s[i - <span class="hljs-number">1</span>] + nums[i - <span class="hljs-number">1</span>];<br><br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; hash;<br>        <span class="hljs-comment">// s[0] = 0出现1次</span><br>        hash[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>            res += hash[s[i] - k];<br>            hash[s[i]] ++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>

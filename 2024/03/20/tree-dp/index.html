@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(24)</small>
+                <small>(25)</small>
             
         </div>
     </li>
@@ -172,7 +172,7 @@
         <div data-rel="算法">
             
             算法
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -227,7 +227,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="24">
+<input type="hidden" id="yelog_site_posts_number" value="25">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -277,6 +277,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/21/prefix-sum-sub/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前缀和差分系列">前缀和差分系列</span>
+            <span class="post-date" title="2024-03-21 15:44:29">2024/03/21</span>
+        </a>
         
         
         <a  class="All 算法 "
@@ -532,7 +541,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-20 18:11:32'>2024-03-20 18:10</time>
+            Created At : <time class="date" title='Updated At: 2024-03-21 10:44:06'>2024-03-20 18:10</time>
         
     </div>
     <div class="article-meta">
@@ -543,7 +552,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89%E4%B8%8A%E5%8F%B8%E7%9A%84%E8%88%9E%E4%BC%9A"><span class="toc-text">没有上司的舞会</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -559,7 +568,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="没有上司的舞会"><a href="#没有上司的舞会" class="headerlink" title="没有上司的舞会"></a>没有上司的舞会</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/287/">https://www.acwing.com/problem/content/287/</a></p>
+</blockquote>
+<p>设$f[u][0]$表示以$u$为根的子树中, 不选择$u$的所有方案中, happy指数之和的最大值, $f[u][1]$表示选择$u$.</p>
+<p>那么状态转移方程是:</p>
+<ul>
+<li>$f[u][0] &#x3D; happy[u] + \sum_j max(f[j][0], f[j][1])$, 其中$j$是$u$​的子节点.</li>
+<li>$f[u][1] &#x3D; \sum_j f[j][0]$</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">6010</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> happy[N];<br><span class="hljs-type">int</span> f[N][<span class="hljs-number">2</span>];<br><span class="hljs-type">bool</span> has_father[N];<br><br><span class="hljs-type">int</span> h[N], e[N], ne[N], idx;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<br>    e[idx] = b, ne[idx] = h[a], h[a] = idx ++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span> </span>&#123;<br>    <br>    f[u][<span class="hljs-number">1</span>] += happy[u];<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = h[u]; ~i; i = ne[i]) &#123;<br>        <br>        <span class="hljs-type">int</span> j = e[i];<br>        <span class="hljs-built_in">dfs</span>(j);<br>        <br>        f[u][<span class="hljs-number">0</span>] += <span class="hljs-built_in">max</span>(f[j][<span class="hljs-number">0</span>], f[j][<span class="hljs-number">1</span>]);<br>        f[u][<span class="hljs-number">1</span>] += f[j][<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <br>    cin &gt;&gt; n;<br>    <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> h);<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) cin &gt;&gt; happy[i];<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n - <span class="hljs-number">1</span>; i ++) &#123;<br>        <span class="hljs-type">int</span> a, b;<br>        cin &gt;&gt; a &gt;&gt; b;<br>        <span class="hljs-built_in">add</span>(b, a), has_father[a] = <span class="hljs-literal">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> root;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++)<br>        <span class="hljs-keyword">if</span> (!has_father[i]) &#123;<br>            root = i;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    <br>    <span class="hljs-built_in">dfs</span>(root);<br>    cout &lt;&lt; <span class="hljs-built_in">max</span>(f[root][<span class="hljs-number">0</span>], f[root][<span class="hljs-number">1</span>]) &lt;&lt; endl;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>同类题: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber-iii/">https://leetcode.cn/problems/house-robber-iii/</a></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    unordered_map&lt;TreeNode*, unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&gt; f;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(TreeNode * root)</span> </span>&#123;<br>        <span class="hljs-built_in">dfs</span>(root);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(f[root][<span class="hljs-number">0</span>], f[root][<span class="hljs-number">1</span>]);    <br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode * root)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!root) <span class="hljs-keyword">return</span> ;<br>        <span class="hljs-built_in">dfs</span>(root-&gt;left);<br>        <span class="hljs-built_in">dfs</span>(root-&gt;right);<br>        f[root][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[root-&gt;left][<span class="hljs-number">0</span>], f[root-&gt;left][<span class="hljs-number">1</span>]) + <span class="hljs-built_in">max</span>(f[root-&gt;right][<span class="hljs-number">0</span>], f[root-&gt;right][<span class="hljs-number">1</span>]);<br>        f[root][<span class="hljs-number">1</span>] = root-&gt;val + f[root-&gt;left][<span class="hljs-number">0</span>] + f[root-&gt;right][<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
