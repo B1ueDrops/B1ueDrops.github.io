@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>rust用到哪里学哪里 | B1ueDrops</title>
+  <title>多线程编程模型 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="rust用到哪里学哪里 | B1ueDrops">
+  <meta name="description" content="多线程编程模型 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="消息队列模型消息队列模型就是生产者-消费者模型, 分类标准如下:  生产者可以多个, 消费者也可以多个. 消息队列可以是异步&#x2F;同步. 同步: 消息队列满了之后, 生产者生产时会被阻塞. 异步: 消息队列的大小没有用, 生产者不会被阻塞.    例1: 1个生产者和1个消费者通过消息队列发送消息: use std::sync::mpsc;struct Message &#123;    n">
 <meta property="og:type" content="article">
@@ -581,9 +581,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-rust" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-multithread" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">rust用到哪里学哪里</h1>
+        <h1 class="article-title">多线程编程模型</h1>
     
     <div class="article-meta">
         
@@ -593,7 +593,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="编程语言">编程语言</a>
+            <a  data-rel="并发编程">并发编程</a>
             
         </span>
         
@@ -601,7 +601,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-26 17:14:08'>2024-03-05 20:58</time>
+            Created At : <time class="date" title='Updated At: 2024-03-26 18:04:54'>2024-03-26 17:22</time>
         
     </div>
     <div class="article-meta">
@@ -612,7 +612,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E5%9F%BA%E7%A1%80"><span class="toc-text">rust基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E7%9A%84%E9%97%AD%E5%8C%85"><span class="toc-text">rust的闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">rust所有权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E5%88%86%E6%A8%A1%E5%9D%97%E7%BC%96%E7%A8%8B"><span class="toc-text">rust分模块编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">rust一些高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-text">异步编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AAFuture%E4%B9%8B%E9%97%B4%E5%B9%B6%E5%8F%91"><span class="toc-text">多个Future之间并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8B"><span class="toc-text">消息队列模型</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -628,79 +628,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="rust基础"><a href="#rust基础" class="headerlink" title="rust基础"></a>rust基础</h2><h3 id="rust的闭包"><a href="#rust的闭包" class="headerlink" title="rust的闭包"></a>rust的闭包</h3><p>格式:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">|参数1, 参数2, ...| -&gt; 返回值类型 &#123;<br>    // 函数体<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>例子:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">func</span> = |num: <span class="hljs-type">i32</span>| <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">i32</span> &#123;<br>    num + <span class="hljs-number">1</span><br>  &#125;;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, <span class="hljs-title function_ invoke__">func</span>(<span class="hljs-number">2</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>没有参数&#x2F;返回值的闭包可以当作线程函数, 写法是:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust">|| &#123;<br>  <span class="hljs-comment">// 线程逻辑</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="rust所有权"><a href="#rust所有权" class="headerlink" title="rust所有权"></a>rust所有权</h3><p>常见的有以下场景:</p>
-<ol>
-<li><p>非基本类型赋值:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">s1</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">s2</span> = s1;<br><span class="hljs-comment">// 此时s1所有权给了s2, s1不能被使用</span><br><span class="hljs-comment">// 如果真要共享, 使用引用 let s2 = &amp;s1;</span><br><span class="hljs-comment">// 如果只需要s1的值, 可以用let s2 = s1.clone()</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>非基本类型作为函数参数:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">s1</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><span class="hljs-title function_ invoke__">function</span>(s1);<br><span class="hljs-comment">// 此处, s1会失效, 不能再次使用.</span><br></code></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="rust分模块编程"><a href="#rust分模块编程" class="headerlink" title="rust分模块编程"></a>rust分模块编程</h3><ul>
-<li><p>rust中, <code>package</code>就相当于<code>project</code>的概念.</p>
-</li>
-<li><p>一个<code>package</code>中, 可以包含多个<code>crate</code>, 一个<code>crate</code>是一个最小的编译单元.</p>
+        <h2 id="消息队列模型"><a href="#消息队列模型" class="headerlink" title="消息队列模型"></a>消息队列模型</h2><p>消息队列模型就是生产者-消费者模型, 分类标准如下:</p>
 <ul>
-<li><p><code>crate</code>分为binary crate和library crate, 两者分别生成可执行文件&#x2F;库文件.</p>
-</li>
-<li><p>binary crate可以用<code>cargo new --bin</code>生成, library crate可以用<code>cargo new --lib</code>生成.</p>
-</li>
-<li><p>binary crate默认有<code>src/main.rs</code>, library crate默认有<code>src/lib.rs</code>.</p>
-</li>
+<li>生产者可以多个, 消费者也可以多个.</li>
+<li>消息队列可以是异步&#x2F;同步.<ul>
+<li>同步: 消息队列满了之后, 生产者生产时会被阻塞.</li>
+<li>异步: 消息队列的大小没有用, 生产者不会被阻塞.</li>
 </ul>
 </li>
-<li><p>对于rust的编译器来说, 它默认只会看到<code>src/main.rs</code>或者<code>src/lib.rs</code>, 这个东西叫做<code>crate root</code>.</p>
-</li>
-<li><p>rust中, 一个<code>crate</code>由多个<code>module</code>组成, 多个<code>module</code>会组成一个树状关系, 一般在<code>crate root</code>中需要显式声明<code>mod</code>:</p>
-</li>
 </ul>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// src/main.rs</span><br><span class="hljs-keyword">mod</span> A;<br><span class="hljs-keyword">mod</span> B;<br><span class="hljs-keyword">mod</span> C;<br><br><span class="hljs-keyword">use</span> A::funcA;<br></code></pre></td></tr></table></figure>
+<p><strong>例1: 1个生产者和1个消费者通过消息队列发送消息:</strong></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::sync::mpsc;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Message</span> &#123;<br>    name: <span class="hljs-type">String</span>,<br>    age: <span class="hljs-type">i32</span><br>&#125;<br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-comment">// async channel, 主线程创建消息队列</span><br>    <span class="hljs-keyword">let</span> (tx, rx) = mpsc::<span class="hljs-title function_ invoke__">channel</span>();<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">sender</span> = std::thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">message</span> = Message &#123;<br>            name: <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;haha&quot;</span>),<br>            age: <span class="hljs-number">18</span><br>        &#125;;<br>        tx.<span class="hljs-title function_ invoke__">send</span>(message).<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Sender has sent data&quot;</span>);<br>    &#125;);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">receiver</span> = std::thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">message</span> = rx.<span class="hljs-title function_ invoke__">recv</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Receiver receives &#123;&#125; and &#123;&#125;&quot;</span>, message.name, message.age);<br>    &#125;);<br>		<span class="hljs-comment">// 等待主线程运行完</span><br>    sender.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    receiver.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<blockquote>
+<p>move关键字的作用</p>
+</blockquote>
 <ul>
-<li>分模块编程的思路:<ul>
-<li>首先, 一个rust文件相当于一个module, 这个module的名字就和文件名一样.<ul>
-<li>在其中的一些元素如果要供外部使用, 需要加上<code>pub</code>.</li>
+<li><p>当你在子线程中, 尝试访问外部线程的变量时, 会有隐患.</p>
+<ul>
+<li>外部线程可能比你子线程先结束, 然后变量所有权失效, 此时子线程访问就会导致不安全.</li>
 </ul>
 </li>
-<li>然后, 一个文件夹也相当于一个module, 这个文件夹内部要有一个<code>mod.rs</code>文件, 通过<code>pub mod ...</code>, 来让其中的子模块全部导入.</li>
-<li>使用时, 可以通过<code>use</code>关键字一层层导入, 如果需要在一个子模块中, 引用外部子模块, 可以从<code>use crate::</code>开始导入.</li>
+<li><p>为了解决这种情况:</p>
+<ul>
+<li>使用<code>join</code>, 先让主线程等等, 让原变量生命周期别消失.</li>
+<li>用<code>move</code>, 表示如果线程内使用了这个变量, 那么变量所有权自动转移到线程内部.</li>
 </ul>
 </li>
-</ul>
-<h2 id="rust一些高级特性"><a href="#rust一些高级特性" class="headerlink" title="rust一些高级特性"></a>rust一些高级特性</h2><h3 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h3><h4 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h4><ul>
-<li>Rust中, 使用<code>async</code>定义的函数, 调用后会变成<code>Future</code>.</li>
-<li><code>Future</code>需要一个执行器(executor)来执行.</li>
-<li>当<code>Future</code>执行被阻塞后, 它会让出当前线程的控制权, 来执行其他<code>Future</code>, 不会导致整个线程被阻塞.</li>
-<li>在一个<code>async</code>函数中, 调用另一个<code>async</code>函数可以对<code>Future</code>调用<code>await</code>, <code>await</code>会建立<code>Future</code>之间的依赖关系.<ul>
-<li>因此, 执行<code>async</code>有两种方式:<ul>
-<li>第一, 使用Executor.</li>
-<li>第二, 在<code>async</code>函数中使用<code>.await</code>.</li>
-</ul>
+<li><p>用消息队列时就需要用<code>move</code>.</p>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="多个Future之间并发"><a href="#多个Future之间并发" class="headerlink" title="多个Future之间并发"></a>多个Future之间并发</h3><p>对于下面的代码:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-title function_ invoke__">book</span>().<span class="hljs-keyword">await</span><br>  <span class="hljs-title function_ invoke__">dance</span>().<span class="hljs-keyword">await</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>此处, 由于<font color="red">await是有顺序限制的</font>, <code>book</code>和<code>dance</code>之间并不是并行.</p>
-<p>如果想让<code>book</code>和<code>dance</code>两个函数并发, 需要用到<code>future::join</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> futures::join;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  join!(<span class="hljs-title function_ invoke__">book</span>(), <span class="hljs-title function_ invoke__">dance</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>如果要执行的<code>Future</code>很多, 那么可以把<code>Future</code>放到一个数组中, 然后调用<code>futures::future::join_all</code>.</p>
-<h3 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h3><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::time::Duration;<br><span class="hljs-keyword">use</span> futures::executor::block_on;<br><span class="hljs-keyword">use</span> async_std::task;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_world</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);<br>  <span class="hljs-comment">// 这里异步sleep后, 会调度到niubi</span><br>    task::<span class="hljs-title function_ invoke__">sleep</span>(Duration::<span class="hljs-title function_ invoke__">from_millis</span>(<span class="hljs-number">1000</span>)).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;aba&quot;</span>);<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">niubi</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;niubi&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-comment">// async_main等待两个任务完成, 两个任务独立</span><br>    futures::join!(<span class="hljs-title function_ invoke__">hello_world</span>(), <span class="hljs-title function_ invoke__">niubi</span>());<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-title function_ invoke__">block_on</span>(<span class="hljs-title function_ invoke__">async_main</span>())<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<p><strong>例2: 多个生产者, 1个消费者, 有一定大小的同步消息队列:</strong></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
