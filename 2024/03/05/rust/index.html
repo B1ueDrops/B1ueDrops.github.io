@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>C++之用到什么学什么 | B1ueDrops</title>
+  <title>rust用到哪里学哪里 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="C++之用到什么学什么 | B1ueDrops">
+  <meta name="description" content="rust用到哪里学哪里 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -572,9 +572,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-cpp-many" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rust" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">C++之用到什么学什么</h1>
+        <h1 class="article-title">rust用到哪里学哪里</h1>
     
     <div class="article-meta">
         
@@ -592,7 +592,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-25 13:32:54'>2024-03-22 11:31</time>
+            Created At : <time class="date" title='Updated At: 2024-03-26 12:07:27'>2024-03-05 20:58</time>
         
     </div>
     <div class="article-meta">
@@ -603,7 +603,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CMake"><span class="toc-text">CMake</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80"><span class="toc-text">C++一些基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">C++面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-text">C++一些高级用法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E5%88%86%E6%A8%A1%E5%9D%97%E7%BC%96%E7%A8%8B"><span class="toc-text">rust分模块编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-text">异步编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AAFuture%E4%B9%8B%E9%97%B4%E5%B9%B6%E5%8F%91"><span class="toc-text">多个Future之间并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -619,80 +619,61 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><ul>
-<li><p><code>CMakeLists.txt</code>中添加这个可以生成<code>compile_commands.json</code>, 用来给IDE语法解析用.</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set</span>(CMAKE_EXPORT_COMPILE_COMMANDS <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+        <h2 id="rust分模块编程"><a href="#rust分模块编程" class="headerlink" title="rust分模块编程"></a>rust分模块编程</h2><ul>
+<li><p>rust中, <code>package</code>就相当于<code>project</code>的概念.</p>
+</li>
+<li><p>一个<code>package</code>中, 可以包含多个<code>crate</code>, 一个<code>crate</code>是一个最小的编译单元.</p>
+<ul>
+<li><p><code>crate</code>分为binary crate和library crate, 两者分别生成可执行文件&#x2F;库文件.</p>
+</li>
+<li><p>binary crate可以用<code>cargo new --bin</code>生成, library crate可以用<code>cargo new --lib</code>生成.</p>
+</li>
+<li><p>binary crate默认有<code>src/main.rs</code>, library crate默认有<code>src/lib.rs</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>对于rust的编译器来说, 它默认只会看到<code>src/main.rs</code>或者<code>src/lib.rs</code>, 这个东西叫做<code>crate root</code>.</p>
+</li>
+<li><p>rust中, 一个<code>crate</code>由多个<code>module</code>组成, 多个<code>module</code>会组成一个树状关系, 一般在<code>crate root</code>中需要显式声明<code>mod</code>:</p>
+</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// src/main.rs</span><br><span class="hljs-keyword">mod</span> A;<br><span class="hljs-keyword">mod</span> B;<br><span class="hljs-keyword">mod</span> C;<br><br><span class="hljs-keyword">use</span> A::funcA;<br></code></pre></td></tr></table></figure>
 
-</li>
-<li><p>让你的CMake从你给的路径中找链接库, 可以把链接库的绝对路径加到<code>CMAKE_PREFIX_PATH</code>中:</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(APPEND CMAKE_PREFIX_PATH <span class="hljs-string">&quot;你的路径&quot;</span>)<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>CMAKE_CURRENT_SOURCE_DIR</code>表示<code>CMakeLists.txt</code>所在路径.</p>
-</li>
-<li><p><strong>分模块的<code>CMakeLists.txt</code>:</strong></p>
 <ul>
-<li>用<code>add_subdirectory(路径)</code>可以执行别的路径下的CMake.</li>
+<li>分模块编程的思路:<ul>
+<li>首先, 一个rust文件相当于一个module, 这个module的名字就和文件名一样.<ul>
+<li>在其中的一些元素如果要供外部使用, 需要加上<code>pub</code>.</li>
+</ul>
+</li>
+<li>然后, 一个文件夹也相当于一个module, 这个文件夹内部要有一个<code>mod.rs</code>文件, 通过<code>pub mod ...</code>, 来让其中的子模块全部导入.</li>
+<li>使用时, 可以通过<code>use</code>关键字一层层导入, 如果需要在一个子模块中, 引用外部子模块, 可以从<code>use crate::</code>开始导入.</li>
 </ul>
 </li>
 </ul>
-<h2 id="C-一些基础"><a href="#C-一些基础" class="headerlink" title="C++一些基础"></a>C++一些基础</h2><h2 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C++面向对象"></a>C++面向对象</h2><ol>
-<li><p>成员变量和成员方法有三种权限修饰符:</p>
-<ul>
-<li>Class中, 不写默认是<code>private</code>.</li>
-<li><code>private</code>只能在类定义&#x2F;友元中被访问.</li>
-<li><code>protected</code>还可以在子类中访问.</li>
-<li><code>public</code>可以在其他地方访问.</li>
+<h2 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h2><h3 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h3><ul>
+<li>Rust中, 使用<code>async</code>定义的函数, 调用后会变成<code>Future</code>.</li>
+<li><code>Future</code>需要一个执行器(executor)来执行.</li>
+<li>当<code>Future</code>执行被阻塞后, 它会让出当前线程的控制权, 来执行其他<code>Future</code>, 不会导致整个线程被阻塞.</li>
+<li>在一个<code>async</code>函数中, 调用另一个<code>async</code>函数可以对<code>Future</code>调用<code>await</code>, <code>await</code>会建立<code>Future</code>之间的依赖关系.<ul>
+<li>因此, 执行<code>async</code>有两种方式:<ul>
+<li>第一, 使用Executor.</li>
+<li>第二, 在<code>async</code>函数中使用<code>.await</code>.</li>
 </ul>
-</li>
-<li><p>析构函数的作用:</p>
-<ul>
-<li>在销毁对象的时候, 需要将对象占用的内存, 文件资源释放.</li>
-</ul>
-</li>
-<li><p><code>delete</code>和<code>delete[]</code>的区别:</p>
-<ul>
-<li><code>delete[]</code>会把数组中的所有元素的析构函数调一遍, 但是<code>delete</code>只会调第一个元素的析构函数.</li>
-<li><code>new</code>和<code>delete</code>成对用, <code>new []</code>和<code>delete[]</code>成对用.</li>
-</ul>
-</li>
-<li><p>注意, 关于<code>this</code>指针, 有时候在没有歧义的情况下<code>this</code>可以省略, 读别人代码时注意以下.</p>
-</li>
-<li><p><code>const</code>成员函数:</p>
-<ul>
-<li><p>定义如下: <code>const</code>放在了后面.</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getBorn</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>如果这样写, 说明<font color="blue">这个成员函数不能修改成员变量.</font></p>
 </li>
 </ul>
 </li>
-<li><p><code>static</code>的理解:</p>
-<ul>
-<li>修饰成员变量: 成员变量和类绑定.</li>
-<li>修饰成员函数: 成员函数只能修改静态变量, 不能修改成员变量.</li>
 </ul>
-</li>
-<li><p>虚函数快速理解:</p>
-<ul>
-<li><p>C++多态, 当父类指针指向子类对象时, 如果调用一个函数, 默认调用父类的函数.</p>
-<ul>
-<li>但是如果父类函数声明时用了<code>virtual</code>, 那么就调子类的.</li>
-<li>相当于一种动态运行策略, 如果一个函数是虚函数, 那么在运行时决定使用哪个函数.</li>
-</ul>
-</li>
-<li><p>用纯虚函数可以把C++的类变成抽象类:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>&#123;<br>  <span class="hljs-keyword">public</span>:<br>  	string name;<br>  <span class="hljs-comment">// 纯虚函数</span><br>  	<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>一个实用的例子: <font color="red">如果定义一个抽象类, 那么析构函数就是虚函数</font>.</p>
-</li>
-</ul>
-</li>
-<li><p><strong><code>explicit</code>关键字的作用:</strong></p>
-</li>
-<li><p><strong>构造函数<code>=default</code>和<code>=delete</code>的用法:</strong></p>
-</li>
-</ol>
-<h2 id="C-一些高级用法"><a href="#C-一些高级用法" class="headerlink" title="C++一些高级用法"></a>C++一些高级用法</h2>
+<h3 id="多个Future之间并发"><a href="#多个Future之间并发" class="headerlink" title="多个Future之间并发"></a>多个Future之间并发</h3><p>对于下面的代码:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-title function_ invoke__">book</span>().<span class="hljs-keyword">await</span><br>  <span class="hljs-title function_ invoke__">dance</span>().<span class="hljs-keyword">await</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>此处, 由于<font color="red">await是有顺序限制的</font>, <code>book</code>和<code>dance</code>之间并不是并行.</p>
+<p>如果想让<code>book</code>和<code>dance</code>两个函数并发, 需要用到<code>future::join</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> futures::join;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  join!(<span class="hljs-title function_ invoke__">book</span>(), <span class="hljs-title function_ invoke__">dance</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果要执行的<code>Future</code>很多, 那么可以把<code>Future</code>放到一个数组中, 然后调用<code>futures::future::join_all</code>.</p>
+<h3 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h3><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::time::Duration;<br><span class="hljs-keyword">use</span> futures::executor::block_on;<br><span class="hljs-keyword">use</span> async_std::task;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_world</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);<br>  <span class="hljs-comment">// 这里异步sleep后, 会调度到niubi</span><br>    task::<span class="hljs-title function_ invoke__">sleep</span>(Duration::<span class="hljs-title function_ invoke__">from_millis</span>(<span class="hljs-number">1000</span>)).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;aba&quot;</span>);<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">niubi</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;niubi&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-comment">// async_main等待两个任务完成, 两个任务独立</span><br>    futures::join!(<span class="hljs-title function_ invoke__">hello_world</span>(), <span class="hljs-title function_ invoke__">niubi</span>());<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-title function_ invoke__">block_on</span>(<span class="hljs-title function_ invoke__">async_main</span>())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>

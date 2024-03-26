@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(29)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -142,7 +142,7 @@
         <div data-rel="并发编程">
             
             并发编程
-            <small>(2)</small>
+            <small>(1)</small>
         </div>
         
     </li>
@@ -187,7 +187,7 @@
         <div data-rel="算法">
             
             算法
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -242,7 +242,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
+<input type="hidden" id="yelog_site_posts_number" value="29">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -292,6 +292,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
         
         
         <a  class="All 工具/环境 "
@@ -420,11 +429,11 @@
         </a>
         
         
-        <a  class="All 并发编程 "
-           href="/2024/03/05/rust_async/"
+        <a  class="All 编程语言 "
+           href="/2024/03/05/rust/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="rust的async/await模型">rust的async/await模型</span>
+            <span class="post-title" title="rust用到哪里学哪里">rust用到哪里学哪里</span>
             <span class="post-date" title="2024-03-05 20:58:51">2024/03/05</span>
         </a>
         
@@ -583,7 +592,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-24 13:51:35'>2024-03-20 18:11</time>
+            Created At : <time class="date" title='Updated At: 2024-03-26 14:02:28'>2024-03-20 18:11</time>
         
     </div>
     <div class="article-meta">
@@ -594,7 +603,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C"><span class="toc-text">最大子数组和</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C"><span class="toc-text">最大子数组和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RMQ%E6%A8%A1%E6%9D%BF%E9%A2%98"><span class="toc-text">RMQ模板题</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -616,6 +625,22 @@
 </blockquote>
 <p>假设$f[i]$表示$[0, i]$中, 所有子数组的最大和, 那么状态转移为: $f[i] &#x3D; max(f[i - 1] + nums[i], nums[i])$, 递推一遍, 时间复杂度是$O(n)$.</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> tmp = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> ans = nums[<span class="hljs-number">0</span>];<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            tmp = <span class="hljs-built_in">max</span>(tmp + nums[i], nums[i]);<br>            ans = <span class="hljs-built_in">max</span>(ans, tmp);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="RMQ模板题"><a href="#RMQ模板题" class="headerlink" title="RMQ模板题"></a>RMQ模板题</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1275/">https://www.acwing.com/problem/content/1275/</a></p>
+</blockquote>
+<p>RMQ (Range Max&#x2F;Min Query)问题可以用动态规划解决, 预处理时间是$O(nlogn)$, 查询时间是$O(1)$.</p>
+<p>设$f(i, j)$表示以$i$开头, 长度是$2^j$的区间中的最大值, 那么状态转移方程是:<br>$$<br>f(i, j) &#x3D; max{f(i, j - 1), f(i + 2^{j-1}, j-1)}<br>$$<br>假设查询的区间是$[l, r]$:</p>
+<ul>
+<li>首先我需要找到一个$k$, 使得$2^{k} \leqslant r - l + 1$, 并且 $ 2^{k+1} &gt; r - l + 1$.</li>
+<li>然后, 要找的最大值就是$max{f(l, k), f(r - 2^k + 1, k)}$, 这两个区间一定能覆盖$[l, r]$​.</li>
+<li>$k &#x3D; \lfloor log_{2}(r-l+1) \rfloor &#x3D; \lfloor \frac{log_{10}(r - l + 1)}{log_{10}(2)} \rfloor $</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// M = log_2(N)</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">200010</span>, M = <span class="hljs-number">20</span>;<br><br><span class="hljs-type">int</span> n, m;<br><span class="hljs-type">int</span> w[N];<br><span class="hljs-type">int</span> f[N][M];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; M; j ++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + (<span class="hljs-number">1</span> &lt;&lt; j) - <span class="hljs-number">1</span> &lt;= n; i ++) &#123;<br>            <span class="hljs-keyword">if</span> (!j) f[i][j] = w[i];<br>            <span class="hljs-keyword">else</span> f[i][j] = <span class="hljs-built_in">max</span>(f[i][j - <span class="hljs-number">1</span>], f[i + (<span class="hljs-number">1</span> &lt;&lt; j - <span class="hljs-number">1</span>)][j - <span class="hljs-number">1</span>]);<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-type">int</span> k = <span class="hljs-built_in">log</span>(r - l + <span class="hljs-number">1</span>) / <span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(f[l][k], f[r - (<span class="hljs-number">1</span> &lt;&lt; k) + <span class="hljs-number">1</span>][k]);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) cin &gt;&gt; w[i];<br><br>    <span class="hljs-built_in">init</span>();<br><br>    cin &gt;&gt; m;<br>    <span class="hljs-keyword">while</span> (m --) &#123;<br>        <span class="hljs-type">int</span> l, r;<br>        cin &gt;&gt; l &gt;&gt; r;<br>        cout &lt;&lt; <span class="hljs-built_in">query</span>(l, r) &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
 
 
       

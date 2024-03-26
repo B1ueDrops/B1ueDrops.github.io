@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>rust的async/await模型 | B1ueDrops</title>
+  <title>数据结构系列 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="rust的async/await模型 | B1ueDrops">
+  <meta name="description" content="数据结构系列 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(29)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -142,7 +142,7 @@
         <div data-rel="并发编程">
             
             并发编程
-            <small>(2)</small>
+            <small>(1)</small>
         </div>
         
     </li>
@@ -187,7 +187,7 @@
         <div data-rel="算法">
             
             算法
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -242,7 +242,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
+<input type="hidden" id="yelog_site_posts_number" value="29">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -292,6 +292,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
         
         
         <a  class="All 工具/环境 "
@@ -420,11 +429,11 @@
         </a>
         
         
-        <a  class="All 并发编程 "
-           href="/2024/03/05/rust_async/"
+        <a  class="All 编程语言 "
+           href="/2024/03/05/rust/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="rust的async/await模型">rust的async/await模型</span>
+            <span class="post-title" title="rust用到哪里学哪里">rust用到哪里学哪里</span>
             <span class="post-date" title="2024-03-05 20:58:51">2024/03/05</span>
         </a>
         
@@ -563,9 +572,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-rust_async" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-data-struct" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">rust的async/await模型</h1>
+        <h1 class="article-title">数据结构系列</h1>
     
     <div class="article-meta">
         
@@ -575,7 +584,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="并发编程">并发编程</a>
+            <a  data-rel="算法">算法</a>
             
         </span>
         
@@ -583,7 +592,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-06 12:33:35'>2024-03-05 20:58</time>
+            Created At : <time class="date" title='Updated At: 2024-03-26 13:28:19'>2024-03-24 14:10</time>
         
     </div>
     <div class="article-meta">
@@ -594,7 +603,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AAFuture%E4%B9%8B%E9%97%B4%E5%B9%B6%E5%8F%91"><span class="toc-text">多个Future之间并发</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E6%A8%A1%E6%9D%BF"><span class="toc-text">单调队列模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text">最大子序和(单调队列)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">两数之和(哈希表)</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -610,31 +619,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::time::Duration;<br><span class="hljs-keyword">use</span> futures::executor::block_on;<br><span class="hljs-keyword">use</span> async_std::task;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_world</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);<br>  <span class="hljs-comment">// 这里异步sleep后, 会调度到niubi</span><br>    task::<span class="hljs-title function_ invoke__">sleep</span>(Duration::<span class="hljs-title function_ invoke__">from_millis</span>(<span class="hljs-number">1000</span>)).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;aba&quot;</span>);<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">niubi</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;niubi&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-comment">// async_main等待两个任务完成, 两个任务独立</span><br>    futures::join!(<span class="hljs-title function_ invoke__">hello_world</span>(), <span class="hljs-title function_ invoke__">niubi</span>());<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-title function_ invoke__">block_on</span>(<span class="hljs-title function_ invoke__">async_main</span>())<br>&#125;<br></code></pre></td></tr></table></figure>
+        <h2 id="单调队列模板"><a href="#单调队列模板" class="headerlink" title="单调队列模板"></a>单调队列模板</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/156/">https://www.acwing.com/problem/content/156/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1000010</span>;<br><br><span class="hljs-type">int</span> n, k;<br><span class="hljs-type">int</span> hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><span class="hljs-type">int</span> a[N], q[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    cin &gt;&gt; n &gt;&gt; k;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];<br><br>    <span class="hljs-comment">// min value</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt; q[hh]) hh ++;<br>        <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i]) tt --;<br>        q[ ++ tt ] = i;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[q[hh]]);<br>    &#125;<br><br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><br>    <span class="hljs-comment">// max value</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt; q[hh]) hh ++;<br>        <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &lt;= a[i]) tt --;<br>        q[ ++ tt ] = i;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[q[hh]]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h3><ul>
-<li>Rust中, 使用<code>async</code>定义的函数, 调用后会变成<code>Future</code>.</li>
-<li><code>Future</code>需要一个执行器(executor)来执行.</li>
-<li>当<code>Future</code>执行被阻塞后, 它会让出当前线程的控制权, 来执行其他<code>Future</code>, 不会导致整个线程被阻塞.</li>
-<li>在一个<code>async</code>函数中, 调用另一个<code>async</code>函数可以对<code>Future</code>调用<code>await</code>, <code>await</code>会建立<code>Future</code>之间的依赖关系.<ul>
-<li>因此, 执行<code>async</code>有两种方式:<ul>
-<li>第一, 使用Executor.</li>
-<li>第二, 在<code>async</code>函数中使用<code>.await</code>.</li>
+<h2 id="最大子序和-单调队列"><a href="#最大子序和-单调队列" class="headerlink" title="最大子序和(单调队列)"></a>最大子序和(单调队列)</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/137/">https://www.acwing.com/problem/content/description/137/</a></p>
+</blockquote>
+<p>首先要注意审题, 这个子序列是连续的.</p>
+<p>将原数组变成前缀和后, 维护一个长度是$m$的单调队列(最小值), 对于下标<code>i</code>, 只需要从单调队列中找到一个最小值, 然后相减, 就得到<strong>以下标i为结尾, 长度不超过m+1的连续子序列的最大值</strong>, 然后遍历一遍求全局最大值就是答案.</p>
+<p>时间复杂度是$O(n)$.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;climits&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">300010</span>;<br><br><span class="hljs-type">int</span> n, m;<br><span class="hljs-type">int</span> hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> s[N], q[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    cin &gt;&gt; n &gt;&gt; m;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) cin &gt;&gt; s[i], s[i] += s[i - <span class="hljs-number">1</span>];<br><br><br>    <span class="hljs-type">int</span> res = INT_MIN;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>        <span class="hljs-keyword">if</span> (i - m &gt; q[hh]) hh ++;<br>        res = <span class="hljs-built_in">max</span>(res, s[i] - s[q[hh]]);<br>        <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; s[q[tt]] &gt;= s[i]) tt --;<br>        q[ ++ tt ] = i;<br><br>    &#125;<br><br>    cout &lt;&lt; res &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意, 这段代码里面有三个细节:</p>
+<ul>
+<li>首先, 对于前缀和来说, <code>[l, r]</code>里所有元素的和是<code>s[r] - s[l-1]</code>. 由于减去的是<code>l-1</code>, 我在维护单调队列时, 对于下标<code>i</code>来说, 我实际需要维护的单调队列长度是<code>m + 1</code>.</li>
+<li>对于元素<code>s[1]</code>, 我首先需要向队列中添加一个0, 让<code>q[0] = 0</code>, 来让第一个元素也参与运算.</li>
+<li><code>res = max(res, s[i] - s[q[hh]])</code>必须在用<code>s[q[tt]]</code>更新队列之前, 表明了这个单调队列维护的是**<code>s[i]</code>之前(不包含<code>s[i]</code>), 长度为<code>m + 1</code>的滑动窗口内的最小值**, 如果先用<code>s[i]</code>更新了队列, 然后求最小值, 那么最小值就一定会大于等于0, 显然不符合题意.</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="多个Future之间并发"><a href="#多个Future之间并发" class="headerlink" title="多个Future之间并发"></a>多个Future之间并发</h3><p>对于下面的代码:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-title function_ invoke__">book</span>().<span class="hljs-keyword">await</span><br>  <span class="hljs-title function_ invoke__">dance</span>().<span class="hljs-keyword">await</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="两数之和-哈希表"><a href="#两数之和-哈希表" class="headerlink" title="两数之和(哈希表)"></a>两数之和(哈希表)</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/">https://leetcode.cn/problems/two-sum/description/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; hash;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            <span class="hljs-keyword">if</span> (hash.<span class="hljs-built_in">count</span>(target - nums[i])) &#123;<br>                ans.<span class="hljs-built_in">push_back</span>(i);<br>                ans.<span class="hljs-built_in">push_back</span>(hash[target - nums[i]]);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            hash[nums[i]] = i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>此处, 由于<font color="red">await是有顺序限制的</font>, <code>book</code>和<code>dance</code>之间并不是并行.</p>
-<p>如果想让<code>book</code>和<code>dance</code>两个函数并发, 需要用到<code>future::join</code></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> futures::join;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  join!(<span class="hljs-title function_ invoke__">book</span>(), <span class="hljs-title function_ invoke__">dance</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>如果要执行的<code>Future</code>很多, 那么可以把<code>Future</code>放到一个数组中, 然后调用<code>futures::future::join_all</code>.</p>
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
@@ -647,6 +659,46 @@
 
 
 
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
     
 
 
