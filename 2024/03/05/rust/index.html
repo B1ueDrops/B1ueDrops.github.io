@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="rust用到哪里学哪里 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="消息队列模型消息队列模型就是生产者-消费者模型, 分类标准如下:  生产者可以多个, 消费者也可以多个. 消息队列可以是异步&#x2F;同步. 同步: 消息队列满了之后, 生产者生产时会被阻塞. 异步: 消息队列的大小没有用, 生产者不会被阻塞.    例1: 1个生产者和1个消费者通过消息队列发送消息: use std::sync::mpsc;struct Message &#123;    n">
-<meta property="og:type" content="article">
-<meta property="og:title" content="多线程编程模型">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/03/26/multithread/index.html">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="消息队列模型消息队列模型就是生产者-消费者模型, 分类标准如下:  生产者可以多个, 消费者也可以多个. 消息队列可以是异步&#x2F;同步. 同步: 消息队列满了之后, 生产者生产时会被阻塞. 异步: 消息队列的大小没有用, 生产者不会被阻塞.    例1: 1个生产者和1个消费者通过消息队列发送消息: use std::sync::mpsc;struct Message &#123;    n">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-03-26T09:22:31.745Z">
-<meta property="article:modified_time" content="2024-03-26T10:04:54.160Z">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -316,7 +316,7 @@
            href="/2024/03/23/vscode/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="使用vscode作为更好的preview IDE">使用vscode作为更好的preview IDE</span>
+            <span class="post-title" title="vscode插件配置">vscode插件配置</span>
             <span class="post-date" title="2024-03-23 15:50:58">2024/03/23</span>
         </a>
         
@@ -601,7 +601,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-26 17:14:08'>2024-03-05 20:58</time>
+            Created At : <time class="date" title='Updated At: 2024-03-27 20:01:33'>2024-03-05 20:58</time>
         
     </div>
     <div class="article-meta">
@@ -612,7 +612,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E5%9F%BA%E7%A1%80"><span class="toc-text">rust基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E7%9A%84%E9%97%AD%E5%8C%85"><span class="toc-text">rust的闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">rust所有权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E5%88%86%E6%A8%A1%E5%9D%97%E7%BC%96%E7%A8%8B"><span class="toc-text">rust分模块编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">rust一些高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-text">异步编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AAFuture%E4%B9%8B%E9%97%B4%E5%B9%B6%E5%8F%91"><span class="toc-text">多个Future之间并发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">简单的例子</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E5%9F%BA%E7%A1%80"><span class="toc-text">rust基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E5%B7%A5%E5%85%B7"><span class="toc-text">rust工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E6%80%A7%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-text">可变性和引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%BB%84%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">元组结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E7%9A%84%E9%97%AD%E5%8C%85"><span class="toc-text">rust的闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E6%89%80%E6%9C%89%E6%9D%83%E8%BD%AC%E7%A7%BB"><span class="toc-text">rust所有权转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust%E5%88%86%E6%A8%A1%E5%9D%97%E7%BC%96%E7%A8%8B"><span class="toc-text">rust分模块编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">rust面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rust%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">rust一些高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-text">智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Deref"><span class="toc-text">Deref</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Drop"><span class="toc-text">Drop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Box"><span class="toc-text">Box&lt;T&gt;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-text">异步编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AAFuture%E4%B9%8B%E9%97%B4%E5%B9%B6%E5%8F%91"><span class="toc-text">多个Future之间并发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">一个简单的例子</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -628,7 +628,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="rust基础"><a href="#rust基础" class="headerlink" title="rust基础"></a>rust基础</h2><h3 id="rust的闭包"><a href="#rust的闭包" class="headerlink" title="rust的闭包"></a>rust的闭包</h3><p>格式:</p>
+        <h2 id="rust基础"><a href="#rust基础" class="headerlink" title="rust基础"></a>rust基础</h2><h3 id="rust工具"><a href="#rust工具" class="headerlink" title="rust工具"></a>rust工具</h3><ul>
+<li>rustup: 安装Rust, 以及切换Rust和标准库的版本.</li>
+<li>cargo: Rust包管理器.</li>
+</ul>
+<h3 id="可变性和引用"><a href="#可变性和引用" class="headerlink" title="可变性和引用"></a>可变性和引用</h3><ul>
+<li>最基础的一点, rust如果变量想要可变, 需要前面加上<code>mut</code>.</li>
+<li>假设一个变量叫<code>a</code>, 是可变的, 你想取它的引用, 那么需要这样写: <code>&amp;mut a</code>, 而不是<code>&amp;a</code>.</li>
+</ul>
+<h3 id="元组结构体"><a href="#元组结构体" class="headerlink" title="元组结构体"></a>元组结构体</h3><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Color</span>(<span class="hljs-type">i32</span>, <span class="hljs-type">i32</span>, <span class="hljs-type">i32</span>);<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">black</span> = <span class="hljs-title function_ invoke__">Color</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br><span class="hljs-comment">// 获取第0, 1, 2个元素</span><br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, black.<span class="hljs-number">0</span>);<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, black.<span class="hljs-number">1</span>);<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, black.<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="rust的闭包"><a href="#rust的闭包" class="headerlink" title="rust的闭包"></a>rust的闭包</h3><p>格式:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">|参数1, 参数2, ...| -&gt; 返回值类型 &#123;<br>    // 函数体<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>例子:</p>
@@ -639,7 +653,7 @@
 
 
 
-<h3 id="rust所有权"><a href="#rust所有权" class="headerlink" title="rust所有权"></a>rust所有权</h3><p>常见的有以下场景:</p>
+<h3 id="rust所有权转移"><a href="#rust所有权转移" class="headerlink" title="rust所有权转移"></a>rust所有权转移</h3><p>常见的有以下场景:</p>
 <ol>
 <li><p>非基本类型赋值:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">s1</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">s2</span> = s1;<br><span class="hljs-comment">// 此时s1所有权给了s2, s1不能被使用</span><br><span class="hljs-comment">// 如果真要共享, 使用引用 let s2 = &amp;s1;</span><br><span class="hljs-comment">// 如果只需要s1的值, 可以用let s2 = s1.clone()</span><br></code></pre></td></tr></table></figure>
@@ -647,6 +661,14 @@
 <li><p>非基本类型作为函数参数:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">s1</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br><span class="hljs-title function_ invoke__">function</span>(s1);<br><span class="hljs-comment">// 此处, s1会失效, 不能再次使用.</span><br></code></pre></td></tr></table></figure></li>
 </ol>
+<blockquote>
+<p>内部原理</p>
+</blockquote>
+<ul>
+<li>首先, 基本类型完全存储在栈上, rust会直接拷贝, 不会发生所有权转移.</li>
+<li>非基本类型数据存储在堆上, 引用存储在栈上, rust处于安全考虑, 会让原来的所有权失效.</li>
+<li>堆上数据深拷贝可以用<code>clone</code>方法.</li>
+</ul>
 <h3 id="rust分模块编程"><a href="#rust分模块编程" class="headerlink" title="rust分模块编程"></a>rust分模块编程</h3><ul>
 <li><p>rust中, <code>package</code>就相当于<code>project</code>的概念.</p>
 </li>
@@ -657,6 +679,8 @@
 <li><p>binary crate可以用<code>cargo new --bin</code>生成, library crate可以用<code>cargo new --lib</code>生成.</p>
 </li>
 <li><p>binary crate默认有<code>src/main.rs</code>, library crate默认有<code>src/lib.rs</code>.</p>
+</li>
+<li><p>一个<code>package</code>至少有一个crate, 可以有任意多个binary crate, 最多有一个library crate.</p>
 </li>
 </ul>
 </li>
@@ -678,7 +702,57 @@
 </ul>
 </li>
 </ul>
-<h2 id="rust一些高级特性"><a href="#rust一些高级特性" class="headerlink" title="rust一些高级特性"></a>rust一些高级特性</h2><h3 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h3><h4 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h4><ul>
+<h2 id="rust面向对象"><a href="#rust面向对象" class="headerlink" title="rust面向对象"></a>rust面向对象</h2><ol>
+<li>大致写法:</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 成员变量</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student</span> &#123;<br>  <span class="hljs-keyword">pub</span> name: <span class="hljs-type">String</span>,<br>  age: <span class="hljs-type">i8</span><br>&#125;<br><br><span class="hljs-comment">// 成员方法</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">impl</span> <span class="hljs-title class_">Student</span> &#123;<br>  <span class="hljs-comment">// 构造方法, 也是类方法</span><br>  <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(name: <span class="hljs-type">String</span>, age: <span class="hljs-type">i8</span>) <span class="hljs-punctuation">-&gt;</span> Student &#123;<br>    Student &#123;<br>      name: name,<br>      age: age<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// public</span><br>  <span class="hljs-comment">// 如果需要改成员变量, 用&amp;mut self</span><br>  <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">get_age</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">i8</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>.age;<br>  &#125;<br>  <span class="hljs-comment">// private</span><br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">haha</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>    <br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>  <span class="hljs-comment">// 创建对象</span><br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">student</span> = Student::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;haha&quot;</span>), <span class="hljs-number">18</span>);<br>  student.<span class="hljs-title function_ invoke__">get_age</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="rust一些高级特性"><a href="#rust一些高级特性" class="headerlink" title="rust一些高级特性"></a>rust一些高级特性</h2><h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><h4 id="Deref"><a href="#Deref" class="headerlink" title="Deref"></a>Deref</h4><p>Deref是一个有关于解引用的trait.</p>
+<p>假设我有一个结构体:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">MyBox</span>&lt;T&gt;(T);<br><br><span class="hljs-keyword">impl</span>&lt;T&gt; MyBox&lt;T&gt; &#123;<br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(x: T) <span class="hljs-punctuation">-&gt;</span> MyBox&lt;T&gt; &#123;<br>    <span class="hljs-title function_ invoke__">MyBox</span>(x);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在, 你可以为这个结构体实现<code>Deref</code> 这个trait, 来让你能<code>*</code>一个结构体引用.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::ops::Deref;<br><br><span class="hljs-keyword">impl</span>&lt;T&gt; Deref <span class="hljs-keyword">for</span> <span class="hljs-title class_">MyBox</span>&lt;T&gt; &#123;<br>  <span class="hljs-comment">// &amp;self是结构体引用类型, 在这个函数中, 你要通过这个结构体引用, find一个基本类型的引用, 然后返回</span><br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">deref</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> &amp;T &#123;<br>    &amp;<span class="hljs-keyword">self</span>.<span class="hljs-number">0</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>本质上, <code>deref</code>会把一个结构体引用, 转换成一个基本类型引用.</p>
+<p>实现&#96;&#96;deref<code>后, 你再</code><em><code>一个结构体引用</code>x<code>, 就等价于</code></em>(x.deref())&#96;</p>
+<blockquote>
+<p>自动deref机制</p>
+</blockquote>
+<p>看这段代码:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">display</span>(s: &amp;<span class="hljs-type">str</span>) &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>,s);<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">s</span> = MyBox::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello world&quot;</span>));<br>    <span class="hljs-title function_ invoke__">display</span>(&amp;s)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>对于<code>&amp;s</code>, 它会被连续<code>deref</code> , 直到转换成<code>&amp;str</code>为止.</p>
+<h4 id="Drop"><a href="#Drop" class="headerlink" title="Drop"></a>Drop</h4><p>Drop是一个<code>trait</code>, 如果一个结构体实现了<code>Drop</code>, 那么它的生命周期结束之后, 就会自动调用<code>drop</code>方法实现收尾工作, rust就是因为这个才可以不实现<code>GC</code>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Drop</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">XXX</span> &#123;<br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">drop</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>但是, 在这段代码中, <code>drop</code>的参数是<code>&amp;mut self</code>, 就表示一个结构体调用<code>drop</code>函数后, 它的所有权没有被收走.</p>
+<ul>
+<li>因此, 你不可以对一个结构体<code>x</code>显示地调用<code>x.drop()</code>函数.</li>
+</ul>
+<p>但是, 有些场景下, 你需要提前释放某些资源, 例如互斥锁等, 这个时候可以使用<code>std::prelude::drop</code>函数.</p>
+<p>这个函数签名是:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">drop</span>&lt;T&gt;(_x: T)<br></code></pre></td></tr></table></figure>
+
+<p>会直接把所有权拿走, 调用完这个函数, 如果在下面再使用原变量, 就会编译错误.</p>
+<h4 id="Box"><a href="#Box" class="headerlink" title="Box&lt;T&gt;"></a>Box&lt;T&gt;</h4><p>Box指针能让你把数据分配在堆上.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// a数据存在3上</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>关于数据分配在栈&#x2F;堆上对性能影响的规律</p>
+</blockquote>
+<ul>
+<li>小数据: 在栈上分配&#x2F;读取比堆快.</li>
+<li>中数据: 在栈上分配快, 读取不一定.</li>
+<li>大数据: 在堆上分配&#x2F;读取.</li>
+</ul>
+<h3 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h3><h4 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h4><ul>
 <li>Rust中, 使用<code>async</code>定义的函数, 调用后会变成<code>Future</code>.</li>
 <li><code>Future</code>需要一个执行器(executor)来执行.</li>
 <li>当<code>Future</code>执行被阻塞后, 它会让出当前线程的控制权, 来执行其他<code>Future</code>, 不会导致整个线程被阻塞.</li>
@@ -691,7 +765,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="多个Future之间并发"><a href="#多个Future之间并发" class="headerlink" title="多个Future之间并发"></a>多个Future之间并发</h3><p>对于下面的代码:</p>
+<h4 id="多个Future之间并发"><a href="#多个Future之间并发" class="headerlink" title="多个Future之间并发"></a>多个Future之间并发</h4><p>对于下面的代码:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-title function_ invoke__">book</span>().<span class="hljs-keyword">await</span><br>  <span class="hljs-title function_ invoke__">dance</span>().<span class="hljs-keyword">await</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>此处, 由于<font color="red">await是有顺序限制的</font>, <code>book</code>和<code>dance</code>之间并不是并行.</p>
@@ -699,7 +773,7 @@
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> futures::join;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">book</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;book&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">dance</span>() &#123;<br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;dance&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  join!(<span class="hljs-title function_ invoke__">book</span>(), <span class="hljs-title function_ invoke__">dance</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>如果要执行的<code>Future</code>很多, 那么可以把<code>Future</code>放到一个数组中, 然后调用<code>futures::future::join_all</code>.</p>
-<h3 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h3><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::time::Duration;<br><span class="hljs-keyword">use</span> futures::executor::block_on;<br><span class="hljs-keyword">use</span> async_std::task;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_world</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);<br>  <span class="hljs-comment">// 这里异步sleep后, 会调度到niubi</span><br>    task::<span class="hljs-title function_ invoke__">sleep</span>(Duration::<span class="hljs-title function_ invoke__">from_millis</span>(<span class="hljs-number">1000</span>)).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;aba&quot;</span>);<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">niubi</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;niubi&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-comment">// async_main等待两个任务完成, 两个任务独立</span><br>    futures::join!(<span class="hljs-title function_ invoke__">hello_world</span>(), <span class="hljs-title function_ invoke__">niubi</span>());<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-title function_ invoke__">block_on</span>(<span class="hljs-title function_ invoke__">async_main</span>())<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h4><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::time::Duration;<br><span class="hljs-keyword">use</span> futures::executor::block_on;<br><span class="hljs-keyword">use</span> async_std::task;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_world</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello world!&quot;</span>);<br>  <span class="hljs-comment">// 这里异步sleep后, 会调度到niubi</span><br>    task::<span class="hljs-title function_ invoke__">sleep</span>(Duration::<span class="hljs-title function_ invoke__">from_millis</span>(<span class="hljs-number">1000</span>)).<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;aba&quot;</span>);<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">niubi</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;niubi&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">async_main</span>() &#123;<br>  <span class="hljs-comment">// async_main等待两个任务完成, 两个任务独立</span><br>    futures::join!(<span class="hljs-title function_ invoke__">hello_world</span>(), <span class="hljs-title function_ invoke__">niubi</span>());<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-title function_ invoke__">block_on</span>(<span class="hljs-title function_ invoke__">async_main</span>())<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
       
