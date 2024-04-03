@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>多线程编程模型 | B1ueDrops</title>
+  <title>多进程/多线程编程模型 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="多线程编程模型 | B1ueDrops">
+  <meta name="description" content="多进程/多线程编程模型 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="变量栈&#x2F;堆 基本类型的值存储在线程的栈上, 因为基本类型大小固定, 并且栈的存储&#x2F;访问速度一般快.  基本类型有: 整数, 浮点, 字符, 以及仅包含它们的元组.   非基本类型存储在堆上, 因为非基本类型一般大小在编译时期不固定, 在栈中会存储数据在堆中地址.   可变&#x2F;不可变 对于一个变量, 如果你要修改它的某些值, 那么它就是可变变量, 需要用mut.  所有权">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Rust系统总结">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/04/01/rust_system/index.html">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="变量栈&#x2F;堆 基本类型的值存储在线程的栈上, 因为基本类型大小固定, 并且栈的存储&#x2F;访问速度一般快.  基本类型有: 整数, 浮点, 字符, 以及仅包含它们的元组.   非基本类型存储在堆上, 因为非基本类型一般大小在编译时期不固定, 在栈中会存储数据在堆中地址.   可变&#x2F;不可变 对于一个变量, 如果你要修改它的某些值, 那么它就是可变变量, 需要用mut.  所有权">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-01T11:24:52.360Z">
-<meta property="article:modified_time" content="2024-04-01T13:27:40.396Z">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(33)</small>
+                <small>(34)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -242,7 +242,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="33">
+<input type="hidden" id="yelog_site_posts_number" value="34">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -295,6 +295,15 @@
         
         
         <a  class="All 编程语言 "
+           href="/2024/04/02/rust_leetcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用Rust实现Leetcode Hot100">用Rust实现Leetcode Hot100</span>
+            <span class="post-date" title="2024-04-02 12:59:13">2024/04/02</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
            href="/2024/04/01/rust_system/"
            data-tag=""
            data-author="" >
@@ -316,7 +325,7 @@
            href="/2024/03/30/multithread/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="多线程编程模型">多线程编程模型</span>
+            <span class="post-title" title="多进程/多线程编程模型">多进程/多线程编程模型</span>
             <span class="post-date" title="2024-03-30 16:47:20">2024/03/30</span>
         </a>
         
@@ -610,7 +619,7 @@
     <div class="pjax">
         <article id="post-multithread" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">多线程编程模型</h1>
+        <h1 class="article-title">多进程/多线程编程模型</h1>
     
     <div class="article-meta">
         
@@ -628,7 +637,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-30 16:47:20'>2024-03-30 16:47</time>
+            Created At : <time class="date" title='Updated At: 2024-04-03 18:54:48'>2024-03-30 16:47</time>
         
     </div>
     <div class="article-meta">
@@ -639,7 +648,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97API%E6%A8%A1%E5%9E%8B"><span class="toc-text">消息队列API模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5API%E6%A8%A1%E5%9E%8B"><span class="toc-text">互斥API模型</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81"><span class="toc-text">锁</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -655,40 +664,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="消息队列API模型"><a href="#消息队列API模型" class="headerlink" title="消息队列API模型"></a>消息队列API模型</h2><p>消息队列模型就是生产者-消费者模型, 分类标准如下:</p>
-<ul>
-<li>生产者可以多个, 消费者也可以多个.</li>
-<li>消息队列可以是异步&#x2F;同步.<ul>
-<li>同步: 消息队列满了之后, 生产者生产时会被阻塞.</li>
-<li>异步: 消息队列的大小没有用, 生产者不会被阻塞.</li>
+        <h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><ul>
+<li><strong>锁的本质是一个内存中的整数, 对这个整数的操作都是原子操作</strong>.<ul>
+<li>锁只能存储在内存中, 不能放到寄存器中(因为只有内存才可以在CPU之间共享, 寄存器一个CPU有一套).</li>
+<li>对锁进行操作, <font color="red">一定是通过指针去处理</font>, 不能通过变量名, 因为对指针的操作能够确保一定是访问内存.<ul>
+<li>如果对变量名读写, 那么编译器优化后, 很可能通过寄存器读写.</li>
+</ul>
+</li>
+<li><strong>锁的实现:</strong><ul>
+<li>锁的值如果是0, 表示当前没有线程上锁, 如果是1, 表示有线程上锁.</li>
+<li>当线程尝试获取锁时, 先让一个寄存器置1, 然后用CPU的原子指令把寄存器和锁内存交换.</li>
+<li>互换后, 判断寄存器的值:<ul>
+<li>如果寄存器的值是0: 没有上锁, 可以读写共享数据.</li>
+<li>如果寄存器的值是1: 上锁了, 线程需要等待&#x2F;让出时间片.</li>
+</ul>
+</li>
+<li>线程释放锁时, 直接将锁的值赋值为0.</li>
 </ul>
 </li>
 </ul>
-<p><strong>例1: 1个生产者和1个消费者通过消息队列发送消息:</strong></p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::sync::mpsc;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Message</span> &#123;<br>    name: <span class="hljs-type">String</span>,<br>    age: <span class="hljs-type">i32</span><br>&#125;<br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-comment">// async channel, 主线程创建消息队列</span><br>    <span class="hljs-keyword">let</span> (tx, rx) = mpsc::<span class="hljs-title function_ invoke__">channel</span>();<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">sender</span> = std::thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">message</span> = Message &#123;<br>            name: <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;haha&quot;</span>),<br>            age: <span class="hljs-number">18</span><br>        &#125;;<br>        tx.<span class="hljs-title function_ invoke__">send</span>(message).<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Sender has sent data&quot;</span>);<br>    &#125;);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">receiver</span> = std::thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">message</span> = rx.<span class="hljs-title function_ invoke__">recv</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Receiver receives &#123;&#125; and &#123;&#125;&quot;</span>, message.name, message.age);<br>    &#125;);<br>		<span class="hljs-comment">// 等待主线程运行完</span><br>    sender.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    receiver.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><strong>锁的分类</strong>:<ul>
+<li>自旋锁(spinlock): 进程获取锁失败后, 会一直轮训, 不会睡眠.</li>
+<li>互斥锁(mutex): 进程获取锁失败后, 可能会睡眠, 等待OS唤醒.</li>
+<li>在中断上下文中, 不能使用mutex, 因为中断需要快速处理, 不能睡眠.</li>
+<li>spinlock一般用在内核多进程场景, mutex一般用在用户多线程场景.</li>
+</ul>
+</li>
+</ul>
 
-<blockquote>
-<p>move关键字的作用</p>
-</blockquote>
-<ul>
-<li><p>当你在子线程中, 尝试访问外部线程的变量时, 会有隐患.</p>
-<ul>
-<li>外部线程可能比你子线程先结束, 然后变量所有权失效, 此时子线程访问就会导致不安全.</li>
-<li>子线程和外部线程共享一个变量的所有权, 很危险.</li>
-</ul>
-</li>
-<li><p>为了解决这种情况:</p>
-<ul>
-<li>使用<code>join</code>, 先让主线程等等, 让原变量生命周期别消失.</li>
-<li>用<code>move</code>, 表示如果线程内使用了这个变量, 那么变量所有权自动转移到线程内部.</li>
-</ul>
-</li>
-<li><p><strong>用消息队列时就需要用<code>move</code>.</strong></p>
-</li>
-</ul>
-<p><strong>例2: 多个生产者, 1个消费者, 有一定大小的同步消息队列:</strong></p>
-<p>只需要把<code>tx</code>进行克隆即可(<code>tx.clone()</code>), 然后不同生产者线程使用不同的<code>tx</code>进行发送.</p>
-<h2 id="互斥API模型"><a href="#互斥API模型" class="headerlink" title="互斥API模型"></a>互斥API模型</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
