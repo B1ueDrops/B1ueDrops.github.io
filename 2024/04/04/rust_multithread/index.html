@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>线性动态规划系列 | B1ueDrops</title>
+  <title>Rust多线程编程模型 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="线性动态规划系列 | B1ueDrops">
+  <meta name="description" content="Rust多线程编程模型 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Rust的线程模型rust中封装的线程和OS线程是1:1的, 因为rust要保证尽量小的运行时环境. rust的线程库是use std::thread; 创建线程&#x2F;等待 Rust中用thread::spawn创建线程, 传入一个闭包作为参数:  thread::spawn返回线程的句柄.   main线程结束后, 所有线程都会自动结束, 如果要让父线程等待子线程结束, 需要用join方法">
 <meta property="og:type" content="article">
@@ -608,9 +608,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-linear-dp" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rust_multithread" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">线性动态规划系列</h1>
+        <h1 class="article-title">Rust多线程编程模型</h1>
     
     <div class="article-meta">
         
@@ -620,7 +620,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="算法">算法</a>
+            <a  data-rel="并发编程">并发编程</a>
             
         </span>
         
@@ -628,7 +628,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-26 14:02:28'>2024-03-20 18:11</time>
+            Created At : <time class="date" title='Updated At: 2024-04-04 15:22:20'>2024-04-04 12:38</time>
         
     </div>
     <div class="article-meta">
@@ -639,7 +639,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C"><span class="toc-text">最大子数组和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RMQ%E6%A8%A1%E6%9D%BF%E9%A2%98"><span class="toc-text">RMQ模板题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">Rust的线程模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B-%E7%AD%89%E5%BE%85"><span class="toc-text">创建线程&#x2F;等待</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E9%81%93"><span class="toc-text">通道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%94%81"><span class="toc-text">互斥锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="toc-text">条件变量</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -655,30 +655,85 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="最大子数组和"><a href="#最大子数组和" class="headerlink" title="最大子数组和"></a>最大子数组和</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray/">https://leetcode.cn/problems/maximum-subarray/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/50/">https://www.acwing.com/problem/content/description/50/</a></p>
-</blockquote>
-<p>假设$f[i]$表示$[0, i]$中, 所有子数组的最大和, 那么状态转移为: $f[i] &#x3D; max(f[i - 1] + nums[i], nums[i])$, 递推一遍, 时间复杂度是$O(n)$.</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> tmp = nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> ans = nums[<span class="hljs-number">0</span>];<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            tmp = <span class="hljs-built_in">max</span>(tmp + nums[i], nums[i]);<br>            ans = <span class="hljs-built_in">max</span>(ans, tmp);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="RMQ模板题"><a href="#RMQ模板题" class="headerlink" title="RMQ模板题"></a>RMQ模板题</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1275/">https://www.acwing.com/problem/content/1275/</a></p>
-</blockquote>
-<p>RMQ (Range Max&#x2F;Min Query)问题可以用动态规划解决, 预处理时间是$O(nlogn)$, 查询时间是$O(1)$.</p>
-<p>设$f(i, j)$表示以$i$开头, 长度是$2^j$的区间中的最大值, 那么状态转移方程是:<br>$$<br>f(i, j) &#x3D; max{f(i, j - 1), f(i + 2^{j-1}, j-1)}<br>$$<br>假设查询的区间是$[l, r]$:</p>
+        <h2 id="Rust的线程模型"><a href="#Rust的线程模型" class="headerlink" title="Rust的线程模型"></a>Rust的线程模型</h2><p>rust中封装的线程和OS线程是1:1的, 因为rust要保证尽量小的运行时环境.</p>
+<p>rust的线程库是<code>use std::thread;</code></p>
+<h2 id="创建线程-等待"><a href="#创建线程-等待" class="headerlink" title="创建线程&#x2F;等待"></a>创建线程&#x2F;等待</h2><ul>
+<li><p>Rust中用<code>thread::spawn</code>创建线程, 传入一个闭包作为参数:</p>
 <ul>
-<li>首先我需要找到一个$k$, 使得$2^{k} \leqslant r - l + 1$, 并且 $ 2^{k+1} &gt; r - l + 1$.</li>
-<li>然后, 要找的最大值就是$max{f(l, k), f(r - 2^k + 1, k)}$, 这两个区间一定能覆盖$[l, r]$​.</li>
-<li>$k &#x3D; \lfloor log_{2}(r-l+1) \rfloor &#x3D; \lfloor \frac{log_{10}(r - l + 1)}{log_{10}(2)} \rfloor $</li>
+<li><code>thread::spawn</code>返回线程的句柄.</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// M = log_2(N)</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">200010</span>, M = <span class="hljs-number">20</span>;<br><br><span class="hljs-type">int</span> n, m;<br><span class="hljs-type">int</span> w[N];<br><span class="hljs-type">int</span> f[N][M];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; M; j ++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + (<span class="hljs-number">1</span> &lt;&lt; j) - <span class="hljs-number">1</span> &lt;= n; i ++) &#123;<br>            <span class="hljs-keyword">if</span> (!j) f[i][j] = w[i];<br>            <span class="hljs-keyword">else</span> f[i][j] = <span class="hljs-built_in">max</span>(f[i][j - <span class="hljs-number">1</span>], f[i + (<span class="hljs-number">1</span> &lt;&lt; j - <span class="hljs-number">1</span>)][j - <span class="hljs-number">1</span>]);<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>    <span class="hljs-type">int</span> k = <span class="hljs-built_in">log</span>(r - l + <span class="hljs-number">1</span>) / <span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(f[l][k], f[r - (<span class="hljs-number">1</span> &lt;&lt; k) + <span class="hljs-number">1</span>][k]);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) cin &gt;&gt; w[i];<br><br>    <span class="hljs-built_in">init</span>();<br><br>    cin &gt;&gt; m;<br>    <span class="hljs-keyword">while</span> (m --) &#123;<br>        <span class="hljs-type">int</span> l, r;<br>        cin &gt;&gt; l &gt;&gt; r;<br>        cout &lt;&lt; <span class="hljs-built_in">query</span>(l, r) &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>main线程结束后, 所有线程都会自动结束, 如果要让父线程等待子线程结束, 需要用<code>join</code>方法.</p>
+<ul>
+<li>但是父线程结束后, 子线程不会结束.</li>
+</ul>
+</li>
+<li><p>在线程内部如果使用了外部变量, 需要在闭包前用<code>move</code>关键字, 让线程夺取所有权.</p>
+</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::thread;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">handles</span> = <span class="hljs-type">Vec</span>::<span class="hljs-title function_ invoke__">new</span>();<br><br>    <span class="hljs-comment">// 创建5个线程</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">5</span> &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">handle</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>(<span class="hljs-keyword">move</span> || &#123;<br>            <span class="hljs-keyword">for</span> <span class="hljs-variable">j</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">5</span> &#123;<br>                <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;thread &#123;&#125; print &#123;&#125;&quot;</span>, i, j);<br>            &#125;<br>        &#125;);<br>        handles.<span class="hljs-title function_ invoke__">push</span>(handle);<br>    &#125; <br><br>    <span class="hljs-comment">// main线程等待子线程</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">handle</span> <span class="hljs-keyword">in</span> handles &#123;<br>        handle.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>注意: 线程的创建开销较大, 非必要的任务不要使用线程.</li>
+</ul>
+<h2 id="通道"><a href="#通道" class="headerlink" title="通道"></a>通道</h2><ul>
+<li>Rust在标准库中提供了多发送者, 单接收者的通道<code>std::sync::mspc</code>.</li>
+<li>Rust中的通道具有大小:<ul>
+<li>如果大小是无穷大: 那么就相当于异步通道, 发送者不必等到接收者接受信息之后再运行.</li>
+<li>如果大小是0: 相当于同步通道, 发送者必须等到接收者接受信息后, 在开始运行.</li>
+<li>如果大小是固定大小: 那么只有在通道满了之后才会阻塞发送者.</li>
+</ul>
+</li>
+<li>如果使用通道发送数据:<ul>
+<li>如果数据实现了<code>Copy</code> trait, 那么不会导致所有权转移, 如果没有, 那么通道发送数据后, 原线程不能再使用原数据.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::thread;<br><span class="hljs-keyword">use</span> std::sync::mpsc;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <br>    <span class="hljs-comment">// 创建通道</span><br>    <span class="hljs-keyword">let</span> (tx, rx) = mpsc::<span class="hljs-title function_ invoke__">channel</span>();<br>  <br>    <span class="hljs-comment">// 两个发送者</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">tx1</span> = tx.<span class="hljs-title function_ invoke__">clone</span>();<br><br>    <span class="hljs-comment">// 线程1发送者</span><br>    <span class="hljs-comment">// 这里需要用move因为要拿走tx所有权</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">thread1</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        tx.<span class="hljs-title function_ invoke__">send</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br>    &#125;);<br><br>    <span class="hljs-comment">// 线程2发送者</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">thread2</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        tx1.<span class="hljs-title function_ invoke__">send</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_ invoke__">unwrap</span>()<br>    &#125;);<br><br>    <span class="hljs-comment">// 线程3接收者</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">thread3</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">for</span> <span class="hljs-variable">received</span> <span class="hljs-keyword">in</span> rx &#123;<br>            <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Received &#123;&#125;&quot;</span>, received);<br>        &#125;<br>    &#125;);<br><br>    thread1.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    thread2.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    thread3.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>只有当所有发送者被drop&#x2F;所有接收者都被drop之后, 通道才会被drop, 这一点有一个坑;</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::thread;<br><span class="hljs-keyword">use</span> std::sync::mpsc;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>    <span class="hljs-keyword">let</span> (tx, rx) = mpsc::<span class="hljs-title function_ invoke__">channel</span>();<br><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">3</span> &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">thread_tx</span> = tx.<span class="hljs-title function_ invoke__">clone</span>();<br>        thread::<span class="hljs-title function_ invoke__">spawn</span>(<span class="hljs-keyword">move</span> || &#123;<br>            thread_tx.<span class="hljs-title function_ invoke__">send</span>(i).<span class="hljs-title function_ invoke__">unwrap</span>();<br>            <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;thread &#123;&#125; finished&quot;</span>, i);<br>        &#125;);<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">x</span> <span class="hljs-keyword">in</span> rx &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;main Got &#123;&#125;&quot;</span>, x);<br>    &#125;<br><br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Finished&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>以下代码中, 有4个发送者(<code>tx</code>, 还有3个<code>thread_tx</code>).</li>
+<li>其中3个<code>thread_tx</code>会在子线程结束后被释放, 但是<code>tx</code>会在main线程结束后被释放.</li>
+<li>但是main线程一直在监听通道, <code>tx</code>一直没发, 所以就会卡住, 等待<code>tx</code>被drop, 因此最后一行打印不会打出来.</li>
+</ul>
+</li>
+</ul>
+<h2 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h2><ul>
+<li><p>互斥锁可以保证线程对共享数据的操作是原子操作(一个线程操作数据时, 不会被打断) (所有线程对共享数据的访问互斥).</p>
+</li>
+<li><p>在Rust中, 互斥锁在<code>std::sync::Mutex</code>, 本质上互斥锁算是一种智能指针.</p>
+</li>
+<li><p>Mutex可以实现多线程的内部可变性, 相当于<code>RefCell</code>的多线程版本, mutex无需声明为<code>mut</code>.</p>
+</li>
+<li><p>由于多个线程要共享<code>Mutex</code>的所有权, 因此一般和<code>Arc&lt;T&gt;</code>一起使用.</p>
+</li>
+<li><p><code>Mutex&lt;T&gt;</code>变量如果调用<code>lock().unwrap()</code>, 会返回一个<code>MutexGuard&lt;T&gt;</code>智能指针</p>
+<ul>
+<li><code>MutexGuard</code>实现了<code>Deref</code> trait, 直接<code>*</code>一个<code>MutexGuard&lt;T&gt;</code>变量可以拿到其中可变的值, 这个值需要定义为<code>mut</code>.</li>
+<li><code>MutexGuard</code>还实现了<code>Drop</code> trait, 作用域结束会自动释放锁, 如果需要手动释放可以<code>drop(&amp;MutexGuard)</code>.</li>
+</ul>
+</li>
+<li><p>如果获取<code>Mutex</code>失败, 那么线程会被<strong>阻塞</strong>, 可以使用<code>try_lock()</code>, 这样线程获取锁失败后, 会返回错误, 然后继续执行.</p>
+</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::thread;<br><span class="hljs-keyword">use</span> std::sync::&#123; Arc, Mutex &#125;;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>    <span class="hljs-comment">// 多线程共享数据</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">counter</span> = Arc::<span class="hljs-title function_ invoke__">new</span>(Mutex::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">0</span>));<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">handles</span> = <span class="hljs-type">Vec</span>::<span class="hljs-title function_ invoke__">new</span>();<br><br>    <span class="hljs-comment">// 10个线程, 每个人给这个数据+1</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">_</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">10</span> &#123;<br>        <span class="hljs-comment">// clone互斥锁</span><br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">mutex_counter</span> = Arc::<span class="hljs-title function_ invoke__">clone</span>(&amp;counter);<br>      <br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">handle</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>(<span class="hljs-keyword">move</span> || &#123;<br>            <span class="hljs-comment">// 上锁</span><br>            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">num</span> = mutex_counter.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>            *num += <span class="hljs-number">1</span>;<br>        &#125;);<br>        handles.<span class="hljs-title function_ invoke__">push</span>(handle);<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">handle</span> <span class="hljs-keyword">in</span> handles &#123;<br>        handle.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    &#125;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, *counter.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>());<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-
+<h2 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h2><ul>
+<li>Mutex可以保证线程互斥访问, 但是如果要保证线程访问顺序, 需要条件变量.</li>
+<li>条件变量在<code>std::sync::Condvar</code>中.</li>
+<li>条件变量的API有两个:<ul>
+<li><code>wait</code>: 当线程拿到锁后, 发现共享数据没准备好, 可以wait<code>MutexGuard&lt;T&gt;</code>, 此时会把锁释放, 并阻塞线程.</li>
+<li><code>notify</code>: 当其他线程获取锁后, 进行处理完, 可以通过<code>notify</code>唤醒被阻塞的线程, 被阻塞的线程就可以获取处理好的共享数据.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::thread;<br><span class="hljs-keyword">use</span> std::sync::&#123; Arc, Mutex, Condvar &#125;;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">mutex</span> = Arc::<span class="hljs-title function_ invoke__">new</span>(Mutex::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">0</span>));<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">cond</span> = Arc::<span class="hljs-title function_ invoke__">new</span>(Condvar::<span class="hljs-title function_ invoke__">new</span>());<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">mutex_clone</span> = Arc::<span class="hljs-title function_ invoke__">clone</span>(&amp;mutex);<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">cond_clone</span> = Arc::<span class="hljs-title function_ invoke__">clone</span>(&amp;cond);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">mutex_clone_clone</span> = Arc::<span class="hljs-title function_ invoke__">clone</span>(&amp;mutex);<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">cond_clone_clone</span> = Arc::<span class="hljs-title function_ invoke__">clone</span>(&amp;cond);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">handle1</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>( <span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-comment">// 尝试获取锁</span><br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">data</span> = mutex_clone.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-comment">// 如果发现数据是0, 用条件变量等待, 直到数据是1</span><br>        <span class="hljs-comment">// 此时会先释放锁</span><br>        <span class="hljs-keyword">if</span> *data == <span class="hljs-number">0</span> &#123;<br>            <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Data is 0, waiting for changer...&quot;</span>);<br>            data = cond_clone.<span class="hljs-title function_ invoke__">wait</span>(data).<span class="hljs-title function_ invoke__">unwrap</span>();<br>        &#125;<br>        *data = <span class="hljs-number">0</span>;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Data changed back to 0!&quot;</span>);<br>    &#125;);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">handle2</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>(<span class="hljs-keyword">move</span> || &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">data</span> = mutex_clone_clone.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>        *data = <span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Changer change 0 to 1!&quot;</span>);<br>        <span class="hljs-comment">// 唤醒条件变量</span><br>        cond_clone_clone.<span class="hljs-title function_ invoke__">notify_one</span>();<br>        <span class="hljs-comment">// 释放锁</span><br>        <span class="hljs-title function_ invoke__">drop</span>(data);<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Changer exit...&quot;</span>);<br>    &#125;);<br><br>    handle1.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>    handle2.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>

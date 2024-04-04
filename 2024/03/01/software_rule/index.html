@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="面向对象设计的基本原则 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="Rust的线程模型rust中封装的线程和OS线程是1:1的, 因为rust要保证尽量小的运行时环境. rust的线程库是use std::thread; 创建线程&#x2F;等待 Rust中用thread::spawn创建线程, 传入一个闭包作为参数:  thread::spawn返回线程的句柄.   main线程结束后, 所有线程都会自动结束, 如果要让父线程等待子线程结束, 需要用join方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust多线程编程模型">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/04/04/rust_multithread/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="Rust的线程模型rust中封装的线程和OS线程是1:1的, 因为rust要保证尽量小的运行时环境. rust的线程库是use std::thread; 创建线程&#x2F;等待 Rust中用thread::spawn创建线程, 传入一个闭包作为参数:  thread::spawn返回线程的句柄.   main线程结束后, 所有线程都会自动结束, 如果要让父线程等待子线程结束, 需要用join方法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-04-04T04:38:50.456Z">
+<meta property="article:modified_time" content="2024-04-04T07:22:20.982Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(34)</small>
+                <small>(33)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(5)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -142,7 +142,7 @@
         <div data-rel="并发编程">
             
             并发编程
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -157,7 +157,7 @@
         <div data-rel="工具/环境">
             
             工具/环境
-            <small>(8)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -242,7 +242,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="34">
+<input type="hidden" id="yelog_site_posts_number" value="33">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -292,6 +292,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 并发编程 "
+           href="/2024/04/04/rust_multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust多线程编程模型">Rust多线程编程模型</span>
+            <span class="post-date" title="2024-04-04 12:38:50">2024/04/04</span>
+        </a>
         
         
         <a  class="All 编程语言 "
@@ -474,15 +483,6 @@
         </a>
         
         
-        <a  class="All 编程语言 "
-           href="/2024/03/05/rust/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="rust阅读学习">rust阅读学习</span>
-            <span class="post-date" title="2024-03-05 20:58:51">2024/03/05</span>
-        </a>
-        
-        
         <a  class="All 并发编程 "
            href="/2024/03/05/concurrent_sketch/"
            data-tag=""
@@ -561,15 +561,6 @@
            data-author="" >
             <span class="post-title" title="joshuto的键位配置">joshuto的键位配置</span>
             <span class="post-date" title="2024-02-27 19:43:49">2024/02/27</span>
-        </a>
-        
-        
-        <a  class="All 工具/环境 "
-           href="/2024/02/27/neovim/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Neovim/Nvchad键位配置">Neovim/Nvchad键位配置</span>
-            <span class="post-date" title="2024-02-27 19:40:03">2024/02/27</span>
         </a>
         
         

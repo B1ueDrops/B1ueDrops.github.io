@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Rust系统总结 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="Rust的线程模型rust中封装的线程和OS线程是1:1的, 因为rust要保证尽量小的运行时环境. rust的线程库是use std::thread; 创建线程&#x2F;等待 Rust中用thread::spawn创建线程, 传入一个闭包作为参数:  thread::spawn返回线程的句柄.   main线程结束后, 所有线程都会自动结束, 如果要让父线程等待子线程结束, 需要用join方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust多线程编程模型">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/04/04/rust_multithread/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="Rust的线程模型rust中封装的线程和OS线程是1:1的, 因为rust要保证尽量小的运行时环境. rust的线程库是use std::thread; 创建线程&#x2F;等待 Rust中用thread::spawn创建线程, 传入一个闭包作为参数:  thread::spawn返回线程的句柄.   main线程结束后, 所有线程都会自动结束, 如果要让父线程等待子线程结束, 需要用join方法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-04-04T04:38:50.456Z">
+<meta property="article:modified_time" content="2024-04-04T07:22:20.982Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(34)</small>
+                <small>(33)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(5)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -142,7 +142,7 @@
         <div data-rel="并发编程">
             
             并发编程
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -157,7 +157,7 @@
         <div data-rel="工具/环境">
             
             工具/环境
-            <small>(8)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -242,7 +242,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="34">
+<input type="hidden" id="yelog_site_posts_number" value="33">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -292,6 +292,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 并发编程 "
+           href="/2024/04/04/rust_multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust多线程编程模型">Rust多线程编程模型</span>
+            <span class="post-date" title="2024-04-04 12:38:50">2024/04/04</span>
+        </a>
         
         
         <a  class="All 编程语言 "
@@ -474,15 +483,6 @@
         </a>
         
         
-        <a  class="All 编程语言 "
-           href="/2024/03/05/rust/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="rust阅读学习">rust阅读学习</span>
-            <span class="post-date" title="2024-03-05 20:58:51">2024/03/05</span>
-        </a>
-        
-        
         <a  class="All 并发编程 "
            href="/2024/03/05/concurrent_sketch/"
            data-tag=""
@@ -564,15 +564,6 @@
         </a>
         
         
-        <a  class="All 工具/环境 "
-           href="/2024/02/27/neovim/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Neovim/Nvchad键位配置">Neovim/Nvchad键位配置</span>
-            <span class="post-date" title="2024-02-27 19:40:03">2024/02/27</span>
-        </a>
-        
-        
         <a  class="All 软件工程 "
            href="/2024/02/26/behaviour_design_pattern/"
            data-tag=""
@@ -637,7 +628,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-03 18:01:25'>2024-04-01 19:24</time>
+            Created At : <time class="date" title='Updated At: 2024-04-04 12:32:29'>2024-04-01 19:24</time>
         
     </div>
     <div class="article-meta">
@@ -648,7 +639,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8Snippets"><span class="toc-text">常用Snippets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88-%E5%A0%86"><span class="toc-text">栈&#x2F;堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E4%B8%8D%E5%8F%AF%E5%8F%98"><span class="toc-text">可变&#x2F;不可变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">所有权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%BA%A6%E6%9D%9F"><span class="toc-text">生命周期约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%BA%A6%E6%9D%9F-1"><span class="toc-text">生命周期约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="toc-text">软件工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-text">权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E7%A8%8B"><span class="toc-text">多文件编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">集合类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">高级特性</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8Snippets"><span class="toc-text">常用Snippets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88-%E5%A0%86"><span class="toc-text">栈&#x2F;堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E4%B8%8D%E5%8F%AF%E5%8F%98"><span class="toc-text">可变&#x2F;不可变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">所有权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%BA%A6%E6%9D%9F"><span class="toc-text">生命周期约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%BA%A6%E6%9D%9F-1"><span class="toc-text">生命周期约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="toc-text">软件工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-text">权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E7%A8%8B"><span class="toc-text">多文件编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-text">集合类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E5%BC%82%E5%B8%B8"><span class="toc-text">不可恢复异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E6%81%A2%E5%A4%8D%E5%BC%82%E5%B8%B8"><span class="toc-text">可恢复异常</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7"><span class="toc-text">高级特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84trait"><span class="toc-text">常见的trait</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Deref"><span class="toc-text">Deref</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Drop"><span class="toc-text">Drop</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-text">智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Box"><span class="toc-text">Box&lt;T&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rc"><span class="toc-text">Rc&lt;T&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Arc"><span class="toc-text">Arc&lt;T&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RefCell"><span class="toc-text">RefCell&lt;T&gt;</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1063,7 +1054,45 @@
 <li><p><strong><code>move</code>关键字:</strong> 定义在参数列表<code>||</code>之前, 表示闭包会强制把捕获变量的所有权拿走, 适用于<strong>闭包生命周期大于捕获变量生命周期</strong>.</p>
 </li>
 </ul>
-<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h4><ul>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><ul>
+<li><p>Rust中迭代器是懒加载的, 只创建不使用迭代器不会产生任何性能损失.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">v</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-comment">// 将数组转化为迭代器</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">v_iter</span> = v.<span class="hljs-title function_ invoke__">iter</span>();<br><span class="hljs-comment">// 使用迭代器遍历</span><br><span class="hljs-keyword">for</span> <span class="hljs-variable">item</span> <span class="hljs-keyword">in</span> v_iter &#123;<br>  <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>所有迭代器默认实现了<code>Iterator</code> trait</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">trait</span> <span class="hljs-title class_">Iterator</span> &#123;<br>  <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span>;<br>  <span class="hljs-comment">// next方法返回下一个元素, 并且会消耗掉, 没有元素后就会返回None</span><br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>还有一个trait叫<code>IntoIterator</code>, 如果一个类型实现了这个trait, 那么它就可以通过<code>iter()/into_iter()</code>变成迭代器.</li>
+</ul>
+</li>
+<li><p>迭代器和所有权问题: 将数组转换为迭代器时, 有可能会把数组中元素的所有权给拿走, 具体分为以下三种情况:</p>
+<ul>
+<li><p>不可变借用: <code>iter()</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">values</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">for</span> <span class="hljs-variable">v</span> <span class="hljs-keyword">in</span> values.<span class="hljs-title function_ invoke__">iter</span>() &#123;<br>  <span class="hljs-comment">// v的类型是&amp;T</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>可变借用: <code>iter_mut()</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 原数组必须可变</span><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">values</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">for</span> <span class="hljs-variable">item</span> <span class="hljs-keyword">in</span> a.<span class="hljs-title function_ invoke__">iter_mut</span>() &#123;<br>  <span class="hljs-comment">// item类型是&amp;mut T, 可以修改原数组元素</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>会夺走元素所有权: <code>into_iter()</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">values</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">for</span> <span class="hljs-variable">item</span> <span class="hljs-keyword">in</span> a.<span class="hljs-title function_ invoke__">into_iter</span>() &#123;<br>  <span class="hljs-comment">// item的类型是T</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>迭代器适配器&#x2F;迭代器消费者:</strong></p>
+<ul>
+<li><p>迭代器适配器非常强大, 可以把一个迭代器转换成你想要的迭代器, 然后配合迭代器消费者, 可以将一个数组转换成你想要的数组.</p>
+</li>
+<li><p><code>map + collect</code> : <code>map</code>方法可以传入一个闭包, 对原数组进行操作, 然后用迭代器消费者<code>collect()</code>转换成数组.</p>
+<ul>
+<li>注意, 使用<code>collect()</code>必须进行类型标注, <code>_</code>表示让编译器进行标注.</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">v</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-comment">// 把v中的元素加1, 放到新数组中, 对原数组所有权没有影响</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">v1</span>: <span class="hljs-type">Vec</span>&lt;_&gt; = v.<span class="hljs-title function_ invoke__">iter</span>().<span class="hljs-title function_ invoke__">map</span>(|x| x + <span class="hljs-number">1</span>).<span class="hljs-title function_ invoke__">collect</span>();<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>filter + collect</code>: <code>filter</code>方法可以传入一个返回bool的闭包, 如果返回值是true, 那么会在原数组中保留, 否则删除.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">v</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-comment">// 筛选原数组中的偶数, 注意v2中的元素是&amp;i32类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">v2</span>: <span class="hljs-type">Vec</span>&lt;&amp;<span class="hljs-type">i32</span>&gt; = v.<span class="hljs-title function_ invoke__">iter</span>().<span class="hljs-title function_ invoke__">filter</span>(|x| **x % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>).<span class="hljs-title function_ invoke__">collect</span>();<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h4><ul>
 <li><p>如果一个值的类型是<code>Option&lt;T&gt;</code>, 说明这个值可能是<code>None</code>.</p>
 </li>
 <li><p><code>Option&lt;T&gt;</code>的定义:</p>
@@ -1086,7 +1115,168 @@
 <li><p>判断是否有值&#x2F;None:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">value1</span>: <span class="hljs-type">Option</span>&lt;<span class="hljs-type">i32</span>&gt; = <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-number">5</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">value2</span>: <span class="hljs-type">Option</span>&lt;<span class="hljs-type">i32</span>&gt; = <span class="hljs-literal">None</span>;<br><br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;some_value is &#123;&#125;&quot;</span>, value1.<span class="hljs-title function_ invoke__">is_some</span>());<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;none_value is &#123;&#125;&quot;</span>, value2.<span class="hljs-title function_ invoke__">is_none</span>());<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2>
+<h4 id="不可恢复异常"><a href="#不可恢复异常" class="headerlink" title="不可恢复异常"></a>不可恢复异常</h4><ul>
+<li><p><code>panic!()</code>如果在main线程中, 会直接停止main线程, 但是在子线程中panic不会让main线程挂, 因此不要让main线程承担大多数任务.</p>
+</li>
+<li><p><code>panic</code>有两种退出模式:</p>
+<ul>
+<li><p>栈回溯(backtrace): 退出时打印调用栈, 可以用在开发环境.</p>
+</li>
+<li><p>终止(abort): 直接退出, 适合生产环境, 能减少编译出的二进制文件大小.</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[profile.release]</span><br><span class="hljs-attr">panic</span> = <span class="hljs-string">&#x27;abort&#x27;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="可恢复异常"><a href="#可恢复异常" class="headerlink" title="可恢复异常"></a>可恢复异常</h4><p>一般来说, 可能存在异常的函数返回值都是<code>Result&lt;T, E&gt;</code>:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Result</span>&lt;T, E&gt; &#123;<br>    <span class="hljs-title function_ invoke__">Ok</span>(T),<br>    <span class="hljs-title function_ invoke__">Err</span>(E),<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这个类型之后可以用<code>unwrap()</code>或者<code>expect()</code>处理, 两者类似, 区别在于<code>expect()</code>可以接受一个字符串, panic后打印这个字符串信息:</p>
+<ul>
+<li><code>unwrap/expect</code>: 如果成功, 直接返回返回值, 如果失败, 直接<code>panic</code>.</li>
+<li>这是异常处理最快的方法.</li>
+</ul>
+<blockquote>
+<p>处理方法1: Match表达式</p>
+</blockquote>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::fs::File<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>  <span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = <span class="hljs-keyword">match</span> File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>) &#123;<br>    	<span class="hljs-title function_ invoke__">Ok</span>(file) =&gt; file,<br>    	<span class="hljs-title function_ invoke__">Error</span>(error) =&gt; &#123;<br>        <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;Cannot read file&quot;</span>);<br>    &#125;<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可以在<code>Error</code>后再用Match表达式处理:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::fs::File;<br><span class="hljs-keyword">use</span> std::io::ErrorKind;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>);<br><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = <span class="hljs-keyword">match</span> f &#123;<br>        <span class="hljs-title function_ invoke__">Ok</span>(file) =&gt; file,<br>        <span class="hljs-title function_ invoke__">Err</span>(error) =&gt; <span class="hljs-keyword">match</span> error.<span class="hljs-title function_ invoke__">kind</span>() &#123;<br>            ErrorKind::NotFound =&gt; <span class="hljs-keyword">match</span> File::<span class="hljs-title function_ invoke__">create</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>) &#123;<br>                <span class="hljs-title function_ invoke__">Ok</span>(fc) =&gt; fc,<br>                <span class="hljs-title function_ invoke__">Err</span>(e) =&gt; <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;Problem creating the file: &#123;:?&#125;&quot;</span>, e),<br>            &#125;,<br>            other_error =&gt; <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;Problem opening the file: &#123;:?&#125;&quot;</span>, other_error),<br>        &#125;,<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>也可以直接不处理, 向上传播异常:</p>
+<ul>
+<li>原函数需要返回<code>Result&lt;T, E&gt;</code></li>
+<li>match表达式如果是<code>Error</code>, 需要<code>return Err(error)</code>.</li>
+</ul>
+<p>Rust提供了专门的宏<code>?</code>来简化传播异常的写法:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::fs::File;<br><span class="hljs-keyword">use</span> std::io;<br><span class="hljs-keyword">use</span> std::io::Read;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">read_username_from_file</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;<span class="hljs-type">String</span>, io::Error&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>)?;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这个写法就等价于:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::fs::File;<br><span class="hljs-keyword">use</span> std::io;<br><span class="hljs-keyword">use</span> std::io::Read;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">read_username_from_file</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;<span class="hljs-type">String</span>, io::Error&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">f</span> = <span class="hljs-keyword">match</span> File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>) &#123;<br>      	<span class="hljs-title function_ invoke__">Ok</span>(file) =&gt; file,<br>      	<span class="hljs-title function_ invoke__">Err</span>(error) =&gt; <span class="hljs-title function_ invoke__">Err</span>(error)<br>  	&#125;;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>?相比于match表达式, 还有另一种好处.</p>
+</blockquote>
+<ul>
+<li><p><code>?</code>传播的异常, 返回的本质上是<code>Box&lt;dyn std::error:Error&gt;</code>类型.</p>
+</li>
+<li><p>在一个系统中, 你可以基于<code>Error</code>, 自定义异常.</p>
+</li>
+<li><p>自定义的异常需要实现<code>From</code> trait中的<code>from</code>函数, 用来转换到更大的异常类型.</p>
+</li>
+<li><p>这样, 在使用<code>?</code>时, rust就会根据你的签名, 自动给你转换到对应级别的异常.</p>
+</li>
+<li><p><code>Option&lt;T&gt;</code>也支持<code>?</code>.</p>
+</li>
+</ul>
+<p>如果在main函数中使用了<code>?</code>, 那么main函数的签名需要改动:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::error::Error;<br><span class="hljs-keyword">use</span> std::fs::File;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> Error&gt;&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>)?;<br><br>    <span class="hljs-title function_ invoke__">Ok</span>(())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><p>rust TDD (test driven development)的一般流程是:</p>
+<ul>
+<li><p>在<code>src</code>同级目录下创建<code>test</code>.</p>
+</li>
+<li><p>里面创建很多个rust文件, 随便起名.</p>
+</li>
+<li><p>每个文件的格式如下:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[cfg(test)]</span><br><span class="hljs-keyword">mod</span> tests &#123;<br><br>    <span class="hljs-keyword">use</span> package名字::*;<br><br>    <span class="hljs-meta">#[test]</span><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">two_result</span>() &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">query</span> = <span class="hljs-string">&quot;duct&quot;</span>;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">contents</span> = <span class="hljs-string">&quot;Rust:\nSafe duct\nniubi duct&quot;</span>;<br>        <span class="hljs-built_in">assert_eq!</span>(<span class="hljs-built_in">vec!</span>[<span class="hljs-string">&quot;Safe duct&quot;</span>, <span class="hljs-string">&quot;niubi duct&quot;</span>], <span class="hljs-title function_ invoke__">search</span>(query, contents))<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>#[cfg(test)]</code>表示只有在<code>cargo test</code>时才运行测试.</li>
+<li><code>#[test]</code>表示单元测试.</li>
+</ul>
+</li>
+<li><p>错误信息采用<code>eprintln</code>输出到<code>stderr</code>.</p>
+</li>
+</ul>
+<p>之后只要运行<code>cargo test</code>就会运行所有单元测试.</p>
+<p><font color="red">上述函数中, 无法对私有函数进行测试</font>, 如果真要对私有函数进行测试, 需要把测试函数<code>#[test]</code>写私有函数定义的地方.</p>
+<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><h3 id="常见的trait"><a href="#常见的trait" class="headerlink" title="常见的trait"></a>常见的trait</h3><h4 id="Deref"><a href="#Deref" class="headerlink" title="Deref"></a>Deref</h4><p>Deref是一个有关于解引用的trait.</p>
+<p>假设我有一个结构体:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">MyBox</span>&lt;T&gt;(T);<br><br><span class="hljs-keyword">impl</span>&lt;T&gt; MyBox&lt;T&gt; &#123;<br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(x: T) <span class="hljs-punctuation">-&gt;</span> MyBox&lt;T&gt; &#123;<br>    <span class="hljs-title function_ invoke__">MyBox</span>(x);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在, 你可以为这个结构体实现<code>Deref</code> 这个trait, 来让你能<code>*</code>一个结构体引用.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::ops::Deref;<br><br><span class="hljs-keyword">impl</span>&lt;T&gt; Deref <span class="hljs-keyword">for</span> <span class="hljs-title class_">MyBox</span>&lt;T&gt; &#123;<br>  <span class="hljs-comment">// &amp;self是结构体引用类型, 在这个函数中, 你要通过这个结构体引用, find一个基本类型的引用, 然后返回</span><br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">deref</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> &amp;T &#123;<br>    &amp;<span class="hljs-keyword">self</span>.<span class="hljs-number">0</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>本质上, <code>deref</code>会把一个结构体引用, 转换成一个基本类型引用.</p>
+<p>实现&#96;&#96;deref<code>后, 你再</code><em><code>一个结构体引用</code>x<code>, 就等价于</code></em>(x.deref())&#96;</p>
+<blockquote>
+<p>自动deref机制</p>
+</blockquote>
+<p>看这段代码:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">display</span>(s: &amp;<span class="hljs-type">str</span>) &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>,s);<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">s</span> = MyBox::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello world&quot;</span>));<br>    <span class="hljs-title function_ invoke__">display</span>(&amp;s)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>对于<code>&amp;s</code>, 它会被连续<code>deref</code> , 直到转换成<code>&amp;str</code>为止.</p>
+<p>在Rust中, 引用类型其实不用你手动<code>*</code>才能访问值, 例如你有一个结构体引用, 你不用<code>(*x).name</code>才能访问成员, 而是直接用<code>x.name</code>就可以, 背后的机制就是<code>deref trait</code>.</p>
+<h4 id="Drop"><a href="#Drop" class="headerlink" title="Drop"></a>Drop</h4><p>Drop是一个<code>trait</code>, 如果一个结构体实现了<code>Drop</code>, 那么它的生命周期结束之后, 就会自动调用<code>drop</code>方法实现收尾工作, rust就是因为这个才可以不实现<code>GC</code>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Drop</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">XXX</span> &#123;<br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">drop</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>但是, 在这段代码中, <code>drop</code>的参数是<code>&amp;mut self</code>, 就表示一个结构体调用<code>drop</code>函数后, 它的所有权没有被收走.</p>
+<ul>
+<li>因此, 你不可以对一个结构体<code>x</code>显示地调用<code>x.drop()</code>函数.</li>
+</ul>
+<p>但是, 有些场景下, 你需要提前释放某些资源, 例如互斥锁等, 这个时候可以使用<code>std::prelude::drop</code>函数.</p>
+<p>这个函数签名是:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">drop</span>&lt;T&gt;(_x: T)<br></code></pre></td></tr></table></figure>
+
+<p>会直接把所有权拿走, 调用完这个函数, 如果在下面再使用原变量, 就会编译错误.</p>
+<h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><h4 id="Box"><a href="#Box" class="headerlink" title="Box&lt;T&gt;"></a>Box&lt;T&gt;</h4><p>Box指针本质上还是引用类型, 只是这个引用会把你原本的数据放到堆上, 然后再给你返回一个引用.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// a数据存在3上</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
+
+<p>如果你想打印<code>a</code>:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, a);<br></code></pre></td></tr></table></figure>
+
+<p>这时可以打印, 并且不会报错的, 因为<code>a</code>会隐式调用<code>deref</code>进行解引用.</p>
+<p>但是如果你想拿这个值做运算:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">b</span> = a + <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这就会报错, 正确写法是<code>let b = *a + 1</code>, 这个时候需要手动调用<code>deref</code>.</p>
+<p><font color="red">注意: Box指针会导致所有权的转移</font>, <code>Box::new(xxx)</code>之后, <code>xxx</code>的所有权会转移到接收变量中.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">s</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello, world&quot;</span>);<br>    <span class="hljs-comment">// s在这里被转移给a</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(s);<br>    <span class="hljs-comment">// 报错！此处继续尝试将 s 转移给 b</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">b</span> = <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(s);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Box指针有一个非常有效的应用场景:</strong></p>
+<ul>
+<li>在Rust中, 编译器要求类型的大小必须是固定的.</li>
+<li>但是有些类型是无法在编译时期知道大小的, 例如递归的类型定义.</li>
+<li>这时, 可以将递归的成员变量转换成<code>Box&lt;T&gt;</code>指针类型.</li>
+</ul>
+<p>例如, 如果你想用一个数组, 存储所有实现了某一个<code>trait</code>的对象(动态类型), 就需要用到<code>Box</code>指针, 例子如下:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">trait</span> <span class="hljs-title class_">Draw</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">draw</span>(&amp;<span class="hljs-keyword">self</span>);<br>&#125;<br><span class="hljs-comment">// 下面Button和Select都实现了Draw这个trait</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Button</span> &#123;<br>    id: <span class="hljs-type">u32</span><br>&#125;<br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Draw</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Button</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">draw</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Button &#123;&#125;&quot;</span>, <span class="hljs-keyword">self</span>.id);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Select</span> &#123;<br>    id: <span class="hljs-type">u32</span><br>&#125;<br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Draw</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Select</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">draw</span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Select &#123;&#125;&quot;</span>, <span class="hljs-keyword">self</span>.id)<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>  	<span class="hljs-comment">// 定义类型时需要加上dyn, 因为实现trait的对象都是一个动态类型</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">elems</span>: <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> Draw&gt;&gt; = <span class="hljs-built_in">vec!</span>[ <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(Button &#123;id:<span class="hljs-number">1</span>&#125;), <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(Select &#123;id: <span class="hljs-number">1</span>&#125;) ];<br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">e</span> <span class="hljs-keyword">in</span> elems &#123;<br>        e.<span class="hljs-title function_ invoke__">draw</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果你要从Box指针数组中取出元素时, 你需要解两次引用, 例如下面这个例子:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">arr</span> = <span class="hljs-built_in">vec!</span>[ <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">1</span>), <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">2</span>) ];<br>    <span class="hljs-comment">// 注意, 这里必须取引用, 否则会发生所有权转移</span><br>    <span class="hljs-keyword">let</span> (first, second) = (&amp;arr[<span class="hljs-number">0</span>], &amp;arr[<span class="hljs-number">1</span>]);<br>    <span class="hljs-comment">// 第一次将&amp;Box&lt;i32&gt;转成Box&lt;i32&gt;, 第二次将Box&lt;i32&gt;转成i32</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">sum</span> = **first + **second;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="Rc"><a href="#Rc" class="headerlink" title="Rc&lt;T&gt;"></a>Rc&lt;T&gt;</h4><p>Rc&lt;T&gt;可以在单线程环境下, 创建一个数据的多个<strong>不可变引用</strong>, 并且提供了如下功能:</p>
+<ul>
+<li>实现了<code>Deref</code>和<code>Drop</code>.</li>
+<li>提供了引用计数(reference counting), 一旦数据的引用计数是0, 就会自动释放.</li>
+</ul>
+<p>用法如下:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::rc::Rc;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>  	<span class="hljs-comment">// 用Rc::new创建一个数据的引用, 类型是Rc&lt;String&gt;</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = Rc::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;hello world&quot;</span>));<br>  <br>  	<span class="hljs-comment">// 用Rc::clone创建数据的新的不可变引用, 这个clone是浅拷贝, 性能比较高</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">b</span> = Rc::<span class="hljs-title function_ invoke__">clone</span>(&amp;a);<br>  	<span class="hljs-keyword">let</span> <span class="hljs-variable">c</span> = Rc::<span class="hljs-title function_ invoke__">clone</span>(&amp;a);<br>  <br>		<span class="hljs-comment">// 用Rc::strong_count输出变量的计数</span><br>    <span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">3</span>, Rc::<span class="hljs-title function_ invoke__">strong_count</span>(&amp;a));<br>    <span class="hljs-built_in">assert_eq!</span>(Rc::<span class="hljs-title function_ invoke__">strong_count</span>(&amp;a), Rc::<span class="hljs-title function_ invoke__">strong_count</span>(&amp;b));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="Arc"><a href="#Arc" class="headerlink" title="Arc&lt;T&gt;"></a>Arc&lt;T&gt;</h4><p>Arc&lt;T&gt;可以在多线程环境下, 实现多个线程拥有同一个数据的多个不可变引用, 和<code>Rc&lt;T&gt;</code>的API完全相同.</p>
+<ul>
+<li>和<code>Rc&lt;T&gt;</code>不同之处在于, <code>Arc&lt;T&gt;</code>采用原子指令维护了引用计数, 会有一定的性能损耗.</li>
+</ul>
+<h4 id="RefCell"><a href="#RefCell" class="headerlink" title="RefCell&lt;T&gt;"></a>RefCell&lt;T&gt;</h4><ul>
+<li><p>RefCell&lt;T&gt;提供了变量的内部可变性, 也就是<strong>原变量不可变的前提下, 你还可以创建可变引用</strong>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// val的类型是RefCell&lt;i32&gt;</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">val</span> = RefCell::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>);<br><br><span class="hljs-comment">// 可变引用修改</span><br>*val.<span class="hljs-title function_ invoke__">borrow_mut</span>() += <span class="hljs-number">1</span>;<br><br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, *val.<span class="hljs-title function_ invoke__">borrow</span>());<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>但是, <code>RefCell&lt;T&gt;</code>仍然要遵守rust的借用规则, 例如不能让可变引用和不可变引用共存.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 报错, 同时有了可变借用和不可变借用</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = RefCell::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">b</span> = a.<span class="hljs-title function_ invoke__">borrow</span>();<br><span class="hljs-keyword">let</span> <span class="hljs-variable">c</span> = a.<span class="hljs-title function_ invoke__">borrow_mut</span>();<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;, &#123;&#125;&quot;</span>, b, c);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>一个例子: 假设你要为自己的类型实现trait, 但是trait中方法签名是<code>&amp;self</code>, 但是你就想在这个方法中修改成员变量, 这个时候需要将成员变量定义成<code>RefCell&lt;T&gt;</code>类型.</p>
+</li>
+<li><p><code>Rc + Refcell</code>: Rc可以实现一个数据有多个不可变引用, 结合<code>Refcell</code>可以通过不可变引用修改数据.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = Rc::<span class="hljs-title function_ invoke__">new</span>(RefCell::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">10</span>));<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">a1</span> = Rc::<span class="hljs-title function_ invoke__">clone</span>(&amp;a);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">a2</span> = Rc::<span class="hljs-title function_ invoke__">clone</span>(&amp;a);<br><br>*a1.<span class="hljs-title function_ invoke__">borrow_mut</span>() += <span class="hljs-number">1</span>;<br>*a2.<span class="hljs-title function_ invoke__">borrow_mut</span>() += <span class="hljs-number">2</span>;<br><br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, a.<span class="hljs-title function_ invoke__">borrow</span>()); <span class="hljs-comment">//13</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
