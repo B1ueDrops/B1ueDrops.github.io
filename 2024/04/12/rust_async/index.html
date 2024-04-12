@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>卡特兰数系列 | B1ueDrops</title>
+  <title>Rust的异步编程 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="卡特兰数系列 | B1ueDrops">
+  <meta name="description" content="Rust的异步编程 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -707,9 +707,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-catalan" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rust_async" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">卡特兰数系列</h1>
+        <h1 class="article-title">Rust的异步编程</h1>
     
     <div class="article-meta">
         
@@ -719,7 +719,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="算法">算法</a>
+            <a  data-rel="并发编程">并发编程</a>
             
         </span>
         
@@ -727,7 +727,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-13 16:22:41'>2024-03-10 12:47</time>
+            Created At : <time class="date" title='Updated At: 2024-04-12 20:37:28'>2024-04-12 14:09</time>
         
     </div>
     <div class="article-meta">
@@ -738,7 +738,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%A1%E8%B6%B3%E6%9D%A1%E4%BB%B601%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">满足条件01序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E5%AF%B9%E6%8B%AC%E5%8F%B7%E7%BB%84%E6%88%90%E7%9A%84%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97%E4%B8%AA%E6%95%B0"><span class="toc-text">n对括号组成的括号序列个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n%E4%B8%AA%E8%8A%82%E7%82%B9%E7%BB%84%E6%88%90%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">n个节点组成的二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8C%96%E6%88%9001%E5%BA%8F%E5%88%97"><span class="toc-text">转化成01序列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">按照动态规划</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96"><span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await"><span class="toc-text">async&#x2F;await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">异步运行时的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Future-trait"><span class="toc-text">Future trait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Executor"><span class="toc-text">Executor</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -754,47 +754,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="满足条件01序列个数"><a href="#满足条件01序列个数" class="headerlink" title="满足条件01序列个数"></a>满足条件01序列个数</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/891/">https://www.acwing.com/problem/content/description/891/</a></p>
-</blockquote>
-<ul>
-<li><p>假设现在在一个坐标轴, 一个01序列表示一条运动轨迹, 0表示向右走, 1表示向上走, 那么这个问题就可以转化成从$(0, 0)$到$(n, n)$的路径中, 有多少路径在直线$y &#x3D; x + 1$ 以下, 或者是不经过$y &#x3D; x + 1$.</p>
-</li>
-<li><p>那么取一个补集, 也就是所有从$(0, 0)$走到$(n, n)$的方案, 减去经过直线$y &#x3D; x + 1$的方案.</p>
-</li>
-<li><p>对于经过直线$y &#x3D; x + 1$的所有方案, 假设这个路径和直线$y &#x3D; x + 1$的交点是$(a, b)$, 那么这条路径从$(a, b)$到$(n, n)$这一段按照$y &#x3D; x + 1$进行反转, 最终的终点就是$(n - 1, n + 1)$.</p>
-<ul>
-<li>也就是说, 每一条经过$y &#x3D; x + 1$并且走到$(n, n)$的路径, 都和从$(0, 0)$走到$(n - 1, n + 1)$的路径一一对应.</li>
-</ul>
-</li>
-<li><p>那么最终方案就可以表示成: $C_{2n}^{n} - C_{2n}^{n-1} &#x3D; \frac{C_{2n}^n}{n+1}$​, 这个数就是卡特兰数.</p>
-</li>
-</ul>
-<h2 id="n对括号组成的括号序列个数"><a href="#n对括号组成的括号序列个数" class="headerlink" title="n对括号组成的括号序列个数"></a>n对括号组成的括号序列个数</h2><p>同理, 有$n$对括号()组成的合法的括号序列的个数也是卡特兰数.</p>
-<h2 id="n个节点组成的二叉树"><a href="#n个节点组成的二叉树" class="headerlink" title="n个节点组成的二叉树"></a>n个节点组成的二叉树</h2><h3 id="转化成01序列"><a href="#转化成01序列" class="headerlink" title="转化成01序列"></a>转化成01序列</h3><ul>
-<li><p>首先, 对于一颗由n个节点组成的二叉树, 我可以建立一个映射, 把它变成一个完全二叉树.</p>
-<ul>
-<li>对于原来的n个节点, 经过变换后都是父亲节点, 并且有两个儿子.</li>
-<li>这种映射是通过补充n+1个叶子节点实现的, 最终的完全二叉树有2n+1个节点.</li>
-<li>这种映射的逆映射是删除完全二叉树的所有叶子节点, 可以把一个2n+1个节点的完全二叉树变成一个n个节点组成的二叉树.</li>
-<li>这种映射是一种满射.</li>
-</ul>
-</li>
-<li><p>因此, 对于一个2n+1个节点的完全二叉树, 如果把所有左儿子当作0, 把所有右儿子当作1, 然后做不包含根节点的前序遍历, 那么最终得到的也是一个符合卡特兰数性质的01序列(因为前序遍历, 任何一个前缀中0一定比1多). 于是就可以转化成01序列问题.</p>
-</li>
-</ul>
-<h2 id="按照动态规划"><a href="#按照动态规划" class="headerlink" title="按照动态规划"></a>按照动态规划</h2><p>假设$f(n)$表示$n$个节点组成的二叉树的个数, 那么:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">f</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>f[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>  <span class="hljs-comment">// 遍历左子树有多少个节点</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= i - <span class="hljs-number">1</span>; j ++) &#123;<br>    <span class="hljs-comment">// 左子树和右子树是乘法原理</span><br>    f[i] = f[j] * f[i - <span class="hljs-number">1</span> - j];<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        <h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight toml"><table><tr><td class="code"><pre><code class="hljs toml"><span class="hljs-comment"># Cargo.toml</span><br><span class="hljs-section">[dependencies]</span><br><span class="hljs-attr">futures</span> = <span class="hljs-string">&quot;0.3&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p>所有符合这种递推式的方案数目, 都是卡特兰数.</p>
-<p>卡特兰数前几个数:</p>
+
+
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h2><ul>
+<li><p>在Rust中, 使用<code>async</code>标记的语法, 会被转换为实现了<code>Future</code> trait的状态机.</p>
 <ul>
-<li><code>f[0] = 1</code>.</li>
-<li><code>f[1] = 1</code>.</li>
-<li><code>f[2] = 2</code>.</li>
-<li><code>f[3] = 5</code>.</li>
-<li><code>f[4] = 14</code>.</li>
-<li><code>f[5] = 42</code>.</li>
+<li>调用<code>async</code>函数会返回<code>impl Future</code>.</li>
+</ul>
+</li>
+<li><p>当<code>Future</code>执行遇到阻塞, 会让出当前线程的执行权, 转去执行其他<code>Future</code>.</p>
+</li>
+<li><p>对一个<code>Future</code>进行<code>.await</code>, 可以让一个<code>Future</code>等待另一个<code>Future</code>的完成, 这种等待不会阻塞当前线程, 也会让出执行权.</p>
+</li>
+<li><p>Rust中的<code>Future</code>是惰性的, 需要有一个执行器&#x2F;调用<code>.await</code>的时候才会执行.</p>
+</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> futures::executor::block_on;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_world</span>() &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;hello world&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">hello_new_world</span>() &#123;<br>    <span class="hljs-comment">// 对一个Future进行await</span><br>    <span class="hljs-title function_ invoke__">hello_world</span>().<span class="hljs-keyword">await</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello new world&quot;</span>);<br>&#125;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">future</span> = <span class="hljs-title function_ invoke__">hello_new_world</span>();<br>    <span class="hljs-comment">// Future的执行器block executor</span><br>    <span class="hljs-title function_ invoke__">block_on</span>(future);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="异步运行时的原理"><a href="#异步运行时的原理" class="headerlink" title="异步运行时的原理"></a>异步运行时的原理</h2><h3 id="Future-trait"><a href="#Future-trait" class="headerlink" title="Future trait"></a>Future trait</h3><figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">trait</span> <span class="hljs-title class_">SimpleFuture</span> &#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Output</span>;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">poll</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, wake: <span class="hljs-title function_ invoke__">fn</span>()) <span class="hljs-punctuation">-&gt;</span> Poll&lt;<span class="hljs-keyword">Self</span>::Output&gt;;<br>&#125;<br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Poll</span>&lt;T&gt; &#123;<br>    <span class="hljs-title function_ invoke__">Ready</span>(T),<br>    Pending,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>其中<code>Output</code>是Future执行后返回值类型.</li>
+<li><code>poll</code>方法是Executor调用, 来让<code>Future</code>执行的, 它有两种可能的返回结果:<ul>
+<li><code>Ready(T)</code>: 表示Future执行完成了, 并且正确返回了结果.</li>
+<li><code>Pending</code>: Future无法在此次轮询中完成, 但是Executor给了他一个<code>wake</code>方法, 这个方法的语义是:<ul>
+<li><code>Future</code>将来能执行的时候, 会调用<code>wake</code>, 唤醒Executor.</li>
+<li>Executor被唤醒后, 再次调用这个<code>Future</code>的<code>poll</code>方法重新执行.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>依照这个API模型, 我们可以构建多个<code>Future</code>并发运行, 和多个<code>Future</code>链式运行这两种模型:</p>
+<p>并发运行的代码如下:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">trait</span> <span class="hljs-title class_">SimpleFuture</span> &#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Output</span>;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">poll</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, wake: <span class="hljs-title function_ invoke__">fn</span>()) <span class="hljs-punctuation">-&gt;</span> Poll&lt;<span class="hljs-keyword">Self</span>::Output&gt;;<br>&#125;<br><br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Poll</span>&lt;T&gt; &#123;<br>    <span class="hljs-title function_ invoke__">Ready</span>(T),<br>    Pending,<br>&#125;<br><br><span class="hljs-comment">// 存储两个并发异步Future的结构体</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Join</span>&lt;FutureA, FutureB&gt; &#123;<br>    <span class="hljs-comment">// 这里类型设置成Option, 是因为后面要用take把值拿走, 让成员编程NULL</span><br>    <span class="hljs-comment">// 以便后面不再调用poll轮询</span><br>    a: <span class="hljs-type">Option</span>&lt;FutureA&gt;,<br>    b: <span class="hljs-type">Option</span>&lt;FutureB&gt;<br>&#125;<br><br><span class="hljs-keyword">impl</span>&lt;FutureA, FutureB&gt; SimpleFuture <span class="hljs-keyword">for</span> <span class="hljs-title class_">Join</span>&lt;FutureA, FutureB&gt; <br><span class="hljs-keyword">where</span><br>    FutureA: SimpleFuture&lt;Output=()&gt;,<br>    FutureB: SimpleFuture&lt;Output=()&gt;,<br>&#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Output</span> = ();<br>    <span class="hljs-comment">// a的poll只要不能完, 就直接退出跳到b, 这就是并发poll</span><br>    <span class="hljs-comment">// 有一个没完, 那么就用wake注册, 等着这个poll还会被调用</span><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">poll</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, wake: <span class="hljs-title function_ invoke__">fn</span>()) <span class="hljs-punctuation">-&gt;</span> Poll&lt;<span class="hljs-keyword">Self</span>::Output&gt; &#123;<br>        <span class="hljs-comment">// 从a中取出Future</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(a) = &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>.a &#123;<br>            <span class="hljs-comment">// 对a中的Future调用poll, 如果成功就用take把a变成None</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Poll</span>::<span class="hljs-title function_ invoke__">Ready</span>(()) = a.<span class="hljs-title function_ invoke__">poll</span>(wake) &#123;<br>                <span class="hljs-keyword">self</span>.a.<span class="hljs-title function_ invoke__">take</span>();<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 从b中取出Future</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(b) = &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>.b &#123;<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Poll</span>::<span class="hljs-title function_ invoke__">Ready</span>(()) = b.<span class="hljs-title function_ invoke__">poll</span>(wake) &#123;<br>                <span class="hljs-keyword">self</span>.b.<span class="hljs-title function_ invoke__">take</span>();<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 如果a, b完了, 就可以了</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.a.<span class="hljs-title function_ invoke__">is_none</span>() &amp;&amp; <span class="hljs-keyword">self</span>.b.<span class="hljs-title function_ invoke__">is_none</span>() &#123;<br>            Poll::<span class="hljs-title function_ invoke__">Ready</span>(())<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            Poll::Pending<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>链式运行的实例代码如下:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">AndThenFut</span>&lt;FutureA, FutureB&gt; &#123;<br>    first: <span class="hljs-type">Option</span>&lt;FutureA&gt;,<br>    second: FutureB,<br>&#125;<br><br><span class="hljs-keyword">impl</span>&lt;FutureA, FutureB&gt; SimpleFuture <span class="hljs-keyword">for</span> <span class="hljs-title class_">AndThenFut</span>&lt;FutureA, FutureB&gt;<br><span class="hljs-keyword">where</span><br>    FutureA: SimpleFuture&lt;Output = ()&gt;,<br>    FutureB: SimpleFuture&lt;Output = ()&gt;,<br>&#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Output</span> = ();<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">poll</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, wake: <span class="hljs-title function_ invoke__">fn</span>()) <span class="hljs-punctuation">-&gt;</span> Poll&lt;<span class="hljs-keyword">Self</span>::Output&gt; &#123;<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(first) = &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>.first &#123;<br>            <span class="hljs-keyword">match</span> first.<span class="hljs-title function_ invoke__">poll</span>(wake) &#123;<br>                <span class="hljs-comment">// 我们已经完成了第一个 Future， 可以将它移除， 然后准备开始运行第二个</span><br>                Poll::<span class="hljs-title function_ invoke__">Ready</span>(()) =&gt; <span class="hljs-keyword">self</span>.first.<span class="hljs-title function_ invoke__">take</span>(),<br>                <span class="hljs-comment">// 第一个Future完不成直接退, 不会跳到第二个Future, 这样就能实现第二个Future等待第一个Future完成后执行</span><br>                Poll::Pending =&gt; <span class="hljs-keyword">return</span> Poll::Pending,<br>            &#125;;<br>        &#125;<br><br>        <span class="hljs-comment">// 运行到这里，说明第一个Future已经完成，尝试去完成第二个</span><br>        <span class="hljs-keyword">self</span>.second.<span class="hljs-title function_ invoke__">poll</span>(wake)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><ul>
+<li>Executor负责执行Future, 它可以是单线程, 也可以是多线程.</li>
+<li>具体的原理:</li>
+</ul>
+<p><img src="/2024/04/12/rust_async/rust-async.png" alt="rust executor原理"></p>
+<ul>
+<li><p>Spawner负责包装Future, 生成Task, 并传输给Executor.</p>
+</li>
+<li><p>Executor提取Future, 尝试调用<code>poll(waker)</code>.</p>
+<ul>
+<li><p>如果<code>Future</code>当时没有<code>ready</code>, 那么在他<code>ready</code>之后会调用<code>wake</code>方法, 让自己重新被发送给Executor.</p>
+</li>
+<li><p>注意: Executor可能是多线程, 那么<code>Future</code>需要加<code>Mutex</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>结合IO多路复用(<code>epoll</code>)等机制, 如果返回<code>Poll::Pending</code>, 可以将<code>wake</code>函数传递到OS级别的I&#x2F;O多路复用, 这样I&#x2F;O好了之后, 就可以直接调用<code>wake</code>函数让<code>Future</code>可以执行.</p>
+</li>
 </ul>
 
       
@@ -808,46 +829,6 @@
 
 
 
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<input type="hidden" id="MathJax-js"
-        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</input>
     
 
 
