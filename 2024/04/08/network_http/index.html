@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(43)</small>
+                <small>(45)</small>
             
         </div>
     </li>
@@ -172,7 +172,7 @@
         <div data-rel="计算机网络">
             
             计算机网络
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -184,9 +184,9 @@
             
                 
     <li>
-        <div data-rel="科研">
+        <div data-rel="脑机接口">
             
-            科研
+            脑机接口
             <small>(1)</small>
         </div>
         
@@ -244,6 +244,21 @@
             
                 
     <li>
+        <div data-rel="信号处理">
+            
+            信号处理
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
         <div data-rel="AI">
             
             AI
@@ -287,7 +302,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="43">
+<input type="hidden" id="yelog_site_posts_number" value="45">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -337,6 +352,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/04/21/network_tcp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TCP的相关知识">TCP的相关知识</span>
+            <span class="post-date" title="2024-04-21 15:16:42">2024/04/21</span>
+        </a>
+        
+        
+        <a  class="All 信号处理 "
+           href="/2024/04/20/fourier/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="傅立叶级数分解">傅立叶级数分解</span>
+            <span class="post-date" title="2024-04-20 18:36:34">2024/04/20</span>
+        </a>
         
         
         <a  class="All 算法 "
@@ -411,11 +444,11 @@
         </a>
         
         
-        <a  class="All 科研 "
+        <a  class="All 脑机接口 "
            href="/2024/04/06/eeg_device/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="脑电仪器的原理">脑电仪器的原理</span>
+            <span class="post-title" title="脑电的原理">脑电的原理</span>
             <span class="post-date" title="2024-04-06 10:35:04">2024/04/06</span>
         </a>
         
@@ -442,7 +475,7 @@
            href="/2024/04/02/rust_leetcode/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="用Rust实现Leetcode Hot100">用Rust实现Leetcode Hot100</span>
+            <span class="post-title" title="用Rust实现Leetcode算法题">用Rust实现Leetcode算法题</span>
             <span class="post-date" title="2024-04-02 12:59:13">2024/04/02</span>
         </a>
         
@@ -763,7 +796,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-12 16:25:56'>2024-04-08 19:44</time>
+            Created At : <time class="date" title='Updated At: 2024-04-17 11:03:24'>2024-04-08 19:44</time>
         
     </div>
     <div class="article-meta">
@@ -774,7 +807,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82"><span class="toc-text">HTTP请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E5%93%8D%E5%BA%94"><span class="toc-text">HTTP响应</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-text">HTTP的报文结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84header%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-text">HTTP的header常见的字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%9C%BA%E5%88%B6"><span class="toc-text">HTTP的长连接机制</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -790,7 +823,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><ul>
+        <h2 id="HTTP的报文结构"><a href="#HTTP的报文结构" class="headerlink" title="HTTP的报文结构"></a>HTTP的报文结构</h2><ul>
 <li><p>HTTP请求报文的结构是:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;<br>&lt;request-headers&gt;<br><br>&lt;body&gt;<br></code></pre></td></tr></table></figure>
 
@@ -799,8 +832,16 @@
 <li><code>request-headers</code>是一系列的键值对.</li>
 </ul>
 </li>
-<li><p>常见的HTTP请求报文中, <code>request-headers</code>:</p>
+<li><p>HTTP响应报文的结构是:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;version&gt; &lt;status-code&gt; &lt;reason&gt;<br>&lt;response-headers&gt;<br><br>&lt;body&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>其中, <code>reason</code>是对<code>status-code</code>的解释.</li>
+</ul>
 </li>
+</ul>
+<h2 id="HTTP的header常见的字段"><a href="#HTTP的header常见的字段" class="headerlink" title="HTTP的header常见的字段"></a>HTTP的header常见的字段</h2><ul>
+<li>常见的HTTP请求报文中, <code>request-headers</code>:</li>
 </ul>
 <table>
 <thead>
@@ -826,16 +867,8 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><ul>
-<li><p>HTTP响应报文的结构是:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;version&gt; &lt;status-code&gt; &lt;reason&gt;<br>&lt;response-headers&gt;<br><br>&lt;body&gt;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>其中, <code>reason</code>是对<code>status-code</code>的解释.</li>
-</ul>
-</li>
-<li><p>常见的HTTP响应报文中, <code>request-headers</code>:</p>
-</li>
+<li>常见的HTTP响应报文中, <code>request-headers</code>:</li>
 </ul>
 <table>
 <thead>
@@ -857,6 +890,10 @@
 <td></td>
 </tr>
 </tbody></table>
+<h2 id="HTTP的长连接机制"><a href="#HTTP的长连接机制" class="headerlink" title="HTTP的长连接机制"></a>HTTP的长连接机制</h2><ul>
+<li>HTTP的长连接机制是通过重用一个TCP连接, 来处理多个HTTP请求, 用来减少创建TCP连接的开销.</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/caoweixiong/p/14720254.html">https://www.cnblogs.com/caoweixiong/p/14720254.html</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>

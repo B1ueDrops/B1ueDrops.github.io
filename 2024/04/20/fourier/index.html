@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>英语科技论文写作模型-Methodology | B1ueDrops</title>
+  <title>傅立叶级数分解 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="英语科技论文写作模型-Methodology | B1ueDrops">
+  <meta name="description" content="傅立叶级数分解 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -776,9 +776,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-sci-writing-method" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-fourier" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">英语科技论文写作模型-Methodology</h1>
+        <h1 class="article-title">傅立叶级数分解</h1>
     
     <div class="article-meta">
         
@@ -788,7 +788,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="English">English</a>
+            <a  data-rel="信号处理">信号处理</a>
             
         </span>
         
@@ -796,7 +796,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-20 16:55:23'>2024-03-20 16:53</time>
+            Created At : <time class="date" title='Updated At: 2024-04-20 19:01:11'>2024-04-20 18:36</time>
         
     </div>
     <div class="article-meta">
@@ -807,7 +807,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Writing-Model-for-Methodology"><span class="toc-text">Writing Model for Methodology</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Basics"><span class="toc-text">Basics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-text">Model</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E7%9A%84%E6%AD%A3%E4%BA%A4%E6%80%A7"><span class="toc-text">三角函数的正交性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-text">傅立叶变换的总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E4%B8%AD%E7%9A%84%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-text">Python中的傅立叶变换</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -823,75 +823,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Writing-Model-for-Methodology"><a href="#Writing-Model-for-Methodology" class="headerlink" title="Writing Model for Methodology"></a>Writing Model for Methodology</h2><h3 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h3><ol>
-<li><strong>主动和被动语态的问题</strong>:<ul>
-<li>在这一部分, 如果你的paper是以团队为单位的, 那可以用主动语态, 比如we collected…</li>
-<li>但是, 如果这个paper是你solo的, 你不能说I collected…, 不合适, 因此就用被动语态(… was collected).</li>
-<li>一般的被动语态都是agent less passive, 即后面不加by …</li>
-</ul>
+        <h2 id="三角函数的正交性"><a href="#三角函数的正交性" class="headerlink" title="三角函数的正交性"></a>三角函数的正交性</h2><ul>
+<li><p><strong>三角函数系</strong>是一个集合: ${sin(0x), cos(0x), sin(x), cos(x), sin(2x), cos(2x), …, sin(nx), cos(nx)}$.</p>
 </li>
-<li><strong>一般现在时和一般过去时</strong>: 当你在描述你的实验设置和实验过程时, 可以使用这两种时态, 但是怎么使用需要区分:<ul>
-<li><strong>一般现在时</strong>: 如果实验的某些步骤&#x2F;设置是墨守陈规, 大家都知道要这么做的, 那么就需要用一般现在时.</li>
-<li><strong>一般过去时</strong>: 如果实验中有你创新性&#x2F;独立性的一些设置, 那就用一般过去时.</li>
-<li>这一部分可以尽量使用被动语态.</li>
-<li>如果你在比较你自己的工作和其他人的工作, 描述其他人工作的时候, 也需要使用一般过去时.</li>
-</ul>
-</li>
-<li>上面通过时态区分你的工作和常规工作不太直观, 可以使用In this study, …&#x2F;In this experiment, …这种标志性的短语来标志你的工作, 同理, 其他人的工作用In their work&#x2F;In that model.</li>
-<li><strong>a和the的使用规则:</strong><ul>
-<li>当你和你的reader都能够知道这是什么的时候, 用the.<ul>
-<li>例1: <em>I bought a new computer but</em> <strong>the</strong> <em>keyboard was faulty.</em><ul>
-<li>当你提到computer这个概念的时候, 对于keyboard, 你和你的reader都知道这是什么, 用the.</li>
+<li><p>三角函数系具有正交性:</p>
+<ul>
+<li>从三角函数系中, 任取两个<strong>不同</strong>的函数, 有:<br>$$<br>\int_{-\pi}^{\pi}sin(nx)cos(mx) &#x3D; 0, n \neq m \<br>\int_{-\pi}^{\pi}sin(nx)sin(mx) &#x3D; 0, n \neq m \<br>\int_{-\pi}^{\pi}cos(nx)cos(mx) &#x3D; 0, n \neq m \<br>$$</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>当你提到的这个东西, 只可能有一种东西对应的时候, 用the.<ul>
-<li>例1: <em>Government policy is committed to protecting</em> <strong>the</strong> <em>environment.</em></li>
+<h2 id="傅立叶变换的总结"><a href="#傅立叶变换的总结" class="headerlink" title="傅立叶变换的总结"></a>傅立叶变换的总结</h2><ul>
+<li>傅立叶变换: $F(\omega) &#x3D; \int_{-\infin}^{\infin} f(t)e^{-i\omega t}dt$.</li>
+<li>逆变换: $f(t) &#x3D; \frac{1}{2\pi} F(\omega)e^{i\omega t} d\omega$</li>
 </ul>
-</li>
-<li>当你提到的这个东西不重要的时候, 用a:<ul>
-<li>例1: <em>The subject then spoke to an interviewer.</em> <ul>
-<li>是哪个Interviewer根本不重要.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>当你表达general truth的时候, 使用a, the和不用冠词没啥区别:<ul>
-<li>The electroencephalograph is a machine for measuring brain waves. </li>
-<li>An electroencephalograph is a machine for measuring brain waves. </li>
-<li>Electroencephalographs are machines for measuring brain waves.</li>
-</ul>
-</li>
-<li>一个例子:<ul>
-<li>(a) <em>The nodes should be attached to</em> <em>two adjacent receptor sites</em>. (There are many receptor sites and any two adjacent ones will do.)</li>
-<li>(b) <em>The nodes should be attached to</em> <strong>the</strong> <em>two adjacent receptor sites</em>. (There are only two receptor sites.)</li>
-</ul>
-</li>
-<li>同时要狠狠注意a&#x2F;an元音辅音的问题, a UV ray, an MRI.</li>
-</ul>
-</li>
-<li><strong>副词短语位置问题:</strong><ul>
-<li>副词短语如果位置不合适很容易造成歧义:<ul>
-<li><em>The patient was discharged from hospital after being shot in the back with a 9 mm gun.</em><ul>
-<li>这难道是在医院被射击的吗?</li>
-</ul>
-</li>
-<li><em>He gave a lecture about liver cancer at the hospital last January.</em><ul>
-<li>这个句子介绍的是医院里的liver cancer还是在医院介绍liver cancer? 还是介绍的上个1月的liver cancer?</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>因此, 尽量修改副词短语的位置, 让语义变得更加清晰:<ul>
-<li><em>Last January he gave a lecture at the hospital; his subject was liver cancer</em></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><img src="/2024/03/20/sci-writing-method/image-20240320161958662.png" alt="Writing Model for Method" style="zoom:50%;">
-
+<h2 id="Python中的傅立叶变换"><a href="#Python中的傅立叶变换" class="headerlink" title="Python中的傅立叶变换"></a>Python中的傅立叶变换</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
@@ -903,6 +848,46 @@
 
 
 
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
     
 
 
