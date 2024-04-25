@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Rust原理与实战记录 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="TCP长连接和短链接https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;598303451?utm_id&#x3D;0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP的相关知识">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/04/21/network_tcp/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="TCP长连接和短链接https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;598303451?utm_id&#x3D;0">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-04-21T07:16:42.297Z">
+<meta property="article:modified_time" content="2024-04-21T07:17:28.400Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -787,7 +787,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-24 21:05:25'>2024-04-13 17:05</time>
+            Created At : <time class="date" title='Updated At: 2024-04-25 20:12:49'>2024-04-13 17:05</time>
         
     </div>
     <div class="article-meta">
@@ -798,7 +798,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust"><span class="toc-text">Rust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84trait"><span class="toc-text">常见的trait</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E6%8C%87%E9%92%88"><span class="toc-text">裸指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pin-Unpin"><span class="toc-text">Pin&#x2F;Unpin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokio"><span class="toc-text">Tokio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tokio-I-O"><span class="toc-text">Tokio I&#x2F;O</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cargo"><span class="toc-text">Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate-1"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-%E6%9E%9A%E4%B8%BE"><span class="toc-text">结构体&#x2F;枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C-1"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83-1"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-text">基本方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tokio"><span class="toc-text">tokio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets"><span class="toc-text">Snippets</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust"><span class="toc-text">Rust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84trait"><span class="toc-text">常见的trait</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E6%8C%87%E9%92%88"><span class="toc-text">裸指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pin-Unpin"><span class="toc-text">Pin&#x2F;Unpin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokio"><span class="toc-text">Tokio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tokio-I-O"><span class="toc-text">Tokio I&#x2F;O</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cargo"><span class="toc-text">Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate-1"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-%E6%9E%9A%E4%B8%BE"><span class="toc-text">结构体&#x2F;枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait-1"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C-1"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83-1"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F"><span class="toc-text">宏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-text">基本方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tokio"><span class="toc-text">tokio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets"><span class="toc-text">Snippets</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -992,6 +992,8 @@
 <li>在调试时, 可以使用<code>&#123;:?&#125;</code>或者<code>&#123;:#?&#125;</code>进行输出, <code>&#123;:#?&#125;</code>的输出更优美一些.</li>
 </ul>
 </li>
+</ul>
+<h2 id="trait-1"><a href="#trait-1" class="headerlink" title="trait"></a>trait</h2><ul>
 <li><p>给结构体实现<code>Default </code>trait, 可以在使用时获取一个默认值:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Default</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Student</span> &#123;<br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">default</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>    <span class="hljs-comment">// 构造默认值</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -1004,8 +1006,11 @@
 <li>如果结构体成员都可以进行比较, 用<code>#[derive(Eq)]</code></li>
 <li>如果出现了不满足自反性的成员, 用<code>#[derive(PartialEq)]</code>.</li>
 <li>比较结构体本质上是对每一个成员进行比较.</li>
+<li>一般<strong>枚举</strong>应该都需要比较, 定义枚举时需要考虑.</li>
 </ul>
 </li>
+<li><p>给结构体&#x2F;枚举实现<code>From</code>  trait可以通过<code>into()</code>和类型标注转换为对应的结构体类型, 例如:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[derive(Debug, PartialEq)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">Method</span> &#123;<br>    Get,<br>    Post,<br>    Uninitialized,<br>&#125;<br><span class="hljs-comment">// &amp;str到Method类型的转换</span><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">From</span>&lt;&amp;<span class="hljs-type">str</span>&gt; <span class="hljs-keyword">for</span> <span class="hljs-title class_">Method</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">from</span>(s: &amp;<span class="hljs-type">str</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        <span class="hljs-keyword">match</span> s &#123;<br>            <span class="hljs-string">&quot;GET&quot;</span> =&gt; Method::Get,<br>            <span class="hljs-string">&quot;POST&quot;</span> =&gt; Method::Post,<br>            _ =&gt; Method::Uninitialized,<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 可以用如下方法进行类型转换</span><br><span class="hljs-comment">// &quot;GET&quot;.into()</span><br><span class="hljs-comment">// Method::from(&quot;GET&quot;)</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><ul>
 <li><p>不可变引用遍历:</p>
@@ -1040,7 +1045,10 @@
 <li><p>根据原有的值更新值:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">value</span> = hashmap.<span class="hljs-title function_ invoke__">entry</span>(key).<span class="hljs-title function_ invoke__">or_insert</span>(<span class="hljs-number">0</span>);<br><span class="hljs-comment">// 更新</span><br>*value += <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="I-O操作-1"><a href="#I-O操作-1" class="headerlink" title="I&#x2F;O操作"></a>I&#x2F;O操作</h2><p>* </p>
+<h2 id="I-O操作-1"><a href="#I-O操作-1" class="headerlink" title="I&#x2F;O操作"></a>I&#x2F;O操作</h2><ul>
+<li><p>从标准输入读取<code>String</code>:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io;<br><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">a</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">new</span>();<br>io::<span class="hljs-title function_ invoke__">stdin</span>().<span class="hljs-title function_ invoke__">read_line</span>(&amp;<span class="hljs-keyword">mut</span> a).<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;&quot;</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="可变-引用-所有权-1"><a href="#可变-引用-所有权-1" class="headerlink" title="可变, 引用, 所有权"></a>可变, 引用, 所有权</h2><ul>
 <li><p>当你定义一个变量的时候, 你就需要问自己, 这个变量会不会在未来可变, 如果可变就定义成<code>mut</code>.</p>
 </li>
@@ -1063,6 +1071,9 @@
 <li><p>如果你看到一个变量是<code>&amp;mut</code>类型, 那么<strong>你一定要记得, 这个类型没有实现<code>Copy trait</code></strong>, 需要注意所有权.</p>
 </li>
 </ul>
+<h2 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h2><ul>
+<li><strong>好习惯</strong>: 使用<code>assert!()对函数传入的参数进行检查.</code></li>
+</ul>
 <h2 id="Option"><a href="#Option" class="headerlink" title="Option"></a>Option</h2><ul>
 <li><p>如果一个变量在之后可能被设置为None, 那么:</p>
 <ul>
@@ -1079,7 +1090,7 @@
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(x) = a &#123;<br>  <span class="hljs-comment">// x就是其中的值</span><br>&#125;<br><span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-comment">// 如果是None怎么处理</span><br>&#125;<br><br><span class="hljs-comment">// 如果要使用可变的值</span><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">mut</span> x) = a &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><code>if let</code>会拿走<code>Some(x)</code>中<code>x</code>的所有权, 叫做partially move.</li>
+<li><code>if let</code>会拿走<code>Some(x)</code>中<code>x</code>的所有权, 叫做partially move, 同样, <code>match</code>也会拿走, 模式匹配时可以考虑解构<code>&amp;Option</code>.</li>
 </ul>
 </li>
 <li><p>注意, 使用<code>a.unwrap()</code>会拿走<code>a</code>的所有权(如果没有实现Copy trait), 可以考虑实现<code>clone()</code>.</p>
@@ -1176,8 +1187,6 @@ let secret_number = rand::thread_rng().gen_range(a, b);
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>* TCP Server:<br><br>  ```rust<br>  use std::io::&#123;Read, Write&#125;;<br>  use std::net::TcpListener;<br>  <br>  fn main() &#123;<br>  <br>      // 监听<br>      let listener = TcpListener::bind(&quot;127.0.0.1:3000&quot;).unwrap();<br>  <br>      for stream in listener.incoming() &#123;<br>          let mut stream = stream.unwrap();<br>          let mut buffer = [0; 1024];<br>          // 读取到buffer<br>          stream.read(&amp;mut buffer).unwrap();<br>          // 给客户端返回buffer<br>          stream.write(&amp;mut buffer).unwrap();<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
 </code></pre>
 </li>
-<li><p>从标准输入读取<code>String</code>:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io;<br><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">a</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">new</span>();<br>io::<span class="hljs-title function_ invoke__">stdin</span>().<span class="hljs-title function_ invoke__">read_line</span>(&amp;<span class="hljs-keyword">mut</span> a).<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;&quot;</span>);<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
