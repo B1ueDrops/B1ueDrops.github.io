@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Rust原理与实战记录 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="TCP长连接和短链接https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;598303451?utm_id&#x3D;0">
-<meta property="og:type" content="article">
-<meta property="og:title" content="TCP的相关知识">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/04/21/network_tcp/index.html">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="TCP长连接和短链接https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;598303451?utm_id&#x3D;0">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-21T07:16:42.297Z">
-<meta property="article:modified_time" content="2024-04-21T07:17:28.400Z">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(44)</small>
+                <small>(46)</small>
             
         </div>
     </li>
@@ -184,9 +184,9 @@
             
                 
     <li>
-        <div data-rel="脑机接口">
+        <div data-rel="金融知识">
             
-            脑机接口
+            金融知识
             <small>(1)</small>
         </div>
         
@@ -199,9 +199,9 @@
             
                 
     <li>
-        <div data-rel="其他">
+        <div data-rel="脑机接口">
             
-            其他
+            脑机接口
             <small>(1)</small>
         </div>
         
@@ -218,6 +218,21 @@
             
             软件工程
             <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="社会技能">
+            
+            社会技能
+            <small>(2)</small>
         </div>
         
     </li>
@@ -302,7 +317,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="44">
+<input type="hidden" id="yelog_site_posts_number" value="46">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -352,6 +367,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/26/secure_drive/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安全驾驶知识">安全驾驶知识</span>
+            <span class="post-date" title="2024-04-26 19:53:53">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/04/26/quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基金及量化投资">基金及量化投资</span>
+            <span class="post-date" title="2024-04-26 13:42:05">2024/04/26</span>
+        </a>
         
         
         <a  class="All 计算机网络 "
@@ -444,11 +477,11 @@
         </a>
         
         
-        <a  class="All 其他 "
+        <a  class="All 社会技能 "
            href="/2024/04/05/eq/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="情商">情商</span>
+            <span class="post-title" title="培养高情商的一些策略">培养高情商的一些策略</span>
             <span class="post-date" title="2024-04-05 10:25:28">2024/04/05</span>
         </a>
         
@@ -787,7 +820,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-25 20:12:49'>2024-04-13 17:05</time>
+            Created At : <time class="date" title='Updated At: 2024-04-25 20:54:22'>2024-04-13 17:05</time>
         
     </div>
     <div class="article-meta">
@@ -798,7 +831,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust"><span class="toc-text">Rust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84trait"><span class="toc-text">常见的trait</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E6%8C%87%E9%92%88"><span class="toc-text">裸指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pin-Unpin"><span class="toc-text">Pin&#x2F;Unpin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokio"><span class="toc-text">Tokio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tokio-I-O"><span class="toc-text">Tokio I&#x2F;O</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cargo"><span class="toc-text">Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate-1"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-%E6%9E%9A%E4%B8%BE"><span class="toc-text">结构体&#x2F;枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait-1"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C-1"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83-1"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F"><span class="toc-text">宏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-text">基本方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tokio"><span class="toc-text">tokio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets"><span class="toc-text">Snippets</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust"><span class="toc-text">Rust</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constant"><span class="toc-text">Constant</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PartialEq"><span class="toc-text">PartialEq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator-IntoIterator"><span class="toc-text">Iterator &amp; IntoIterator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Iterator-Adapter"><span class="toc-text">Iterator Adapter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Consuming-Adapter"><span class="toc-text">Consuming Adapter</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E6%8C%87%E9%92%88"><span class="toc-text">裸指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pin-Unpin"><span class="toc-text">Pin&#x2F;Unpin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tokio"><span class="toc-text">Tokio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tokio-I-O"><span class="toc-text">Tokio I&#x2F;O</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cargo"><span class="toc-text">Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crate-1"><span class="toc-text">crate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-%E6%9E%9A%E4%B8%BE"><span class="toc-text">结构体&#x2F;枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait-1"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E6%93%8D%E4%BD%9C"><span class="toc-text">I&#x2F;O操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83-1"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F"><span class="toc-text">宏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-text">基本方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tokio"><span class="toc-text">tokio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets"><span class="toc-text">Snippets</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -820,11 +853,11 @@
 <ul>
 <li>**Zero Cost Abstraction: ** Rust引入的一些机制 (例如所有权机制), 并不会引入额外的运行时开销.</li>
 </ul>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<h2 id="Constant"><a href="#Constant" class="headerlink" title="Constant"></a>Constant</h2><ul>
 <li><p>常量和<strong>不可变的变量</strong>有很大的不同.</p>
 <ul>
 <li><p>常量需要使用<code>const</code>关键字, 并且<strong>必须标注类型</strong>.</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">const</span> MAX_NUM: <span class="hljs-type">i32</span> = <span class="hljs-number">1000_i32</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust">&lt;<span class="hljs-keyword">pub</span>&gt; <span class="hljs-keyword">const</span> MAX_NUM: <span class="hljs-type">i32</span> = <span class="hljs-number">1000_i32</span>;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>常量可以定义在任意作用域, 包括全局作用域.</p>
 </li>
@@ -843,7 +876,7 @@
 <li><p>crate是一颗由<code>mod</code>组成的树状结构:</p>
 <ul>
 <li>树的根是一个叫做<code>crate</code>的模块, 在概念上, 叫做crate root, 它由定义在<code>src/main.rs</code>和<code>src/lib.rs</code>中的元素组成.</li>
-<li>如果要在mod和mod之间建立父子关系, 需要在父模块中使用<code>mod XXX;</code>来声明模块.</li>
+<li>如果要在mod和mod之间建立父子关系, 需要在父模块中使用<code>mod XXX;</code>来声明子模块.</li>
 <li>Rust中, 一个文件夹如果里面有<code>mod.rs</code>, 那么会被看成是和文件夹同名的mod, mod中的元素就是在<code>mod.rs</code>中的元素.</li>
 <li>Rust中, 一个文件默认也被看成一个和文件同名的mod.</li>
 </ul>
@@ -879,9 +912,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="trait"><a href="#trait" class="headerlink" title="trait"></a>trait</h2><h3 id="常见的trait"><a href="#常见的trait" class="headerlink" title="常见的trait"></a>常见的trait</h3><ul>
-<li><p><code>PartialEq</code>:</p>
-<ul>
+<h2 id="trait"><a href="#trait" class="headerlink" title="trait"></a>trait</h2><h3 id="PartialEq"><a href="#PartialEq" class="headerlink" title="PartialEq"></a>PartialEq</h3><ul>
 <li><p>PartialEq采用了离散数学中对Equivalence Relation的定义.</p>
 <ul>
 <li><p>如果一个关系是Equivalence Relation, 那么需要满足自反性(reflexivity, <code>a = a</code>), 对称性(symmetry, <code>a = b -&gt; b = a</code>)以及传递性(transivity <code>a = b &amp;&amp; b = c -&gt; a = c</code>).</p>
@@ -891,9 +922,26 @@
 </ul>
 </li>
 </ul>
+<h3 id="Iterator-IntoIterator"><a href="#Iterator-IntoIterator" class="headerlink" title="Iterator &amp; IntoIterator"></a>Iterator &amp; IntoIterator</h3><ul>
+<li><p>一个类型, 如果实现了<code>Iterator</code> trait, 那么它就是一个迭代器类型.</p>
 </li>
+<li><p><code>Iterator</code> trait的内容如下:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">trait</span> <span class="hljs-title class_">Iterator</span> &#123;<br>  <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span>;<br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt;;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>一个集合如果实现了<code>IntoIterator</code> trait, 那么它就能够通过<code>into_iter(), iter(), iter_mut()</code>方法变成迭代器:</p>
+<ul>
+<li><code>into_iter()</code>会拿走集合变量的所有权, 调用<code>next()</code>返回的类型是<code>Some(T)</code>.</li>
+<li><code>iter()</code>使用集合的不可变引用, 调用<code>next()</code>返回<code>Some(&amp;T)</code>.</li>
+<li><code>iter_mut()</code>使用集合的可变引用, 调用<code>next()</code>返回<code>Some(&amp;mut T)</code>, 可以通过它修改集合中的元素.</li>
 </ul>
-<h2 id="I-O操作"><a href="#I-O操作" class="headerlink" title="I&#x2F;O操作"></a>I&#x2F;O操作</h2><h2 id="裸指针"><a href="#裸指针" class="headerlink" title="裸指针"></a>裸指针</h2><p>Rust中, 裸指针(raw pointer)分为一下两种类型:</p>
+</li>
+<li><p>**注意: **<code>next()</code>方法会改变迭代器的状态, 如果一个迭代器变量需要用到<code>next()</code>方法, 就需要<code>mut</code>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">let</span> <span class="hljs-variable">b</span> = a.<span class="hljs-title function_ invoke__">iter</span>();<br><span class="hljs-comment">// 代码会报错, 需要将b定义成mut</span><br>b.<span class="hljs-title function_ invoke__">next</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Iterator-Adapter"><a href="#Iterator-Adapter" class="headerlink" title="Iterator Adapter"></a>Iterator Adapter</h4><ul>
+<li>迭代器适配器(Iterator Adapter)</li>
+</ul>
+<h4 id="Consuming-Adapter"><a href="#Consuming-Adapter" class="headerlink" title="Consuming Adapter"></a>Consuming Adapter</h4><h2 id="裸指针"><a href="#裸指针" class="headerlink" title="裸指针"></a>裸指针</h2><p>Rust中, 裸指针(raw pointer)分为一下两种类型:</p>
 <ul>
 <li><code>*const T</code>: 不能通过裸指针修改原数据.</li>
 <li><code>*mut T</code>: 可以通过裸指针修改原数据.</li>
@@ -922,13 +970,16 @@
 <p>构造一个样例, 解释变量在堆内存中的移动?</p>
 </blockquote>
 <h2 id="Tokio"><a href="#Tokio" class="headerlink" title="Tokio"></a>Tokio</h2><h3 id="Tokio-I-O"><a href="#Tokio-I-O" class="headerlink" title="Tokio I&#x2F;O"></a>Tokio I&#x2F;O</h3><h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://rust-lang.github.io/api-guidelines/naming.html">https://rust-lang.github.io/api-guidelines/naming.html</a></li>
-<li>数字字面值之间加入<code>_</code>可以增加可读性.</li>
-<li>如果出现了多个<code>else if</code>, 考虑用<code>match</code>重构.</li>
+<li><p>各种元素的命名方式: <a target="_blank" rel="noopener" href="https://rust-lang.github.io/api-guidelines/naming.html">https://rust-lang.github.io/api-guidelines/naming.html</a></p>
+</li>
+<li><p>数字字面值之间加入<code>_</code>可以增加可读性.</p>
+</li>
+<li><p>如果出现了多个<code>else if</code>, 考虑用<code>match</code>重构.</p>
+</li>
 </ul>
 <h2 id="Cargo"><a href="#Cargo" class="headerlink" title="Cargo"></a>Cargo</h2><ul>
 <li>默认的<code>cargo build</code>是用<strong>debug级别</strong>进行编译, 可以用<code>cargo build --release</code>进行release级别的编译.<ul>
-<li>如果要跑benchmark, 一定要用<code>release</code>级别.</li>
+<li>如果要跑benchmark, 一定要用<code>release</code>级别, 因为debug级别会增加很多影响性能的东西.</li>
 </ul>
 </li>
 <li>更新依赖: <code>cargo update</code>.</li>
@@ -1040,12 +1091,12 @@
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">hashmap</span>: HashMap&lt;T, U&gt; = HashMap::<span class="hljs-title function_ invoke__">new</span>();<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>根据键获取值:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 传入引用, 返回Option&lt;T&gt;</span><br>hashmap.<span class="hljs-title function_ invoke__">get</span>(&amp;key);<br></code></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 传入&amp;T, 返回Option&lt;U&gt;</span><br>hashmap.<span class="hljs-title function_ invoke__">get</span>(&amp;key);<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>根据原有的值更新值:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">value</span> = hashmap.<span class="hljs-title function_ invoke__">entry</span>(key).<span class="hljs-title function_ invoke__">or_insert</span>(<span class="hljs-number">0</span>);<br><span class="hljs-comment">// 更新</span><br>*value += <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// value是&amp;mut T类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">value</span> = hashmap.<span class="hljs-title function_ invoke__">entry</span>(key).<span class="hljs-title function_ invoke__">or_insert</span>(<span class="hljs-number">0</span>);<br><span class="hljs-comment">// 更新</span><br>*value += <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="I-O操作-1"><a href="#I-O操作-1" class="headerlink" title="I&#x2F;O操作"></a>I&#x2F;O操作</h2><ul>
+<h2 id="I-O操作"><a href="#I-O操作" class="headerlink" title="I&#x2F;O操作"></a>I&#x2F;O操作</h2><ul>
 <li><p>从标准输入读取<code>String</code>:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io;<br><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">a</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">new</span>();<br>io::<span class="hljs-title function_ invoke__">stdin</span>().<span class="hljs-title function_ invoke__">read_line</span>(&amp;<span class="hljs-keyword">mut</span> a).<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;&quot;</span>);<br></code></pre></td></tr></table></figure></li>
 </ul>
@@ -1120,9 +1171,10 @@
 </li>
 <li><p>然后, 如果一个函数&#x2F;方法中, 要接收<code>Arc&lt;Mutex&lt;T&gt;&gt;</code>类型的变量, 可以直接转移所有权, 不用写成引用.</p>
 </li>
-<li><p>接收时:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 定义成mut, 然后后面进行修改</span><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">a</span> = b.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br></code></pre></td></tr></table></figure></li>
 </ul>
+</li>
+<li><p>获取Mutex时, 把Mutex包裹的变量定义成<code>mut</code> (一般包裹的变量都需要修改).</p>
+  <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 定义成mut, 然后后面进行修改</span><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">a</span> = b.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>如果一个变量可能存在于多个线程之间, 但是不需要被修改:</p>
 <ul>
