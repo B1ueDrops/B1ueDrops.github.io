@@ -820,7 +820,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-25 20:54:22'>2024-04-13 17:05</time>
+            Created At : <time class="date" title='Updated At: 2024-05-08 19:38:43'>2024-04-13 17:05</time>
         
     </div>
     <div class="article-meta">
@@ -1223,22 +1223,39 @@
 <li>使用tokio的异步锁可以在<code>.await</code>作用域内获取锁, 但是会有性能开销.</li>
 </ul>
 </li>
-<li><strong><code>tokio::sync::mpsc</code>和<code>std::sync::mspc</code>的区别:</strong><ul>
-<li>标准库中, 如果队列满了, 生产者线程会被阻塞, 但是<code>tokio</code>不会.</li>
+<li>**tokio实现异步客户端的思路: **<ul>
+<li><p>首先, <code>spawn</code>一个manager异步任务, 这个任务负责管理所有客户端, 相当于客户端的proxy.</p>
+</li>
+<li><p>然后, 在众多客户端和manager之间建立一个<code>tokio::sync::mpsc</code>.</p>
+<ul>
+<li>众多<code>tx</code>由众多客户端拿到, 客户端用<code>tx</code>给manager发送打包好的命令.</li>
+<li><code>rx</code>由manager拿到, 负责接收客户端发送来的命令.</li>
+</ul>
+</li>
+<li><p>然后, 在客户端内部, 建立一个<code>tokio::sync::oneshot</code> (单生产者, 单消费者, 一次发送一个任务)</p>
+<ul>
+<li><code>oneshot_tx</code>会被客户端打包到命令中, 发送给manager, manager收到之后会通过<code>oneshot_tx</code>把服务器发送来的东西返回给客户端.</li>
+<li><code>oneshot_rx</code>给客户端用来接收manager返回过来的命令.</li>
+</ul>
+</li>
+<li><p>manager通过connection资源与服务器交互.</p>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="Snippets"><a href="#Snippets" class="headerlink" title="Snippets"></a>Snippets</h2><ul>
 <li><p>生成<code>[a, b)</code>的随机数:</p>
 <ul>
-<li><p>使用<code>rand crate</code>.</p>
+<li>使用<code>rand crate</code>.</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> rand::Rng;<br>  <br><span class="hljs-keyword">let</span> <span class="hljs-variable">secret_number</span> = rand::<span class="hljs-title function_ invoke__">thread_rng</span>().<span class="hljs-title function_ invoke__">gen_range</span>(a, b);<br></code></pre></td></tr></table></figure>
 </li>
-<li><pre><code class="rust">use rand::Rng;
+<li><p>TCP Server:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io::&#123;Read, Write&#125;;<br><span class="hljs-keyword">use</span> std::net::TcpListener;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>    <span class="hljs-comment">// 监听</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-variable">listener</span> = TcpListener::<span class="hljs-title function_ invoke__">bind</span>(<span class="hljs-string">&quot;127.0.0.1:3000&quot;</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br><br>    <span class="hljs-keyword">for</span> <span class="hljs-variable">stream</span> <span class="hljs-keyword">in</span> listener.<span class="hljs-title function_ invoke__">incoming</span>() &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">stream</span> = stream.<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">buffer</span> = [<span class="hljs-number">0</span>; <span class="hljs-number">1024</span>];<br>        <span class="hljs-comment">// 读取到buffer</span><br>        stream.<span class="hljs-title function_ invoke__">read</span>(&amp;<span class="hljs-keyword">mut</span> buffer).<span class="hljs-title function_ invoke__">unwrap</span>();<br>        <span class="hljs-comment">// 给客户端返回buffer</span><br>        stream.<span class="hljs-title function_ invoke__">write</span>(&amp;<span class="hljs-keyword">mut</span> buffer).<span class="hljs-title function_ invoke__">unwrap</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-let secret_number = rand::thread_rng().gen_range(a, b);
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"><br>* TCP Server:<br><br>  ```rust<br>  use std::io::&#123;Read, Write&#125;;<br>  use std::net::TcpListener;<br>  <br>  fn main() &#123;<br>  <br>      // 监听<br>      let listener = TcpListener::bind(&quot;127.0.0.1:3000&quot;).unwrap();<br>  <br>      for stream in listener.incoming() &#123;<br>          let mut stream = stream.unwrap();<br>          let mut buffer = [0; 1024];<br>          // 读取到buffer<br>          stream.read(&amp;mut buffer).unwrap();<br>          // 给客户端返回buffer<br>          stream.write(&amp;mut buffer).unwrap();<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
-</code></pre>
-</li>
+<ul>
+<li><p>TCP Client:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io::&#123;Read, Write&#125;;<br><span class="hljs-keyword">use</span> std::net::TcpStream;<br><span class="hljs-keyword">use</span> std::<span class="hljs-type">str</span>;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">stream</span> = TcpListener::<span class="hljs-title function_ invoke__">connect</span>(<span class="hljs-string">&quot;127.0.0.1:3000&quot;</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <span class="hljs-comment">// 发送消息</span><br>  stream.<span class="hljs-title function_ invoke__">write</span>(<span class="hljs-string">&quot;Hello&quot;</span>.<span class="hljs-title function_ invoke__">as_bytes</span>()).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <br>	<span class="hljs-comment">// 接收消息</span><br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">buffer</span> = [<span class="hljs-number">0</span>; <span class="hljs-number">5</span>];<br>  stream.<span class="hljs-title function_ invoke__">read</span>(&amp;<span class="hljs-keyword">mut</span> buffer).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Response from server:&#123;:?&#125;&quot;</span>, <span class="hljs-type">str</span>::<span class="hljs-title function_ invoke__">from_utf8</span>(&amp;buffer).<span class="hljs-title function_ invoke__">unwrap</span>());<br>  <br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>

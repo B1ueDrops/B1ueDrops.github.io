@@ -820,7 +820,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-09 10:32:54'>2024-04-07 10:46</time>
+            Created At : <time class="date" title='Updated At: 2024-05-08 18:53:51'>2024-04-07 10:46</time>
         
     </div>
     <div class="article-meta">
@@ -831,7 +831,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">Python面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-GUI"><span class="toc-text">Python GUI</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E5%9F%BA%E7%A1%80"><span class="toc-text">Python基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">Python面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pandas"><span class="toc-text">Pandas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets-Library"><span class="toc-text">Snippets&#x2F;Library</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -847,9 +847,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Python面向对象"><a href="#Python面向对象" class="headerlink" title="Python面向对象"></a>Python面向对象</h2><h2 id="Python-GUI"><a href="#Python-GUI" class="headerlink" title="Python GUI"></a>Python GUI</h2><blockquote>
-<p>这里的GUI选用的是tkinker</p>
-</blockquote>
+        <h2 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h2><ul>
+<li>查看dict的keys: <code>print(a.keys())</code>.</li>
+<li>对某个对象<code>obj</code>做浅拷贝: <code>copyed_obj = obj.copy()</code>.</li>
+</ul>
+<h2 id="Python面向对象"><a href="#Python面向对象" class="headerlink" title="Python面向对象"></a>Python面向对象</h2><ul>
+<li><p>定义接口的方法:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> abc<br><br><span class="hljs-comment"># 抽象类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stimulus</span>(metaclass=abc.ABCMeta):<br><span class="hljs-meta">    @abc.abstractmethod</span><br>    <span class="hljs-comment"># 抽象方法</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><ul>
+<li><code>axis</code>的参数含义: 如果是0, 表示计算每一列的属性, 如果是1, 表示计算每一行的属性.</li>
+<li><code>df.rolling()</code>方法可以用于滑动窗口计算操作, 通常和<code>mean(), sum(), std_dev()</code>等一起使用.<ul>
+<li><code>df.ewm()</code>可以执行指数加权平均(Exponential Weighted Moving Average).</li>
+</ul>
+</li>
+</ul>
+<h2 id="Snippets-Library"><a href="#Snippets-Library" class="headerlink" title="Snippets&#x2F;Library"></a>Snippets&#x2F;Library</h2><ul>
+<li><p>读取matlab的<code>.mat</code>文件, 选用<code>mat73</code>库:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">pip3 install mat73<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># data是字典类型</span><br>data = mat73.loadmat(<span class="hljs-string">&#x27;mat文件路径&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
