@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>缓存一致性 | B1ueDrops</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="缓存一致性 | B1ueDrops">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:author" content="B1ueDrops">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpeg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpeg"/>
+</a>
+<div class="author">
+    <span>B1ueDrops</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/B1ueDrops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:bluedrops@yeah.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2381446488&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(65)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="编程语言">
+            
+            编程语言
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具/环境">
+            
+            工具/环境
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="计算机网络">
+            
+            计算机网络
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="金融知识">
+            
+            金融知识
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="脑机接口">
+            
+            脑机接口
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软件工程">
+            
+            软件工程
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="社会技能">
+            
+            社会技能
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="算法">
+            
+            算法
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="体系结构">
+            
+            体系结构
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="信号处理">
+            
+            信号处理
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI">
+            
+            AI
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="English">
+            
+            English
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="UNIX编程">
+            
+            UNIX编程
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">About</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="65">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All English "
+           href="/2024/05/13/restaurant_english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="饭店相关英语">饭店相关英语</span>
+            <span class="post-date" title="2024-05-13 20:25:52">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/05/13/combine_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="组合型的设计模式">组合型的设计模式</span>
+            <span class="post-date" title="2024-05-13 20:11:49">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/12/frontend-lang/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端语言使用日记">前端语言使用日记</span>
+            <span class="post-date" title="2024-05-12 21:13:45">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/12/recursion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="递归系列">递归系列</span>
+            <span class="post-date" title="2024-05-12 16:16:54">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/05/12/linux_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux上的进程控制">Linux上的进程控制</span>
+            <span class="post-date" title="2024-05-12 13:03:52">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/other-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="其他地道的英语表达">其他地道的英语表达</span>
+            <span class="post-date" title="2024-05-12 12:38:31">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/hotel-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="酒店相关英语">酒店相关英语</span>
+            <span class="post-date" title="2024-05-12 12:29:02">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/05/11/network_network_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络层">网络层</span>
+            <span class="post-date" title="2024-05-11 18:21:44">2024/05/11</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/05/10/network_application_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用层">应用层</span>
+            <span class="post-date" title="2024-05-10 20:46:30">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/10/airport-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机场相关英语">机场相关英语</span>
+            <span class="post-date" title="2024-05-10 10:12:57">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/09/english-writing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语写作背诵文章">英语写作背诵文章</span>
+            <span class="post-date" title="2024-05-09 21:11:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/09/practical-go/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Go语言使用日记">Go语言使用日记</span>
+            <span class="post-date" title="2024-05-09 20:48:25">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/05/09/database-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostgreSQL数据库教程">PostgreSQL数据库教程</span>
+            <span class="post-date" title="2024-05-09 20:24:37">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/05/09/cache-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cache的基础知识与设计策略">Cache的基础知识与设计策略</span>
+            <span class="post-date" title="2024-05-09 20:12:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/09/sort-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基础排序算法和应用">基础排序算法和应用</span>
+            <span class="post-date" title="2024-05-09 17:10:04">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/26/secure_drive/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安全驾驶知识">安全驾驶知识</span>
+            <span class="post-date" title="2024-04-26 19:53:53">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/04/26/quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基金及量化投资">基金及量化投资</span>
+            <span class="post-date" title="2024-04-26 13:42:05">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/04/21/network_tcp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TCP的相关知识">TCP的相关知识</span>
+            <span class="post-date" title="2024-04-21 15:16:42">2024/04/21</span>
+        </a>
+        
+        
+        <a  class="All 信号处理 "
+           href="/2024/04/20/fourier/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="傅立叶级数与变换">傅立叶级数与变换</span>
+            <span class="post-date" title="2024-04-20 18:36:34">2024/04/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/04/14/two_pointer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针系列">双指针系列</span>
+            <span class="post-date" title="2024-04-14 19:46:01">2024/04/14</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/13/practical-rust/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust使用日记">Rust使用日记</span>
+            <span class="post-date" title="2024-04-13 17:05:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/04/13/ai_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI的一些基础概念">AI的一些基础概念</span>
+            <span class="post-date" title="2024-04-13 16:43:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/04/13/transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简单理解Transformer">简单理解Transformer</span>
+            <span class="post-date" title="2024-04-13 12:36:45">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/12/rust_async/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust的异步编程">Rust的异步编程</span>
+            <span class="post-date" title="2024-04-12 14:09:37">2024/04/12</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/07/python_many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python用到什么学什么">Python用到什么学什么</span>
+            <span class="post-date" title="2024-04-07 10:46:59">2024/04/07</span>
+        </a>
+        
+        
+        <a  class="All 脑机接口 "
+           href="/2024/04/06/eeg_device/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="脑电的原理">脑电的原理</span>
+            <span class="post-date" title="2024-04-06 10:35:04">2024/04/06</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/05/eq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="培养高情商的一些策略">培养高情商的一些策略</span>
+            <span class="post-date" title="2024-04-05 10:25:28">2024/04/05</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/04/rust_multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust多线程编程模型">Rust多线程编程模型</span>
+            <span class="post-date" title="2024-04-04 12:38:50">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/02/rust_leetcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用Rust实现Leetcode算法题">用Rust实现Leetcode算法题</span>
+            <span class="post-date" title="2024-04-02 12:59:13">2024/04/02</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/01/rust_system/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust基础系统总结">Rust基础系统总结</span>
+            <span class="post-date" title="2024-04-01 19:24:52">2024/04/01</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/30/binary-tree/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二叉树/二叉搜索树全系列">二叉树/二叉搜索树全系列</span>
+            <span class="post-date" title="2024-03-30 17:07:34">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/03/30/multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多进程/多线程编程模型">多进程/多线程编程模型</span>
+            <span class="post-date" title="2024-03-30 16:47:20">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/30/profile/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="软件的性能分析">软件的性能分析</span>
+            <span class="post-date" title="2024-03-30 13:49:01">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/28/linkedlist/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="链表系列">链表系列</span>
+            <span class="post-date" title="2024-03-28 09:53:10">2024/03/28</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/23/vscode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="vscode插件配置">vscode插件配置</span>
+            <span class="post-date" title="2024-03-23 15:50:58">2024/03/23</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/command_line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shell脚本现用现学">Shell脚本现用现学</span>
+            <span class="post-date" title="2024-03-22 12:50:32">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/cpp-many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C++之用到什么学什么">C++之用到什么学什么</span>
+            <span class="post-date" title="2024-03-22 11:31:11">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/linear-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性DP">线性DP</span>
+            <span class="post-date" title="2024-03-20 18:11:22">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/tree-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树形DP">树形DP</span>
+            <span class="post-date" title="2024-03-20 18:10:56">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-method/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Methodology">英语科技论文写作模型-Methodology</span>
+            <span class="post-date" title="2024-03-20 16:53:17">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-abstract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Abstract">英语科技论文写作模型-Abstract</span>
+            <span class="post-date" title="2024-03-20 16:49:54">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-conclusion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Conclusion">英语科技论文写作模型-Conclusion</span>
+            <span class="post-date" title="2024-03-20 16:49:46">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-results/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Results">英语科技论文写作模型-Results</span>
+            <span class="post-date" title="2024-03-20 16:49:31">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/19/sci-writing-introduction/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Introduction">英语科技论文写作模型-Introduction</span>
+            <span class="post-date" title="2024-03-19 10:16:07">2024/03/19</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/03/10/ai-cnn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CNN的一些基础知识">CNN的一些基础知识</span>
+            <span class="post-date" title="2024-03-10 15:57:42">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/10/catalan/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡特兰数系列">卡特兰数系列</span>
+            <span class="post-date" title="2024-03-10 12:47:19">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/03/05/concurrent_sketch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="并发编程的概述">并发编程的概述</span>
+            <span class="post-date" title="2024-03-05 15:00:50">2024/03/05</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/03/knapsack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背包问题的模板总结">背包问题的模板总结</span>
+            <span class="post-date" title="2024-03-03 16:22:21">2024/03/03</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/virtualmem/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="虚拟内存的基础知识和设计">虚拟内存的基础知识和设计</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/sim-plus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高精度加减乘除">高精度加减乘除</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/prefix-sum-diff/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前缀和/差分">前缀和/差分</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/other-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="冷门算法/模拟题">冷门算法/模拟题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/cache-coherence/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="缓存一致性">缓存一致性</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/binary-search/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二分系列">二分系列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/02/jetbrains/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetbrains系列IDE的配置">Jetbrains系列IDE的配置</span>
+            <span class="post-date" title="2024-03-02 19:00:15">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/02/tmux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="tmux键位配置">tmux键位配置</span>
+            <span class="post-date" title="2024-03-02 13:16:32">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/01/clean_code/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码整洁之道">代码整洁之道</span>
+            <span class="post-date" title="2024-03-01 14:30:08">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/01/software_rule/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面向对象设计的基本原则">面向对象设计的基本原则</span>
+            <span class="post-date" title="2024-03-01 14:30:02">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/29/lazygit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="lazygit的一些常见用法">lazygit的一些常见用法</span>
+            <span class="post-date" title="2024-02-29 17:44:04">2024/02/29</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/28/yabai/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="yabai窗口管理器键位配置">yabai窗口管理器键位配置</span>
+            <span class="post-date" title="2024-02-28 13:01:35">2024/02/28</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/27/joshuto/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="joshuto的键位配置">joshuto的键位配置</span>
+            <span class="post-date" title="2024-02-27 19:43:49">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/02/26/behaviour_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="行为型的设计模式">行为型的设计模式</span>
+            <span class="post-date" title="2024-02-26 20:11:27">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/26/vimium/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome中vimium键位">Chrome中vimium键位</span>
+            <span class="post-date" title="2024-02-26 20:03:26">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/02/25/build_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="创建型的设计模式">创建型的设计模式</span>
+            <span class="post-date" title="2024-02-25 15:27:36">2024/02/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-cache-coherence" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">缓存一致性</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="体系结构">体系结构</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-05-13 21:10:14'>2024-03-02 19:59</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-text">缓存一致性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MESI%E5%8D%8F%E8%AE%AE"><span class="toc-text">MESI协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">Cache的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="toc-text">状态转移</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAI"><span class="toc-text">初始状态为I</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAM"><span class="toc-text">初始状态为M</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAS"><span class="toc-text">初始状态为S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAE"><span class="toc-text">初始状态为E</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BC%AA%E5%85%B1%E4%BA%AB"><span class="toc-text">缓存伪共享</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="缓存一致性问题"><a href="#缓存一致性问题" class="headerlink" title="缓存一致性问题"></a>缓存一致性问题</h2><p>一般来说, 一个CPU有一个L1缓存.</p>
+<p>假设CPU0访问了内存地址A, 那么内存地址A对应的数据就会被放到CPU0的L1缓存中.</p>
+<p>此后, CPU0可能修改内存地址A的数据, 这时候, 由于L1缓存的Write-Back策略, 修改可能同步不到内存.</p>
+<p>这时候, 如果CPU1想要访问内存地址A, 它应该从CPU0的L1缓存中读数据呢? 还是要从内存中读数据呢?</p>
+<ul>
+<li>这两个地方的数据很可能不一致.</li>
+</ul>
+<p>总结来说, 我的数据可能在:</p>
+<ul>
+<li>多个CPU的缓存.</li>
+<li>内存.</li>
+</ul>
+<p>中有多次的备份.</p>
+<p>我有很多的观察者, 例如CPU, DMA, GPU等, 我的目的就是要在这些观察者眼中, 保持这些副本的一致性.</p>
+<p>这种一致性会在硬件上实现, 这种硬件单元叫做SCU (Snoop Control Unit), CPU会通过总线连接到SCU.</p>
+<h2 id="MESI协议"><a href="#MESI协议" class="headerlink" title="MESI协议"></a>MESI协议</h2><h3 id="Cache的结构"><a href="#Cache的结构" class="headerlink" title="Cache的结构"></a>Cache的结构</h3><p>Cache的结构可以看作一个二维数组, 一行是一个Set, 一列是一个Way, 其中的一个元素叫做一个Cache Line.</p>
+<p>为了实现缓存一致性, 我需要给每一个Cache Line添加若干个状态:</p>
+<ul>
+<li>M (Modified): <ul>
+<li>数据有效.</li>
+<li>数据已经被修改, 但是没被同步到内存中.</li>
+<li>数据只存在于当前CPU的Cache中.</li>
+</ul>
+</li>
+<li>E (Exclusive):<ul>
+<li>数据有效.</li>
+<li>数据没有被修改, 并且和内存一致.</li>
+<li>数据只存在于当前CPU的Cache中.</li>
+</ul>
+</li>
+<li>S (shared):<ul>
+<li>数据有效.</li>
+<li>数据没有被修改, 并且和内存一致.</li>
+<li>数据存在于多个CPU的Cache中.</li>
+</ul>
+</li>
+<li>I(Invalid):<ul>
+<li>数据无效.</li>
+</ul>
+</li>
+</ul>
+<p>在实际实现中, MESI的状态可以用Valid位, Dirty位和Shard位来表示, 表示如下:</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>Valid</th>
+<th>Dirty</th>
+<th>Shared</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>M</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>E</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>S</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>I</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h3 id="状态转移"><a href="#状态转移" class="headerlink" title="状态转移"></a>状态转移</h3><p>下面针对某一个CPU的某一个Cache Line而言.</p>
+<h4 id="初始状态为I"><a href="#初始状态为I" class="headerlink" title="初始状态为I"></a>初始状态为I</h4><p>假设这个Cache Line的初始状态是I:</p>
+<ul>
+<li>如果CPU0发起了读请求, 正好读到这个Cache Line.<ul>
+<li>CPU0会把这个读请求广播到总线, 其他CPU会找到这个请求.</li>
+<li>然后其他CPU会检查自己的Cache中是否有这个数据:<ul>
+<li>如果有(假设有这个数据的CPU叫CPU1), 并且状态为S, 那么它会把这个数据通过总线发送到原来的CPU上, 原来CPU的Cache Line的状态就会变成S.</li>
+<li>如果CPU1有, 并且状态为E, 那么它会把数据通过总线传到CPU0, 并且CPU0上Cache Line状态从I变成S, CPU1上Cache Line状态从E变到S.</li>
+<li>如果CPU1有, 并且状态是M, 那么它会把数据通过总线传到CPU0, 然后再把数据修改同步到内存, 并且CPU0上Cache Line从I变成S, CPU1上Cache Line从M变成S.</li>
+<li>如果所有CPU都没有(状态都是I), 那么CPU0就会从内存中把数据读取到L1缓存, 并且状态从I变成E.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果CPU0发起了写请求, 正好要写到这个Cache Line.<ul>
+<li>CPU0会把这个写请求广播到总线, 其他CPU会找到这个请求.</li>
+<li>然后其他CPU会检查自己的Cache中是否有这个数据:<ul>
+<li>如果有, 并且状态是S, 那么CPU1会把数据发送到总线上, 并且设置Cache Line的状态是I.</li>
+<li>如果有, 并且状态是E, 那么CPU1会把数据发送到总线上, 并且设置Cache Line的状态是I.</li>
+<li>如果有, 并且状态是M, 那么CPU1会把数据发送到总线上, 并且设置Cache Line的状态是I, 并且把这个Cache Line的修改同步到内存中.</li>
+<li>如果所有CPU都没有, 那么CPU0就会从内存中把数据读取到L1 Cache, 然后进行写操作, 状态从I变成M.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果CPU0从总线上收到了读写请求, 那么它的状态不变(还是I), 会给总线回应一个信号, 告诉别的CPU自己没有这个Cache Line.</li>
+</ul>
+<h4 id="初始状态为M"><a href="#初始状态为M" class="headerlink" title="初始状态为M"></a>初始状态为M</h4><ul>
+<li>如果初始状态是M, 那么说明CPU的L1 Cache中是有最新的数据的, 对于本地的读&#x2F;写请求, 状态M不会改变.</li>
+<li>当这个CPU收到一个总线读信号, 它会把这个Cache Line的数据发送到总线上, 并且把这个Cache Line的修改同步到内存中, Cache Line的状态从M到S.</li>
+<li>当CPU收到一个总线写信号, 具体操作和收到读信号一样, 只是Cache Line的状态需要从M到I.</li>
+</ul>
+<h4 id="初始状态为S"><a href="#初始状态为S" class="headerlink" title="初始状态为S"></a>初始状态为S</h4><ul>
+<li>对于本地的读操作, Cache Line的状态不变.</li>
+<li>对于本地的写操作, Cache Line的状态从S变成M, 然后将这个写操作广播到总线上, 其他的CPU收到这个信号之后, 就会检查自己的Cache中是否有这个Cache Line, 如果有, 那么状态设置成I.</li>
+<li>对于总线读操作, Cache Line状态不变, Cache Line的数据会被广播到总线上.</li>
+<li>对于总线写操作, 将自身的Cache Line状态变为I.</li>
+</ul>
+<h4 id="初始状态为E"><a href="#初始状态为E" class="headerlink" title="初始状态为E"></a>初始状态为E</h4><ul>
+<li>对于本地的读操作, Cache Line的状态不变.</li>
+<li>对于本地写操作, Cache Line的状态从E变成M.</li>
+<li>对于总线读操作: Cache Line状态变为S, 对应的Cache Line数据会被放到总线上.</li>
+<li>对于总线写操作: Cache Line的状态变成I, 对应的Cache Line会被放到总线上.</li>
+</ul>
+<h2 id="缓存伪共享"><a href="#缓存伪共享" class="headerlink" title="缓存伪共享"></a>缓存伪共享</h2>
+      
+       <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©B1ueDrops
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

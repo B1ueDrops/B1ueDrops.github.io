@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>冷门算法/模拟题 | B1ueDrops</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="冷门算法/模拟题 | B1ueDrops">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:author" content="B1ueDrops">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpeg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpeg"/>
+</a>
+<div class="author">
+    <span>B1ueDrops</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/B1ueDrops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:bluedrops@yeah.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2381446488&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(65)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="编程语言">
+            
+            编程语言
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具/环境">
+            
+            工具/环境
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="计算机网络">
+            
+            计算机网络
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="金融知识">
+            
+            金融知识
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="脑机接口">
+            
+            脑机接口
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软件工程">
+            
+            软件工程
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="社会技能">
+            
+            社会技能
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="算法">
+            
+            算法
+            <small>(14)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="体系结构">
+            
+            体系结构
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="信号处理">
+            
+            信号处理
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI">
+            
+            AI
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="English">
+            
+            English
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="UNIX编程">
+            
+            UNIX编程
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">About</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="65">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All English "
+           href="/2024/05/13/restaurant_english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="饭店相关英语">饭店相关英语</span>
+            <span class="post-date" title="2024-05-13 20:25:52">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/05/13/combine_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="组合型的设计模式">组合型的设计模式</span>
+            <span class="post-date" title="2024-05-13 20:11:49">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/12/frontend-lang/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端语言使用日记">前端语言使用日记</span>
+            <span class="post-date" title="2024-05-12 21:13:45">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/12/recursion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="递归系列">递归系列</span>
+            <span class="post-date" title="2024-05-12 16:16:54">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/05/12/linux_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux上的进程控制">Linux上的进程控制</span>
+            <span class="post-date" title="2024-05-12 13:03:52">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/other-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="其他地道的英语表达">其他地道的英语表达</span>
+            <span class="post-date" title="2024-05-12 12:38:31">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/hotel-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="酒店相关英语">酒店相关英语</span>
+            <span class="post-date" title="2024-05-12 12:29:02">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/05/11/network_network_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络层">网络层</span>
+            <span class="post-date" title="2024-05-11 18:21:44">2024/05/11</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/05/10/network_application_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用层">应用层</span>
+            <span class="post-date" title="2024-05-10 20:46:30">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/10/airport-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机场相关英语">机场相关英语</span>
+            <span class="post-date" title="2024-05-10 10:12:57">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/09/english-writing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语写作背诵文章">英语写作背诵文章</span>
+            <span class="post-date" title="2024-05-09 21:11:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/09/practical-go/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Go语言使用日记">Go语言使用日记</span>
+            <span class="post-date" title="2024-05-09 20:48:25">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/05/09/database-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostgreSQL数据库教程">PostgreSQL数据库教程</span>
+            <span class="post-date" title="2024-05-09 20:24:37">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/05/09/cache-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cache的基础知识与设计策略">Cache的基础知识与设计策略</span>
+            <span class="post-date" title="2024-05-09 20:12:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/09/sort-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基础排序算法和应用">基础排序算法和应用</span>
+            <span class="post-date" title="2024-05-09 17:10:04">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/26/secure_drive/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安全驾驶知识">安全驾驶知识</span>
+            <span class="post-date" title="2024-04-26 19:53:53">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/04/26/quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基金及量化投资">基金及量化投资</span>
+            <span class="post-date" title="2024-04-26 13:42:05">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/04/21/network_tcp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TCP的相关知识">TCP的相关知识</span>
+            <span class="post-date" title="2024-04-21 15:16:42">2024/04/21</span>
+        </a>
+        
+        
+        <a  class="All 信号处理 "
+           href="/2024/04/20/fourier/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="傅立叶级数与变换">傅立叶级数与变换</span>
+            <span class="post-date" title="2024-04-20 18:36:34">2024/04/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/04/14/two_pointer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针系列">双指针系列</span>
+            <span class="post-date" title="2024-04-14 19:46:01">2024/04/14</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/13/practical-rust/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust使用日记">Rust使用日记</span>
+            <span class="post-date" title="2024-04-13 17:05:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/04/13/ai_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI的一些基础概念">AI的一些基础概念</span>
+            <span class="post-date" title="2024-04-13 16:43:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/04/13/transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简单理解Transformer">简单理解Transformer</span>
+            <span class="post-date" title="2024-04-13 12:36:45">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/12/rust_async/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust的异步编程">Rust的异步编程</span>
+            <span class="post-date" title="2024-04-12 14:09:37">2024/04/12</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/07/python_many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python用到什么学什么">Python用到什么学什么</span>
+            <span class="post-date" title="2024-04-07 10:46:59">2024/04/07</span>
+        </a>
+        
+        
+        <a  class="All 脑机接口 "
+           href="/2024/04/06/eeg_device/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="脑电的原理">脑电的原理</span>
+            <span class="post-date" title="2024-04-06 10:35:04">2024/04/06</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/05/eq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="培养高情商的一些策略">培养高情商的一些策略</span>
+            <span class="post-date" title="2024-04-05 10:25:28">2024/04/05</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/04/rust_multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust多线程编程模型">Rust多线程编程模型</span>
+            <span class="post-date" title="2024-04-04 12:38:50">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/02/rust_leetcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用Rust实现Leetcode算法题">用Rust实现Leetcode算法题</span>
+            <span class="post-date" title="2024-04-02 12:59:13">2024/04/02</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/01/rust_system/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust基础系统总结">Rust基础系统总结</span>
+            <span class="post-date" title="2024-04-01 19:24:52">2024/04/01</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/30/binary-tree/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二叉树/二叉搜索树全系列">二叉树/二叉搜索树全系列</span>
+            <span class="post-date" title="2024-03-30 17:07:34">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/03/30/multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多进程/多线程编程模型">多进程/多线程编程模型</span>
+            <span class="post-date" title="2024-03-30 16:47:20">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/30/profile/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="软件的性能分析">软件的性能分析</span>
+            <span class="post-date" title="2024-03-30 13:49:01">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/28/linkedlist/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="链表系列">链表系列</span>
+            <span class="post-date" title="2024-03-28 09:53:10">2024/03/28</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/23/vscode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="vscode插件配置">vscode插件配置</span>
+            <span class="post-date" title="2024-03-23 15:50:58">2024/03/23</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/command_line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shell脚本现用现学">Shell脚本现用现学</span>
+            <span class="post-date" title="2024-03-22 12:50:32">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/cpp-many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C++之用到什么学什么">C++之用到什么学什么</span>
+            <span class="post-date" title="2024-03-22 11:31:11">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/linear-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性DP">线性DP</span>
+            <span class="post-date" title="2024-03-20 18:11:22">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/tree-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树形DP">树形DP</span>
+            <span class="post-date" title="2024-03-20 18:10:56">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-method/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Methodology">英语科技论文写作模型-Methodology</span>
+            <span class="post-date" title="2024-03-20 16:53:17">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-abstract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Abstract">英语科技论文写作模型-Abstract</span>
+            <span class="post-date" title="2024-03-20 16:49:54">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-conclusion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Conclusion">英语科技论文写作模型-Conclusion</span>
+            <span class="post-date" title="2024-03-20 16:49:46">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-results/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Results">英语科技论文写作模型-Results</span>
+            <span class="post-date" title="2024-03-20 16:49:31">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/19/sci-writing-introduction/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Introduction">英语科技论文写作模型-Introduction</span>
+            <span class="post-date" title="2024-03-19 10:16:07">2024/03/19</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/03/10/ai-cnn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CNN的一些基础知识">CNN的一些基础知识</span>
+            <span class="post-date" title="2024-03-10 15:57:42">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/10/catalan/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡特兰数系列">卡特兰数系列</span>
+            <span class="post-date" title="2024-03-10 12:47:19">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/03/05/concurrent_sketch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="并发编程的概述">并发编程的概述</span>
+            <span class="post-date" title="2024-03-05 15:00:50">2024/03/05</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/03/knapsack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背包问题的模板总结">背包问题的模板总结</span>
+            <span class="post-date" title="2024-03-03 16:22:21">2024/03/03</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/virtualmem/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="虚拟内存的基础知识和设计">虚拟内存的基础知识和设计</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/sim-plus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高精度加减乘除">高精度加减乘除</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/prefix-sum-diff/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前缀和/差分">前缀和/差分</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/other-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="冷门算法/模拟题">冷门算法/模拟题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/cache-coherence/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="缓存一致性">缓存一致性</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/binary-search/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二分系列">二分系列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/02/jetbrains/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetbrains系列IDE的配置">Jetbrains系列IDE的配置</span>
+            <span class="post-date" title="2024-03-02 19:00:15">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/02/tmux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="tmux键位配置">tmux键位配置</span>
+            <span class="post-date" title="2024-03-02 13:16:32">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/01/clean_code/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码整洁之道">代码整洁之道</span>
+            <span class="post-date" title="2024-03-01 14:30:08">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/01/software_rule/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面向对象设计的基本原则">面向对象设计的基本原则</span>
+            <span class="post-date" title="2024-03-01 14:30:02">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/29/lazygit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="lazygit的一些常见用法">lazygit的一些常见用法</span>
+            <span class="post-date" title="2024-02-29 17:44:04">2024/02/29</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/28/yabai/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="yabai窗口管理器键位配置">yabai窗口管理器键位配置</span>
+            <span class="post-date" title="2024-02-28 13:01:35">2024/02/28</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/27/joshuto/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="joshuto的键位配置">joshuto的键位配置</span>
+            <span class="post-date" title="2024-02-27 19:43:49">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/02/26/behaviour_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="行为型的设计模式">行为型的设计模式</span>
+            <span class="post-date" title="2024-02-26 20:11:27">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/26/vimium/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome中vimium键位">Chrome中vimium键位</span>
+            <span class="post-date" title="2024-02-26 20:03:26">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/02/25/build_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="创建型的设计模式">创建型的设计模式</span>
+            <span class="post-date" title="2024-02-25 15:27:36">2024/02/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-other-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">冷门算法/模拟题</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="算法">算法</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-05-11 20:42:47'>2024-03-02 19:59</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97"><span class="toc-text">整数转罗马数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0"><span class="toc-text">罗马数字转整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">移除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-text">二维数组中的查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-text">用两个栈实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC"><span class="toc-text">有效的数独</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E6%A0%88"><span class="toc-text">手写栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">模拟散列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5"><span class="toc-text">逆时针打印矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5-%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97"><span class="toc-text">栈的压入&#x2F;弹出序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81IP%E5%9C%B0%E5%9D%80"><span class="toc-text">验证IP地址</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="整数转罗马数字"><a href="#整数转罗马数字" class="headerlink" title="整数转罗马数字"></a>整数转罗马数字</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/integer-to-roman/">https://leetcode.cn/problems/integer-to-roman/</a></p>
+</blockquote>
+<p>罗马数字的一些对应表如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">1    2    3    4    5    6    7    8    9<br>I   II   III   IV   V   VI   VII   VIII IX<br><br>10   20   30   40   50   60   70   80   90<br>X    XX   XXX  XL    L   LX  LXX  LXXX  XC<br><br>100  200  300  400  500  600   700    800   900<br>C    CC   CCC   CD   D    DC   DCC    DCCC   CM<br><br>1000  2000  3000<br> M     MM   MMM<br></code></pre></td></tr></table></figure>
+
+<p>基本单位是: <code>1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1</code></p>
+<p>对应的罗马数字的基本元素是<code>M, CM, D, CD, C, XC, L, XL, X, IX, V, IV, I </code></p>
+<p>直接对给定的数据求它们由多少个基本单位组成即可.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">intToRoman</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-type">int</span> values[] = &#123;<br>            <span class="hljs-number">1000</span>,<br>            <span class="hljs-number">900</span>, <span class="hljs-number">500</span>, <span class="hljs-number">400</span>, <span class="hljs-number">100</span>,<br>            <span class="hljs-number">90</span>, <span class="hljs-number">50</span>, <span class="hljs-number">40</span>, <span class="hljs-number">10</span>,<br>            <span class="hljs-number">9</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span><br>        &#125;;<br><br>        string resp[] = &#123;<br>            <span class="hljs-string">&quot;M&quot;</span>,<br>            <span class="hljs-string">&quot;CM&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>, <span class="hljs-string">&quot;CD&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>,<br>            <span class="hljs-string">&quot;XC&quot;</span>, <span class="hljs-string">&quot;L&quot;</span>, <span class="hljs-string">&quot;XL&quot;</span>, <span class="hljs-string">&quot;X&quot;</span>,<br>            <span class="hljs-string">&quot;IX&quot;</span>, <span class="hljs-string">&quot;V&quot;</span>, <span class="hljs-string">&quot;IV&quot;</span>, <span class="hljs-string">&quot;I&quot;</span>,<br>        &#125;;<br><br>        string ans;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">13</span>; i ++) &#123;<br>            <span class="hljs-keyword">while</span> (num &gt;= values[i]) &#123;<br>                num -= values[i];<br>                ans += resp[i];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="罗马数字转整数"><a href="#罗马数字转整数" class="headerlink" title="罗马数字转整数"></a>罗马数字转整数</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/roman-to-integer/">https://leetcode.cn/problems/roman-to-integer/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">romanToInt</span><span class="hljs-params">(string s)</span> </span>&#123;<br>            unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; hash;<br>            hash[<span class="hljs-string">&#x27;I&#x27;</span>] = <span class="hljs-number">1</span>;<br>            hash[<span class="hljs-string">&#x27;V&#x27;</span>] = <span class="hljs-number">5</span>;<br>            hash[<span class="hljs-string">&#x27;X&#x27;</span>] = <span class="hljs-number">10</span>;<br>            hash[<span class="hljs-string">&#x27;L&#x27;</span>] = <span class="hljs-number">50</span>;<br>            hash[<span class="hljs-string">&#x27;C&#x27;</span>] = <span class="hljs-number">100</span>;<br>            hash[<span class="hljs-string">&#x27;D&#x27;</span>] = <span class="hljs-number">500</span>;<br>            hash[<span class="hljs-string">&#x27;M&#x27;</span>] = <span class="hljs-number">1000</span>;<br><br>            <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>                <span class="hljs-keyword">if</span> (i + <span class="hljs-number">1</span> &lt; s.<span class="hljs-built_in">size</span>() &amp;&amp; hash[s[i]] &lt; hash[s[i + <span class="hljs-number">1</span>]]) &#123;<br>                    res -= hash[s[i]];<br>                &#125;<br>                <span class="hljs-keyword">else</span> res += hash[s[i]];<br>            &#125;<br>            <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/">https://leetcode.cn/problems/remove-element/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">removeElement</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-type">int</span> k = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] != val) nums[k ++] = nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> k;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/16/">https://www.acwing.com/problem/content/16/</a></p>
+</blockquote>
+<p>以最右上角的元素为基准, 如果最右上角的元素比<code>target</code>大, 那么就向左移动一格变小, 如果比<code>target</code>小, 那么就向右移动一格变大.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">searchArray</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; array, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <br>        <span class="hljs-type">int</span> n = array.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span> (!n) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-type">int</span> m = array[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = m - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (i &lt; n &amp;&amp; j &gt;= <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (target &lt; array[i][j]) j --;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (target &gt; array[i][j]) i ++;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="用两个栈实现队列"><a href="#用两个栈实现队列" class="headerlink" title="用两个栈实现队列"></a>用两个栈实现队列</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/36/">https://www.acwing.com/problem/content/description/36/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyQueue</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    stack&lt;<span class="hljs-type">int</span>&gt; s1;<br>    stack&lt;<span class="hljs-type">int</span>&gt; s2;<br>    <span class="hljs-comment">/** Initialize your data structure here. */</span><br>    <span class="hljs-built_in">MyQueue</span>() &#123;<br>        <br>    &#125;<br>    <br>    <span class="hljs-comment">/** Push element x to the back of queue. */</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        s1.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br>    <br>    <span class="hljs-comment">/** Removes the element from in front of queue and returns that element. */</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (s1.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">int</span> t = s1.<span class="hljs-built_in">top</span>(); s1.<span class="hljs-built_in">pop</span>();<br>            s2.<span class="hljs-built_in">push</span>(t);<br>        &#125;<br>        <span class="hljs-type">int</span> t = s1.<span class="hljs-built_in">top</span>(); s1.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">while</span> (s2.<span class="hljs-built_in">size</span>()) &#123;<br>            <span class="hljs-type">int</span> q = s2.<span class="hljs-built_in">top</span>(); s2.<span class="hljs-built_in">pop</span>();<br>            s1.<span class="hljs-built_in">push</span>(q);<br>        &#125;<br>        <span class="hljs-keyword">return</span> t;<br>    &#125;<br>    <br>    <span class="hljs-comment">/** Get the front element. */</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (s1.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">int</span> t = s1.<span class="hljs-built_in">top</span>(); s1.<span class="hljs-built_in">pop</span>();<br>            s2.<span class="hljs-built_in">push</span>(t);<br>        &#125;<br>        <span class="hljs-type">int</span> t = s1.<span class="hljs-built_in">top</span>();<br>        <span class="hljs-keyword">while</span> (s2.<span class="hljs-built_in">size</span>()) &#123;<br>            <span class="hljs-type">int</span> q = s2.<span class="hljs-built_in">top</span>(); s2.<span class="hljs-built_in">pop</span>();<br>            s1.<span class="hljs-built_in">push</span>(q);<br>        &#125;<br>        <span class="hljs-keyword">return</span> t;<br>    &#125;<br>    <br>    <span class="hljs-comment">/** Returns whether the queue is empty. */</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MyQueue object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MyQueue obj = MyQueue();</span><br><span class="hljs-comment"> * obj.push(x);</span><br><span class="hljs-comment"> * int param_2 = obj.pop();</span><br><span class="hljs-comment"> * int param_3 = obj.peek();</span><br><span class="hljs-comment"> * bool param_4 = obj.empty();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="有效的数独"><a href="#有效的数独" class="headerlink" title="有效的数独"></a>有效的数独</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-sudoku/">https://leetcode.cn/problems/valid-sudoku/</a></p>
+</blockquote>
+<p>枚举行列和每一个小九宫格, 判断即可.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isValidSudoku</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;<br>      <span class="hljs-comment">/* 判重数组 */</span><br>        <span class="hljs-type">bool</span> st[<span class="hljs-number">9</span>];<br><br>        <span class="hljs-comment">/* 判断行 */</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i ++) &#123;<br>            <span class="hljs-built_in">memset</span>(st, <span class="hljs-literal">false</span>, <span class="hljs-built_in">sizeof</span>(st));<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">9</span>; j ++) &#123;<br>                <span class="hljs-keyword">if</span> (board[i][j] == <span class="hljs-string">&#x27;.&#x27;</span>) <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-type">int</span> t = board[i][j] - <span class="hljs-string">&#x27;1&#x27;</span>;<br>                <span class="hljs-keyword">if</span> (st[t]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                st[t] = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <br><br>        <span class="hljs-comment">/* 判断列 */</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i ++) &#123;<br>            <span class="hljs-built_in">memset</span>(st, <span class="hljs-literal">false</span>, <span class="hljs-built_in">sizeof</span>(st));<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">9</span>; j ++) &#123;<br>                <span class="hljs-keyword">if</span> (board[j][i] == <span class="hljs-string">&#x27;.&#x27;</span>) <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-type">int</span> t = board[j][i] - <span class="hljs-string">&#x27;1&#x27;</span>;<br>                <span class="hljs-keyword">if</span> (st[t]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                st[t] = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>				<span class="hljs-comment">/* 判断每一个小九宫格 */</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i += <span class="hljs-number">3</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">9</span>; j += <span class="hljs-number">3</span>) &#123;<br>                <span class="hljs-built_in">memset</span>(st, <span class="hljs-literal">false</span>, <span class="hljs-built_in">sizeof</span>(st));<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x = i; x &lt; i + <span class="hljs-number">3</span>; x ++) &#123;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> y = j; y &lt; j + <span class="hljs-number">3</span>; y ++) &#123;<br>                        <span class="hljs-keyword">if</span> (board[x][y] == <span class="hljs-string">&#x27;.&#x27;</span>) <span class="hljs-keyword">continue</span>;<br>                        <span class="hljs-type">int</span> t = board[x][y] - <span class="hljs-string">&#x27;1&#x27;</span>;<br>                        <span class="hljs-keyword">if</span> (st[t]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                        st[t] = <span class="hljs-literal">true</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="手写栈"><a href="#手写栈" class="headerlink" title="手写栈"></a>手写栈</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/830/">https://www.acwing.com/problem/content/830/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-type">int</span> tt;<br><span class="hljs-type">int</span> stk[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    tt = <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    stk[++ tt] = x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    tt --;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> tt &lt; <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> stk[tt];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/* 不要忘了init */</span><br>    <span class="hljs-built_in">init</span>();<br>    <span class="hljs-type">int</span> m;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;m);<br>    <br>    <span class="hljs-keyword">while</span> (m --)<br>    &#123;<br>        string op;<br>        <span class="hljs-type">int</span> x;<br>        <br>        cin &gt;&gt; op;<br>        <br>        <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;push&quot;</span>)<br>        &#123;<br>            cin &gt;&gt; x;<br>            <span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;pop&quot;</span>)<br>        &#123;<br>            <span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;query&quot;</span>)<br>        &#123;<br>            cout &lt;&lt; <span class="hljs-built_in">top</span>() &lt;&lt; endl;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;empty&quot;</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">empty</span>()) <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;YES&quot;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;NO&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="模拟散列表"><a href="#模拟散列表" class="headerlink" title="模拟散列表"></a>模拟散列表</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/842/">https://www.acwing.com/problem/content/842/</a></p>
+</blockquote>
+<p>拉链法: 将要存储的元素$x$, 哈希之后的下标是$k$, 如果有冲突, 就在数组的基础上, 拉成一个链表.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100003</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> h[N], e[N], ne[N], idx;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> k = (x % N + N) % N;<br>    e[idx] = x;<br>    ne[idx] = h[k];<br>    h[k] = idx ++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> k = (x % N + N) % N;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = h[k]; i != <span class="hljs-number">-1</span>; i = ne[i])<br>        <span class="hljs-keyword">if</span> (e[i] == x) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; n;<br>    <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> h);<br>    <br>    string op;<br>    <span class="hljs-type">int</span> x;<br>    <br>    <span class="hljs-keyword">while</span> (n --)<br>    &#123;<br>        cin &gt;&gt; op &gt;&gt; x;<br>        <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;I&quot;</span>) <span class="hljs-built_in">insert</span>(x);<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find</span>(x)) <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;Yes&quot;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;No&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="逆时针打印矩阵"><a href="#逆时针打印矩阵" class="headerlink" title="逆时针打印矩阵"></a>逆时针打印矩阵</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/39/">https://www.acwing.com/problem/content/description/39/</a></p>
+</blockquote>
+<p>可以借助方向向量实现.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">printMatrix</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt; &gt; matrix)</span> </span>&#123;<br>        <br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        <span class="hljs-keyword">if</span> (matrix.<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span> res;<br>        <br>        <span class="hljs-type">int</span> n = matrix.<span class="hljs-built_in">size</span>(), m = matrix[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">st</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(m, <span class="hljs-literal">false</span>));<br>        <br>        <span class="hljs-type">int</span> dx[<span class="hljs-number">4</span>] = &#123; <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span> &#125;;<br>        <span class="hljs-type">int</span> dy[<span class="hljs-number">4</span>] = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span> &#125;;<br>        <br>        <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>, d = <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt; n * m; k ++)<br>        &#123;<br>            res.<span class="hljs-built_in">push_back</span>(matrix[x][y]);<br>            st[x][y] = <span class="hljs-literal">true</span>;<br>            <br>            <span class="hljs-type">int</span> a = x + dx[d], b = y + dy[d];<br>            <span class="hljs-keyword">if</span> (a &lt; <span class="hljs-number">0</span> || a &gt;= n || b &lt; <span class="hljs-number">0</span> || b &gt;= m || st[a][b])<br>                d = (d + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>;<br>            <br>            a = x + dx[d], b = y + dy[d];<br>            x = a, y = b;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="栈的压入-弹出序列"><a href="#栈的压入-弹出序列" class="headerlink" title="栈的压入&#x2F;弹出序列"></a>栈的压入&#x2F;弹出序列</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/40/">https://www.acwing.com/problem/content/description/40/</a></p>
+</blockquote>
+<p>直接用一个栈真实模拟即可, 如果最后模拟完压入弹出序列之后栈为空, 那么就是一个合法的压入&#x2F;弹出序列.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isPopOrder</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; pushV,vector&lt;<span class="hljs-type">int</span>&gt; popV)</span> </span>&#123;<br>        <br>        <span class="hljs-type">int</span> n = pushV.<span class="hljs-built_in">size</span>(), m = popV.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span> (n != m) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <br>        stack&lt;<span class="hljs-type">int</span>&gt; stk;<br>        <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> x : pushV)<br>        &#123;<br>            stk.<span class="hljs-built_in">push</span>(x);<br>            <span class="hljs-keyword">while</span> (stk.<span class="hljs-built_in">size</span>() &amp;&amp; popV[index] == stk.<span class="hljs-built_in">top</span>())<br>            &#123;<br>                stk.<span class="hljs-built_in">pop</span>();<br>                index ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> stk.<span class="hljs-built_in">empty</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="验证IP地址"><a href="#验证IP地址" class="headerlink" title="验证IP地址"></a>验证IP地址</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-ip-address/">https://leetcode.cn/problems/validate-ip-address/</a></p>
+</blockquote>
+<p>将判断逻辑进行拆分再判断即可.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">split</span><span class="hljs-params">(string str, <span class="hljs-type">char</span> t)</span> </span>&#123;<br>        str += t;<br>        vector&lt;string&gt; items;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            <span class="hljs-type">int</span> j = i;<br>            string item;<br>            <span class="hljs-keyword">while</span> (str[j] != t) item += str[j ++];<br>            items.<span class="hljs-built_in">push_back</span>(item);<br>            i = j;<br>        &#125;<br>        <span class="hljs-keyword">return</span> items;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">check_ipv4</span><span class="hljs-params">(string ip)</span> </span>&#123;<br>        vector&lt;string&gt; ip_items = <span class="hljs-built_in">split</span>(ip, <span class="hljs-string">&#x27;.&#x27;</span>);<br>        <span class="hljs-comment">// Check Length</span><br>        <span class="hljs-keyword">if</span> (ip_items.<span class="hljs-built_in">size</span>() != <span class="hljs-number">4</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>        <span class="hljs-comment">// Check each component</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> item: ip_items) &#123;<br>            <span class="hljs-comment">// check item length</span><br>            <span class="hljs-keyword">if</span> (item.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span> || item.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>            <span class="hljs-comment">// check item character</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c: item) &#123;<br>                <span class="hljs-keyword">if</span> (c &lt; <span class="hljs-string">&#x27;0&#x27;</span> || c &gt; <span class="hljs-string">&#x27;9&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>            &#125;<br>            <span class="hljs-comment">// check leading zeros</span><br>            <span class="hljs-keyword">if</span> (item.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">1</span> &amp;&amp; item[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;0&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>            <span class="hljs-comment">// check number range</span><br>            <span class="hljs-type">int</span> num = <span class="hljs-built_in">stoi</span>(item);<br>            <span class="hljs-keyword">if</span> (num &gt; <span class="hljs-number">255</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;IPv4&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">char</span> c)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;9&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;f&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;F&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">check_ipv6</span><span class="hljs-params">(string ip)</span> </span>&#123;<br>        vector&lt;string&gt; ip_items = <span class="hljs-built_in">split</span>(ip, <span class="hljs-string">&#x27;:&#x27;</span>);<br>      	<span class="hljs-comment">// check Length</span><br>        <span class="hljs-keyword">if</span> (ip_items.<span class="hljs-built_in">size</span>() != <span class="hljs-number">8</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>				<span class="hljs-comment">// check each component</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> item: ip_items) &#123;<br>          	<span class="hljs-comment">// check component length</span><br>            <span class="hljs-keyword">if</span> (item.<span class="hljs-built_in">size</span>() &lt; <span class="hljs-number">1</span> || item.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">4</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>          	<span class="hljs-comment">// check component character</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> c: item) &#123;<br>                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">check</span>(c)) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;IPv6&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">validIPAddress</span><span class="hljs-params">(string ip)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (ip.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;.&quot;</span>) != <span class="hljs-number">-1</span> &amp;&amp; ip.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;:&quot;</span>) != <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>        <span class="hljs-keyword">if</span> (ip.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;.&quot;</span>) != <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">check_ipv4</span>(ip);<br>        <span class="hljs-keyword">if</span> (ip.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;:&quot;</span>) != <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">check_ipv6</span>(ip);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Neither&quot;</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©B1ueDrops
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
