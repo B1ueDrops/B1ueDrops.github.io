@@ -6,15 +6,13 @@
   <meta name="keywords" content="">
   <meta name="description" content="傅立叶级数与变换 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可计算理论和编译">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/05/14/compiler/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-05-14T12:35:12.767Z">
+<meta property="article:modified_time" content="2024-05-14T12:35:38.466Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +113,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(65)</small>
+                <small>(68)</small>
             
         </div>
     </li>
@@ -127,7 +125,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(10)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -277,7 +275,7 @@
         <div data-rel="AI">
             
             AI
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -332,7 +330,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="65">
+<input type="hidden" id="yelog_site_posts_number" value="68">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,6 +382,42 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 编程语言 "
+           href="/2024/05/14/compiler/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="可计算理论和编译">可计算理论和编译</span>
+            <span class="post-date" title="2024-05-14 20:35:12">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/14/regular_expression/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="正则表达式原理和实战">正则表达式原理和实战</span>
+            <span class="post-date" title="2024-05-14 20:14:59">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/14/recursion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="递归系列">递归系列</span>
+            <span class="post-date" title="2024-05-14 16:02:10">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/05/14/probability/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="概率论与数理统计">概率论与数理统计</span>
+            <span class="post-date" title="2024-05-14 10:20:01">2024/05/14</span>
+        </a>
+        
+        
         <a  class="All English "
            href="/2024/05/13/restaurant_english/"
            data-tag=""
@@ -408,15 +442,6 @@
            data-author="" >
             <span class="post-title" title="前端语言使用日记">前端语言使用日记</span>
             <span class="post-date" title="2024-05-12 21:13:45">2024/05/12</span>
-        </a>
-        
-        
-        <a  class="All 算法 "
-           href="/2024/05/12/recursion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="递归系列">递归系列</span>
-            <span class="post-date" title="2024-05-12 16:16:54">2024/05/12</span>
         </a>
         
         
@@ -541,7 +566,7 @@
            href="/2024/04/21/network_tcp/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="TCP的相关知识">TCP的相关知识</span>
+            <span class="post-title" title="传输层">传输层</span>
             <span class="post-date" title="2024-04-21 15:16:42">2024/04/21</span>
         </a>
         
@@ -1006,7 +1031,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-10 15:01:13'>2024-04-20 18:36</time>
+            Created At : <time class="date" title='Updated At: 2024-05-14 10:14:24'>2024-04-20 18:36</time>
         
     </div>
     <div class="article-meta">
@@ -1043,7 +1068,7 @@
 </li>
 </ul>
 <h2 id="周期是-2-pi-的函数傅立叶级数"><a href="#周期是-2-pi-的函数傅立叶级数" class="headerlink" title="周期是$2\pi$的函数傅立叶级数"></a>周期是$2\pi$的函数傅立叶级数</h2><ul>
-<li><p>假设函数$f(x)$是周期为$2\pi$的函数, 那么$f(x)$可以写成:<br>$$<br>f(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{\infin}(a_ncosnx + b_nsinnx)<br>$$</p>
+<li><p>假设函数$f(x)$是周期为$2\pi$的函数, 那么$f(x)$可以写成:<br>$$<br>f(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{\infty}(a_ncosnx + b_nsinnx)<br>$$</p>
 </li>
 <li><p>求$\int_{-\pi}^{\pi}f(x)dx$, 可以得到$a_0 &#x3D; \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)dx$</p>
 </li>
@@ -1052,17 +1077,10 @@
 <li><p>求$\int_{-\pi}^{\pi}f(x)sinmx\ dx$, 可以得到$a_n &#x3D; \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)sinnx\ dx$</p>
 </li>
 </ul>
-<h2 id="周期是-2L-的函数傅立叶级数"><a href="#周期是-2L-的函数傅立叶级数" class="headerlink" title="周期是$2L$的函数傅立叶级数"></a>周期是$2L$的函数傅立叶级数</h2><ul>
-<li>如果函数$f(x)$的周期是$2\pi$, 那么$f(\frac{\pi}{L}x)$的周期就是$2L$​.</li>
-<li>假设$g(x) &#x3D; f(\frac{\pi}{L}x)$, $f(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{\infin}(a_ncosnx + b_nsinnx)$​, 那么$g(x) &#x3D; \frac{a^{‘}<em>0}{2} + \sum</em>{n&#x3D;1}^{\infin}(a^{‘}_ncos\frac{n\pi}{L}x + b^{‘}_nsin\frac{n\pi}{L}x)$.<ul>
-<li>其中, $a^{‘}<em>0 &#x3D; \frac{1}{\pi}f(\frac{\pi}{L}x)d(\frac{\pi}{L}x) &#x3D; \frac{1}{L} \int</em>{-L}^{L}g(x)dx$</li>
-<li>$a^{‘}<em>n &#x3D; \frac{1}{L}\int</em>{-L}^{L}g(x)cos\frac{n\pi}{L}x\ dx$</li>
-<li>$b^{‘}<em>{n} &#x3D; \frac{1}{L}\int</em>{-L}^{L}g(x)sin\frac{n\pi}{L}x\ dx$</li>
-</ul>
-</li>
-</ul>
-<p>由于在工程中, 时间没有负数, $\int_{-L}^{L}$一般写成$\int_{0}^{T}$, 其中$T &#x3D; 2L$, 然后定义$\omega &#x3D; \frac{2\pi}{T}$, 那么:<br>$$<br>a_0 &#x3D; \frac{2}{T}\int_{0}^{T}g(x)dx \<br>a_n &#x3D; \frac{2}{T}\int_{0}^{T}g(x)cosn\omega x\ dx \<br>b_n &#x3D; \frac{2}{T}\int_{0}^{T}g(x)sinn\omega x\ dx \<br>$$<br>这个就是周期是$T$的函数$g(x)$的傅立叶变换, 当$T \rightarrow \infin$​时, 就是一般的函数.</p>
-<p>$g(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{\infin}(a_ncosn\omega x + b_nsinn\omega x)$</p>
+<h2 id="周期是-2L-的函数傅立叶级数"><a href="#周期是-2L-的函数傅立叶级数" class="headerlink" title="周期是$2L$的函数傅立叶级数"></a>周期是$2L$的函数傅立叶级数</h2><p>如果函数$f(x)$的周期是$2\pi$, 那么$f(\frac{\pi}{L}x)$的周期就是$2L$​.</p>
+<p>假设$g(x) &#x3D; f(\frac{\pi}{L}x)$:<br>$$<br>f(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{\infty}(a_ncosnx + b_nsinnx) \<br>g(x)&#x3D;\frac{a^{‘}<em>0}{2}+\sum</em>{n&#x3D;1}^{\infty}(a^{‘}<em>ncos\frac{n\pi}{L}x+b^{‘}<em>nsin\frac{n\pi}{L}x) \<br>a^{‘}<em>0 &#x3D; \frac{1}{\pi}f(\frac{\pi}{L}x)d(\frac{\pi}{L}x) &#x3D; \frac{1}{L} \int</em>{-L}^{L}g(x)dx \<br>a^{‘}<em>n &#x3D; \frac{1}{L}\int</em>{-L}^{L}g(x)cos\frac{n\pi}{L}x dx \<br>b^{‘}</em>{n} &#x3D; \frac{1}{L}\int</em>{-L}^{L}g(x)sin\frac{n\pi}{L}x dx \<br>$$</p>
+<p>由于在工程中, 时间没有负数, $\int_{-L}^{L}$一般写成$\int_{0}^{T}$, 其中$T &#x3D; 2L$, 然后定义$\omega &#x3D; \frac{2\pi}{T}$, 那么:<br>$$<br>a_0 &#x3D; \frac{2}{T}\int_{0}^{T}g(x)dx \<br>a_n &#x3D; \frac{2}{T}\int_{0}^{T}g(x)cosn\omega x\ dx \<br>b_n &#x3D; \frac{2}{T}\int_{0}^{T}g(x)sinn\omega x\ dx \<br>$$<br>这个就是周期是$T$的函数$g(x)$的傅立叶变换, 当$T \rightarrow \infty$​时, 就是一般的函数.</p>
+<p>$g(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{\infty}(a_ncosn\omega x + b_nsinn\omega x)$</p>
 <h2 id="傅立叶级数的复数形式"><a href="#傅立叶级数的复数形式" class="headerlink" title="傅立叶级数的复数形式"></a>傅立叶级数的复数形式</h2><ul>
 <li>根据欧拉公式$e^{ix} &#x3D; cosx + isinx$, 可以得到:<ul>
 <li>$cosx &#x3D; \frac{1}{2}(e^{ix} + e^{-ix})$</li>
@@ -1070,8 +1088,8 @@
 </ul>
 </li>
 <li>将$cosx$和$sinx$的表达式带入 傅立叶级数的表达式:<ul>
-<li>$g(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{+\infin} \frac{a_n - ib_n}{2}e^{in\omega x} + \sum_{n&#x3D;1}^{+\infin} \frac{a_n + ib_n}{2} e^{-in\omega x}$</li>
-<li>将最后一项的$n$变成$-n$, 可以得到: $g(x) &#x3D; \sum_{n&#x3D;0}^0 \frac{a_n - ib_n}{2}e^{in\omega x}+ \sum_{n&#x3D;1}^{+\infin} \frac{a_n - ib_n}{2}e^{in\omega x} + \sum_{-\infin}^{-1}\frac{a_{-n} + ib_{-n}}{2}e^{in\omega x}$.</li>
+<li>$g(x) &#x3D; \frac{a_0}{2} + \sum_{n&#x3D;1}^{+\infty} \frac{a_n - ib_n}{2}e^{in\omega x} + \sum_{n&#x3D;1}^{+\infty} \frac{a_n + ib_n}{2} e^{-in\omega x}$</li>
+<li>将最后一项的$n$变成$-n$, 可以得到: $g(x) &#x3D; \sum_{n&#x3D;0}^0 \frac{a_n - ib_n}{2}e^{in\omega x}+ \sum_{n&#x3D;1}^{+\infty} \frac{a_n - ib_n}{2}e^{in\omega x} + \sum_{-\infty}^{-1}\frac{a_{-n} + ib_{-n}}{2}e^{in\omega x}$.</li>
 <li>因此, $g(x) &#x3D; C_n e^{in\omega x}$, 其中:<ul>
 <li>$n &#x3D; -1, -2, …$时, $C_n &#x3D; \frac{a_{-n} + ib_{-n}}{2}$.</li>
 <li>当$n &#x3D; 0, 1, 2, $时, $C_n &#x3D; \frac{a_n - ib_n}{2}$.</li>
@@ -1081,25 +1099,25 @@
 </li>
 <li>将$a_n, b_n$的表达式带入$C_n$, 可以发现:$C_n &#x3D; \frac{1}{T}f_{0}^{T}f(x)e^{-in\omega x}\ dx$.</li>
 </ul>
-<p>那么, 对于任何一个周期函数$f(t)$, 假设它的周期是$T$, 它可以写成傅立叶级数:<br>$$<br>f(t) &#x3D; \sum_{n&#x3D;-\infin}^{\infin} C_n e^{in\omega t}\<br>C_n &#x3D; \frac{1}{T}\int_{0}^T f(t)e^{-in\omega t}dt<br>$$</p>
+<p>那么, 对于任何一个周期函数$f(t)$, 假设它的周期是$T$, 它可以写成傅立叶级数:<br>$$<br>f(t) &#x3D; \sum_{n&#x3D;-\infty}^{\infty} C_n e^{in\omega t}\<br>C_n &#x3D; \frac{1}{T}\int_{0}^T f(t)e^{-in\omega t}dt<br>$$</p>
 <h2 id="傅立叶变换"><a href="#傅立叶变换" class="headerlink" title="傅立叶变换"></a>傅立叶变换</h2><ul>
 <li>根据周期函数傅立叶级数的结果, 真正决定一个函数的是$C_n$<ul>
 <li>$C_n$是一个函数, 给定一个$n$, 就会对应一个复数, 其中给定一个$n$就等价于给定一个$n\omega_0$, 这个函数就是频谱.</li>
 </ul>
 </li>
-<li>$f(t) &#x3D; \sum_{n&#x3D;-\infin}^{\infin} \frac{\Delta \omega}{2\pi} \int_{-\frac{T}{2}}^{\frac{T}{2}}f(t)dt\ e^{in \omega_0 t}$​​<ul>
+<li>$f(t) &#x3D; \sum_{n&#x3D;-\infty}^{\infty} \frac{\Delta \omega}{2\pi} \int_{-\frac{T}{2}}^{\frac{T}{2}}f(t)dt\ e^{in \omega_0 t}$​​<ul>
 <li>其中, $\Delta \omega$就是频谱两个离散的$\omega$之间的距离, 当周期趋于正无穷时, $\Delta \omega$趋于0, $\omega_0$就相当于一个基频率.</li>
 </ul>
 </li>
-<li>当$T \rightarrow \infin$​时,<ul>
-<li>$\sum_{n&#x3D;-\infin}^{\infin}\Delta \omega &#x3D; \int_{-\infin}^{\infin}d\omega$​</li>
+<li>当$T \rightarrow \infty$​时,<ul>
+<li>$\sum_{n&#x3D;-\infty}^{\infty}\Delta \omega &#x3D; \int_{-\infty}^{\infty}d\omega$​</li>
 <li>$n\omega_0$可以用一个连续的$\omega$来代替.</li>
-<li>$f(t) &#x3D; \frac{1}{2\pi}\int_{-\infin}^{\infin}\int_{-\infin}^{\infin}f(t) e^{in\omega_0 t}dt\ d\omega$​</li>
+<li>$f(t) &#x3D; \frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(t) e^{in\omega_0 t}dt\ d\omega$​</li>
 </ul>
 </li>
 <li>那么傅立叶变换就是:</li>
 </ul>
-<p>$$<br>F(\omega) &#x3D; \int_{-\infin}^{\infin}f(t) e^{i\omega t}dt \<br>f(t) &#x3D; \frac{1}{2\pi} \int_{-\infin}^{\infin}F(\omega)d\omega<br>$$</p>
+<p>$$<br>F(\omega) &#x3D; \int_{-\infty}^{\infty}f(t) e^{i\omega t}dt \<br>f(t) &#x3D; \frac{1}{2\pi} \int_{-\infty}^{\infty}F(\omega)d\omega<br>$$</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
