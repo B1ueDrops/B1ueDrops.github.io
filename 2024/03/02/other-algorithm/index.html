@@ -6,13 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="冷门算法/模拟题 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="正则表达式标准正则表达式有两个主流标准:  POSIX标准. PCRE标准 (Perl Compatible Regular Expression), 使用人数最多, 目前基于这个标准.  快速生成随机文本可以使用fortune命令快速生成文本. 字符组 常见的字符组:     字符组 正则表达式 含义    \d [0-9] 数字   \w [0-9a-zA-Z] 字符   \s [\t\r\n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可计算理论和编译">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/05/14/compiler/index.html">
+<meta property="og:title" content="正则表达式原理和实战">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/05/14/regular_expression/index.html">
 <meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="正则表达式标准正则表达式有两个主流标准:  POSIX标准. PCRE标准 (Perl Compatible Regular Expression), 使用人数最多, 目前基于这个标准.  快速生成随机文本可以使用fortune命令快速生成文本. 字符组 常见的字符组:     字符组 正则表达式 含义    \d [0-9] 数字   \w [0-9a-zA-Z] 字符   \s [\t\r\n">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-14T12:35:12.767Z">
-<meta property="article:modified_time" content="2024-05-14T12:35:38.466Z">
+<meta property="article:published_time" content="2024-05-14T12:14:59.587Z">
+<meta property="article:modified_time" content="2024-05-15T11:52:53.963Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -125,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(12)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -230,7 +232,7 @@
         <div data-rel="算法">
             
             算法
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -380,15 +382,6 @@
 
     
     <nav id="title-list-nav">
-        
-        
-        <a  class="All 编程语言 "
-           href="/2024/05/14/compiler/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="可计算理论和编译">可计算理论和编译</span>
-            <span class="post-date" title="2024-05-14 20:35:12">2024/05/14</span>
-        </a>
         
         
         <a  class="All 编程语言 "
@@ -886,6 +879,15 @@
         </a>
         
         
+        <a  class="All 算法 "
+           href="/2024/03/02/interval/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="区间问题">区间问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
         <a  class="All 体系结构 "
            href="/2024/03/02/cache-coherence/"
            data-tag=""
@@ -1031,7 +1033,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-14 15:48:59'>2024-03-02 19:59</time>
+            Created At : <time class="date" title='Updated At: 2024-05-16 10:25:52'>2024-03-02 19:59</time>
         
     </div>
     <div class="article-meta">
@@ -1042,7 +1044,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97"><span class="toc-text">整数转罗马数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0"><span class="toc-text">罗马数字转整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">移除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-text">二维数组中的查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-text">用两个栈实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC"><span class="toc-text">有效的数独</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E6%A0%88"><span class="toc-text">手写栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">模拟散列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5"><span class="toc-text">逆时针打印矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5-%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97"><span class="toc-text">栈的压入&#x2F;弹出序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81IP%E5%9C%B0%E5%9D%80"><span class="toc-text">验证IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2"><span class="toc-text">Z字形变换</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E5%BA%8F%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="toc-text">保序离散化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%92%8C"><span class="toc-text">区间和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E8%BD%AC%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97"><span class="toc-text">整数转罗马数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0"><span class="toc-text">罗马数字转整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-text">移除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="toc-text">二维数组中的查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-text">用两个栈实现队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC"><span class="toc-text">有效的数独</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E6%A0%88"><span class="toc-text">手写栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">模拟散列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E7%9F%A9%E9%98%B5"><span class="toc-text">逆时针打印矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5-%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97"><span class="toc-text">栈的压入&#x2F;弹出序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81IP%E5%9C%B0%E5%9D%80"><span class="toc-text">验证IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2"><span class="toc-text">Z字形变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC"><span class="toc-text">整数反转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B4%E6%95%B0"><span class="toc-text">字符串转整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%96%87%E6%95%B0"><span class="toc-text">回文数</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1058,7 +1060,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="整数转罗马数字"><a href="#整数转罗马数字" class="headerlink" title="整数转罗马数字"></a>整数转罗马数字</h2><blockquote>
+        <h2 id="保序离散化"><a href="#保序离散化" class="headerlink" title="保序离散化"></a>保序离散化</h2><p>保序离散化适合如下情况:</p>
+<ul>
+<li>题目中的数值的范围过大, 例如在$[-10^9, 10^9]$这种, 但是出现次数比较少.</li>
+</ul>
+<p>保序离散化是指将这些过大的数值映射到从0开始递增的自然数的过程.</p>
+<p>模板代码:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-comment">/* 定义离散化数组 */</span><br>vector&lt;<span class="hljs-type">int</span>&gt; alls;<br><br><span class="hljs-comment">/* 找到x对应的离散化后的数值 */</span><br><span class="hljs-comment">/* &lt;= x的最大值 */</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = alls.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (l &lt; r)<br>  &#123;<br>    <span class="hljs-type">int</span> mid = l + (r - l) / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (alls[mid] &gt; x) r = mid - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">else</span> l = mid;<br>  &#125;<br>  <span class="hljs-comment">/* 如果要映射到从0开始的, 就return r, 如果从1开始就return r+1 */</span><br>  <span class="hljs-keyword">return</span> r;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-comment">/* other code */</span><br>  <br>  <span class="hljs-comment">/* 将需要离散化的数值全部放入alls中 */</span><br>  <span class="hljs-comment">/* 排序 */</span><br>  <span class="hljs-built_in">sort</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>());<br>  <span class="hljs-comment">/* 去重 */</span><br>  alls.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">unique</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>()), alls.<span class="hljs-built_in">end</span>());<br>  <br>  <br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="区间和"><a href="#区间和" class="headerlink" title="区间和"></a>区间和</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/804/">https://www.acwing.com/problem/content/804/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">//注意这里的倍数需要根据题目确定</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span> * <span class="hljs-number">3</span>;<br><br><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; PII;<br><br><span class="hljs-type">int</span> n, m;<br><br>vector&lt;<span class="hljs-type">int</span>&gt; alls;<br>vector&lt;PII&gt; add;<br>vector&lt;PII&gt; query;<br><span class="hljs-type">int</span> a[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = alls.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = l + (r - l) / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (alls[mid] &gt; x) r = mid - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> l = mid;<br>    &#125;<br>  <span class="hljs-comment">/* 注意这个题是前缀和, 要从1开始映射 */</span><br>    <span class="hljs-keyword">return</span> r + <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++)<br>    &#123;<br>        <span class="hljs-type">int</span> x, c;<br>        cin &gt;&gt; x &gt;&gt; c;<br>        add.<span class="hljs-built_in">push_back</span>(&#123;x, c&#125;);<br>        alls.<span class="hljs-built_in">push_back</span>(x);<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++)<br>    &#123;<br>        <span class="hljs-type">int</span> l, r;<br>        cin &gt;&gt; l &gt;&gt; r;<br>        query.<span class="hljs-built_in">push_back</span>(&#123;l, r&#125;);<br>        alls.<span class="hljs-built_in">push_back</span>(l);<br>        alls.<span class="hljs-built_in">push_back</span>(r);<br>    &#125;<br>    <br>    <span class="hljs-built_in">sort</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>());<br>    alls.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">unique</span>(alls.<span class="hljs-built_in">begin</span>(), alls.<span class="hljs-built_in">end</span>()), alls.<span class="hljs-built_in">end</span>());<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> item: add)<br>    &#123;<br>        <span class="hljs-type">int</span> x = item.first, c = item.second;<br>        a[<span class="hljs-built_in">find</span>(x)] += c;<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= alls.<span class="hljs-built_in">size</span>(); i ++) a[i] += a[i - <span class="hljs-number">1</span>];<br><br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> item: query)<br>    &#123;<br>        <span class="hljs-type">int</span> l = item.first, r = item.second;<br>      <span class="hljs-comment">/* 注意这里不是a[find(l-1)] */</span><br>        cout &lt;&lt; (a[<span class="hljs-built_in">find</span>(r)] - a[<span class="hljs-built_in">find</span>(l) - <span class="hljs-number">1</span>]) &lt;&lt; endl;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="整数转罗马数字"><a href="#整数转罗马数字" class="headerlink" title="整数转罗马数字"></a>整数转罗马数字</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/integer-to-roman/">https://leetcode.cn/problems/integer-to-roman/</a></p>
 </blockquote>
 <p>罗马数字的一些对应表如下:</p>
@@ -1170,6 +1191,35 @@
 </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">convert</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> n)</span> </span>&#123;<br>        string res;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> s;<br>				<br>      	<span class="hljs-comment">// i是枚举行数</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || i == n - <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i; j &lt; s.<span class="hljs-built_in">size</span>(); j += <span class="hljs-number">2</span> * n - <span class="hljs-number">2</span>) res += s[j];<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i, k = <span class="hljs-number">2</span> * n - <span class="hljs-number">2</span> - i; j &lt; s.<span class="hljs-built_in">size</span>() || k &lt; s.<span class="hljs-built_in">size</span>(); j += <span class="hljs-number">2</span> * n - <span class="hljs-number">2</span>, k += <span class="hljs-number">2</span> * n - <span class="hljs-number">2</span>) &#123;<br>                    <span class="hljs-keyword">if</span> (j &lt; s.<span class="hljs-built_in">size</span>()) res += s[j];<br>                    <span class="hljs-keyword">if</span> (k &lt; s.<span class="hljs-built_in">size</span>()) res += s[k];<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="整数反转"><a href="#整数反转" class="headerlink" title="整数反转"></a>整数反转</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-integer/description/">https://leetcode.cn/problems/reverse-integer/description/</a></p>
+</blockquote>
+<ul>
+<li>注意C++中的负数取模运算:<ul>
+<li>结果是负数.</li>
+<li>绝对值等于这个负数的绝对值取模.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-type">int</span> r = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span> (x) &#123;<br>          <span class="hljs-comment">// 10 * r + x % 10 &gt; INT_MAX</span><br>          <span class="hljs-comment">// 不用乘法, 因为溢出</span><br>            <span class="hljs-keyword">if</span> (r &gt; <span class="hljs-number">0</span> &amp;&amp; r &gt; (INT_MAX - x % <span class="hljs-number">10</span>) / <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">if</span> (r &lt; <span class="hljs-number">0</span> &amp;&amp; r &lt; (INT_MIN - x % <span class="hljs-number">10</span>) / <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>            r = <span class="hljs-number">10</span> * r + x % <span class="hljs-number">10</span>;<br>            x /= <span class="hljs-number">10</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> r;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串转整数"><a href="#字符串转整数" class="headerlink" title="字符串转整数"></a>字符串转整数</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/string-to-integer-atoi/">https://leetcode.cn/problems/string-to-integer-atoi/</a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = s.<span class="hljs-built_in">size</span>();<br>				<br>      <span class="hljs-comment">// 过滤空格</span><br>        <span class="hljs-type">int</span> k = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (k &lt; n &amp;&amp; s[k] == <span class="hljs-string">&#x27; &#x27;</span>) k ++;<br>        <span class="hljs-keyword">if</span> (k == n) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>			<span class="hljs-comment">// 判断符号</span><br>        <span class="hljs-type">bool</span> minus = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (s[k] == <span class="hljs-string">&#x27;-&#x27;</span>) minus = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (s[k] == <span class="hljs-string">&#x27;-&#x27;</span> || s[k] == <span class="hljs-string">&#x27;+&#x27;</span>) k ++;<br><br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (k &lt; n &amp;&amp; s[k] &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; s[k] &lt;= <span class="hljs-string">&#x27;9&#x27;</span>) &#123;<br>            <span class="hljs-type">int</span> x = s[k] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            <span class="hljs-keyword">if</span> (minus) x = -x;<br>            <span class="hljs-keyword">if</span> (!minus &amp;&amp; res &gt; (INT_MAX - x) / <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> INT_MAX;<br>            <span class="hljs-keyword">if</span> (minus &amp;&amp; res &lt; (INT_MIN - x) / <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> INT_MIN;<br> <br>            res = <span class="hljs-number">10</span> * res + x;<br>            k ++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-number/">https://leetcode.cn/problems/palindrome-number/</a></p>
+</blockquote>
+<p>这个题如果求这个数的逆序, 很可能会超过<code>INT_MAX</code>, 因此先求后一半的逆序, 然后反过来比较前面.</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br><br>        <span class="hljs-comment">// 负数/最后一位是0(除了0)都不是</span><br>        <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span> || x &amp;&amp; x % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <br>        <span class="hljs-comment">// 算后一半的逆序, 判断和前一半是否相等</span><br>        <span class="hljs-type">int</span> s = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span> (s &lt;= x) &#123;<br>            s = <span class="hljs-number">10</span> * s + x % <span class="hljs-number">10</span>;<br>            <span class="hljs-comment">// 长度是奇数/偶数</span><br>            <span class="hljs-keyword">if</span> (s == x || s == x / <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            x /= <span class="hljs-number">10</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
       

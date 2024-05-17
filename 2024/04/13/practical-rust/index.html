@@ -6,13 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Rust使用日记 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="正则表达式标准正则表达式有两个主流标准:  POSIX标准. PCRE标准 (Perl Compatible Regular Expression), 使用人数最多, 目前基于这个标准.  快速生成随机文本可以使用fortune命令快速生成文本. 字符组 常见的字符组:     字符组 正则表达式 含义    \d [0-9] 数字   \w [0-9a-zA-Z] 字符   \s [\t\r\n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可计算理论和编译">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/05/14/compiler/index.html">
+<meta property="og:title" content="正则表达式原理和实战">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/05/14/regular_expression/index.html">
 <meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="正则表达式标准正则表达式有两个主流标准:  POSIX标准. PCRE标准 (Perl Compatible Regular Expression), 使用人数最多, 目前基于这个标准.  快速生成随机文本可以使用fortune命令快速生成文本. 字符组 常见的字符组:     字符组 正则表达式 含义    \d [0-9] 数字   \w [0-9a-zA-Z] 字符   \s [\t\r\n">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-14T12:35:12.767Z">
-<meta property="article:modified_time" content="2024-05-14T12:35:38.466Z">
+<meta property="article:published_time" content="2024-05-14T12:14:59.587Z">
+<meta property="article:modified_time" content="2024-05-15T11:52:53.963Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -125,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(12)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -230,7 +232,7 @@
         <div data-rel="算法">
             
             算法
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -380,15 +382,6 @@
 
     
     <nav id="title-list-nav">
-        
-        
-        <a  class="All 编程语言 "
-           href="/2024/05/14/compiler/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="可计算理论和编译">可计算理论和编译</span>
-            <span class="post-date" title="2024-05-14 20:35:12">2024/05/14</span>
-        </a>
         
         
         <a  class="All 编程语言 "
@@ -886,6 +879,15 @@
         </a>
         
         
+        <a  class="All 算法 "
+           href="/2024/03/02/interval/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="区间问题">区间问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
         <a  class="All 体系结构 "
            href="/2024/03/02/cache-coherence/"
            data-tag=""
@@ -1031,7 +1033,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-14 13:28:44'>2024-04-13 17:05</time>
+            Created At : <time class="date" title='Updated At: 2024-05-16 19:53:57'>2024-04-13 17:05</time>
         
     </div>
     <div class="article-meta">
@@ -1042,7 +1044,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust%E4%BB%8B%E7%BB%8D"><span class="toc-text">Rust介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-%E5%88%87%E7%89%87"><span class="toc-text">字符串&#x2F;切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cargo"><span class="toc-text">Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#package-crate-module"><span class="toc-text">package, crate, module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">结构体和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE"><span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">模式匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O"><span class="toc-text">I&#x2F;O</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E6%8C%87%E9%92%88"><span class="toc-text">裸指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tokio"><span class="toc-text">tokio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E9%94%81"><span class="toc-text">异步锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">异步客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tokio-I-O"><span class="toc-text">tokio I&#x2F;O</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pin-Unpin"><span class="toc-text">Pin&#x2F;Unpin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B"><span class="toc-text">异步编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets-Library"><span class="toc-text">Snippets&#x2F;Library</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust%E4%BB%8B%E7%BB%8D"><span class="toc-text">Rust介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2-%E5%88%87%E7%89%87"><span class="toc-text">字符串&#x2F;切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cargo"><span class="toc-text">Cargo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#package-crate-module"><span class="toc-text">package, crate, module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98-%E5%BC%95%E7%94%A8-%E6%89%80%E6%9C%89%E6%9D%83"><span class="toc-text">可变, 引用, 所有权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">结构体和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE"><span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">模式匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Option"><span class="toc-text">Option</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O"><span class="toc-text">I&#x2F;O</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait"><span class="toc-text">trait</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vector"><span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%B8%E6%8C%87%E9%92%88"><span class="toc-text">裸指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tokio"><span class="toc-text">tokio</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E9%94%81"><span class="toc-text">异步锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">异步客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tokio-I-O"><span class="toc-text">tokio I&#x2F;O</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pin-Unpin"><span class="toc-text">Pin&#x2F;Unpin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets-Library"><span class="toc-text">Snippets&#x2F;Library</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1064,16 +1066,46 @@
 <ul>
 <li>**Zero Cost Abstraction: ** Rust引入的一些机制 (例如所有权机制), 并不会引入额外的运行时开销.</li>
 </ul>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
-<li><p>各种元素的命名方式: <a target="_blank" rel="noopener" href="https://rust-lang.github.io/api-guidelines/naming.html">https://rust-lang.github.io/api-guidelines/naming.html</a></p>
-</li>
-<li><p>数字字面值之间加入<code>_</code>可以增加可读性.</p>
-</li>
-<li><p>如果出现了多个<code>else if</code>, 考虑用<code>match</code>重构.</p>
-</li>
-</ul>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
-<li><p>常量和<strong>不可变的变量</strong>有很大的不同.</p>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://rust-lang.github.io/api-guidelines/naming.html">https://rust-lang.github.io/api-guidelines/naming.html</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>命名方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>局部变量</td>
+<td>snake_case</td>
+</tr>
+<tr>
+<td>函数</td>
+<td>snake_case</td>
+</tr>
+<tr>
+<td>方法</td>
+<td>snake_case</td>
+</tr>
+<tr>
+<td>结构体</td>
+<td>UpperCamelCase</td>
+</tr>
+<tr>
+<td>Trait</td>
+<td>UpperCamelCase</td>
+</tr>
+<tr>
+<td>枚举</td>
+<td>UpperCamelCase</td>
+</tr>
+<tr>
+<td>模块(mod)</td>
+<td>snake_case</td>
+</tr>
+</tbody></table>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量和<strong>不可变的变量</strong>有很大的不同.</p>
 <ul>
 <li><p>常量需要使用<code>const</code>关键字, 并且<strong>必须标注类型</strong>.</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust">&lt;<span class="hljs-keyword">pub</span>&gt; <span class="hljs-keyword">const</span> MAX_NUM: <span class="hljs-type">i32</span> = <span class="hljs-number">1000_i32</span>;<br></code></pre></td></tr></table></figure>
@@ -1081,8 +1113,6 @@
 <li><p>常量可以定义在任意作用域, 包括全局作用域.</p>
 </li>
 <li><p>常量必须绑定到<strong>常量表达式</strong>, 必须在编译时期就要算出来.</p>
-</li>
-</ul>
 </li>
 </ul>
 <h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
@@ -1456,12 +1486,75 @@
 </ul>
 </li>
 </ul>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
+<li><p>Rust中的错误分为两种:</p>
+<ul>
+<li>可恢复的错误: Rust提供了<code>Result&lt;T, E&gt;</code>类型.</li>
+<li>不可恢复的错误: Rust提供了<code>panic!</code>宏.</li>
+</ul>
+</li>
+<li><p><code>panic!</code>宏使用: <code>panic!(&quot;错误信息&quot;)</code></p>
+<ul>
+<li><p><code>panic</code>有两种处理模式:</p>
+<ul>
+<li><code>unwind</code>: 程序会展开调用栈, 并且依次清理函数中的数据 (工作量较大).</li>
+<li><code>abort</code>: 程序直接终止调用栈, 数据由OS回收.</li>
+</ul>
+</li>
+<li><p>在<code>release</code>模式下, 需要用<code>abort</code>模式 (可以让二进制文件更小), 在<code>Cargo.toml</code>中加上:</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[profile.release]</span><br><span class="hljs-attr">panic</span> = <span class="hljs-string">&#x27;abort&#x27;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>panic</code>可能发生在源码中, 如果要定位源码的位置, 需要运行时将<code>RUST_BACKTRACE</code>设置为1.</p>
+</li>
+</ul>
+</li>
+<li><p><code>Result&lt;T, E&gt;</code>:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Result</span>&lt;T, E&gt; &#123;<br>  <span class="hljs-comment">// 操作成功返回T类型</span><br>  <span class="hljs-title function_ invoke__">Ok</span>(T),<br>  <span class="hljs-comment">// 操作失败返回E类型</span><br>  <span class="hljs-title function_ invoke__">Err</span>(E)<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>处理<code>Result&lt;T, E&gt;</code>的几种方法:</p>
+<ul>
+<li><p><code>match</code>表达式:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>);<br><br><span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = <span class="hljs-keyword">match</span> f &#123;<br>  <span class="hljs-title function_ invoke__">Ok</span>(file) =&gt; file,<br>  <span class="hljs-comment">// 错误类型</span><br>  <span class="hljs-title function_ invoke__">Err</span>(error) =&gt; &#123;<br>    <span class="hljs-built_in">panic!</span>(<span class="hljs-string">&quot;Error opening file &#123;&#125;&quot;</span>, error);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>unwrap()</code>: 直接提取<code>Ok(T)</code>中的<code>T</code>, 如果失败就会直接<code>panic</code>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>expect()</code>: 在<code>unwrap()</code>的基础上, 可以自定制错误信息:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>).<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;错误信息&quot;</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>向上传递错误:</p>
+<ul>
+<li><p>在遇到错误的时候, 直接<code>return Err(e)</code>.</p>
+</li>
+<li><p>函数的返回值需要变成<code>Result&lt;T, E&gt;</code>.</p>
+</li>
+<li><p>Rust中还提供了<code>?</code>宏, 专门用来传播错误:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>)?;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果函数返回<code>Ok(T)</code>, 那么<code>T</code>就会自动赋值给<code>f</code>.</p>
+</li>
+<li><p>如果返回<code>Err(e)</code>, 那么函数就会直接<code>return Err(e);</code></p>
+</li>
+<li><p>如果一个函数内部有<code>?</code>, 那么最后函数需要写一个返回值<code>Ok(T)</code>.</p>
+</li>
+<li><p>如果在<code>main</code>函数中需要使用<code>?</code>, 那么<code>main</code>函数的签名需要是:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// Box&lt;dyn Error&gt;表示任何可能的错误类型</span><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Result</span>&lt;(), <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> Error&gt;&gt; &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><code>?</code>函数会隐式调用<code>From</code>函数, 将返回错误类型自动转换为函数签名所定义的错误类型.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="I-O"><a href="#I-O" class="headerlink" title="I&#x2F;O"></a>I&#x2F;O</h2><ul>
 <li><p>I&#x2F;O的元素主要在<code>std::io</code>中.</p>
 </li>
 <li><p>其中, 最重要的两个traits是<code>Read</code>和<code>Write</code>, 分别在<code>std::io::&#123;Read, Write&#125;</code>中.</p>
 <ul>
-<li>实现了<code>Read</code> traits的叫<code>reader</code>, 可以调用<code>read</code>方法将数据读到buffer中, 返回成功读取的字节数.</li>
+<li>实现了<code>Read</code> traits的叫<code>reader</code>, 可以调用<code>read</code>方法将reader中的数据读到buffer中, 返回成功读取的字节数.</li>
 <li>实现了<code>Write</code> traits的叫<code>writer</code>, 可以通过<code>write</code>方法将buffer中的内容写入到<code>writer</code>中, 返回成功写入的字节数.</li>
 </ul>
 </li>
@@ -1470,7 +1563,7 @@
 </li>
 <li><p>Rust中, 默认的<code>./</code>是在你cargo项目的根路径.</p>
 </li>
-<li><p><code>b&quot;hello&quot;</code>是<code>&amp;[u8]</code>类型.</p>
+<li><p><code>b&quot;hello&quot;</code>是<code>&amp;[u8]</code>类型(切片).</p>
 </li>
 <li><p>使用I&#x2F;O操作时, 一般会发生Error, 返回值一般是: <code>io::Result&lt;T&gt;</code>.</p>
 <ul>
@@ -1485,7 +1578,7 @@
 
 <ul>
 <li><p>TCP Client:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io::&#123;Read, Write&#125;;<br><span class="hljs-keyword">use</span> std::net::TcpStream;<br><span class="hljs-keyword">use</span> std::<span class="hljs-type">str</span>;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">stream</span> = TcpListener::<span class="hljs-title function_ invoke__">connect</span>(<span class="hljs-string">&quot;127.0.0.1:3000&quot;</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <span class="hljs-comment">// 发送消息</span><br>  stream.<span class="hljs-title function_ invoke__">write</span>(<span class="hljs-string">&quot;Hello&quot;</span>.<span class="hljs-title function_ invoke__">as_bytes</span>()).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <br>	<span class="hljs-comment">// 接收消息</span><br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">buffer</span> = [<span class="hljs-number">0</span>; <span class="hljs-number">5</span>];<br>  stream.<span class="hljs-title function_ invoke__">read</span>(&amp;<span class="hljs-keyword">mut</span> buffer).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Response from server:&#123;:?&#125;&quot;</span>, <span class="hljs-type">str</span>::<span class="hljs-title function_ invoke__">from_utf8</span>(&amp;buffer).<span class="hljs-title function_ invoke__">unwrap</span>());<br>  <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::io::&#123;Read, Write&#125;;<br><span class="hljs-keyword">use</span> std::net::TcpStream;<br><span class="hljs-keyword">use</span> std::<span class="hljs-type">str</span>;<br><br><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;<br><br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">stream</span> = TcpStream::<span class="hljs-title function_ invoke__">connect</span>(<span class="hljs-string">&quot;127.0.0.1:3000&quot;</span>).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <span class="hljs-comment">// 发送消息</span><br>  stream.<span class="hljs-title function_ invoke__">write</span>(<span class="hljs-string">&quot;Hello&quot;</span>.<span class="hljs-title function_ invoke__">as_bytes</span>()).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <br>	<span class="hljs-comment">// 接收消息</span><br>  <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">buffer</span> = [<span class="hljs-number">0</span>; <span class="hljs-number">5</span>];<br>  stream.<span class="hljs-title function_ invoke__">read</span>(&amp;<span class="hljs-keyword">mut</span> buffer).<span class="hljs-title function_ invoke__">unwrap</span>();<br>  <br>  <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Response from server:&#123;:?&#125;&quot;</span>, <span class="hljs-type">str</span>::<span class="hljs-title function_ invoke__">from_utf8</span>(&amp;buffer).<span class="hljs-title function_ invoke__">unwrap</span>());<br>  <br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -1554,14 +1647,51 @@
 </li>
 <li><p>创建哈希表:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">hashmap</span>: HashMap&lt;T, U&gt; = HashMap::<span class="hljs-title function_ invoke__">new</span>();<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>根据键获取值:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 传入&amp;T, 返回Option&lt;U&gt;</span><br>hashmap.<span class="hljs-title function_ invoke__">get</span>(&amp;key);<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>根据原有的值更新值:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// value是&amp;mut T类型</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">value</span> = hashmap.<span class="hljs-title function_ invoke__">entry</span>(key).<span class="hljs-title function_ invoke__">or_insert</span>(<span class="hljs-number">0</span>);<br><span class="hljs-comment">// 更新</span><br>*value += <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure></li>
+
+<ul>
+<li>HashMap中, 所有的Key必须是同一种类型, 所有的Value必须是同一种类型.</li>
+<li>数据存储在Heap上.</li>
 </ul>
-<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
+</li>
+<li><p>添加元素: <code>insert</code></p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = <span class="hljs-type">String</span>::<span class="hljs-title function_ invoke__">from</span>(<span class="hljs-string">&quot;haha&quot;</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">b</span> = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">map</span>: HashMap&lt;<span class="hljs-type">String</span>, <span class="hljs-type">i32</span>&gt; = HashMap::<span class="hljs-title function_ invoke__">new</span>();<br>map.<span class="hljs-title function_ invoke__">insert</span>(a, b);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>HashMap的所有权问题:</p>
+<ul>
+<li>如果类型实现了Copy trait, 那么值会被复制到HashMap中.</li>
+<li>对于有所有权的值, 所有权会转移到HashMap中, 例如调用<code>insert</code>.</li>
+<li>如果将变量的引用插入HashMap, 那么HashMap有效的期间, 必须保证插入的引用有效.</li>
+</ul>
+</li>
+<li><p>根据键获取值: <code>get</code></p>
+<ul>
+<li>参数: <code>&amp;T</code></li>
+<li>返回值: <code>Option&lt;&amp;V&gt;</code></li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 传入&amp;T, 返回Option&lt;&amp;U&gt;</span><br>hashmap.<span class="hljs-title function_ invoke__">get</span>(&amp;key);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>遍历HashMap:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// k, v都是&amp;T, &amp;U类型</span><br><span class="hljs-keyword">for</span> (k, v) <span class="hljs-keyword">in</span> &amp;hashmap &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>更新HashMap: </p>
+<ul>
+<li><p>首先判断Key是否存在:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> hashmap.<span class="hljs-title function_ invoke__">contains</span>(&amp;key) &#123;<br>  <span class="hljs-comment">// ...</span><br>&#125;<br><span class="hljs-keyword">else</span> &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>如果key存在:</p>
+<ul>
+<li><p>如果要用新值覆盖, 直接再次<code>insert</code>即可.</p>
+</li>
+<li><p>如果要基于原来的值计算新值:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 得到原来的值的&amp;mut</span><br><span class="hljs-keyword">let</span> <span class="hljs-variable">origin</span> = hashmap.<span class="hljs-title function_ invoke__">entry</span>(&amp;key).<span class="hljs-title function_ invoke__">or_insert</span>(<span class="hljs-number">0</span>);<br><span class="hljs-comment">// 然后用*origin就可以基于原值计算</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>如果key不存在, 直接<code>insert</code>插入即可.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
 <li><p>一个类型, 如果实现了<code>Iterator</code> trait, 那么它就是一个迭代器类型.</p>
 </li>
 <li><p><code>Iterator</code> trait的内容如下:</p>
@@ -1592,52 +1722,6 @@
 <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><ul>
 <li><p>快速单元测试的框架, 在你写的函数里面用:</p>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[cfg(test)]</span><br><span class="hljs-keyword">mod</span> tests &#123;<br>  <br>  <span class="hljs-keyword">use</span> super::*;<br>  <br>  <span class="hljs-comment">// 测试函数, 可以写多个</span><br>  <span class="hljs-meta">#[test]</span><br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">test_XXX1</span>() &#123;<br>    <span class="hljs-built_in">assert_eq!</span>(...);<br>  &#125;<br>  <br>  <span class="hljs-meta">#[test]</span><br>  <span class="hljs-keyword">fn</span> <span class="hljs-title function_">test_XXX2</span>() &#123;<br>    <span class="hljs-built_in">assert_eq!</span>(...);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
-<li><p>如果一个变量可能存在于多个线程之间, 并且可能需要被修改:</p>
-<ul>
-<li><p>它的类型应该定义为: <code>Arc&lt;Mutex&lt;T&gt;&gt;</code>.</p>
-</li>
-<li><p>对它进行克隆用<code>Arc::clone(&amp;T)</code>.</p>
-</li>
-<li><p>然后, 如果一个函数&#x2F;方法中, 要接收<code>Arc&lt;Mutex&lt;T&gt;&gt;</code>类型的变量, 可以直接转移所有权, 不用写成引用.</p>
-</li>
-</ul>
-</li>
-<li><p>获取Mutex时, 把Mutex包裹的变量定义成<code>mut</code> (一般包裹的变量都需要修改).</p>
-  <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">// 定义成mut, 然后后面进行修改</span><br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">a</span> = b.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>如果一个变量可能存在于多个线程之间, 但是不需要被修改:</p>
-<ul>
-<li>类型定义为: <code>Arc&lt;T&gt;</code>.</li>
-<li>克隆同样用<code>Arc::clone(&amp;T)</code>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
-<li><p>最快方法: <code>unwrap()</code>, 失败后<code>panic</code>.</p>
-</li>
-<li><p>其次方法: <code>expect(&quot;字符串&quot;)</code>, 失败后打印给定字符串, 然后<code>panic</code>.</p>
-</li>
-<li><p>Match方法:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">f</span> = <span class="hljs-keyword">match</span> File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>) &#123;<br>     <span class="hljs-title function_ invoke__">Ok</span>(file) =&gt; file,<br>     <span class="hljs-title function_ invoke__">Err</span>(error) =&gt; <span class="hljs-title function_ invoke__">Err</span>(error)<br>&#125;;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>?</code>宏:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">f</span> = File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>)?;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>这个语句等价为:</p>
-<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">f</span> = <span class="hljs-keyword">match</span> File::<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;hello.txt&quot;</span>) &#123;<br>      	<span class="hljs-title function_ invoke__">Ok</span>(file) =&gt; file,<br>      	<span class="hljs-title function_ invoke__">Err</span>(e) =&gt; <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">Err</span>(e),<br>&#125;;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>因此, 如果<code>?</code>出现在一个函数中, 函数的返回值类型是<code>Result&lt;T, Box&lt;dyn std::error::Error&gt;&gt;</code>.</p>
-</li>
-<li><p>如果在<code>main</code>函数中使用<code>?</code>, 那么<code>main</code>函数签名要改成: <code>fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt;</code></p>
-<ul>
-<li><code>main</code>函数最后应该返回<code>Ok(())</code></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 <h2 id="tokio"><a href="#tokio" class="headerlink" title="tokio"></a>tokio</h2><ul>
 <li>引入包:</li>
@@ -1716,7 +1800,7 @@
 <blockquote>
 <p>构造一个样例, 解释变量在堆内存中的移动?</p>
 </blockquote>
-<h2 id="异步编程"><a href="#异步编程" class="headerlink" title="异步编程"></a>异步编程</h2><h2 id="Snippets-Library"><a href="#Snippets-Library" class="headerlink" title="Snippets&#x2F;Library"></a>Snippets&#x2F;Library</h2><ul>
+<h2 id="Snippets-Library"><a href="#Snippets-Library" class="headerlink" title="Snippets&#x2F;Library"></a>Snippets&#x2F;Library</h2><ul>
 <li><p>生成<code>[a, b)</code>的随机整数:</p>
 <ul>
 <li>使用<code>rand crate</code>.</li>
