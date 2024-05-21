@@ -6,15 +6,13 @@
   <meta name="keywords" content="">
   <meta name="description" content="Linux上的进程控制 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="词汇 hood: 引擎盖  headlight: 车灯  bumper: 保险杠  windshield: 挡风玻璃  windshield wiper: 雨刮器  side view mirror: 左&#x2F;右后视镜  rear(后部) view mirror: 内部的后视镜  dashboard: 仪表盘  steering wheel: 方向盘  trunk: 后备箱">
 <meta property="og:type" content="article">
-<meta property="og:title" content="汽车英语">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/05/17/car-english/index.html">
+<meta property="og:title" content="信号与系统知识点">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/05/20/signal_process/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="词汇 hood: 引擎盖  headlight: 车灯  bumper: 保险杠  windshield: 挡风玻璃  windshield wiper: 雨刮器  side view mirror: 左&#x2F;右后视镜  rear(后部) view mirror: 内部的后视镜  dashboard: 仪表盘  steering wheel: 方向盘  trunk: 后备箱">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-17T05:37:34.182Z">
-<meta property="article:modified_time" content="2024-05-17T05:40:44.232Z">
+<meta property="article:published_time" content="2024-05-20T12:23:10.987Z">
+<meta property="article:modified_time" content="2024-05-20T12:23:31.137Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +113,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(69)</small>
+                <small>(70)</small>
             
         </div>
     </li>
@@ -262,7 +260,7 @@
         <div data-rel="信号处理">
             
             信号处理
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -332,7 +330,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="69">
+<input type="hidden" id="yelog_site_posts_number" value="70">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -382,6 +380,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 信号处理 "
+           href="/2024/05/20/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统知识点">信号与系统知识点</span>
+            <span class="post-date" title="2024-05-20 20:23:10">2024/05/20</span>
+        </a>
         
         
         <a  class="All English "
@@ -1042,7 +1049,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-16 21:29:15'>2024-05-12 13:03</time>
+            Created At : <time class="date" title='Updated At: 2024-05-19 21:24:56'>2024-05-12 13:03</time>
         
     </div>
     <div class="article-meta">
@@ -1053,7 +1060,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PCB"><span class="toc-text">PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B"><span class="toc-text">创建进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%89%A7%E8%A1%8C%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-text">进程执行可执行文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B"><span class="toc-text">孤儿进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">僵尸进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%9B%9E%E6%94%B6"><span class="toc-text">进程回收</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BB%93%E6%9E%84%E4%BD%93PCB"><span class="toc-text">进程结构体PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8Bfork"><span class="toc-text">创建进程fork()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%89%A7%E8%A1%8Cexec"><span class="toc-text">进程执行exec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B"><span class="toc-text">孤儿进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">僵尸进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%9B%9E%E6%94%B6wait"><span class="toc-text">进程回收wait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wait"><span class="toc-text">wait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#waitpid"><span class="toc-text">waitpid</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1069,7 +1076,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a>PCB</h2><p>Linux上的PCB (Process Control Block) 本质上是一个叫做<code>task_struct</code>的结构体, 需要包含以下信息:</p>
+        <h2 id="进程结构体PCB"><a href="#进程结构体PCB" class="headerlink" title="进程结构体PCB"></a>进程结构体<code>PCB</code></h2><p>Linux上的PCB (Process Control Block) 本质上是一个叫做<code>task_struct</code>的结构体, 需要包含以下信息:</p>
 <ul>
 <li><code>pid</code>: 进程的唯一ID.</li>
 <li>进程状态(创建态, 就绪态, 运行态, 阻塞态, 终止态).</li>
@@ -1082,7 +1089,7 @@
 <li>用户id, 用户组id.</li>
 <li>进程使用资源上限, 通过<code>ulimit -a</code>可以查看.</li>
 </ul>
-<h2 id="创建进程"><a href="#创建进程" class="headerlink" title="创建进程"></a>创建进程</h2><ul>
+<h2 id="创建进程fork"><a href="#创建进程fork" class="headerlink" title="创建进程fork()"></a>创建进程<code>fork()</code></h2><ul>
 <li><p>头文件: <code>#include &lt;unistd.h&gt;</code></p>
 </li>
 <li><p>函数: <code>pid_t fork(void)</code>, 其中<code>pid_t</code>是进程ID的数据类型.</p>
@@ -1120,7 +1127,7 @@
 <li><p>注意, Linux中, 两个进程不能通过全局变量来进行交互.</p>
 </li>
 </ul>
-<h2 id="进程执行可执行文件"><a href="#进程执行可执行文件" class="headerlink" title="进程执行可执行文件"></a>进程执行可执行文件</h2><p>进程控制一般用到<code>execl</code>和<code>execlp</code>这两个函数, 两个函数都在<code>&lt;unistd.h&gt;</code>中:</p>
+<h2 id="进程执行exec"><a href="#进程执行exec" class="headerlink" title="进程执行exec"></a>进程执行<code>exec</code></h2><p>进程控制一般用到<code>execl</code>和<code>execlp</code>这两个函数, 两个函数都在<code>&lt;unistd.h&gt;</code>中:</p>
 <ul>
 <li><code>int execl(const char *path, const char *arg, ...);</code><ul>
 <li><code>path</code>是可执行文件的路径, 推荐绝对路径.</li>
@@ -1186,7 +1193,7 @@
 <li>杀死僵尸进程的父进程即可.</li>
 <li>用<code>kill</code>无法杀死僵尸进程.</li>
 </ul>
-<h2 id="进程回收"><a href="#进程回收" class="headerlink" title="进程回收"></a>进程回收</h2><p>为了避免僵尸进程的产生, 需要让父进程回收子进程资源, 这个回收方式分为两种类型:</p>
+<h2 id="进程回收wait"><a href="#进程回收wait" class="headerlink" title="进程回收wait"></a>进程回收<code>wait</code></h2><h3 id="wait"><a href="#wait" class="headerlink" title="wait"></a><code>wait</code></h3><p>为了避免僵尸进程的产生, 需要让父进程回收子进程资源, 这个回收方式分为两种类型:</p>
 <ul>
 <li>阻塞回收.</li>
 <li>非阻塞回收.</li>
@@ -1206,6 +1213,41 @@
 </ul>
 <p>例子:</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">pid_t</span> pid;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i ++) &#123;<br>      <span class="hljs-comment">// 创建5个子进程</span><br>        pid = fork();<br>        <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">pid_t</span> ret = wait(<span class="hljs-literal">NULL</span>);<br>          <span class="hljs-comment">// 如果成功回收</span><br>            <span class="hljs-keyword">if</span> (ret &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child %d PCB freed\n&quot;</span>, ret);<br>            &#125;<br>          <span class="hljs-comment">// 如果没子进程可等了, 就退出</span><br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child process freed error\n&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;I m father process\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="waitpid"><a href="#waitpid" class="headerlink" title="waitpid"></a><code>waitpid</code></h3><ul>
+<li><code>waitpid</code>是<code>wait</code>的升级版本, 可以对回收行为做进一步的控制.</li>
+<li><code>waitpid</code>也是在<code>&lt;sys/wait.h&gt;</code>中:<ul>
+<li>函数签名: <code>pid_t waitpid(pid_t pid, int *status, int options)</code>:<ul>
+<li><code>pid</code>: <ul>
+<li>小于<code>-1</code>: 回收进程组ID是<code>|pid|</code>的所有子进程.</li>
+<li><code>-1</code>: 和<code>wait()</code>一样, 无差别回收.</li>
+<li><code>0</code>: 回收当前进程组所有的子进程.</li>
+<li><code>&gt; 0</code>: 指定回收进程ID是<code>pid</code>的进程.</li>
+</ul>
+</li>
+<li><code>status</code>: 和<code>wait</code>一样.</li>
+<li><code>options</code>: 控制函数是否阻塞当前进程:<ul>
+<li><code>0</code>: 阻塞.</li>
+<li><code>WNOHANG</code>: 非阻塞.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>返回值:<ul>
+<li><code>0</code>: 函数非阻塞, 子进程还在运行.</li>
+<li><code>-1</code>: 回收失败.</li>
+<li>成功会得到回收的子进程的<code>pid</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>例子: 通过<code>waitpid</code>非阻塞回收子进程资源</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">pid_t</span> pid;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i ++) &#123;<br>      <span class="hljs-comment">// 创建5个子进程</span><br>        pid = fork();<br>        <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">pid_t</span> ret = waitpid(<span class="hljs-number">-1</span>, <span class="hljs-literal">NULL</span>, WNOHANG);<br>          <span class="hljs-comment">// 成功回收</span><br>            <span class="hljs-keyword">if</span> (ret &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child %d PCB freed\n&quot;</span>, ret);<br>            &#125;<br>          <span class="hljs-comment">// 子进程还没退出</span><br>          	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ret == <span class="hljs-number">0</span>) &#123;<br>              <br>            &#125;<br>          <span class="hljs-comment">// 回收失败</span><br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child process freed error\n&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;I m father process\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
       

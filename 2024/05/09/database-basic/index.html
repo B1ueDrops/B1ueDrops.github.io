@@ -6,15 +6,13 @@
   <meta name="keywords" content="">
   <meta name="description" content="PostgreSQL数据库教程 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="词汇 hood: 引擎盖  headlight: 车灯  bumper: 保险杠  windshield: 挡风玻璃  windshield wiper: 雨刮器  side view mirror: 左&#x2F;右后视镜  rear(后部) view mirror: 内部的后视镜  dashboard: 仪表盘  steering wheel: 方向盘  trunk: 后备箱">
 <meta property="og:type" content="article">
-<meta property="og:title" content="汽车英语">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/05/17/car-english/index.html">
+<meta property="og:title" content="信号与系统知识点">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/05/20/signal_process/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="词汇 hood: 引擎盖  headlight: 车灯  bumper: 保险杠  windshield: 挡风玻璃  windshield wiper: 雨刮器  side view mirror: 左&#x2F;右后视镜  rear(后部) view mirror: 内部的后视镜  dashboard: 仪表盘  steering wheel: 方向盘  trunk: 后备箱">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-17T05:37:34.182Z">
-<meta property="article:modified_time" content="2024-05-17T05:40:44.232Z">
+<meta property="article:published_time" content="2024-05-20T12:23:10.987Z">
+<meta property="article:modified_time" content="2024-05-20T12:23:31.137Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +113,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(69)</small>
+                <small>(70)</small>
             
         </div>
     </li>
@@ -262,7 +260,7 @@
         <div data-rel="信号处理">
             
             信号处理
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -332,7 +330,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="69">
+<input type="hidden" id="yelog_site_posts_number" value="70">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -382,6 +380,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 信号处理 "
+           href="/2024/05/20/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统知识点">信号与系统知识点</span>
+            <span class="post-date" title="2024-05-20 20:23:10">2024/05/20</span>
+        </a>
         
         
         <a  class="All English "
@@ -1042,7 +1049,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-13 21:34:05'>2024-05-09 20:24</time>
+            Created At : <time class="date" title='Updated At: 2024-05-19 21:27:35'>2024-05-09 20:24</time>
         
     </div>
     <div class="article-meta">
@@ -1053,7 +1060,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E7%99%BB%E5%BD%95"><span class="toc-text">下载与登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">登录环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#psql%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">psql的配置和常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#psql%E7%9A%84%E5%A2%9E%E5%BC%BA%E7%89%88-pgcli"><span class="toc-text">psql的增强版-pgcli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#psql%E7%9A%84%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="toc-text">psql的常见命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostgreSQL%E7%9A%84%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8"><span class="toc-text">PostgreSQL的逻辑存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Database"><span class="toc-text">Database</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Schema"><span class="toc-text">Schema</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Table"><span class="toc-text">Create Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">字段的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0"><span class="toc-text">整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NULL"><span class="toc-text">NULL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F"><span class="toc-text">字段约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#not-null"><span class="toc-text">not null</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique"><span class="toc-text">unique</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#primary-key-%E4%B8%BB%E9%94%AE"><span class="toc-text">primary key(主键)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foreign-key-%E5%A4%96%E9%94%AE"><span class="toc-text">foreign key(外键)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="toc-text">三大范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Insert"><span class="toc-text">Insert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Select"><span class="toc-text">Select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">面试题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E7%99%BB%E5%BD%95"><span class="toc-text">下载与登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">登录环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#psql%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">psql的配置和常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#psql%E7%9A%84%E5%A2%9E%E5%BC%BA%E7%89%88-pgcli"><span class="toc-text">psql的增强版-pgcli</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#psql%E7%9A%84%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="toc-text">psql的常见命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8"><span class="toc-text">逻辑存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Database"><span class="toc-text">Database</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Schema"><span class="toc-text">Schema</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="toc-text">建表语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E6%95%B0"><span class="toc-text">整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NULL"><span class="toc-text">NULL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F"><span class="toc-text">字段约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#not-null"><span class="toc-text">not null</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique"><span class="toc-text">unique</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#primary-key-%E4%B8%BB%E9%94%AE"><span class="toc-text">primary key(主键)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foreign-key-%E5%A4%96%E9%94%AE"><span class="toc-text">foreign key(外键)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="toc-text">三大范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Insert"><span class="toc-text">Insert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Select"><span class="toc-text">Select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">面试题</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1101,14 +1108,14 @@
 <li>User: <code>PGUSER</code></li>
 </ul>
 <p>更多的数据库环境变量信息可以参考: <a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/libpq-envars.html">https://www.postgresql.org/docs/current/libpq-envars.html</a></p>
-<h2 id="psql的配置和常用命令"><a href="#psql的配置和常用命令" class="headerlink" title="psql的配置和常用命令"></a>psql的配置和常用命令</h2><h3 id="psql的增强版-pgcli"><a href="#psql的增强版-pgcli" class="headerlink" title="psql的增强版-pgcli"></a>psql的增强版-pgcli</h3><blockquote>
+<h2 id="psql的配置和常用命令"><a href="#psql的配置和常用命令" class="headerlink" title="psql的配置和常用命令"></a><code>psql</code>的配置和常用命令</h2><h3 id="psql的增强版-pgcli"><a href="#psql的增强版-pgcli" class="headerlink" title="psql的增强版-pgcli"></a><code>psql</code>的增强版-<code>pgcli</code></h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/dbcli/pgcli">https://github.com/dbcli/pgcli</a></p>
 </blockquote>
 <p>在macos上用:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">brew install pgcli<br></code></pre></td></tr></table></figure>
 
 <p>下载完成并配置完登录的环境变量后, 使用<code>pgcli</code>即可登录数据库.</p>
-<h3 id="psql的常见命令"><a href="#psql的常见命令" class="headerlink" title="psql的常见命令"></a>psql的常见命令</h3><table>
+<h3 id="psql的常见命令"><a href="#psql的常见命令" class="headerlink" title="psql的常见命令"></a><code>psql</code>的常见命令</h3><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -1152,7 +1159,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="PostgreSQL的逻辑存储"><a href="#PostgreSQL的逻辑存储" class="headerlink" title="PostgreSQL的逻辑存储"></a>PostgreSQL的逻辑存储</h2><h3 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h3><p>Database是数据库逻辑存储的最高一级, 可以通过下面的命令创建:</p>
+<h2 id="逻辑存储"><a href="#逻辑存储" class="headerlink" title="逻辑存储"></a>逻辑存储</h2><h3 id="Database"><a href="#Database" class="headerlink" title="Database"></a><code>Database</code></h3><p>Database是数据库逻辑存储的最高一级, 可以通过下面的命令创建:</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> database <span class="hljs-operator">&lt;</span>Database_name<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
 
 <p>创建这个Database的人默认就是管理员.</p>
@@ -1160,7 +1167,7 @@
 <ul>
 <li>默认情况下, 如果不显式指定模板, 创建的database都是由<code>template1</code>克隆而来.</li>
 </ul>
-<h3 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h3><p>Schema是Database下面一级的一个空间, 这个Schema可以存储不同的数据库对象, 例如表, 索引, 函数等.</p>
+<h3 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a><code>Schema</code></h3><p>Schema是Database下面一级的一个空间, 这个Schema可以存储不同的数据库对象, 例如表, 索引, 函数等.</p>
 <p>如果创建了一个database, 那么默认会创建两个schema:</p>
 <ul>
 <li><code>public</code>: 这个database中的所有用户都可以访问的schema, 默认创建的数据库对象就在<code>public</code>中.</li>
@@ -1177,12 +1184,12 @@
 <li><p>如果要在一个特定的schema下创建数据库对象(例如表格), 可以用<code>create table schema_name.table_name</code>.</p>
 </li>
 </ul>
-<h2 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h2><p>创建表格的文法如下:</p>
+<h2 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h2><p>创建表格的文法如下:</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span><br>(<br>  column_name1 <span class="hljs-operator">&lt;</span>data_type1<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>inline_constraint<span class="hljs-operator">&gt;</span>,<br>  column_name2 <span class="hljs-operator">&lt;</span>data_type2<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>inline_constraint<span class="hljs-operator">&gt;</span>,<br>  column_name3 <span class="hljs-operator">&lt;</span>data_type3<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>inline_constraint<span class="hljs-operator">&gt;</span>,<br>  ...,<br>  <span class="hljs-keyword">constraint</span> <span class="hljs-operator">&lt;</span>constraint_name<span class="hljs-operator">&gt;</span><br>    <span class="hljs-operator">&lt;</span>constraints<span class="hljs-operator">&gt;</span>,<br>    <span class="hljs-operator">&lt;</span>constraints<span class="hljs-operator">&gt;</span>,<br>    <span class="hljs-operator">&lt;</span>constraints<span class="hljs-operator">&gt;</span>,<br>  ...<br>);<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="字段的数据类型"><a href="#字段的数据类型" class="headerlink" title="字段的数据类型"></a>字段的数据类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><table>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><table>
 <thead>
 <tr>
 <th>关键字</th>
@@ -1242,7 +1249,7 @@
 <td>和<code>text</code>一样.</td>
 </tr>
 </tbody></table>
-<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>注意: <font color="red">在SQL中, null不是一个数值, 而是表示这个字段还没有设置值.</font></p>
+<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a><code>NULL</code></h2><p>注意: <font color="red">在SQL中, null不是一个数值, 而是表示这个字段还没有设置值.</font></p>
 <ul>
 <li>因此, 尽量不要将<code>null</code>和其他操作结合, 例如加减乘除.</li>
 </ul>
@@ -1251,8 +1258,8 @@
 
 
 
-<h2 id="字段约束"><a href="#字段约束" class="headerlink" title="字段约束"></a>字段约束</h2><h3 id="not-null"><a href="#not-null" class="headerlink" title="not null"></a>not null</h3><p>这个约束表示一个字段不允许存在<code>null</code>值, 是一个inline-constraint, 定义的关键词就是<code>not null</code>.</p>
-<h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h3><p>如果一个&#x2F;多个字段被设置成unique, 那么表中不允许有两条纪录有同样的字段值, 关键词是<code>unique</code>. </p>
+<h2 id="字段约束"><a href="#字段约束" class="headerlink" title="字段约束"></a>字段约束</h2><h3 id="not-null"><a href="#not-null" class="headerlink" title="not null"></a><code>not null</code></h3><p>这个约束表示一个字段不允许存在<code>null</code>值, 是一个inline-constraint, 定义的关键词就是<code>not null</code>.</p>
+<h3 id="unique"><a href="#unique" class="headerlink" title="unique"></a><code>unique</code></h3><p>如果一个&#x2F;多个字段被设置成unique, 那么表中不允许有两条纪录有同样的字段值, 关键词是<code>unique</code>. </p>
 <ul>
 <li>但是<font color="red">即使这一列是<code>unique</code>, 这一列还是允许有多个<code>null</code></font>.</li>
 </ul>
@@ -1261,7 +1268,7 @@
 
 
 
-<h3 id="primary-key-主键"><a href="#primary-key-主键" class="headerlink" title="primary key(主键)"></a>primary key(主键)</h3><p>主键的关键字是<code>primary key</code>.</p>
+<h3 id="primary-key-主键"><a href="#primary-key-主键" class="headerlink" title="primary key(主键)"></a><code>primary key</code>(主键)</h3><p>主键的关键字是<code>primary key</code>.</p>
 <p>如果一个&#x2F;多个字段被设置成primary key, 那么有如下含义:</p>
 <ul>
 <li>组成主键的所有字段都是<code>not null</code>.</li>
@@ -1275,7 +1282,7 @@
 
 
 
-<h3 id="foreign-key-外键"><a href="#foreign-key-外键" class="headerlink" title="foreign key(外键)"></a>foreign key(外键)</h3><p>外键的关键字是<code>foreign key</code>, 外键主要是用来管理表与表之间的integration的.</p>
+<h3 id="foreign-key-外键"><a href="#foreign-key-外键" class="headerlink" title="foreign key(外键)"></a><code>foreign key</code>(外键)</h3><p>外键的关键字是<code>foreign key</code>, 外键主要是用来管理表与表之间的integration的.</p>
 <p>一个表中的一个字段, 可以作为外键链接到另外一个表的主键&#x2F;unique的字段, 如果被关联的表中某些记录发生了变化, 那么外键所在的表也需要变化, 才能保证数据的一致性.</p>
 <ul>
 <li>一般来说, 一个外键只有一个字段, 但是一个表可以有多个外键.</li>
@@ -1299,7 +1306,7 @@
 <li>第二范式: 表格中的主键可以确定每一个其他字段的值, 但是<font color="red">表格中主键的任意一个子集却不能确定任何一个字段的值.</font></li>
 <li>第三范式: 对于表中的非主键字段, 它们之间完全独立, 没有依赖关系, 并且非主键字段不能确定主键.</li>
 </ul>
-<h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h2><p>Insert语句用来向已经创建的表中插入一行, 语法是:</p>
+<h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a><code>Insert</code></h2><p>Insert语句用来向已经创建的表中插入一行, 语法是:</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span>(column1, column2, ...) <span class="hljs-keyword">values</span><br>	(value11, value12, ...),<br>	(value21, value22, ...),<br>	...<br></code></pre></td></tr></table></figure>
 
 <p>其中, 如果有某些列没有指定值, 那么默认是<code>null</code>, 如果这一列凑巧又设置成了<code>not null</code>, 那么就会报错.</p>
@@ -1307,7 +1314,7 @@
 <li>注意: 在SQL语句中, 字符串使用的是<code>&#39;&#39;</code>.</li>
 <li>注意: 在SQL语句中, 转义字符不是用<code>\</code>, 而使用<code>&#39;</code>, 例如如果一个字符串中包含<code>&#39;</code>字符, 那么字面值可以是<code>&#39;&#39;a&#39;</code>, 这个就表示<code>&#39;a</code>这个字符串, 第一个<code>&#39;</code>是转义字符.</li>
 </ul>
-<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h2><p>Select指令用于从表中查询数据.</p>
+<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a><code>Select</code></h2><p>Select指令用于从表中查询数据.</p>
 <p>如果要从一个表中查询所有数据, 可以使用:</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> table_name;<br></code></pre></td></tr></table></figure>
 
