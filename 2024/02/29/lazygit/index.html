@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>lazygit的一些常见用法 | B1ueDrops</title>
+  <title>Git/Lazygit版本控制 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="lazygit的一些常见用法 | B1ueDrops">
+  <meta name="description" content="Git/Lazygit版本控制 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信号与系统知识点">
@@ -962,7 +962,7 @@
            href="/2024/02/29/lazygit/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="lazygit的一些常见用法">lazygit的一些常见用法</span>
+            <span class="post-title" title="Git/Lazygit版本控制">Git/Lazygit版本控制</span>
             <span class="post-date" title="2024-02-29 17:44:04">2024/02/29</span>
         </a>
         
@@ -1031,7 +1031,7 @@
     <div class="pjax">
         <article id="post-lazygit" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">lazygit的一些常见用法</h1>
+        <h1 class="article-title">Git/Lazygit版本控制</h1>
     
     <div class="article-meta">
         
@@ -1049,7 +1049,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-03-03 15:00:29'>2024-02-29 17:44</time>
+            Created At : <time class="date" title='Updated At: 2024-05-21 17:27:32'>2024-02-29 17:44</time>
         
     </div>
     <div class="article-meta">
@@ -1060,7 +1060,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C"><span class="toc-text">正确的回滚操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interactive-Rebasing"><span class="toc-text">Interactive Rebasing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%86%99commit%E4%BF%A1%E6%81%AF"><span class="toc-text">改写commit信息</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C"><span class="toc-text">正确的回滚操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interactive-Rebasing"><span class="toc-text">Interactive Rebasing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%86%99commit%E4%BF%A1%E6%81%AF"><span class="toc-text">改写commit信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commit%E6%A0%BC%E5%BC%8F"><span class="toc-text">Commit格式</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1096,6 +1096,10 @@
 </ul>
 <p>对于每个commit设置完状态之后, 使用<code>m</code>, 选择<code>continue</code>, 就可以生效.</p>
 <h2 id="改写commit信息"><a href="#改写commit信息" class="headerlink" title="改写commit信息"></a>改写commit信息</h2><p>在commit pane中, 使用<code>r</code>就可以改写commit信息.</p>
+<h2 id="Commit格式"><a href="#Commit格式" class="headerlink" title="Commit格式"></a>Commit格式</h2><ul>
+<li><p>标题: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[&lt;type&gt;](&lt;scope&gt;) &lt;subject&gt; (#pr)<br></code></pre></td></tr></table></figure></li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
