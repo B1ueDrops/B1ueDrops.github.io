@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Python用到什么学什么 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="股票基本知识Wald-Wolfowitz检验Wald-Wolfowitz检验用于检测一串0&#x2F;1序列是否具有特定的规律.  游程(run): 一个序列中由连续0或者连续1构成的数据为一个游程(run).  序列中游程的个数可以表示0和1交替的次数.  例如, 下面这个序列: 1 0 0 0 0 1 1 1 0 1 1 0 0 0 0 1 1 1 1 0  有4个0游程. 有4个1游程.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="金融量化分析基础">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/05/22/quant_analysis/index.html">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="股票基本知识Wald-Wolfowitz检验Wald-Wolfowitz检验用于检测一串0&#x2F;1序列是否具有特定的规律.  游程(run): 一个序列中由连续0或者连续1构成的数据为一个游程(run).  序列中游程的个数可以表示0和1交替的次数.  例如, 下面这个序列: 1 0 0 0 0 1 1 1 0 1 1 0 0 0 0 1 1 1 1 0  有4个0游程. 有4个1游程.">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-22T10:08:38.854Z">
-<meta property="article:modified_time" content="2024-05-24T05:34:24.704Z">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(71)</small>
+                <small>(72)</small>
             
         </div>
     </li>
@@ -217,7 +217,7 @@
         <div data-rel="社会技能">
             
             社会技能
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="71">
+<input type="hidden" id="yelog_site_posts_number" value="72">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -382,6 +382,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/05/26/social_security/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="社保/五险一金">社保/五险一金</span>
+            <span class="post-date" title="2024-05-26 18:31:06">2024/05/26</span>
+        </a>
         
         
         <a  class="All 金融知识 "
@@ -1060,7 +1069,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-08 18:53:51'>2024-04-07 10:46</time>
+            Created At : <time class="date" title='Updated At: 2024-05-26 16:22:38'>2024-04-07 10:46</time>
         
     </div>
     <div class="article-meta">
@@ -1071,7 +1080,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E5%9F%BA%E7%A1%80"><span class="toc-text">Python基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">Python面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pandas"><span class="toc-text">Pandas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Snippets-Library"><span class="toc-text">Snippets&#x2F;Library</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E5%9F%BA%E7%A1%80"><span class="toc-text">Python基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">Python面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pandas"><span class="toc-text">Pandas</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1088,8 +1097,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h2><ul>
-<li>查看dict的keys: <code>print(a.keys())</code>.</li>
-<li>对某个对象<code>obj</code>做浅拷贝: <code>copyed_obj = obj.copy()</code>.</li>
+<li>查看dict的keys: <code>print(list(a.keys())</code></li>
+<li>对某个对象<code>obj</code>做深拷贝:<ul>
+<li><code>copyed_obj = obj.copy()</code>, 对<code>obj</code></li>
+</ul>
+</li>
 </ul>
 <h2 id="Python面向对象"><a href="#Python面向对象" class="headerlink" title="Python面向对象"></a>Python面向对象</h2><ul>
 <li><p>定义接口的方法:</p>
@@ -1101,12 +1113,6 @@
 <li><code>df.ewm()</code>可以执行指数加权平均(Exponential Weighted Moving Average).</li>
 </ul>
 </li>
-</ul>
-<h2 id="Snippets-Library"><a href="#Snippets-Library" class="headerlink" title="Snippets&#x2F;Library"></a>Snippets&#x2F;Library</h2><ul>
-<li><p>读取matlab的<code>.mat</code>文件, 选用<code>mat73</code>库:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">pip3 install mat73<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># data是字典类型</span><br>data = mat73.loadmat(<span class="hljs-string">&#x27;mat文件路径&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
 </ul>
 
       

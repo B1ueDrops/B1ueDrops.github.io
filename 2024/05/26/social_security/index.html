@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>数据结构系列 | B1ueDrops</title>
+  <title>社保/五险一金 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="数据结构系列 | B1ueDrops">
+  <meta name="description" content="社保/五险一金 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1049,9 +1049,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-data-struct" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-social_security" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">数据结构系列</h1>
+        <h1 class="article-title">社保/五险一金</h1>
     
     <div class="article-meta">
         
@@ -1061,7 +1061,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="算法">算法</a>
+            <a  data-rel="社会技能">社会技能</a>
             
         </span>
         
@@ -1069,7 +1069,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-19 21:12:54'>2024-03-24 14:10</time>
+            Created At : <time class="date" title='Updated At: 2024-05-26 19:13:12'>2024-05-26 18:31</time>
         
     </div>
     <div class="article-meta">
@@ -1080,7 +1080,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E6%A0%88"><span class="toc-text">用数组模拟栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC-%E6%A0%88"><span class="toc-text">表达式求值(栈)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E6%A8%A1%E6%9D%BF"><span class="toc-text">单调队列模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="toc-text">最大子序和(单调队列)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">两数之和(哈希表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">字母异位词分组(哈希表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">无重复字符的最长子串(哈希表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">最长连续序列(哈希表)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E7%AC%ACk%E5%A4%A7%E6%95%B0-%E5%A0%86"><span class="toc-text">数据流中的第k大数(堆)</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BF%9D%E6%A6%82%E8%BF%B0"><span class="toc-text">社保概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BB%E7%96%97%E4%BF%9D%E9%99%A9"><span class="toc-text">医疗保险</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%B1%E4%B8%9A%E4%BF%9D%E9%99%A9"><span class="toc-text">失业保险</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1096,98 +1096,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="用数组模拟栈"><a href="#用数组模拟栈" class="headerlink" title="用数组模拟栈"></a>用数组模拟栈</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/">https://www.acwing.com/problem/content/description/</a></p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-type">int</span> tt = <span class="hljs-number">-1</span>;<br><span class="hljs-type">int</span> stk[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    <span class="hljs-type">int</span> m;<br>    cin &gt;&gt; m;<br><br>    <span class="hljs-keyword">while</span> (m --) &#123;<br><br>        string op;<br>        cin &gt;&gt; op;<br><br>        <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;push&quot;</span>) &#123;<br>            <span class="hljs-type">int</span> x;<br>            cin &gt;&gt; x;<br>            stk[++ tt] = x;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;pop&quot;</span>) &#123;<br>            -- tt;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op == <span class="hljs-string">&quot;empty&quot;</span>) &#123;<br>            <span class="hljs-keyword">if</span> (tt &lt; <span class="hljs-number">0</span>) <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;YES&quot;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;NO&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, stk[tt]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="表达式求值-栈"><a href="#表达式求值-栈" class="headerlink" title="表达式求值(栈)"></a>表达式求值(栈)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3305/">https://www.acwing.com/problem/content/description/3305/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/456/">https://www.acwing.com/problem/content/description/456/</a></p>
-</blockquote>
-<p>直接背模板:</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stack&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unordered_map&gt;</span></span><br><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">/* 将运算符映射到优先级上 */</span><br>unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; pr = &#123;<br>    &#123; <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-number">1</span> &#125;,<br>    &#123; <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-number">1</span> &#125;,<br>    &#123; <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-number">2</span> &#125;,<br>    &#123; <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-number">2</span> &#125;<br>&#125;;<br><br><span class="hljs-comment">/* 存储运算数的栈 */</span><br>stack&lt;<span class="hljs-type">int</span>&gt; nums;<br><span class="hljs-comment">/* 存储运算符的栈 */</span><br>stack&lt;<span class="hljs-type">char</span>&gt; op;<br><br><span class="hljs-comment">/* 表达式 */</span><br>string str;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">eval</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> b = nums.<span class="hljs-built_in">top</span>(); nums.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-type">int</span> a = nums.<span class="hljs-built_in">top</span>(); nums.<span class="hljs-built_in">pop</span>();<br>    <br>    <span class="hljs-type">char</span> c = op.<span class="hljs-built_in">top</span>(); op.<span class="hljs-built_in">pop</span>();<br>    <br>    <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;+&#x27;</span>) nums.<span class="hljs-built_in">push</span>(a + b);<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;-&#x27;</span>) nums.<span class="hljs-built_in">push</span>(a - b);<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;*&#x27;</span>) nums.<span class="hljs-built_in">push</span>(a * b);<br>    <span class="hljs-keyword">else</span> nums.<span class="hljs-built_in">push</span>(a / b);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; str;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i ++)<br>    &#123;<br>        <span class="hljs-comment">/* 如果是左括号, 加入运算符的栈 */</span><br>        <span class="hljs-keyword">if</span> (str[i] == <span class="hljs-string">&#x27;(&#x27;</span>) op.<span class="hljs-built_in">push</span>(str[i]);<br>        <span class="hljs-comment">/* 如果是右括号, 那么需要eval括号内表达式的值 */</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[i] == <span class="hljs-string">&#x27;)&#x27;</span>)<br>        &#123;<br>            <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>() &amp;&amp; op.<span class="hljs-built_in">top</span>() != <span class="hljs-string">&#x27;(&#x27;</span>) <span class="hljs-built_in">eval</span>();<br>            op.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-comment">/* 如果是数位, 那么需要找到整个数, 然后放到nums栈中 */</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(str[i]))<br>        &#123;<br>            <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>, j = i;<br>          	<span class="hljs-comment">/* 这个j ++不要忘记 */</span><br>            <span class="hljs-keyword">while</span> (j &lt; str.<span class="hljs-built_in">size</span>() &amp;&amp; <span class="hljs-built_in">isdigit</span>(str[j])) x = <span class="hljs-number">10</span> * x + str[j ++] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            i = j - <span class="hljs-number">1</span>;<br>            nums.<span class="hljs-built_in">push</span>(x);<br>        &#125;<br>        <span class="hljs-comment">/* 如果是运算符, 需要先eval优先级高的运算符, 然后放到栈中 */</span><br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>() &amp;&amp; pr[op.<span class="hljs-built_in">top</span>()] &gt;= pr[str[i]]) <span class="hljs-built_in">eval</span>();<br>            op.<span class="hljs-built_in">push</span>(str[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (op.<span class="hljs-built_in">size</span>()) <span class="hljs-built_in">eval</span>();<br>    <br>    cout &lt;&lt; nums.<span class="hljs-built_in">top</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="单调队列模板"><a href="#单调队列模板" class="headerlink" title="单调队列模板"></a>单调队列模板</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/156/">https://www.acwing.com/problem/content/156/</a></p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1000010</span>;<br><br><span class="hljs-type">int</span> n, k;<br><span class="hljs-type">int</span> hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><span class="hljs-type">int</span> a[N], q[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    cin &gt;&gt; n &gt;&gt; k;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) cin &gt;&gt; a[i];<br><br>    <span class="hljs-comment">// min value</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt; q[hh]) hh ++;<br>        <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i]) tt --;<br>        q[ ++ tt ] = i;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[q[hh]]);<br>    &#125;<br><br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">-1</span>;<br><br>    <span class="hljs-comment">// max value</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt; q[hh]) hh ++;<br>        <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &lt;= a[i]) tt --;<br>        q[ ++ tt ] = i;<br>        <span class="hljs-keyword">if</span> (i - k + <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[q[hh]]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="最大子序和-单调队列"><a href="#最大子序和-单调队列" class="headerlink" title="最大子序和(单调队列)"></a>最大子序和(单调队列)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/137/">https://www.acwing.com/problem/content/description/137/</a></p>
-</blockquote>
-<p>首先要注意审题, 这个子序列是连续的.</p>
-<p>将原数组变成前缀和后, 维护一个长度是$m$的单调队列(最小值), 对于下标<code>i</code>, 只需要从单调队列中找到一个最小值, 然后相减, 就得到<strong>以下标i为结尾, 长度不超过m+1的连续子序列的最大值</strong>, 然后遍历一遍求全局最大值就是答案.</p>
-<p>时间复杂度是$O(n)$.</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;climits&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">300010</span>;<br><br><span class="hljs-type">int</span> n, m;<br><span class="hljs-type">int</span> hh = <span class="hljs-number">0</span>, tt = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> s[N], q[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    cin &gt;&gt; n &gt;&gt; m;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) cin &gt;&gt; s[i], s[i] += s[i - <span class="hljs-number">1</span>];<br><br><br>    <span class="hljs-type">int</span> res = INT_MIN;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>        <span class="hljs-keyword">if</span> (i - m &gt; q[hh]) hh ++;<br>        res = <span class="hljs-built_in">max</span>(res, s[i] - s[q[hh]]);<br>        <span class="hljs-keyword">while</span> (hh &lt;= tt &amp;&amp; s[q[tt]] &gt;= s[i]) tt --;<br>        q[ ++ tt ] = i;<br><br>    &#125;<br><br>    cout &lt;&lt; res &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>注意, 这段代码里面有三个细节:</p>
+        <h2 id="社保概述"><a href="#社保概述" class="headerlink" title="社保概述"></a>社保概述</h2><p>中国的社保系统可以分为三种:</p>
 <ul>
-<li>首先, 对于前缀和来说, <code>[l, r]</code>里所有元素的和是<code>s[r] - s[l-1]</code>. 由于减去的是<code>l-1</code>, 我在维护单调队列时, 对于下标<code>i</code>来说, 我实际需要维护的单调队列长度是<code>m + 1</code>.</li>
-<li>对于元素<code>s[1]</code>, 我首先需要向队列中添加一个0, 让<code>q[0] = 0</code>, 来让第一个元素也参与运算.</li>
-<li><code>res = max(res, s[i] - s[q[hh]])</code>必须在用<code>s[q[tt]]</code>更新队列之前, 表明了这个单调队列维护的是**<code>s[i]</code>之前(不包含<code>s[i]</code>), 长度为<code>m + 1</code>的滑动窗口内的最小值**, 如果先用<code>s[i]</code>更新了队列, 然后求最小值, 那么最小值就一定会大于等于0, 显然不符合题意.</li>
+<li>城乡居民社保: 不贵</li>
+<li>灵活就业社保: 小贵</li>
+<li>职工社保: 最贵</li>
 </ul>
-<h2 id="两数之和-哈希表"><a href="#两数之和-哈希表" class="headerlink" title="两数之和(哈希表)"></a>两数之和(哈希表)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/">https://leetcode.cn/problems/two-sum/description/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/802/">https://www.acwing.com/problem/content/802/</a></p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; hash;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            <span class="hljs-keyword">if</span> (hash.<span class="hljs-built_in">count</span>(target - nums[i])) &#123;<br>                ans.<span class="hljs-built_in">push_back</span>(i);<br>                ans.<span class="hljs-built_in">push_back</span>(hash[target - nums[i]]);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            hash[nums[i]] = i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="字母异位词分组-哈希表"><a href="#字母异位词分组-哈希表" class="headerlink" title="字母异位词分组(哈希表)"></a>字母异位词分组(哈希表)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/group-anagrams/">https://leetcode.cn/problems/group-anagrams/</a></p>
-</blockquote>
-<p>这个题的题意是: </p>
+<p>其中只有职工社保可以享受到“五险一金”的全套保障, 五险一金包括:</p>
 <ul>
-<li>如果一个单词能通过字符的重排, 变成另一个单词, 那么这两个单词就属于同一组.</li>
-<li>需要把属于同一组的所有单词放到同一个列表中返回.</li>
+<li>医疗保险.</li>
+<li>生育保险.</li>
+<li>工伤保险.</li>
+<li>失业保险.</li>
+<li>养老保险.</li>
+<li>住房公积金.</li>
 </ul>
-<p>如果两个单词属于同一组, 那么它们字符排序后的结果一样.</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;string&gt;&gt; <span class="hljs-built_in">groupAnagrams</span>(vector&lt;string&gt;&amp; strs) &#123;<br>        unordered_map&lt;string, vector&lt;string&gt;&gt; hash;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> str : strs) &#123;<br>            string nstr = str;<br>            <span class="hljs-built_in">sort</span>(nstr.<span class="hljs-built_in">begin</span>(), nstr.<span class="hljs-built_in">end</span>());<br>            hash[nstr].<span class="hljs-built_in">push_back</span>(str);<br>        &#125;<br>        vector&lt;vector&lt;string&gt;&gt; ans;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;item: hash) ans.<span class="hljs-built_in">push_back</span>(item.second);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="无重复字符的最长子串-哈希表"><a href="#无重复字符的最长子串-哈希表" class="headerlink" title="无重复字符的最长子串(哈希表)"></a>无重复字符的最长子串(哈希表)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">https://leetcode.cn/problems/longest-substring-without-repeating-characters/</a></p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; hash;<br>      <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>            hash[s[i]] ++;<br>            <span class="hljs-keyword">while</span> (j &lt; i &amp;&amp; hash[s[i]] &gt; <span class="hljs-number">1</span>) hash[s[j ++]] --;<br>            res = <span class="hljs-built_in">max</span>(res, i - j + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="最长连续序列-哈希表"><a href="#最长连续序列-哈希表" class="headerlink" title="最长连续序列(哈希表)"></a>最长连续序列(哈希表)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-consecutive-sequence/">https://leetcode.cn/problems/longest-consecutive-sequence/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/801/">https://www.acwing.com/problem/content/description/801/</a></p>
-</blockquote>
+<p>如果你和公司存在劳动关系, 那么公司就需要帮你缴纳职工社保, 否则违法.</p>
 <ul>
-<li>首先, 把所有元素放到Hash Set中.</li>
-<li>然后, 枚举每一个元素<code>x</code>, 如果元素<code>x - 1</code>不在hash set中, 证明序列不再连续, 需要单开一个起点.</li>
-<li>然后, 从单开的起点<code>y = x</code>开始, 依次判断<code>y + 1</code>是否存在, 就能找到连续序列的终点.</li>
+<li><p>入职30天以内公司必须要交上社保.</p>
+</li>
+<li><p>每个月都要交社保.</p>
+</li>
+<li><p>购买社保后, 就会失去应届生身份.</p>
+</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">longestConsecutive</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">int</span>&gt; hash;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> x : nums) hash.<span class="hljs-built_in">insert</span>(x);<br><br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> x : nums) &#123;<br>            <span class="hljs-keyword">if</span> (!hash.<span class="hljs-built_in">count</span>(x - <span class="hljs-number">1</span>)) &#123;<br>                <span class="hljs-type">int</span> y = x;<br>                <span class="hljs-keyword">while</span> (hash.<span class="hljs-built_in">count</span>(y + <span class="hljs-number">1</span>)) y ++;<br>                res = <span class="hljs-built_in">max</span>(res, y - x + <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="数据流中的第k大数-堆"><a href="#数据流中的第k大数-堆" class="headerlink" title="数据流中的第k大数(堆)"></a>数据流中的第k大数(堆)</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-largest-element-in-a-stream/">https://leetcode.cn/problems/kth-largest-element-in-a-stream/</a></p>
-</blockquote>
-<p>第k大数直接用小根堆维护, 如果插入的树超过k个就直接弹出最小值, 维护后的堆顶元素就是最小值.</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">KthLargest</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    priority_queue&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;, greater&lt;<span class="hljs-type">int</span>&gt;&gt; heap;<br>    <span class="hljs-type">int</span> k;<br>    <span class="hljs-built_in">KthLargest</span>(<span class="hljs-type">int</span> _k, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        k = _k;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> num: nums) &#123;<br>            heap.<span class="hljs-built_in">push</span>(num);<br>            <span class="hljs-keyword">if</span> (heap.<span class="hljs-built_in">size</span>() &gt; k) heap.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;<br>        heap.<span class="hljs-built_in">push</span>(val);<br>        <span class="hljs-keyword">if</span> (heap.<span class="hljs-built_in">size</span>() &gt; k) heap.<span class="hljs-built_in">pop</span>();<br>        <span class="hljs-keyword">return</span> heap.<span class="hljs-built_in">top</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
+<h2 id="医疗保险"><a href="#医疗保险" class="headerlink" title="医疗保险"></a>医疗保险</h2><ul>
+<li>医疗保险是交一个月, 保一个月.</li>
+<li>医疗保险是公司占大头, 个人占小头.</li>
+<li>医疗保险</li>
+</ul>
+<h2 id="失业保险"><a href="#失业保险" class="headerlink" title="失业保险"></a>失业保险</h2><ul>
+<li><p>失业保险是在缴纳基数的基础上, 按照比例进行缴纳, 缴纳比例公司和个人一般不会差太多.</p>
+</li>
+<li><p>可以享受失业保险的条件: </p>
+<ul>
+<li>缴纳失业保险满足一定年限, 例如1年.</li>
+<li>非本人意愿中断就业.</li>
+<li>进行了就业登记, 并且有求职要求.</li>
+</ul>
+</li>
+<li><p>享受的福利:</p>
+<ul>
+<li>中断就业期间的医疗保险可以由政府代缴, 代缴年限还是算在医疗保险累计年限中.</li>
+</ul>
+</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
@@ -1200,46 +1153,6 @@
 
 
 
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<input type="hidden" id="MathJax-js"
-        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</input>
     
 
 
