@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(72)</small>
+                <small>(74)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -173,6 +173,21 @@
             
             金融知识
             <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(4)</small>
         </div>
         
     </li>
@@ -259,25 +274,10 @@
             
                 
     <li>
-        <div data-rel="信号处理">
-            
-            信号处理
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="AI">
             
             AI
-            <small>(4)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="72">
+<input type="hidden" id="yelog_site_posts_number" value="74">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,7 +384,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
            href="/2024/05/30/kalman/"
            data-tag=""
            data-author="" >
@@ -411,7 +429,7 @@
         </a>
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
            href="/2024/05/20/signal_process/"
            data-tag=""
            data-author="" >
@@ -456,7 +474,7 @@
         </a>
         
         
-        <a  class="All AI "
+        <a  class="All 控制基础 "
            href="/2024/05/14/probability/"
            data-tag=""
            data-author="" >
@@ -1069,7 +1087,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-11 21:26:53'>2024-02-25 15:27</time>
+            Created At : <time class="date" title='Updated At: 2024-05-31 13:41:08'>2024-02-25 15:27</time>
         
     </div>
     <div class="article-meta">
@@ -1096,7 +1114,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h2><p>创建型设计模式用于将对象的创建与使用解耦合.</p>
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">创建型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">原型模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">抽象工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">建造者模式</span></a></li></ol></div></p>
+<h2 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h2><p>创建型设计模式用于将对象的创建与使用解耦合.</p>
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>如果一个类只有一个实例, 那么可以使用单例模式创建对象.</p>
 <p>单例模式有两种实现方式: 懒汉与饿汉.</p>
 <ul>

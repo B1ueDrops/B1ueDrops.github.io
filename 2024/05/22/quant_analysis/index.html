@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(72)</small>
+                <small>(74)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -173,6 +173,21 @@
             
             金融知识
             <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(4)</small>
         </div>
         
     </li>
@@ -259,25 +274,10 @@
             
                 
     <li>
-        <div data-rel="信号处理">
-            
-            信号处理
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="AI">
             
             AI
-            <small>(4)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="72">
+<input type="hidden" id="yelog_site_posts_number" value="74">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,7 +384,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
            href="/2024/05/30/kalman/"
            data-tag=""
            data-author="" >
@@ -411,7 +429,7 @@
         </a>
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
            href="/2024/05/20/signal_process/"
            data-tag=""
            data-author="" >
@@ -456,7 +474,7 @@
         </a>
         
         
-        <a  class="All AI "
+        <a  class="All 控制基础 "
            href="/2024/05/14/probability/"
            data-tag=""
            data-author="" >
@@ -1069,7 +1087,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-26 18:27:03'>2024-05-22 18:08</time>
+            Created At : <time class="date" title='Updated At: 2024-05-31 13:41:58'>2024-05-22 18:08</time>
         
     </div>
     <div class="article-meta">
@@ -1096,7 +1114,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="股票基本知识"><a href="#股票基本知识" class="headerlink" title="股票基本知识"></a>股票基本知识</h2><ul>
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%82%A1%E7%A5%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-text">股票基本知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%82%A1%E7%A5%A8%E5%88%86%E7%B1%BB"><span class="toc-text">股票分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%82%A1%E7%A5%A8%E5%B8%82%E5%9C%BA%E6%9E%84%E6%88%90"><span class="toc-text">股票市场构成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E8%82%A1%E4%BB%B7%E7%9A%84%E5%9B%A0%E7%B4%A0-%E4%B9%B0%E5%8D%96"><span class="toc-text">影响股价的因素&#x2F;买卖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%91%E8%9E%8D%E5%88%86%E6%9E%90%E5%92%8C%E9%87%8F%E5%8C%96%E7%B3%BB%E7%BB%9F"><span class="toc-text">金融分析和量化系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E5%9D%87%E7%BA%BF%E7%AD%96%E7%95%A5-MACD"><span class="toc-text">双均线策略(MACD)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wald-Wolfowitz%E6%A3%80%E9%AA%8C"><span class="toc-text">Wald-Wolfowitz检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">检验步骤</span></a></li></ol></li></ol></div></p>
+<h2 id="股票基本知识"><a href="#股票基本知识" class="headerlink" title="股票基本知识"></a>股票基本知识</h2><ul>
 <li><strong>股票(stock)</strong>: 股票是股份公司发给出资人的一种凭证. 股票的持有者就是股东.</li>
 <li><strong>股票的作用</strong>:<ul>
 <li>证明股东身份, 对公司运营发表意见.</li>

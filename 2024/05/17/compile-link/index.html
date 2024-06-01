@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(72)</small>
+                <small>(74)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -173,6 +173,21 @@
             
             金融知识
             <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(4)</small>
         </div>
         
     </li>
@@ -259,25 +274,10 @@
             
                 
     <li>
-        <div data-rel="信号处理">
-            
-            信号处理
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="AI">
             
             AI
-            <small>(4)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="72">
+<input type="hidden" id="yelog_site_posts_number" value="74">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,7 +384,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
            href="/2024/05/30/kalman/"
            data-tag=""
            data-author="" >
@@ -411,7 +429,7 @@
         </a>
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
            href="/2024/05/20/signal_process/"
            data-tag=""
            data-author="" >
@@ -456,7 +474,7 @@
         </a>
         
         
-        <a  class="All AI "
+        <a  class="All 控制基础 "
            href="/2024/05/14/probability/"
            data-tag=""
            data-author="" >
@@ -1069,7 +1087,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-17 12:33:47'>2024-05-17 12:33</time>
+            Created At : <time class="date" title='Updated At: 2024-05-31 13:41:42'>2024-05-17 12:33</time>
         
     </div>
     <div class="article-meta">
@@ -1096,7 +1114,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="C语言程序是如何执行的"><a href="#C语言程序是如何执行的" class="headerlink" title="C语言程序是如何执行的"></a>C语言程序是如何执行的</h2><ul>
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E7%9A%84"><span class="toc-text">C语言程序是如何执行的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%99%A8%E7%9A%84%E7%AC%A6%E5%8F%B7%E8%A7%A3%E6%9E%90"><span class="toc-text">链接器的符号解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E7%9A%84%E5%BC%BA%E5%BC%B1"><span class="toc-text">符号的强弱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A7%A3%E6%9E%90%E7%AE%97%E6%B3%95"><span class="toc-text">符号解析算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-text">静态链接和动态链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80%E3%80%81%E5%8A%A0%E8%BD%BD%E5%9C%B0%E5%9D%80%E3%80%81%E8%BF%90%E8%A1%8C%E5%9C%B0%E5%9D%80"><span class="toc-text">链接地址、加载地址、运行地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80%E5%92%8C%E5%8A%A0%E8%BD%BD%E5%9C%B0%E5%9D%80%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="toc-text">链接地址和加载地址不一样</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80%E5%92%8C%E8%BF%90%E8%A1%8C%E5%9C%B0%E5%9D%80%E4%B8%8D%E7%9B%B8%E5%90%8C"><span class="toc-text">链接地址和运行地址不相同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BA%E4%BB%B6%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%87%8D%E5%AE%9A%E4%BD%8D%E5%92%8C%E5%86%85%E6%A0%B8%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="toc-text">固件程序的重定位和内核重定位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E9%87%8D%E5%AE%9A%E4%BD%8D%E4%B8%8E%E6%9D%BE%E5%BC%9B%E4%BC%98%E5%8C%96"><span class="toc-text">链接重定位与松弛优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%BE%E5%BC%9B%E4%BC%98%E5%8C%96"><span class="toc-text">松弛优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E6%9D%BE%E5%BC%9B%E4%BC%98%E5%8C%96"><span class="toc-text">对函数调用的松弛优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%85%A8%E5%B1%80%E7%AC%A6%E5%8F%B7%E7%B4%A2%E5%BC%95%E7%9A%84%E6%9D%BE%E5%BC%9B%E4%BC%98%E5%8C%96"><span class="toc-text">对全局符号索引的松弛优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gcc%E4%B8%AD%E7%9A%84%E6%9D%BE%E5%BC%9B%E4%BC%98%E5%8C%96"><span class="toc-text">gcc中的松弛优化</span></a></li></ol></li></ol></li></ol></div></p>
+<h2 id="C语言程序是如何执行的"><a href="#C语言程序是如何执行的" class="headerlink" title="C语言程序是如何执行的"></a>C语言程序是如何执行的</h2><ul>
 <li><p>第一步: 预处理, 对C语言各种预处理命令进行处理</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gcc -E test.c -o test.i<br></code></pre></td></tr></table></figure>
 </li>

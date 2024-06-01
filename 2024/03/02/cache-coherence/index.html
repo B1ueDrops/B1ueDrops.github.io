@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(72)</small>
+                <small>(74)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -173,6 +173,21 @@
             
             金融知识
             <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(4)</small>
         </div>
         
     </li>
@@ -259,25 +274,10 @@
             
                 
     <li>
-        <div data-rel="信号处理">
-            
-            信号处理
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="AI">
             
             AI
-            <small>(4)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="72">
+<input type="hidden" id="yelog_site_posts_number" value="74">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,7 +384,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
            href="/2024/05/30/kalman/"
            data-tag=""
            data-author="" >
@@ -411,7 +429,7 @@
         </a>
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
            href="/2024/05/20/signal_process/"
            data-tag=""
            data-author="" >
@@ -456,7 +474,7 @@
         </a>
         
         
-        <a  class="All AI "
+        <a  class="All 控制基础 "
            href="/2024/05/14/probability/"
            data-tag=""
            data-author="" >
@@ -1069,7 +1087,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-13 21:10:14'>2024-03-02 19:59</time>
+            Created At : <time class="date" title='Updated At: 2024-05-31 13:41:19'>2024-03-02 19:59</time>
         
     </div>
     <div class="article-meta">
@@ -1096,7 +1114,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="缓存一致性问题"><a href="#缓存一致性问题" class="headerlink" title="缓存一致性问题"></a>缓存一致性问题</h2><p>一般来说, 一个CPU有一个L1缓存.</p>
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-text">缓存一致性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MESI%E5%8D%8F%E8%AE%AE"><span class="toc-text">MESI协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">Cache的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="toc-text">状态转移</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAI"><span class="toc-text">初始状态为I</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAM"><span class="toc-text">初始状态为M</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAS"><span class="toc-text">初始状态为S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAE"><span class="toc-text">初始状态为E</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BC%AA%E5%85%B1%E4%BA%AB"><span class="toc-text">缓存伪共享</span></a></li></ol></div></p>
+<h2 id="缓存一致性问题"><a href="#缓存一致性问题" class="headerlink" title="缓存一致性问题"></a>缓存一致性问题</h2><p>一般来说, 一个CPU有一个L1缓存.</p>
 <p>假设CPU0访问了内存地址A, 那么内存地址A对应的数据就会被放到CPU0的L1缓存中.</p>
 <p>此后, CPU0可能修改内存地址A的数据, 这时候, 由于L1缓存的Write-Back策略, 修改可能同步不到内存.</p>
 <p>这时候, 如果CPU1想要访问内存地址A, 它应该从CPU0的L1缓存中读数据呢? 还是要从内存中读数据呢?</p>

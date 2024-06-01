@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(72)</small>
+                <small>(74)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -173,6 +173,21 @@
             
             金融知识
             <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(4)</small>
         </div>
         
     </li>
@@ -259,25 +274,10 @@
             
                 
     <li>
-        <div data-rel="信号处理">
-            
-            信号处理
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="AI">
             
             AI
-            <small>(4)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="72">
+<input type="hidden" id="yelog_site_posts_number" value="74">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,7 +384,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
            href="/2024/05/30/kalman/"
            data-tag=""
            data-author="" >
@@ -411,7 +429,7 @@
         </a>
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
            href="/2024/05/20/signal_process/"
            data-tag=""
            data-author="" >
@@ -456,7 +474,7 @@
         </a>
         
         
-        <a  class="All AI "
+        <a  class="All 控制基础 "
            href="/2024/05/14/probability/"
            data-tag=""
            data-author="" >
@@ -1069,7 +1087,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-11 20:21:41'>2024-05-09 20:12</time>
+            Created At : <time class="date" title='Updated At: 2024-05-31 13:41:14'>2024-05-09 20:12</time>
         
     </div>
     <div class="article-meta">
@@ -1096,7 +1114,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Cache的架构"><a href="#Cache的架构" class="headerlink" title="Cache的架构"></a>Cache的架构</h2><h3 id="N-way-Set-Associative-Cache"><a href="#N-way-Set-Associative-Cache" class="headerlink" title="N-way Set Associative Cache"></a>N-way Set Associative Cache</h3><p>可以把Cache当成一个二维对象数组:</p>
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="toc-text">Cache的架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#N-way-Set-Associative-Cache"><span class="toc-text">N-way Set Associative Cache</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AECache%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">访问Cache的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag%E4%B8%8EData%E5%B9%B6%E8%A1%8C%E8%AE%BF%E9%97%AE"><span class="toc-text">Tag与Data并行访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag%E4%B8%8EData%E4%B8%B2%E8%A1%8C%E8%AE%BF%E9%97%AE"><span class="toc-text">Tag与Data串行访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E4%B8%B2%E8%A1%8C%E8%BF%98%E6%98%AF%E5%B9%B6%E8%A1%8C"><span class="toc-text">如何选择串行还是并行?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E7%9B%B8%E8%BF%9ECache%E6%9E%B6%E6%9E%84"><span class="toc-text">全相连Cache架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%85%A5Cache%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">写入Cache的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Through%E4%B8%8ENon-Write-Allocate"><span class="toc-text">Write Through与Non-Write Allocate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Back%E4%B8%8EWrite-Allocate"><span class="toc-text">Write Back与Write Allocate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache%E5%86%99%E5%85%A5%E7%9A%84%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-text">Cache写入的流水线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">Cache替换算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LRU-Pseudo-LRU"><span class="toc-text">LRU&#x2F;Pseudo-LRU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Random"><span class="toc-text">Random</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cache%E7%9A%84%E5%A4%9A%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="toc-text">Cache的多级结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#L1-Cache"><span class="toc-text">L1 Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L2-Cache"><span class="toc-text">L2 Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inclusive-Exclusive"><span class="toc-text">Inclusive&#x2F;Exclusive</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Inclusive"><span class="toc-text">Inclusive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Exclusive"><span class="toc-text">Exclusive</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96Cache%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-text">优化Cache的一些小技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Buffer"><span class="toc-text">Write Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Filter-Cache"><span class="toc-text">Filter Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Victim-Cache"><span class="toc-text">Victim Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prefetching"><span class="toc-text">Prefetching</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hardware-Prefetching"><span class="toc-text">Hardware Prefetching</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Software-Prefetching"><span class="toc-text">Software Prefetching</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E6%A0%87%E9%87%8FCPU%E7%9A%84%E5%8F%96%E6%8C%87%E4%BB%A4"><span class="toc-text">超标量CPU的取指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81Cache%E5%8A%9F%E6%95%88%E7%9A%84%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81"><span class="toc-text">验证Cache功效的一段代码</span></a></li></ol></div></p>
+<h2 id="Cache的架构"><a href="#Cache的架构" class="headerlink" title="Cache的架构"></a>Cache的架构</h2><h3 id="N-way-Set-Associative-Cache"><a href="#N-way-Set-Associative-Cache" class="headerlink" title="N-way Set Associative Cache"></a>N-way Set Associative Cache</h3><p>可以把Cache当成一个二维对象数组:</p>
 <ul>
 <li>一行叫做一个Set.</li>
 <li>一列叫做一个Way.</li>

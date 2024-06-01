@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(72)</small>
+                <small>(74)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -173,6 +173,21 @@
             
             金融知识
             <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(4)</small>
         </div>
         
     </li>
@@ -259,25 +274,10 @@
             
                 
     <li>
-        <div data-rel="信号处理">
-            
-            信号处理
-            <small>(2)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="AI">
             
             AI
-            <small>(4)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="72">
+<input type="hidden" id="yelog_site_posts_number" value="74">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,7 +384,25 @@
     <nav id="title-list-nav">
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
            href="/2024/05/30/kalman/"
            data-tag=""
            data-author="" >
@@ -411,7 +429,7 @@
         </a>
         
         
-        <a  class="All 信号处理 "
+        <a  class="All 控制基础 "
            href="/2024/05/20/signal_process/"
            data-tag=""
            data-author="" >
@@ -456,7 +474,7 @@
         </a>
         
         
-        <a  class="All AI "
+        <a  class="All 控制基础 "
            href="/2024/05/14/probability/"
            data-tag=""
            data-author="" >
@@ -1069,7 +1087,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-26 15:26:20'>2024-04-13 17:05</time>
+            Created At : <time class="date" title='Updated At: 2024-05-31 10:14:11'>2024-04-13 17:05</time>
         
     </div>
     <div class="article-meta">
@@ -1820,6 +1838,13 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p><code>Option</code>的一个经典用法</p>
+</blockquote>
+<ul>
+<li>如果在定义<code>struct</code>的字段时, 每次使用不想夺取这个字段的所有权, 但是又不想用引用, 可以用<code>Option&lt;T&gt;</code>包裹.</li>
+<li>用<code>Option&lt;T&gt;</code>包裹后, 可以用<code>as_ref()/as_mut()</code>使用引用, 可以用<code>take()</code>夺走所有权.</li>
+</ul>
 <h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
 <li><p>Rust中的错误分为两种:</p>
 <ul>
@@ -2379,6 +2404,7 @@
 <li>其中, <code>tx, rx</code>分别是<code>mpsc::Sender&lt;T&gt;</code>和<code>mpsc::Receiver&lt;T&gt;</code>类型, 具体类型编译器会推导.</li>
 <li>如果需要多个发送者, 只需要将<code>tx.clone()</code>即可.</li>
 <li>调用<code>send</code>时, 原数据如果没有实现<code>Copy</code> trait, 会被夺走所有权.</li>
+<li>如果<code>tx</code>被<code>drop</code>之后, <code>rx.recv()</code>会返回<code>Err</code>.</li>
 </ul>
 <h2 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a><code>I/O</code></h2><ul>
 <li>Rust中, 与I&#x2F;O相关的元素大部分在<code>std::io</code>中.</li>
