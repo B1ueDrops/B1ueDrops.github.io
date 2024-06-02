@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1124,39 +1124,54 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%93%BE%E7%AE%80%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="toc-text">方法链简化代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%AE%80%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="toc-text">函数式编程简化代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li></ol></div></p>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
-<li><p>理解注释的地位:</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2>
+<ul>
+<li>
+<p>理解注释的地位:</p>
 <ul>
 <li>注释不是越多越好: <font color="red">注释只是对代码的辩解, 好的代码就是文档, 根本不需要注释.</font></li>
 </ul>
 </li>
-<li><p>不要在代码中保留注释掉的代码, 借助git.</p>
+<li>
+<p>不要在代码中保留注释掉的代码, 借助git.</p>
 </li>
-<li><p><font color="red">仅仅对包含复杂业务逻辑的东西进行注释, 不要对大家都懂的东西进行注释.</font></p>
+<li>
+<p><font color="red">仅仅对包含复杂业务逻辑的东西进行注释, 不要对大家都懂的东西进行注释.</font></p>
 </li>
-<li><p>不要占位符, 借助合理的缩进和格式化提供好的代码结构:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span><br><span class="hljs-comment">// Scope Model Instantiation</span><br><span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span><br>String[] model = &#123;<span class="hljs-string">&quot;foo&quot;</span>,<span class="hljs-string">&quot;bar&quot;</span>&#125;;<br><br><span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span><br><span class="hljs-comment">// Action setup</span><br><span class="hljs-comment">///////////////////////////////////////////////////////////////////////////////</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">action</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>不要占位符, 借助合理的缩进和格式化提供好的代码结构:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span><br><span class="hljs-comment">// Scope Model Instantiation</span><br><span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span><br>String[] model = &#123;<span class="hljs-string">&quot;foo&quot;</span>,<span class="hljs-string">&quot;bar&quot;</span>&#125;;<br><br><span class="hljs-comment">////////////////////////////////////////////////////////////////////////////////</span><br><span class="hljs-comment">// Action setup</span><br><span class="hljs-comment">///////////////////////////////////////////////////////////////////////////////</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">action</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li><p>变量名需要具有足够的可读性, 不要强迫读者猜测变量的意义, 简单明了胜于晦涩难懂.</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2>
 <ul>
-<li><p>反例1: <code>ymdstr = datetime.date.today().strftime(&quot;%y-%m-%d&quot;)</code>, <code>ymdstr</code>是什么?</p>
+<li>
+<p>变量名需要具有足够的可读性, 不要强迫读者猜测变量的意义, 简单明了胜于晦涩难懂.</p>
 <ul>
-<li><code>current_date: str = datetime.date.today().strftime(&quot;%y-%m-%d&quot;)</code>.</li>
+<li>
+<p>反例1: <code>ymdstr = datetime.date.today().strftime("%y-%m-%d")</code>, <code>ymdstr</code>是什么?</p>
+<ul>
+<li><code>current_date: str = datetime.date.today().strftime("%y-%m-%d")</code>.</li>
 </ul>
 </li>
-<li><p>反例2:</p>
+<li>
+<p>反例2:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># seq是什么东西?</span><br>seq = ( <span class="hljs-string">&#x27;Austin&#x27;</span>, <span class="hljs-string">&#x27;New York&#x27;</span>, <span class="hljs-string">&#x27;San Francisco&#x27;</span> )<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> seq:<br>  <span class="hljs-comment"># item是什么东西</span><br>  do_something(item)<br>  <br><span class="hljs-comment"># 修改后</span><br>locations = ( <span class="hljs-string">&#x27;Austin&#x27;</span>, <span class="hljs-string">&#x27;New York&#x27;</span>, <span class="hljs-string">&#x27;San Francisco&#x27;</span> )<br><span class="hljs-keyword">for</span> location <span class="hljs-keyword">in</span> locations:<br>  <span class="hljs-comment"># item是什么东西</span><br>  do_something(location)<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>反例3: <code>time.sleep(86400)</code>, 86400是什么意思?</p>
+<li>
+<p>反例3: <code>time.sleep(86400)</code>, 86400是什么意思?</p>
 <ul>
-<li><p>修改:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">SECONDS_IN_A_DAY = <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span><br>time.sleep(SECONDS_IN_A_DAY)<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>修改:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">SECONDS_IN_A_DAY = <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span><br>time.sleep(SECONDS_IN_A_DAY)<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>反例4: 在程序中出现<code>matches[0], matches[1]</code>这种, 这是什么东西都不知道, 应该用一个变量去接收, 这个变量的名称要具有可读可搜索性.</p>
+<li>
+<p>反例4: 在程序中出现<code>matches[0], matches[1]</code>这种, 这是什么东西都不知道, 应该用一个变量去接收, 这个变量的名称要具有可读可搜索性.</p>
 </li>
-<li><p>变量的名称中, 不要出现类型信息.</p>
+<li>
+<p>变量的名称中, 不要出现类型信息.</p>
 <ul>
 <li>例如一个结构体叫<code>user</code>, 成员变量不要是<code>user_name</code>, 冗余.</li>
 </ul>
@@ -1164,65 +1179,80 @@
 </ul>
 </li>
 </ul>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
-<li><p>一个函数应该简洁到只做一件事情&#x2F;只有一个动作, 这样函数能够更容易被测试&#x2F;维护.</p>
-</li>
-<li><p>一个函数最好只有一个入口点, 一个出口点(只有一处有<code>return</code>).</p>
-</li>
-<li><p>函数的内部尽量不要包含<code>try catch</code>等异常处理结构 (只做一件事的原则), 异常处理尽量交给别的函数统一处理.</p>
-</li>
-<li><p>函数的参数个数不要超过两个, 因为一旦超过两个, 函数大概率做了很多事情, 耦合度较高, 不容易被重构.</p>
-</li>
-<li><p>函数的名称应该具有足够简洁, 直观, 具有足够的可读性, 能够直接说明这个函数做了什么.</p>
-</li>
-<li><p>如果一个函数做了除了接收一个值, 计算, 返回一个值以外的动作, 例如修改了全局变量, 或者写入了文件, 那么:</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2>
 <ul>
-<li><p>尽量不要这样干.</p>
+<li>
+<p>一个函数应该简洁到只做一件事情/只有一个动作, 这样函数能够更容易被测试/维护.</p>
 </li>
-<li><p>如果真的需要这样干, 可以在全局提供一个service函数, 通过调用这个service函数集中解决 (集中方便维护).</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 不符合规范的代码</span><br><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;haha&quot;</span>;<br><span class="hljs-keyword">void</span> <span class="hljs-title function_">changeName</span><span class="hljs-params">()</span> &#123;<br>  name = name.split(<span class="hljs-string">&quot;a&quot;</span>).toString();<br>&#125;<br>changeName();<br>System.out.println(name);<br><br><span class="hljs-comment">// 符合规范的代码</span><br><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;haha&quot;</span>;<br><span class="hljs-keyword">void</span> <span class="hljs-title function_">changeName</span><span class="hljs-params">(String name)</span> &#123;<br>  <span class="hljs-keyword">return</span> name.split(<span class="hljs-string">&quot;a&quot;</span>).toString();<br>&#125;<br>changeName(name);<br>System.out.println(name);<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>一个函数最好只有一个入口点, 一个出口点(只有一处有<code>return</code>).</p>
+</li>
+<li>
+<p>函数的内部尽量不要包含<code>try catch</code>等异常处理结构 (只做一件事的原则), 异常处理尽量交给别的函数统一处理.</p>
+</li>
+<li>
+<p>函数的参数个数不要超过两个, 因为一旦超过两个, 函数大概率做了很多事情, 耦合度较高, 不容易被重构.</p>
+</li>
+<li>
+<p>函数的名称应该具有足够简洁, 直观, 具有足够的可读性, 能够直接说明这个函数做了什么.</p>
+</li>
+<li>
+<p>如果一个函数做了除了接收一个值, 计算, 返回一个值以外的动作, 例如修改了全局变量, 或者写入了文件, 那么:</p>
+<ul>
+<li>
+<p>尽量不要这样干.</p>
+</li>
+<li>
+<p>如果真的需要这样干, 可以在全局提供一个service函数, 通过调用这个service函数集中解决 (集中方便维护).</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 不符合规范的代码</span><br><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;haha&quot;</span>;<br><span class="hljs-keyword">void</span> <span class="hljs-title function_">changeName</span><span class="hljs-params">()</span> &#123;<br>  name = name.split(<span class="hljs-string">&quot;a&quot;</span>).toString();<br>&#125;<br>changeName();<br>System.out.println(name);<br><br><span class="hljs-comment">// 符合规范的代码</span><br><span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;haha&quot;</span>;<br><span class="hljs-keyword">void</span> <span class="hljs-title function_">changeName</span><span class="hljs-params">(String name)</span> &#123;<br>  <span class="hljs-keyword">return</span> name.split(<span class="hljs-string">&quot;a&quot;</span>).toString();<br>&#125;<br>changeName(name);<br>System.out.println(name);<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>关于条件语句的几点:</p>
+<li>
+<p>关于条件语句的几点:</p>
 <ul>
-<li><p>尽量避免条件语句, 因为你一旦引入条件语句, 就说明函数一定做了不止一件事.</p>
+<li>
+<p>尽量避免条件语句, 因为你一旦引入条件语句, 就说明函数一定做了不止一件事.</p>
 <ul>
 <li>可以使用多态在一定程度上减少条件语句.</li>
 </ul>
 </li>
-<li><p>如果无法避免, 那么需要对条件语句的布尔表达式进行封装, 例如:</p>
+<li>
+<p>如果无法避免, 那么需要对条件语句的布尔表达式进行封装, 例如:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(fsm.state.equals(<span class="hljs-string">&quot;fetching&quot;</span>)&amp;&amp;listNode.isEmpty()&#123;<br>&#125;<br>   <br><span class="hljs-comment">// 修改后</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">shouldShowSpinner</span><span class="hljs-params">(Fsm fsm, String listNode)</span> &#123;<br>    <span class="hljs-keyword">return</span> fsm.state.equals(<span class="hljs-string">&quot;fetching&quot;</span>)&amp;&amp;listNode.isEmpty();<br>&#125;<br><br><span class="hljs-keyword">if</span> (shouldShowSpinner(fsmInstance, listNodeInstance)) &#123;<br>            <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>尽量不要使用反面的条件, 例如 <code>if (!isDOMNodeNotPresent(node)) &#123;</code>.</p>
+<li>
+<p>尽量不要使用反面的条件, 例如 <code>if (!isDOMNodeNotPresent(node)) {</code>.</p>
 </li>
 </ul>
 </li>
-<li><p>避免冗余代码:</p>
+<li>
+<p>避免冗余代码:</p>
 <ul>
 <li>如果你的代码中, 出现了修改一处, 就需要修改更多处代码的情况, 那么很可能就出现了冗余代码, 需要避免.</li>
 </ul>
 </li>
-<li><p>避免僵尸代码:</p>
+<li>
+<p>避免僵尸代码:</p>
 <ul>
 <li>代码注释掉的代码不要保留, 因为你有git.</li>
 </ul>
 </li>
-<li><p>用Getter和Setter方法实现参数设置, 而尽量不要写死参数.</p>
+<li>
+<p>用Getter和Setter方法实现参数设置, 而尽量不要写死参数.</p>
 </li>
-<li><p>函数的调用者和函数的定义在竖直方向上应该靠近, 最理想的情况是: 函数调用者的正下方就是函数的定义, 因为人的阅读习惯就是从上向下阅读.</p>
+<li>
+<p>函数的调用者和函数的定义在竖直方向上应该靠近, 最理想的情况是: 函数调用者的正下方就是函数的定义, 因为人的阅读习惯就是从上向下阅读.</p>
 </li>
 </ul>
-<h2 id="方法链简化代码"><a href="#方法链简化代码" class="headerlink" title="方法链简化代码"></a>方法链简化代码</h2><p>在Setter方法中返回<code>this</code>, 可以简化代码:</p>
+<h2 id="方法链简化代码"><a href="#方法链简化代码" class="headerlink" title="方法链简化代码"></a>方法链简化代码</h2>
+<p>在Setter方法中返回<code>this</code>, 可以简化代码:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span>&#123;<br>    <span class="hljs-keyword">private</span> String make;<br>    <span class="hljs-keyword">private</span> String model;<br>    <span class="hljs-keyword">private</span> String color;<br><br>    <span class="hljs-keyword">public</span> Car <span class="hljs-title function_">setMake</span><span class="hljs-params">(String make)</span> &#123;<br>        <span class="hljs-built_in">this</span>.make = make;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Car <span class="hljs-title function_">setModel</span><span class="hljs-params">(String model)</span> &#123;<br>        <span class="hljs-built_in">this</span>.model = model;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Car <span class="hljs-title function_">setColor</span><span class="hljs-params">(String color)</span> &#123;<br>        <span class="hljs-built_in">this</span>.color = color;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Car <span class="hljs-title function_">save</span><span class="hljs-params">()</span>&#123;<br>        console.log(<span class="hljs-built_in">this</span>.make, <span class="hljs-built_in">this</span>.model, <span class="hljs-built_in">this</span>.color);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br>&#125;<br><br>Car car=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>().setColor(<span class="hljs-string">&quot;pink&quot;</span>).setMake(<span class="hljs-string">&quot;Ford&quot;</span>).setModel(<span class="hljs-string">&quot;F-150&quot;</span>).save();<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="函数式编程简化代码"><a href="#函数式编程简化代码" class="headerlink" title="函数式编程简化代码"></a>函数式编程简化代码</h2><p>使用函数式编程可以简化代码, 并且不失直观性:</p>
+<h2 id="函数式编程简化代码"><a href="#函数式编程简化代码" class="headerlink" title="函数式编程简化代码"></a>函数式编程简化代码</h2>
+<p>使用函数式编程可以简化代码, 并且不失直观性:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 没有函数式编程</span><br>    List&lt;Integer&gt; programmerOutput=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    programmerOutput.add(<span class="hljs-number">500</span>);<br>    programmerOutput.add(<span class="hljs-number">1500</span>);<br>    programmerOutput.add(<span class="hljs-number">150</span>);<br>    programmerOutput.add(<span class="hljs-number">1000</span>);<br>    <span class="hljs-type">int</span> totalOutput=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;programmerOutput.size();i++)&#123;<br>        totalOutput+=programmerOutput.get(i);<br>    &#125;<br><span class="hljs-comment">// 有函数式编程</span><br>    List&lt;Integer&gt; programmerOutput=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    programmerOutput.add(<span class="hljs-number">500</span>);<br>    programmerOutput.add(<span class="hljs-number">1500</span>);<br>    programmerOutput.add(<span class="hljs-number">150</span>);<br>    programmerOutput.add(<span class="hljs-number">1000</span>);<br>    <span class="hljs-type">int</span> totalOutput= programmerOutput.stream().filter(programmer -&gt; programmer &gt; <span class="hljs-number">500</span>).mapToInt(programmer -&gt; programmer).sum();<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>
+<ul>
 <li>测试驱动开发!</li>
 <li>测试需要有100%的覆盖率来保证代码质量.</li>
 <li>一项测试只测试一个方面, 不要一个测试包含多个方面.</li>

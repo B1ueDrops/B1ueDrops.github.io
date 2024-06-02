@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,10 +1123,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2><ul>
-<li><p>最基础的模型: 单个CPU, 多个线程, 线程通过上下文切换的方式在CPU上执行.</p>
+        <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2>
+<ul>
+<li>
+<p>最基础的模型: 单个CPU, 多个线程, 线程通过上下文切换的方式在CPU上执行.</p>
 </li>
-<li><p>多个CPU的情况:</p>
+<li>
+<p>多个CPU的情况:</p>
 <ul>
 <li>多个CPU提供了并行度.</li>
 <li>CPU硬件级别需要实现Cache Coherence, Memory Consistency Model, 操作系统级别需要封装, 提供互斥锁, 信号量等并发编程模型.</li>
@@ -1136,18 +1139,20 @@
 <p>线程的任务分为两种:</p>
 <ul>
 <li>CPU Task: 很快.</li>
-<li>I&#x2F;O Task: 包括内存I&#x2F;O, 网络I&#x2F;O等等, 相对于CPU Task极慢.</li>
+<li>I/O Task: 包括内存I/O, 网络I/O等等, 相对于CPU Task极慢.</li>
 </ul>
-<p>当线程执行I&#x2F;O Task时, 如果I&#x2F;O未完成, 那么线程就会被阻塞, 直到I&#x2F;O完成, 这种情况比较低效, 优化方法是使用<font color="red">非阻塞I&#x2F;O和I&#x2F;O多路复用</font>.</p>
+<p>当线程执行I/O Task时, 如果I/O未完成, 那么线程就会被阻塞, 直到I/O完成, 这种情况比较低效, 优化方法是使用<font color="red">非阻塞I/O和I/O多路复用</font>.</p>
 <ul>
-<li>对于很多I&#x2F;O Task, 不用创建很多线程处理, 而是使用少量线程.</li>
-<li>非阻塞I&#x2F;O就是当I&#x2F;O未完成, 线程不会被阻塞, 而是可以去执行其他任务.</li>
-<li>当I&#x2F;O Task完成后, 会通知线程处理.</li>
+<li>对于很多I/O Task, 不用创建很多线程处理, 而是使用少量线程.</li>
+<li>非阻塞I/O就是当I/O未完成, 线程不会被阻塞, 而是可以去执行其他任务.</li>
+<li>当I/O Task完成后, 会通知线程处理.</li>
 </ul>
-<h2 id="协程模型"><a href="#协程模型" class="headerlink" title="协程模型"></a>协程模型</h2><p>协程的出现是为了减少CPU线程上下文切换时的开销.</p>
+<h2 id="协程模型"><a href="#协程模型" class="headerlink" title="协程模型"></a>协程模型</h2>
+<p>协程的出现是为了减少CPU线程上下文切换时的开销.</p>
 <p>协程是比线程更细粒度的调度单位, 协程的切换不需要切换到内核态, 可以在用户态实现轻量级的任务调度.</p>
-<h2 id="async-await模型"><a href="#async-await模型" class="headerlink" title="async&#x2F;await模型"></a>async&#x2F;await模型</h2><p>借助非阻塞I&#x2F;O和I&#x2F;O多路复用的思想, 以及协程模型, 可以实现在单线程基础上的异步编程模型, 最典型的是async&#x2F;await编程模型.</p>
-<p>在async&#x2F;await模型中, 只有一个线程, 线程中有一个部分叫做<code>EventLoop</code>, 负责调度不同的Task.</p>
+<h2 id="async-await模型"><a href="#async-await模型" class="headerlink" title="async/await模型"></a>async/await模型</h2>
+<p>借助非阻塞I/O和I/O多路复用的思想, 以及协程模型, 可以实现在单线程基础上的异步编程模型, 最典型的是async/await编程模型.</p>
+<p>在async/await模型中, 只有一个线程, 线程中有一个部分叫做<code>EventLoop</code>, 负责调度不同的Task.</p>
 <p>对于用户而言, 一般需要定义一个协程函数(Coroutine Function), 里面写入业务逻辑.</p>
 <p>调用协程函数, 可以得到一个Future, 此时这个Future并不会被执行.</p>
 <p>之后, 通过<code>await</code>一个Future:</p>

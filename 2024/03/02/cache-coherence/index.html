@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1124,7 +1124,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-text">缓存一致性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MESI%E5%8D%8F%E8%AE%AE"><span class="toc-text">MESI协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">Cache的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="toc-text">状态转移</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAI"><span class="toc-text">初始状态为I</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAM"><span class="toc-text">初始状态为M</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAS"><span class="toc-text">初始状态为S</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%BAE"><span class="toc-text">初始状态为E</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BC%AA%E5%85%B1%E4%BA%AB"><span class="toc-text">缓存伪共享</span></a></li></ol></div></p>
-<h2 id="缓存一致性问题"><a href="#缓存一致性问题" class="headerlink" title="缓存一致性问题"></a>缓存一致性问题</h2><p>一般来说, 一个CPU有一个L1缓存.</p>
+<h2 id="缓存一致性问题"><a href="#缓存一致性问题" class="headerlink" title="缓存一致性问题"></a>缓存一致性问题</h2>
+<p>一般来说, 一个CPU有一个L1缓存.</p>
 <p>假设CPU0访问了内存地址A, 那么内存地址A对应的数据就会被放到CPU0的L1缓存中.</p>
 <p>此后, CPU0可能修改内存地址A的数据, 这时候, 由于L1缓存的Write-Back策略, 修改可能同步不到内存.</p>
 <p>这时候, 如果CPU1想要访问内存地址A, 它应该从CPU0的L1缓存中读数据呢? 还是要从内存中读数据呢?</p>
@@ -1139,28 +1140,34 @@
 <p>中有多次的备份.</p>
 <p>我有很多的观察者, 例如CPU, DMA, GPU等, 我的目的就是要在这些观察者眼中, 保持这些副本的一致性.</p>
 <p>这种一致性会在硬件上实现, 这种硬件单元叫做SCU (Snoop Control Unit), CPU会通过总线连接到SCU.</p>
-<h2 id="MESI协议"><a href="#MESI协议" class="headerlink" title="MESI协议"></a>MESI协议</h2><h3 id="Cache的结构"><a href="#Cache的结构" class="headerlink" title="Cache的结构"></a>Cache的结构</h3><p>Cache的结构可以看作一个二维数组, 一行是一个Set, 一列是一个Way, 其中的一个元素叫做一个Cache Line.</p>
+<h2 id="MESI协议"><a href="#MESI协议" class="headerlink" title="MESI协议"></a>MESI协议</h2>
+<h3 id="Cache的结构"><a href="#Cache的结构" class="headerlink" title="Cache的结构"></a>Cache的结构</h3>
+<p>Cache的结构可以看作一个二维数组, 一行是一个Set, 一列是一个Way, 其中的一个元素叫做一个Cache Line.</p>
 <p>为了实现缓存一致性, 我需要给每一个Cache Line添加若干个状态:</p>
 <ul>
-<li>M (Modified): <ul>
+<li>M (Modified):
+<ul>
 <li>数据有效.</li>
 <li>数据已经被修改, 但是没被同步到内存中.</li>
 <li>数据只存在于当前CPU的Cache中.</li>
 </ul>
 </li>
-<li>E (Exclusive):<ul>
+<li>E (Exclusive):
+<ul>
 <li>数据有效.</li>
 <li>数据没有被修改, 并且和内存一致.</li>
 <li>数据只存在于当前CPU的Cache中.</li>
 </ul>
 </li>
-<li>S (shared):<ul>
+<li>S (shared):
+<ul>
 <li>数据有效.</li>
 <li>数据没有被修改, 并且和内存一致.</li>
 <li>数据存在于多个CPU的Cache中.</li>
 </ul>
 </li>
-<li>I(Invalid):<ul>
+<li>I(Invalid):
+<ul>
 <li>数据无效.</li>
 </ul>
 </li>
@@ -1175,37 +1182,38 @@
 <th>Shared</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>M</td>
+<td rowspan="3">1</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
+<td rowspan="2">0</td>
 </tr>
 <tr>
 <td>E</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
+<td rowspan="3">0</td>
 </tr>
 <tr>
 <td>S</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 </tr>
 <tr>
 <td>I</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
 </tr>
-</tbody></table>
-<h3 id="状态转移"><a href="#状态转移" class="headerlink" title="状态转移"></a>状态转移</h3><p>下面针对某一个CPU的某一个Cache Line而言.</p>
-<h4 id="初始状态为I"><a href="#初始状态为I" class="headerlink" title="初始状态为I"></a>初始状态为I</h4><p>假设这个Cache Line的初始状态是I:</p>
+</tbody>
+</table>
+<h3 id="状态转移"><a href="#状态转移" class="headerlink" title="状态转移"></a>状态转移</h3>
+<p>下面针对某一个CPU的某一个Cache Line而言.</p>
+<h4 id="初始状态为I"><a href="#初始状态为I" class="headerlink" title="初始状态为I"></a>初始状态为I</h4>
+<p>假设这个Cache Line的初始状态是I:</p>
 <ul>
-<li>如果CPU0发起了读请求, 正好读到这个Cache Line.<ul>
+<li>如果CPU0发起了读请求, 正好读到这个Cache Line.
+<ul>
 <li>CPU0会把这个读请求广播到总线, 其他CPU会找到这个请求.</li>
-<li>然后其他CPU会检查自己的Cache中是否有这个数据:<ul>
+<li>然后其他CPU会检查自己的Cache中是否有这个数据:
+<ul>
 <li>如果有(假设有这个数据的CPU叫CPU1), 并且状态为S, 那么它会把这个数据通过总线发送到原来的CPU上, 原来CPU的Cache Line的状态就会变成S.</li>
 <li>如果CPU1有, 并且状态为E, 那么它会把数据通过总线传到CPU0, 并且CPU0上Cache Line状态从I变成S, CPU1上Cache Line状态从E变到S.</li>
 <li>如果CPU1有, 并且状态是M, 那么它会把数据通过总线传到CPU0, 然后再把数据修改同步到内存, 并且CPU0上Cache Line从I变成S, CPU1上Cache Line从M变成S.</li>
@@ -1214,9 +1222,11 @@
 </li>
 </ul>
 </li>
-<li>如果CPU0发起了写请求, 正好要写到这个Cache Line.<ul>
+<li>如果CPU0发起了写请求, 正好要写到这个Cache Line.
+<ul>
 <li>CPU0会把这个写请求广播到总线, 其他CPU会找到这个请求.</li>
-<li>然后其他CPU会检查自己的Cache中是否有这个数据:<ul>
+<li>然后其他CPU会检查自己的Cache中是否有这个数据:
+<ul>
 <li>如果有, 并且状态是S, 那么CPU1会把数据发送到总线上, 并且设置Cache Line的状态是I.</li>
 <li>如果有, 并且状态是E, 那么CPU1会把数据发送到总线上, 并且设置Cache Line的状态是I.</li>
 <li>如果有, 并且状态是M, 那么CPU1会把数据发送到总线上, 并且设置Cache Line的状态是I, 并且把这个Cache Line的修改同步到内存中.</li>
@@ -1227,24 +1237,28 @@
 </li>
 <li>如果CPU0从总线上收到了读写请求, 那么它的状态不变(还是I), 会给总线回应一个信号, 告诉别的CPU自己没有这个Cache Line.</li>
 </ul>
-<h4 id="初始状态为M"><a href="#初始状态为M" class="headerlink" title="初始状态为M"></a>初始状态为M</h4><ul>
-<li>如果初始状态是M, 那么说明CPU的L1 Cache中是有最新的数据的, 对于本地的读&#x2F;写请求, 状态M不会改变.</li>
+<h4 id="初始状态为M"><a href="#初始状态为M" class="headerlink" title="初始状态为M"></a>初始状态为M</h4>
+<ul>
+<li>如果初始状态是M, 那么说明CPU的L1 Cache中是有最新的数据的, 对于本地的读/写请求, 状态M不会改变.</li>
 <li>当这个CPU收到一个总线读信号, 它会把这个Cache Line的数据发送到总线上, 并且把这个Cache Line的修改同步到内存中, Cache Line的状态从M到S.</li>
 <li>当CPU收到一个总线写信号, 具体操作和收到读信号一样, 只是Cache Line的状态需要从M到I.</li>
 </ul>
-<h4 id="初始状态为S"><a href="#初始状态为S" class="headerlink" title="初始状态为S"></a>初始状态为S</h4><ul>
+<h4 id="初始状态为S"><a href="#初始状态为S" class="headerlink" title="初始状态为S"></a>初始状态为S</h4>
+<ul>
 <li>对于本地的读操作, Cache Line的状态不变.</li>
 <li>对于本地的写操作, Cache Line的状态从S变成M, 然后将这个写操作广播到总线上, 其他的CPU收到这个信号之后, 就会检查自己的Cache中是否有这个Cache Line, 如果有, 那么状态设置成I.</li>
 <li>对于总线读操作, Cache Line状态不变, Cache Line的数据会被广播到总线上.</li>
 <li>对于总线写操作, 将自身的Cache Line状态变为I.</li>
 </ul>
-<h4 id="初始状态为E"><a href="#初始状态为E" class="headerlink" title="初始状态为E"></a>初始状态为E</h4><ul>
+<h4 id="初始状态为E"><a href="#初始状态为E" class="headerlink" title="初始状态为E"></a>初始状态为E</h4>
+<ul>
 <li>对于本地的读操作, Cache Line的状态不变.</li>
 <li>对于本地写操作, Cache Line的状态从E变成M.</li>
 <li>对于总线读操作: Cache Line状态变为S, 对应的Cache Line数据会被放到总线上.</li>
 <li>对于总线写操作: Cache Line的状态变成I, 对应的Cache Line会被放到总线上.</li>
 </ul>
 <h2 id="缓存伪共享"><a href="#缓存伪共享" class="headerlink" title="缓存伪共享"></a>缓存伪共享</h2>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
@@ -1296,6 +1310,7 @@
 <input type="hidden" id="MathJax-js"
         value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
 </input>
+
     
 
 

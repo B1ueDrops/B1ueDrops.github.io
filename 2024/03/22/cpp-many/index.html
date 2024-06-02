@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,80 +1123,101 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><ul>
-<li><p><code>CMakeLists.txt</code>中添加这个可以生成<code>compile_commands.json</code>, 用来给IDE语法解析用.</p>
+        <h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2>
+<ul>
+<li>
+<p><code>CMakeLists.txt</code>中添加这个可以生成<code>compile_commands.json</code>, 用来给IDE语法解析用.</p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set</span>(CMAKE_EXPORT_COMPILE_COMMANDS <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
-
 </li>
-<li><p>让你的CMake从你给的路径中找链接库, 可以把链接库的绝对路径加到<code>CMAKE_PREFIX_PATH</code>中:</p>
+<li>
+<p>让你的CMake从你给的路径中找链接库, 可以把链接库的绝对路径加到<code>CMAKE_PREFIX_PATH</code>中:</p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">list</span>(APPEND CMAKE_PREFIX_PATH <span class="hljs-string">&quot;你的路径&quot;</span>)<br></code></pre></td></tr></table></figure>
 </li>
-<li><p><code>CMAKE_CURRENT_SOURCE_DIR</code>表示<code>CMakeLists.txt</code>所在路径.</p>
+<li>
+<p><code>CMAKE_CURRENT_SOURCE_DIR</code>表示<code>CMakeLists.txt</code>所在路径.</p>
 </li>
-<li><p><strong>分模块的<code>CMakeLists.txt</code>:</strong></p>
+<li>
+<p><strong>分模块的<code>CMakeLists.txt</code>:</strong></p>
 <ul>
 <li>用<code>add_subdirectory(路径)</code>可以执行别的路径下的CMake.</li>
 </ul>
 </li>
 </ul>
-<h2 id="C-一些基础"><a href="#C-一些基础" class="headerlink" title="C++一些基础"></a>C++一些基础</h2><h2 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C++面向对象"></a>C++面向对象</h2><ol>
-<li><p>成员变量和成员方法有三种权限修饰符:</p>
+<h2 id="C-一些基础"><a href="#C-一些基础" class="headerlink" title="C++一些基础"></a>C++一些基础</h2>
+<h2 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C++面向对象"></a>C++面向对象</h2>
+<ol>
+<li>
+<p>成员变量和成员方法有三种权限修饰符:</p>
 <ul>
 <li>Class中, 不写默认是<code>private</code>.</li>
-<li><code>private</code>只能在类定义&#x2F;友元中被访问.</li>
+<li><code>private</code>只能在类定义/友元中被访问.</li>
 <li><code>protected</code>还可以在子类中访问.</li>
 <li><code>public</code>可以在其他地方访问.</li>
 </ul>
 </li>
-<li><p>析构函数的作用:</p>
+<li>
+<p>析构函数的作用:</p>
 <ul>
 <li>在销毁对象的时候, 需要将对象占用的内存, 文件资源释放.</li>
 </ul>
 </li>
-<li><p><code>delete</code>和<code>delete[]</code>的区别:</p>
+<li>
+<p><code>delete</code>和<code>delete[]</code>的区别:</p>
 <ul>
 <li><code>delete[]</code>会把数组中的所有元素的析构函数调一遍, 但是<code>delete</code>只会调第一个元素的析构函数.</li>
 <li><code>new</code>和<code>delete</code>成对用, <code>new []</code>和<code>delete[]</code>成对用.</li>
 </ul>
 </li>
-<li><p>注意, 关于<code>this</code>指针, 有时候在没有歧义的情况下<code>this</code>可以省略, 读别人代码时注意以下.</p>
+<li>
+<p>注意, 关于<code>this</code>指针, 有时候在没有歧义的情况下<code>this</code>可以省略, 读别人代码时注意以下.</p>
 </li>
-<li><p><code>const</code>成员函数:</p>
+<li>
+<p><code>const</code>成员函数:</p>
 <ul>
-<li><p>定义如下: <code>const</code>放在了后面.</p>
+<li>
+<p>定义如下: <code>const</code>放在了后面.</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getBorn</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>如果这样写, 说明<font color="blue">这个成员函数不能修改成员变量.</font></p>
+<li>
+<p>如果这样写, 说明<font color="blue">这个成员函数不能修改成员变量.</font></p>
 </li>
 </ul>
 </li>
-<li><p><code>static</code>的理解:</p>
+<li>
+<p><code>static</code>的理解:</p>
 <ul>
 <li>修饰成员变量: 成员变量和类绑定.</li>
 <li>修饰成员函数: 成员函数只能修改静态变量, 不能修改成员变量.</li>
 </ul>
 </li>
-<li><p>虚函数快速理解:</p>
+<li>
+<p>虚函数快速理解:</p>
 <ul>
-<li><p>C++多态, 当父类指针指向子类对象时, 如果调用一个函数, 默认调用父类的函数.</p>
+<li>
+<p>C++多态, 当父类指针指向子类对象时, 如果调用一个函数, 默认调用父类的函数.</p>
 <ul>
 <li>但是如果父类函数声明时用了<code>virtual</code>, 那么就调子类的.</li>
 <li>相当于一种动态运行策略, 如果一个函数是虚函数, 那么在运行时决定使用哪个函数.</li>
 </ul>
 </li>
-<li><p>用纯虚函数可以把C++的类变成抽象类:</p>
+<li>
+<p>用纯虚函数可以把C++的类变成抽象类:</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>&#123;<br>  <span class="hljs-keyword">public</span>:<br>  	string name;<br>  <span class="hljs-comment">// 纯虚函数</span><br>  	<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>一个实用的例子: <font color="red">如果定义一个抽象类, 那么析构函数就是虚函数</font>.</p>
+<li>
+<p>一个实用的例子: <font color="red">如果定义一个抽象类, 那么析构函数就是虚函数</font>.</p>
 </li>
 </ul>
 </li>
-<li><p><strong><code>explicit</code>关键字的作用:</strong></p>
+<li>
+<p><strong><code>explicit</code>关键字的作用:</strong></p>
 </li>
-<li><p><strong>构造函数<code>=default</code>和<code>=delete</code>的用法:</strong></p>
+<li>
+<p><strong>构造函数<code>=default</code>和<code>=delete</code>的用法:</strong></p>
 </li>
 </ol>
 <h2 id="C-一些高级用法"><a href="#C-一些高级用法" class="headerlink" title="C++一些高级用法"></a>C++一些高级用法</h2>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>

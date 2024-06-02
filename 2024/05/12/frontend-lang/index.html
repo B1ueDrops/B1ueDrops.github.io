@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1107,7 +1107,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript"><span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="toc-text">ES6语法糖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue3"><span class="toc-text">Vue3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slot%E6%8F%92%E6%A7%BD"><span class="toc-text">slot插槽</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">ES6语法糖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Vue3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">slot插槽</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1123,97 +1123,121 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a><code>HTML</code></h2><blockquote>
+        <h2><code>HTML</code></h2>
+<blockquote>
 <p>MDN官方文档: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/">https://developer.mozilla.org/zh-CN/</a></p>
 </blockquote>
 <ul>
 <li>HTML文档是一个树形结构(DOM):</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
 <ul>
-<li><p><code>&lt;head&gt;</code>用来存储文档的配置信息.</p>
+<li>
+<p><code>&lt;head&gt;</code>用来存储文档的配置信息.</p>
 </li>
-<li><p><code>&lt;body&gt;</code>用来存储文档内容.</p>
+<li>
+<p><code>&lt;body&gt;</code>用来存储文档内容.</p>
 </li>
-<li><p><code>&lt;head&gt;</code>中的标签:</p>
+<li>
+<p><code>&lt;head&gt;</code>中的标签:</p>
 <ul>
-<li><code>&lt;title&gt;</code>: 改变浏览器tab栏的内容&#x2F;搜索引擎item的内容.</li>
-<li><code>&lt;meta&gt;</code>: 用来存储一些元数据, 例如<code>charset</code>.<ul>
-<li><code>&lt;meta name=&quot;description&quot; content=&quot;哈哈哈哈&quot;&gt;</code></li>
-<li><code>&lt;meta name=&quot;keywords&quot; content=&quot;tag1,tag2&quot;&gt;</code>, 这个也是用在搜索引擎中.</li>
+<li><code>&lt;title&gt;</code>: 改变浏览器tab栏的内容/搜索引擎item的内容.</li>
+<li><code>&lt;meta&gt;</code>: 用来存储一些元数据, 例如<code>charset</code>.
+<ul>
+<li><code>&lt;meta name="description" content="哈哈哈哈"&gt;</code></li>
+<li><code>&lt;meta name="keywords" content="tag1,tag2"&gt;</code>, 这个也是用在搜索引擎中.</li>
 </ul>
 </li>
-<li>网站Logo: <code>&lt;link rel=&quot;icon&quot; href=&quot;路径&quot;&gt;</code></li>
+<li>网站Logo: <code>&lt;link rel="icon" href="路径"&gt;</code></li>
 </ul>
 </li>
-<li><p>单行&#x2F;多行注释: <code>&lt;!-- haha --&gt;</code></p>
+<li>
+<p>单行/多行注释: <code>&lt;!-- haha --&gt;</code></p>
 </li>
-<li><p>最根本的两个标签:</p>
+<li>
+<p>最根本的两个标签:</p>
 <ul>
 <li><code>&lt;span&gt;</code>: 行内元素, 默认不带回车.</li>
 <li><code>&lt;div&gt;</code>: 块级元素, 默认带回车.</li>
 <li>其他标签都是<code>&lt;span&gt;/&lt;div&gt;</code>扩展来的.</li>
 </ul>
 </li>
-<li><p><strong>标题标签:</strong></p>
+<li>
+<p><strong>标题标签:</strong></p>
 <ul>
 <li><code>&lt;h1&gt; ~ &lt;h6&gt;</code></li>
 </ul>
 </li>
-<li><p><strong>段落标签:</strong></p>
+<li>
+<p><strong>段落标签:</strong></p>
 <ul>
 <li><code>&lt;p&gt;</code></li>
 <li>本质上是对<code>&lt;div&gt;</code>做了一些限制.</li>
 <li>会把其中的回车和空格过滤, 如果不需要过滤, 就用<code>&lt;pre&gt;</code></li>
 </ul>
 </li>
-<li><p>HTML中的转义字符:</p>
+<li>
+<p>HTML中的转义字符:</p>
 <ul>
 <li><code>&lt;: &amp;lt;</code></li>
 <li><code>&gt;: &amp;gt;</code></li>
 <li>空格: <code>&amp;nbsp;</code></li>
 </ul>
 </li>
-<li><p><strong>回车标签:</strong> <code>&lt;br&gt;</code></p>
+<li>
+<p><strong>回车标签:</strong> <code>&lt;br&gt;</code></p>
 </li>
-<li><p><strong>样式标签:</strong></p>
+<li>
+<p><strong>样式标签:</strong></p>
 <ul>
 <li>背景黄色: <code>&lt;mark&gt;</code></li>
 <li>斜体: <code>&lt;i&gt;</code></li>
 <li>加粗: <code>&lt;b&gt;</code></li>
 </ul>
 </li>
-<li><p><strong>图片标签:</strong> <code>&lt;img&gt;</code></p>
+<li>
+<p><strong>图片标签:</strong> <code>&lt;img&gt;</code></p>
 <ul>
 <li>行内标签</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;地址&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;图片加载不出来显示什么&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p>**音频标签: **<code>&lt;audio&gt;</code>: </p>
+<li>
+<p>**音频标签: **<code>&lt;audio&gt;</code>:</p>
 <ul>
-<li><p><code>&lt;controls&gt;</code>表示加上音频控制, 暂停快进等.</p>
+<li>
+<p><code>&lt;controls&gt;</code>表示加上音频控制, 暂停快进等.</p>
 </li>
-<li><p><code>&lt;source&gt;</code>表示多个音频源, 如果第一个加载不出来会尝试加载第二个.</p>
+<li>
+<p><code>&lt;source&gt;</code>表示多个音频源, 如果第一个加载不出来会尝试加载第二个.</p>
 </li>
-<li><p>如果都没办法播放, 就会显示<code>无法播放</code>.</p>
+<li>
+<p>如果都没办法播放, 就会显示<code>无法播放</code>.</p>
 </li>
 </ul>
 <figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">controls</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/audios/sound1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;audio/mpeg&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/audios/sound2&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;audio/mpeg&quot;</span>/&gt;</span><br>  	无法播放<br><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p>视频标签: <code>&lt;video&gt;</code></p>
+<li>
+<p>视频标签: <code>&lt;video&gt;</code></p>
 <figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controls</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;video/mp4&quot;</span>/&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;...&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;video/mp4&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p>超链接标签: <code>&lt;a&gt;</code></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;你要跳到的超链接地址&quot;</span>&gt;</span>哈哈哈<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li>
+<p>超链接标签: <code>&lt;a&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;你要跳到的超链接地址&quot;</span>&gt;</span>哈哈哈<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a><code>Javascript</code></h2><h3 id="ES6语法糖"><a href="#ES6语法糖" class="headerlink" title="ES6语法糖"></a><code>ES6</code>语法糖</h3><ul>
-<li><p><code>bind()</code>函数:</p>
+<h2><code>Javascript</code></h2>
+<h3><code>ES6</code>语法糖</h3>
 <ul>
-<li><p>在Javascript中, 函数里的<code>this</code>指的是执行时的调用者, 而不是定义时所在的对象, 例如:</p>
+<li>
+<p><code>bind()</code>函数:</p>
+<ul>
+<li>
+<p>在Javascript中, 函数里的<code>this</code>指的是执行时的调用者, 而不是定义时所在的对象, 例如:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ligaog&quot;</span>,<br>  <span class="hljs-attr">talk</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>  &#125;<br>&#125;;<br><br><span class="hljs-comment">// 这里的this是person</span><br>person.<span class="hljs-title function_">talk</span>();<br><br><span class="hljs-keyword">const</span> talk = person.<span class="hljs-property">talk</span>;<br><span class="hljs-comment">// 这里的this是window (window托管全局)</span><br><span class="hljs-title function_">talk</span>();<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>但是, 如果不想<code>this</code>改变的话, 可以用<code>bind</code>函数:</p>
+<li>
+<p>但是, 如果不想<code>this</code>改变的话, 可以用<code>bind</code>函数:</p>
 <ul>
 <li><code>const talk = person.talk.bind(person)</code>.</li>
 <li><code>bind()</code>里面传入<code>this</code>到底是谁, 就可以用谁去调这个函数.</li>
@@ -1221,46 +1245,63 @@
 </li>
 </ul>
 </li>
-<li><p>箭头函数:</p>
+<li>
+<p>箭头函数:</p>
 <ul>
-<li><p>箭头函数是对普通匿名函数的简化:</p>
+<li>
+<p>箭头函数是对普通匿名函数的简化:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) &#123;<br>  <span class="hljs-keyword">return</span> a + b;<br>&#125;<br><br>(a, b) =&gt; a + b;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>在箭头函数中使用<code>this</code>, this始终指向父级作用域, 不用<code>this</code>绑定.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">talk</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;<br>&#125;;<br><br>person.<span class="hljs-title function_">talk</span>();  <span class="hljs-comment">// 输出Window</span><br><br><span class="hljs-comment">// 箭头函数</span><br><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">talk</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;<br>&#125;;<br><br>person.<span class="hljs-title function_">talk</span>();  <span class="hljs-comment">// 输出 &#123;talk: f&#125;</span><br></code></pre></td></tr></table></figure></li>
+<li>
+<p>在箭头函数中使用<code>this</code>, this始终指向父级作用域, 不用<code>this</code>绑定.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">talk</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;<br>&#125;;<br><br>person.<span class="hljs-title function_">talk</span>();  <span class="hljs-comment">// 输出Window</span><br><br><span class="hljs-comment">// 箭头函数</span><br><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">talk</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;<br>&#125;;<br><br>person.<span class="hljs-title function_">talk</span>();  <span class="hljs-comment">// 输出 &#123;talk: f&#125;</span><br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li><p>对象解构:</p>
+<li>
+<p>对象解构:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ligaog&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span><br>&#125;;<br><br><span class="hljs-keyword">const</span> name = person.<span class="hljs-property">name</span>;<br><span class="hljs-keyword">const</span> age = person.<span class="hljs-property">age</span>;<br><br><span class="hljs-comment">// 语法糖</span><br><span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">name</span>: my_name, <span class="hljs-attr">age</span>: my_age &#125; = person;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>数组展开: <code>...a</code>表示把<code>a</code>中的元素铺开</p>
+<li>
+<p>数组展开: <code>...a</code>表示把<code>a</code>中的元素铺开</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">let</span> b = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];<br><span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span><br><span class="hljs-keyword">let</span> c = [...a, ...b];<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>Export Default和Export区别:</p>
+<li>
+<p>Export Default和Export区别:</p>
 <ul>
-<li><code>export</code>: 可以<code>export</code>多个, <code>import</code>时需要加上<code>&#123;&#125;</code>, 名称需要匹配 (用别名用<code>as</code>).</li>
-<li><code>export default</code>: 只能<code>export default</code>一个, <code>import</code>时不用<code>&#123;&#125;</code>, 名称不需要匹配.</li>
+<li><code>export</code>: 可以<code>export</code>多个, <code>import</code>时需要加上<code>{}</code>, 名称需要匹配 (用别名用<code>as</code>).</li>
+<li><code>export default</code>: 只能<code>export default</code>一个, <code>import</code>时不用<code>{}</code>, 名称不需要匹配.</li>
 </ul>
 </li>
 </ul>
-<h2 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a><code>Vue3</code></h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ul>
-<li><p>安装Vue命令行客户端:</p>
+<h2><code>Vue3</code></h2>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3>
+<ul>
+<li>
+<p>安装Vue命令行客户端:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm i -g @vue/cli<br></code></pre></td></tr></table></figure>
-
 </li>
-<li><p>要创建一个Vue项目: 用<code>vue ui</code>按照图形化界面引导创建.</p>
+<li>
+<p>要创建一个Vue项目: 用<code>vue ui</code>按照图形化界面引导创建.</p>
 </li>
-<li><p>启动项目:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vue serve<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>启动项目:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vue serve<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="slot插槽"><a href="#slot插槽" class="headerlink" title="slot插槽"></a><code>slot</code>插槽</h3><ul>
-<li><p><code>slot</code>插槽相当于一个<code>Component</code>的“参数”:</p>
+<h3><code>slot</code>插槽</h3>
 <ul>
-<li><p>假设定义了一个组件叫<code>MainFrame.vue</code>:</p>
+<li>
+<p><code>slot</code>插槽相当于一个<code>Component</code>的“参数”:</p>
+<ul>
+<li>
+<p>假设定义了一个组件叫<code>MainFrame.vue</code>:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;!-- MainFrame.vue --&gt;<br>&lt;template&gt;<br>	&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;<br>	&lt;slot name=&quot;main&quot;&gt;&lt;/slot&gt;<br>	&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>如果在其他组件中想要调用这个组件, 并且向<code>slot</code>中填充内容:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;MainFrame&gt;<br>  <br>	&lt;template #header&gt;<br>  	&lt;!-- 这里放header内容 --&gt;<br>  &lt;/template&gt;<br>  <br>  &lt;template #main&gt;<br>  	&lt;!-- 这里放main内容 --&gt;<br>  &lt;/template&gt;<br>  <br>  &lt;template #footer&gt;<br>  	&lt;!-- 这里放footer内容 --&gt;<br>  &lt;/template&gt;<br>  <br>&lt;/MainFrame&gt;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>如果在其他组件中想要调用这个组件, 并且向<code>slot</code>中填充内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;MainFrame&gt;<br>  <br>	&lt;template #header&gt;<br>  	&lt;!-- 这里放header内容 --&gt;<br>  &lt;/template&gt;<br>  <br>  &lt;template #main&gt;<br>  	&lt;!-- 这里放main内容 --&gt;<br>  &lt;/template&gt;<br>  <br>  &lt;template #footer&gt;<br>  	&lt;!-- 这里放footer内容 --&gt;<br>  &lt;/template&gt;<br>  <br>&lt;/MainFrame&gt;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>

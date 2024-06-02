@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,13 +1123,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="正则表达式标准"><a href="#正则表达式标准" class="headerlink" title="正则表达式标准"></a>正则表达式标准</h2><p>正则表达式有两个主流标准:</p>
+        <h2 id="正则表达式标准"><a href="#正则表达式标准" class="headerlink" title="正则表达式标准"></a>正则表达式标准</h2>
+<p>正则表达式有两个主流标准:</p>
 <ul>
 <li>POSIX标准.</li>
 <li>PCRE标准 (Perl Compatible Regular Expression), 使用人数最多, 目前基于这个标准.</li>
 </ul>
-<h2 id="快速生成随机文本"><a href="#快速生成随机文本" class="headerlink" title="快速生成随机文本"></a>快速生成随机文本</h2><p>可以使用<code>fortune</code>命令快速生成文本.</p>
-<h2 id="字符组"><a href="#字符组" class="headerlink" title="字符组"></a>字符组</h2><ul>
+<h2 id="快速生成随机文本"><a href="#快速生成随机文本" class="headerlink" title="快速生成随机文本"></a>快速生成随机文本</h2>
+<p>可以使用<code>fortune</code>命令快速生成文本.</p>
+<h2 id="字符组"><a href="#字符组" class="headerlink" title="字符组"></a>字符组</h2>
+<ul>
 <li>常见的字符组:</li>
 </ul>
 <table>
@@ -1140,7 +1143,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>\d</code></td>
 <td><code>[0-9]</code></td>
 <td>数字</td>
@@ -1157,23 +1161,23 @@
 </tr>
 <tr>
 <td><code>\D</code></td>
-<td></td>
+<td rowspan="3"></td>
 <td>非数字</td>
 </tr>
 <tr>
 <td><code>\W</code></td>
-<td></td>
 <td>非字符</td>
 </tr>
 <tr>
 <td><code>\S</code></td>
-<td></td>
 <td>非空白字符</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li><code>[\d\D]</code>这种形式可以匹配任意字符.</li>
-<li>如果<code>[]</code>内部出现的第一个字符是<code>^</code>, 那么表示匹配没有在字符组中出现的第一个字符.<ul>
+<li>如果<code>[]</code>内部出现的第一个字符是<code>^</code>, 那么表示匹配没有在字符组中出现的第一个字符.
+<ul>
 <li><code>[^0-9]</code>表示匹配第一个不是<code>0-9</code>的字符.</li>
 </ul>
 </li>
@@ -1230,6 +1234,7 @@
 <input type="hidden" id="MathJax-js"
         value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
 </input>
+
     
 
 

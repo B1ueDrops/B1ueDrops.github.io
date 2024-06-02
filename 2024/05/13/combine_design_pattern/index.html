@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,8 +1123,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="组合型设计模式"><a href="#组合型设计模式" class="headerlink" title="组合型设计模式"></a>组合型设计模式</h2><p>组合型设计模式用于将类&#x2F;对象以耦合度低的方式组织成更大的对象.</p>
-<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><ul>
+        <h2 id="组合型设计模式"><a href="#组合型设计模式" class="headerlink" title="组合型设计模式"></a>组合型设计模式</h2>
+<p>组合型设计模式用于将类/对象以耦合度低的方式组织成更大的对象.</p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2>
+<ul>
 <li>适用场景: 在调用一个对象的方法时, 需要<code>pre</code>处理, 以及<code>post</code>处理, 这个时候可以提供一个代理.</li>
 </ul>
 <p>实现方式:</p>
@@ -1132,42 +1134,52 @@
 <li>对象的抽象接口:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">Request</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li><p>真实对象:</p>
+<li>
+<p>真实对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteSubject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">Request</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>代理:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Proxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> RealSubject realSubject;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">Request</span><span class="hljs-params">()</span> &#123;<br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.realSubject == <span class="hljs-literal">null</span>) &#123;<br>      <span class="hljs-built_in">this</span>.realSubject = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RealSubject</span>();  <br>    &#125;<br>    <br>    preRequest();<br>    realSubject.Request();<br>    postRequest();<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">preRequest</span><span class="hljs-params">()</span> &#123;<br>  	<span class="hljs-comment">//...  </span><br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">postRequest</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>代理:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Proxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> RealSubject realSubject;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">Request</span><span class="hljs-params">()</span> &#123;<br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.realSubject == <span class="hljs-literal">null</span>) &#123;<br>      <span class="hljs-built_in">this</span>.realSubject = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RealSubject</span>();  <br>    &#125;<br>    <br>    preRequest();<br>    realSubject.Request();<br>    postRequest();<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">preRequest</span><span class="hljs-params">()</span> &#123;<br>  	<span class="hljs-comment">//...  </span><br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">postRequest</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2><ul>
+<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2>
+<ul>
 <li>适用场景: 我现在有一个类, 我要把这个类的接口通过一层适配器转换成目标接口的格式:</li>
 </ul>
-<p>实现方式1: 类适配器 </p>
+<p>实现方式1: 类适配器</p>
 <ul>
 <li>目标接口:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Target</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">request</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li><p>我现在有的类:</p>
+<li>
+<p>我现在有的类:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Adaptee</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">myRequest</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// ...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>加一个Adaptor类:</p>
+<li>
+<p>加一个Adaptor类:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Adapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Adaptee</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Target</span> &#123;<br>  <br>  <span class="hljs-comment">// 实现接口方法</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">request</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 用myRequest()</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>main函数:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-type">Target</span> <span class="hljs-variable">target</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adapter</span>();<br>  target.request();<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>main函数:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-type">Target</span> <span class="hljs-variable">target</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adapter</span>();<br>  target.request();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>实现方式二: 对象适配器</p>
 <ul>
-<li><p>Adapter类:</p>
+<li>
+<p>Adapter类:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Adapter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Target</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> Adaptee adaptee;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Adapter</span><span class="hljs-params">(Adaptee adaptee)</span> &#123;<br>    <span class="hljs-built_in">this</span>.adaptee = adaptee;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">request</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 做适配</span><br>    <span class="hljs-built_in">this</span>.adaptee.myRequest();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>main函数:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-type">Adaptee</span> <span class="hljs-variable">adaptee</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adaptee</span>();<br>  <span class="hljs-type">Target</span> <span class="hljs-variable">target</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adapter</span>(adaptee);<br>  target.request();<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>main函数:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-type">Adaptee</span> <span class="hljs-variable">adaptee</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adaptee</span>();<br>  <span class="hljs-type">Target</span> <span class="hljs-variable">target</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adapter</span>(adaptee);<br>  target.request();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><ul>
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2>
+<ul>
 <li>适用场景: 某些对象具有多种特征维度的变化, 例如m种颜色和n种大小, 那么就会有mxn种的子类.</li>
 </ul>
 <p>实现方式:</p>
@@ -1175,92 +1187,119 @@
 <li>抽象特征接口:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Feature</span> &#123;<br>  <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li><p>具体特征:</p>
+<li>
+<p>具体特征:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFeature</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Feature</span> &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>抽象对象:</p>
+<li>
+<p>抽象对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">protected</span> Feature feature;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Subject</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">this</span>.feature = feature;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setFeature</span><span class="hljs-params">(Feature feature)</span> &#123;<br>    <span class="hljs-built_in">this</span>.feature = feature;<br>  &#125;<br>  <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>具体对象:</p>
+<li>
+<p>具体对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteSubject</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <br>  <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>main函数:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  <span class="hljs-type">Feature</span> <span class="hljs-variable">feature</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFeature</span>();<br>  <span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteSubject</span>(feature);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>main函数:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  <span class="hljs-type">Feature</span> <span class="hljs-variable">feature</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFeature</span>();<br>  <span class="hljs-type">Subject</span> <span class="hljs-variable">subject</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteSubject</span>(feature);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>本质上来说, 就是把最主要的Feature用继承解决, 其他的Feature都用组合解决.</p>
-<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><ul>
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2>
+<ul>
 <li>适用场景: 在保持原来对象的结构不变的情况下, 动态增加新的功能.</li>
 </ul>
 <p>实现方式:</p>
 <ul>
-<li><p>抽象对象:</p>
+<li>
+<p>抽象对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>具体对象:</p>
+<li>
+<p>具体对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteSubject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>装饰器类:</p>
+<li>
+<p>装饰器类:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SubjectDecorator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> Subject subject;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">SubjectDecorator</span><span class="hljs-params">(Subject subject)</span> &#123;<br>    <span class="hljs-built_in">this</span>.subject = subject;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">this</span>.subject.operation();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>具体要装饰什么, 直接继承装饰器类:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteDecorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">SubjectDecorator</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">ConcreteDecorator</span><span class="hljs-params">(Subject subject)</span> &#123;<br>    <span class="hljs-built_in">super</span>(subject);<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// super.operation和我自己加什么功能组合</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>具体要装饰什么, 直接继承装饰器类:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteDecorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">SubjectDecorator</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">ConcreteDecorator</span><span class="hljs-params">(Subject subject)</span> &#123;<br>    <span class="hljs-built_in">super</span>(subject);<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// super.operation和我自己加什么功能组合</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h2><ul>
+<h2 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h2>
+<ul>
 <li>适用场景: 外观模式负责将若干个不同的子系统整合成一个大的系统, 并向用户提供简单的接口, 掩饰系统的复杂性.</li>
 </ul>
 <p>实现方式:</p>
 <ul>
-<li><p>若干个子系统:</p>
+<li>
+<p>若干个子系统:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SubSystem1</span> &#123;<br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">method1</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;子系统1的method1()被调用！&quot;</span>);<br>    &#125;   <br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SubSystem2</span> &#123;<br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">method2</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;子系统2的method2()被调用！&quot;</span>);<br>    &#125;   <br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SubSystem3</span> &#123;<br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">method3</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;子系统3的method3()被调用！&quot;</span>);<br>    &#125;   <br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>外观类:</p>
+<li>
+<p>外观类:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Facade</span><br>&#123;<br>    <span class="hljs-keyword">private</span> SubSystem1 obj1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SubSystem1</span>();<br>    <span class="hljs-keyword">private</span> SubSystem2 obj2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SubSystem2</span>();<br>    <span class="hljs-keyword">private</span> SubSystem3 obj3=<span class="hljs-keyword">new</span> <span class="hljs-title class_">SubSystem3</span>();<br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">method</span><span class="hljs-params">()</span><br>    &#123;<br>        obj1.method1();<br>        obj2.method2();<br>        obj3.method3();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>main函数:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  <span class="hljs-type">Facade</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Facade</span>();<br>  f.method();<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>main函数:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  <span class="hljs-type">Facade</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Facade</span>();<br>  f.method();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><ul>
-<li>适用场景: 当你的系统中出现了树状逻辑结果, 例如文件&#x2F;文件夹等, 组合模式可以让你的系统中, 单一对象和复合对象具有相同的接口, 简化系统设计.</li>
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2>
+<ul>
+<li>适用场景: 当你的系统中出现了树状逻辑结果, 例如文件/文件夹等, 组合模式可以让你的系统中, 单一对象和复合对象具有相同的接口, 简化系统设计.</li>
 </ul>
 <p>实现方式:</p>
 <ul>
 <li>节点接口:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Component</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(Component c)</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">(Component c)</span>;<br>    <span class="hljs-keyword">public</span> Component <span class="hljs-title function_">getChild</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li><p>中间节点:</p>
+<li>
+<p>中间节点:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Composite</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Component</span><br>&#123;<br>    <span class="hljs-keyword">private</span> ArrayList&lt;Component&gt; children=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Component&gt;();   <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(Component c)</span> &#123;<br>        <span class="hljs-built_in">this</span>.children.add(c);<br>    &#125;<br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">(Component c)</span> &#123;<br>        children.remove(c);<br>    &#125;<br>  <br>    <span class="hljs-keyword">public</span> Component <span class="hljs-title function_">getChild</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span> &#123;<br>        <span class="hljs-keyword">return</span> children.get(i);<br>    &#125;<br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span>(Object obj:children) &#123;<br>            ((Component)obj).operation();<br>        &#125;<br>    &#125;    <br>&#125;<br><br></code></pre></td></tr></table></figure>
 </li>
-<li><p>叶子节点:</p>
+<li>
+<p>叶子节点:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Leaf</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Component</span><br>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Leaf</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name=name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(Component c)</span>&#123; &#125; <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">remove</span><span class="hljs-params">(Component c)</span>&#123; &#125;<br>  <br>    <span class="hljs-keyword">public</span> Component <span class="hljs-title function_">getChild</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span><br>    &#123;<br>        System.out.println(<span class="hljs-string">&quot;树叶&quot;</span>+name+<span class="hljs-string">&quot;：被访问！&quot;</span>); <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>main函数:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">Component</span> <span class="hljs-variable">c0</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Composite</span>(); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Composite</span>(); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;1&quot;</span>); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;2&quot;</span>); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;3&quot;</span>);<br>  <br>    c0.add(leaf1); <br>    c0.add(c1);<br>    c1.add(leaf2); <br>    c1.add(leaf3);          <br>    c0.operation(); <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>main函数:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">Component</span> <span class="hljs-variable">c0</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Composite</span>(); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Composite</span>(); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;1&quot;</span>); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;2&quot;</span>); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;3&quot;</span>);<br>  <br>    c0.add(leaf1); <br>    c0.add(c1);<br>    c1.add(leaf2); <br>    c1.add(leaf3);          <br>    c0.operation(); <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h2><ul>
+<h2 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h2>
+<ul>
 <li>适用场景: 程序中要出现大量的相同对象 (例如不同颜色的棋子、 图形), 享元模式可以共享这些对象相同的部分, 节省系统资源.</li>
 </ul>
 <p>实现方式:</p>
 <ul>
-<li><p>首先需要确定, 这些对象中, 可以被共享的成分和不能被共享的成分.</p>
+<li>
+<p>首先需要确定, 这些对象中, 可以被共享的成分和不能被共享的成分.</p>
 </li>
-<li><p>非享元部分 (不能被共享的成分)</p>
+<li>
+<p>非享元部分 (不能被共享的成分)</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">UnsharedConcreteFlyweight</span> &#123;<br>    <span class="hljs-keyword">private</span> String info;<br>  <br>    UnsharedConcreteFlyweight(String info) &#123;<br>        <span class="hljs-built_in">this</span>.info = info;<br>    &#125;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getInfo</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> info;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setInfo</span><span class="hljs-params">(String info)</span> &#123;<br>        <span class="hljs-built_in">this</span>.info = info;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>享元对象接口:</p>
+<li>
+<p>享元对象接口:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Flyweight</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">(UnsharedConcreteFlyweight state)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>具体的享元对象:</p>
+<li>
+<p>具体的享元对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFlyweight</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Flyweight</span><br>&#123;<br>  <span class="hljs-comment">// key是可以被共享的属性, 例如颜色</span><br>    <span class="hljs-keyword">private</span> String key;<br>    ConcreteFlyweight(String key)<br>    &#123;<br>        <span class="hljs-built_in">this</span>.key = key;<br>        System.out.println(<span class="hljs-string">&quot;具体享元&quot;</span>+key+<span class="hljs-string">&quot;被创建！&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">(UnsharedConcreteFlyweight outState)</span><br>    &#123;<br>      <span class="hljs-comment">// 这里可以结合非享元部分进行操作</span><br>        System.out.print(<span class="hljs-string">&quot;具体享元&quot;</span>+key+<span class="hljs-string">&quot;被调用，&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;非享元信息是:&quot;</span>+outState.getInfo());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>享元工厂: 用来生产享元对象:</p>
+<li>
+<p>享元工厂: 用来生产享元对象:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FlyweightFactory</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> HashMap&lt;String, Flyweight&gt; flyweights = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;String, Flyweight&gt;();<br>  <br>  <span class="hljs-comment">// 如果HashMap中存在, 就直接返回, 否则新建一个</span><br>  <span class="hljs-keyword">public</span> Flyweight <span class="hljs-title function_">getFlyweight</span><span class="hljs-params">(String key)</span> &#123;<br>    <br>    Flyweight flyweight=(Flyweight)flyweights.get(key);<br>        <br>    <span class="hljs-keyword">if</span>(flyweight != <span class="hljs-literal">null</span>) &#123;<br>        System.out.println(<span class="hljs-string">&quot;具体享元&quot;</span>+key+<span class="hljs-string">&quot;已经存在，被成功获取！&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        flyweight=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteFlyweight</span>(key);<br>        flyweights.put(key, flyweight);<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> flyweight;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>main函数:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  FlyweightFactory factory=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FlyweightFactory</span>();<br>  <br>  Flyweight f1=factory.getFlyweight(<span class="hljs-string">&quot;a&quot;</span>);<br>  Flyweight f2=factory.getFlyweight(<span class="hljs-string">&quot;a&quot;</span>);<br>  <br>  <span class="hljs-comment">// 传递非共享部分</span><br>  f1.operation(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsharedConcreteFlyweight</span>(<span class="hljs-string">&quot;first&quot;</span>));       <br>  f2.operation(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsharedConcreteFlyweight</span>(<span class="hljs-string">&quot;second&quot;</span>)); <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>
+<p>main函数:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  FlyweightFactory factory=<span class="hljs-keyword">new</span> <span class="hljs-title class_">FlyweightFactory</span>();<br>  <br>  Flyweight f1=factory.getFlyweight(<span class="hljs-string">&quot;a&quot;</span>);<br>  Flyweight f2=factory.getFlyweight(<span class="hljs-string">&quot;a&quot;</span>);<br>  <br>  <span class="hljs-comment">// 传递非共享部分</span><br>  f1.operation(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsharedConcreteFlyweight</span>(<span class="hljs-string">&quot;first&quot;</span>));       <br>  f2.operation(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UnsharedConcreteFlyweight</span>(<span class="hljs-string">&quot;second&quot;</span>)); <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 
       

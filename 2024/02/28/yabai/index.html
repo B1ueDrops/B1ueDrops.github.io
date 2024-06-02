@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,7 +1123,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关闭SIP的方法"><a href="#关闭SIP的方法" class="headerlink" title="关闭SIP的方法"></a>关闭SIP的方法</h2><ol>
+        <h2 id="关闭SIP的方法"><a href="#关闭SIP的方法" class="headerlink" title="关闭SIP的方法"></a>关闭SIP的方法</h2>
+<ol>
 <li>首先, 进入Mac的Recovery Mode.</li>
 <li>进入终端: [实用工具]-[终端].</li>
 <li>终端中输入: <code>csrutil disable</code>.</li>
@@ -1131,23 +1132,25 @@
 <li>之后, 在终端运行: <code>sudo nvram boot-args=-arm64e_preview_abi</code>.</li>
 <li>然后重启.</li>
 </ol>
-<h2 id="下载完yabai之后"><a href="#下载完yabai之后" class="headerlink" title="下载完yabai之后"></a>下载完yabai之后</h2><p>在<code>/etc/sudoers.d</code>中, 创建<code>yabai</code>, 写入:</p>
+<h2 id="下载完yabai之后"><a href="#下载完yabai之后" class="headerlink" title="下载完yabai之后"></a>下载完yabai之后</h2>
+<p>在<code>/etc/sudoers.d</code>中, 创建<code>yabai</code>, 写入:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;user&gt; ALL=(root) NOPASSWD: sha256:&lt;hash&gt; &lt;yabai&gt; --load-sa<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>user</code>: <code>whoami</code>的输出.</li>
 <li><code>hash</code>: <code>shasum -a 256 $(which yabai)</code>的输出.</li>
 <li><code>yabai</code>: <code>which yabai</code>的输出.</li>
 </ul>
 <p><font color="red">注意, yabai更新之后, hash的值会改变, 需要重新修改.</font></p>
-<h2 id="yabai的键位配置"><a href="#yabai的键位配置" class="headerlink" title="yabai的键位配置"></a>yabai的键位配置</h2><table>
+<h2 id="yabai的键位配置"><a href="#yabai的键位配置" class="headerlink" title="yabai的键位配置"></a>yabai的键位配置</h2>
+<table>
 <thead>
 <tr>
 <th>功能</th>
 <th>键位</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>切换窗口聚焦</td>
 <td><code>cmd+alt+h,j,k,l</code></td>
 </tr>
@@ -1203,8 +1206,10 @@
 <td>打开某个隐藏的窗口</td>
 <td><code>cmd+tab</code></td>
 </tr>
-</tbody></table>
-<h2 id="sketchybar下载依赖"><a href="#sketchybar下载依赖" class="headerlink" title="sketchybar下载依赖"></a>sketchybar下载依赖</h2><ul>
+</tbody>
+</table>
+<h2 id="sketchybar下载依赖"><a href="#sketchybar下载依赖" class="headerlink" title="sketchybar下载依赖"></a>sketchybar下载依赖</h2>
+<ul>
 <li>sketchybar-app-font: <a href="https://b1uedrops.github.io/static/files/sketchybar-app-font.ttf">https://b1uedrops.github.io/static/files/sketchybar-app-font.ttf</a></li>
 </ul>
 

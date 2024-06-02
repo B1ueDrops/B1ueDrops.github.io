@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,20 +1123,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h2><ul>
+        <h2 id="Python基础"><a href="#Python基础" class="headerlink" title="Python基础"></a>Python基础</h2>
+<ul>
 <li>查看dict的keys: <code>print(list(a.keys())</code></li>
-<li>对某个对象<code>obj</code>做深拷贝:<ul>
+<li>对某个对象<code>obj</code>做深拷贝:
+<ul>
 <li><code>copyed_obj = obj.copy()</code>, 对<code>obj</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="Python面向对象"><a href="#Python面向对象" class="headerlink" title="Python面向对象"></a>Python面向对象</h2><ul>
-<li><p>定义接口的方法:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> abc<br><br><span class="hljs-comment"># 抽象类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stimulus</span>(metaclass=abc.ABCMeta):<br><span class="hljs-meta">    @abc.abstractmethod</span><br>    <span class="hljs-comment"># 抽象方法</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure></li>
+<h2 id="Python面向对象"><a href="#Python面向对象" class="headerlink" title="Python面向对象"></a>Python面向对象</h2>
+<ul>
+<li>
+<p>定义接口的方法:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> abc<br><br><span class="hljs-comment"># 抽象类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stimulus</span>(metaclass=abc.ABCMeta):<br><span class="hljs-meta">    @abc.abstractmethod</span><br>    <span class="hljs-comment"># 抽象方法</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><ul>
+<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2>
+<ul>
 <li><code>axis</code>的参数含义: 如果是0, 表示计算每一列的属性, 如果是1, 表示计算每一行的属性.</li>
-<li><code>df.rolling()</code>方法可以用于滑动窗口计算操作, 通常和<code>mean(), sum(), std_dev()</code>等一起使用.<ul>
+<li><code>df.rolling()</code>方法可以用于滑动窗口计算操作, 通常和<code>mean(), sum(), std_dev()</code>等一起使用.
+<ul>
 <li><code>df.ewm()</code>可以执行指数加权平均(Exponential Weighted Moving Average).</li>
 </ul>
 </li>

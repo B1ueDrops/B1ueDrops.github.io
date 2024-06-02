@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1123,19 +1123,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="C-C-LSP"><a href="#C-C-LSP" class="headerlink" title="C&#x2F;C++ LSP"></a>C&#x2F;C++ LSP</h2><p>首先可以使用CMake或者Bear生成整个项目的<code>compile_commands.json</code>.</p>
+        <h2 id="C-C-LSP"><a href="#C-C-LSP" class="headerlink" title="C/C++ LSP"></a>C/C++ LSP</h2>
+<p>首先可以使用CMake或者Bear生成整个项目的<code>compile_commands.json</code>.</p>
 <p>语法解析可以使用<code>clangd</code>插件.</p>
 <p>对于具体项目, 可以在项目中新建<code>.vscode/settings.json</code>.</p>
 <p>然后在其中添加:</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;clangd.arguments&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;--compile-commands-dir=这里就是你的compile_commands.json的路径&quot;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="Task-Manager"><a href="#Task-Manager" class="headerlink" title="Task Manager"></a>Task Manager</h2><p>Task Manager可以让你预定义一些与项目有关的任务.</p>
+<h2 id="Task-Manager"><a href="#Task-Manager" class="headerlink" title="Task Manager"></a>Task Manager</h2>
+<p>Task Manager可以让你预定义一些与项目有关的任务.</p>
 <p>首先在项目中新建<code>.vscode/tasks.json</code>.</p>
 <p>然后按这个模板:</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2.0.0&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;tasks&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Compile Manim&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;shell&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;manim&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span> <span class="hljs-string">&quot;-pql&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;MoonVisual.py&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;MoonVisual&quot;</span> <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;options&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-attr">&quot;cwd&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;/src&quot;</span> <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>

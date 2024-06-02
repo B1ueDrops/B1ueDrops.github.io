@@ -384,6 +384,24 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 控制基础 "
+           href="/2024/06/02/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-06-02 13:08:26">2024/06/02</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/02/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-02 13:05:44">2024/06/02</span>
+        </a>
+        
+        
         <a  class="All AI "
            href="/2024/06/01/transformer/"
            data-tag=""
@@ -408,24 +426,6 @@
            data-author="" >
             <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
             <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/06/01/signal_process/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="信号与系统">信号与系统</span>
-            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
-        </a>
-        
-        
-        <a  class="All 控制基础 "
-           href="/2024/05/31/quaternion/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
-            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
         </a>
         
         
@@ -1124,38 +1124,40 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">创建型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">原型模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">抽象工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">建造者模式</span></a></li></ol></div></p>
-<h2 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h2><p>创建型设计模式用于将对象的创建与使用解耦合.</p>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>如果一个类只有一个实例, 那么可以使用单例模式创建对象.</p>
+<h2 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h2>
+<p>创建型设计模式用于将对象的创建与使用解耦合.</p>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2>
+<p>如果一个类只有一个实例, 那么可以使用单例模式创建对象.</p>
 <p>单例模式有两种实现方式: 懒汉与饿汉.</p>
 <ul>
-<li>懒汉: 也就是懒加载, 当使用对象时才进行创建.<ul>
+<li>懒汉: 也就是懒加载, 当使用对象时才进行创建.
+<ul>
 <li>懒汉可以节约资源, 但是要处理多线程的同步问题.</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br>  <span class="hljs-comment">// 实例</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Singleton instance;<br>  <span class="hljs-comment">// 禁用构造方法</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;&#125;<br>  <span class="hljs-comment">// 获取实例</span><br>  <span class="hljs-comment">// synchronized可以保证同一时刻只有一个线程执行getInstance()</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> Singleton <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">null</span>) &#123;<br>      instance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>饿汉: 在类加载时就会创建实例对象.<ul>
+<li>饿汉: 在类加载时就会创建实例对象.
+<ul>
 <li>饿汉会浪费资源, 但是不要处理多线程同步</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Singleton</span> <span class="hljs-variable">instance</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>  <br>  <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;&#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">return</span> instance; &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
 <blockquote>
 <p>懒汉模式的问题</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40885085/article/details/103363774">https://blog.csdn.net/qq_40885085/article/details/103363774</a></p>
-<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><p>原型模式用于解决大量相同&#x2F;相似的对象的创建问题.</p>
-<p>实现方式: </p>
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2>
+<p>原型模式用于解决大量相同/相似的对象的创建问题.</p>
+<p>实现方式:</p>
 <ul>
 <li>实现编程语言关于<code>clone</code>的接口, 然后调用<code>clone</code>方法进行复制.</li>
 <li>注意: 原型模式有两种, 浅拷贝和深拷贝, 注意区分.</li>
 </ul>
-<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><p>工厂方法模式有四个角色:</p>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2>
+<p>工厂方法模式有四个角色:</p>
 <ul>
 <li>抽象产品: 提供化产品的接口.</li>
 <li>具体产品: 实现了抽象产品的接口, 用于定义某一种具体产品.</li>
@@ -1167,27 +1169,20 @@
 <li>抽象产品:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Product</span> &#123;<br>  <span class="hljs-comment">// 产品的方法</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>抽象工厂:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Factory</span> &#123;<br>  <span class="hljs-comment">// 生产产品的方法</span><br>  <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">newProduct</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>具体产品:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProduct</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123; System.out.println(<span class="hljs-string">&quot;Product 1&quot;</span>); &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>具体工厂:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Factory</span> &#123;<br>  <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">newProduct</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProduct</span>();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>在工厂方法模式种, 一个工厂只能生产一种产品, 但是实际的工厂一般是综合性工厂, 也就是说很有可能一个工厂能够生产一个产品簇, 例如农场既可以生产动物, 也可以生产植物.</p>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2>
+<p>在工厂方法模式种, 一个工厂只能生产一种产品, 但是实际的工厂一般是综合性工厂, 也就是说很有可能一个工厂能够生产一个产品簇, 例如农场既可以生产动物, 也可以生产植物.</p>
 <p>与工厂方法模式的区别:</p>
 <ul>
 <li>在抽象工厂中, 增加了多个生产产品的方法.</li>
@@ -1198,25 +1193,20 @@
 <li>抽象产品:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Product1</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show1</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Product2</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show2</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>抽象工厂:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Factory</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> Product1 <span class="hljs-title function_">newProduct1</span><span class="hljs-params">()</span>;<br>  <span class="hljs-keyword">public</span> Product2 <span class="hljs-title function_">newProduct2</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>实际产品:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProduct1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product1</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show1</span><span class="hljs-params">()</span> &#123; System.out.println(<span class="hljs-string">&quot;ConcreteProduct1&quot;</span>); &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteProduct2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Product2</span> &#123;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show2</span><span class="hljs-params">()</span> &#123; System.out.println(<span class="hljs-string">&quot;ConcreteProduct2&quot;</span>); &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>实际工厂:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteFactory</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Factory</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> Product1 <span class="hljs-title function_">newProduct1</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProduct1</span>(); &#125;<br>  <span class="hljs-keyword">public</span> Product2 <span class="hljs-title function_">newProduct2</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteProduct2</span>(); &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><p>如果你想创建的对象有这两个特点:</p>
+<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2>
+<p>如果你想创建的对象有这两个特点:</p>
 <ul>
 <li>对象由多个部分组成, 各部分在将来可能会发生变化.</li>
 <li>对象的构建方式相对固定.</li>
@@ -1227,25 +1217,20 @@
 <li>产品类: 产品的各个部分当作成员变量, 并且需要提供对应的setter方法.</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Product</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> String part1;<br>  <span class="hljs-keyword">private</span> String part2;<br>  <span class="hljs-keyword">private</span> String part3;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPart1</span><span class="hljs-params">(String part1)</span> &#123;<br>    <span class="hljs-built_in">this</span>.part1 = part1;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPart2</span><span class="hljs-params">(String part2)</span> &#123;<br>    <span class="hljs-built_in">this</span>.part2 = part2;<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPart3</span><span class="hljs-params">(String part3)</span> &#123;<br>    <span class="hljs-built_in">this</span>.part3 = part3;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>抽象建造者:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Builder</span> &#123;<br>  <br>  <span class="hljs-comment">// 产品</span><br>  <span class="hljs-keyword">protected</span> <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>();<br>  <span class="hljs-comment">// 抽象方法, 建造产品的部分</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildPart1</span><span class="hljs-params">()</span>;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildPart2</span><span class="hljs-params">()</span>;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildPart3</span><span class="hljs-params">()</span>;<br>  <br>  <span class="hljs-comment">// 返回生产好的产品</span><br>  <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">getResult</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">return</span> product; &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>具体建造者: 用于实现生产产品每个部分的函数.</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteBuilder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Builder</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildPart1</span><span class="hljs-params">()</span><br>    &#123;<br>        product.setPartA(<span class="hljs-string">&quot;建造 Part1&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildPart2</span><span class="hljs-params">()</span><br>    &#123;<br>        product.setPartA(<span class="hljs-string">&quot;建造 Part2&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">buildPart3</span><span class="hljs-params">()</span><br>    &#123;<br>        product.setPartA(<span class="hljs-string">&quot;建造 Part3&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>指挥者: 调用建造者的函数完成生产任务.</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Director</span> &#123;<br>  <br>  <span class="hljs-comment">// 建造者</span><br>  <span class="hljs-keyword">private</span> Builder builder;<br>  <br>  <span class="hljs-comment">// 构造函数, 通过组合的方式传入建造者</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Director</span><span class="hljs-params">(Builder builder)</span> &#123;<br>    <span class="hljs-built_in">this</span>.builder = builder;<br>  &#125;<br>  <br>  <span class="hljs-comment">// 生产产品</span><br>  <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">construct</span><span class="hljs-params">()</span> &#123;<br>    builder.buildPart1();<br>    builder.buildPart2();<br>    builder.buildPart3();<br>    <span class="hljs-keyword">return</span> builder.getResult();<br>  &#125;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>客户类:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span><br>    &#123;<br>        Builder builder=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteBuilder</span>();<br>        Director director=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Director</span>(builder);<br>        Product product=director.construct();<br>        product.show();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>通过客户类可以看出:</p>
 <ul>
 <li>建造者可以很容易扩展(多态).</li>
