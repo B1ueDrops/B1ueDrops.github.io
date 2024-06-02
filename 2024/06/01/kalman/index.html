@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>卡尔曼滤波数学推导 | B1ueDrops</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="卡尔曼滤波数学推导 | B1ueDrops">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:author" content="B1ueDrops">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpeg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpeg"/>
+</a>
+<div class="author">
+    <span>B1ueDrops</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/B1ueDrops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:bluedrops@yeah.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2381446488&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(75)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="编程语言">
+            
+            编程语言
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具/环境">
+            
+            工具/环境
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="计算机网络">
+            
+            计算机网络
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="金融知识">
+            
+            金融知识
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="控制基础">
+            
+            控制基础
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="脑机接口">
+            
+            脑机接口
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="软件工程">
+            
+            软件工程
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="社会技能">
+            
+            社会技能
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="算法">
+            
+            算法
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="体系结构">
+            
+            体系结构
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI">
+            
+            AI
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="English">
+            
+            English
+            <small>(11)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="UNIX编程">
+            
+            UNIX编程
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">About</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="75">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All AI "
+           href="/2024/06/01/transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="简单理解Transformer">简单理解Transformer</span>
+            <span class="post-date" title="2024-06-01 20:53:28">2024/06/01</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/01/linear_algebra/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性代数">线性代数</span>
+            <span class="post-date" title="2024-06-01 15:30:18">2024/06/01</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/01/kalman/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
+            <span class="post-date" title="2024-06-01 14:10:10">2024/06/01</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/06/01/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-06-01 14:10:01">2024/06/01</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/05/31/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-05-31 10:26:37">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/31/rust_threadpool/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用rust实现一个简易线程池">用rust实现一个简易线程池</span>
+            <span class="post-date" title="2024-05-31 09:12:31">2024/05/31</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/05/26/social_security/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="社保/五险一金">社保/五险一金</span>
+            <span class="post-date" title="2024-05-26 18:31:06">2024/05/26</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/05/22/quant_analysis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="金融量化分析基础">金融量化分析基础</span>
+            <span class="post-date" title="2024-05-22 18:08:38">2024/05/22</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/17/car-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="汽车英语">汽车英语</span>
+            <span class="post-date" title="2024-05-17 13:37:34">2024/05/17</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/17/compile-link/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="程序的链接">程序的链接</span>
+            <span class="post-date" title="2024-05-17 12:33:47">2024/05/17</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/14/regular_expression/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="正则表达式原理和实战">正则表达式原理和实战</span>
+            <span class="post-date" title="2024-05-14 20:14:59">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/14/recursion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="递归系列">递归系列</span>
+            <span class="post-date" title="2024-05-14 16:02:10">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All 控制基础 "
+           href="/2024/05/14/probability/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="概率论与数理统计">概率论与数理统计</span>
+            <span class="post-date" title="2024-05-14 10:20:01">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/13/restaurant_english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="饭店英语">饭店英语</span>
+            <span class="post-date" title="2024-05-13 20:25:52">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/05/13/combine_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="组合型的设计模式">组合型的设计模式</span>
+            <span class="post-date" title="2024-05-13 20:11:49">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/12/frontend-lang/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前端语言使用日记">前端语言使用日记</span>
+            <span class="post-date" title="2024-05-12 21:13:45">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/05/12/linux_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux上的进程控制">Linux上的进程控制</span>
+            <span class="post-date" title="2024-05-12 13:03:52">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/other-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="其他地道的英语表达">其他地道的英语表达</span>
+            <span class="post-date" title="2024-05-12 12:38:31">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/hotel-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="酒店英语">酒店英语</span>
+            <span class="post-date" title="2024-05-12 12:29:02">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/05/11/network_network_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络层">网络层</span>
+            <span class="post-date" title="2024-05-11 18:21:44">2024/05/11</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/05/10/network_application_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用层">应用层</span>
+            <span class="post-date" title="2024-05-10 20:46:30">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/10/airport-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机场英语">机场英语</span>
+            <span class="post-date" title="2024-05-10 10:12:57">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/09/english-writing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语写作背诵文章">英语写作背诵文章</span>
+            <span class="post-date" title="2024-05-09 21:11:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/09/practical-go/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Go语言使用日记">Go语言使用日记</span>
+            <span class="post-date" title="2024-05-09 20:48:25">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/05/09/database-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostgreSQL数据库教程">PostgreSQL数据库教程</span>
+            <span class="post-date" title="2024-05-09 20:24:37">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/05/09/cache-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cache的基础知识与设计策略">Cache的基础知识与设计策略</span>
+            <span class="post-date" title="2024-05-09 20:12:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/05/09/sort-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基础排序算法和应用">基础排序算法和应用</span>
+            <span class="post-date" title="2024-05-09 17:10:04">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/26/secure_drive/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="安全驾驶知识">安全驾驶知识</span>
+            <span class="post-date" title="2024-04-26 19:53:53">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/04/26/quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基金及量化投资">基金及量化投资</span>
+            <span class="post-date" title="2024-04-26 13:42:05">2024/04/26</span>
+        </a>
+        
+        
+        <a  class="All 计算机网络 "
+           href="/2024/04/21/network_tcp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="传输层">传输层</span>
+            <span class="post-date" title="2024-04-21 15:16:42">2024/04/21</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/04/14/two_pointer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="双指针系列">双指针系列</span>
+            <span class="post-date" title="2024-04-14 19:46:01">2024/04/14</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/13/practical-rust/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust使用日记">Rust使用日记</span>
+            <span class="post-date" title="2024-04-13 17:05:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/04/13/ai_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI的一些基础概念">AI的一些基础概念</span>
+            <span class="post-date" title="2024-04-13 16:43:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/12/rust_async/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust的异步编程">Rust的异步编程</span>
+            <span class="post-date" title="2024-04-12 14:09:37">2024/04/12</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/07/python_many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python用到什么学什么">Python用到什么学什么</span>
+            <span class="post-date" title="2024-04-07 10:46:59">2024/04/07</span>
+        </a>
+        
+        
+        <a  class="All 脑机接口 "
+           href="/2024/04/06/eeg_device/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="脑电的原理">脑电的原理</span>
+            <span class="post-date" title="2024-04-06 10:35:04">2024/04/06</span>
+        </a>
+        
+        
+        <a  class="All 社会技能 "
+           href="/2024/04/05/eq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="培养高情商的一些策略">培养高情商的一些策略</span>
+            <span class="post-date" title="2024-04-05 10:25:28">2024/04/05</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/02/rust_leetcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="用Rust实现Leetcode算法题">用Rust实现Leetcode算法题</span>
+            <span class="post-date" title="2024-04-02 12:59:13">2024/04/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/30/binary-tree/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二叉树/二叉搜索树全系列">二叉树/二叉搜索树全系列</span>
+            <span class="post-date" title="2024-03-30 17:07:34">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/03/30/multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多进程/多线程编程模型">多进程/多线程编程模型</span>
+            <span class="post-date" title="2024-03-30 16:47:20">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/30/profile/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="软件的性能分析">软件的性能分析</span>
+            <span class="post-date" title="2024-03-30 13:49:01">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/28/linkedlist/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="链表系列">链表系列</span>
+            <span class="post-date" title="2024-03-28 09:53:10">2024/03/28</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/23/vscode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="vscode插件配置">vscode插件配置</span>
+            <span class="post-date" title="2024-03-23 15:50:58">2024/03/23</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/command_line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shell脚本现用现学">Shell脚本现用现学</span>
+            <span class="post-date" title="2024-03-22 12:50:32">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/cpp-many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="C++之用到什么学什么">C++之用到什么学什么</span>
+            <span class="post-date" title="2024-03-22 11:31:11">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/linear-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性DP">线性DP</span>
+            <span class="post-date" title="2024-03-20 18:11:22">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/tree-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树形DP">树形DP</span>
+            <span class="post-date" title="2024-03-20 18:10:56">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-method/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Methodology">英语科技论文写作模型-Methodology</span>
+            <span class="post-date" title="2024-03-20 16:53:17">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-abstract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Abstract">英语科技论文写作模型-Abstract</span>
+            <span class="post-date" title="2024-03-20 16:49:54">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-conclusion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Conclusion">英语科技论文写作模型-Conclusion</span>
+            <span class="post-date" title="2024-03-20 16:49:46">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-results/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Results">英语科技论文写作模型-Results</span>
+            <span class="post-date" title="2024-03-20 16:49:31">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/19/sci-writing-introduction/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Introduction">英语科技论文写作模型-Introduction</span>
+            <span class="post-date" title="2024-03-19 10:16:07">2024/03/19</span>
+        </a>
+        
+        
+        <a  class="All AI "
+           href="/2024/03/10/ai-cnn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CNN的一些基础知识">CNN的一些基础知识</span>
+            <span class="post-date" title="2024-03-10 15:57:42">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/10/catalan/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡特兰数系列">卡特兰数系列</span>
+            <span class="post-date" title="2024-03-10 12:47:19">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All UNIX编程 "
+           href="/2024/03/05/concurrent_sketch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="并发编程的概述">并发编程的概述</span>
+            <span class="post-date" title="2024-03-05 15:00:50">2024/03/05</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/03/knapsack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背包问题的模板总结">背包问题的模板总结</span>
+            <span class="post-date" title="2024-03-03 16:22:21">2024/03/03</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/virtualmem/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="虚拟内存的基础知识和设计">虚拟内存的基础知识和设计</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/sim-plus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高精度加减乘除">高精度加减乘除</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/prefix-sum-diff/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前缀和/差分">前缀和/差分</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/other-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="冷门算法/模拟题">冷门算法/模拟题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/interval/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="区间问题">区间问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/02/go-concurrent/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用goroutine实现并发算法题">使用goroutine实现并发算法题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/cache-coherence/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="缓存一致性">缓存一致性</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/binary-search/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二分系列">二分系列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/02/jetbrains/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetbrains系列IDE的配置">Jetbrains系列IDE的配置</span>
+            <span class="post-date" title="2024-03-02 19:00:15">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/03/02/tmux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="tmux键位配置">tmux键位配置</span>
+            <span class="post-date" title="2024-03-02 13:16:32">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/01/clean_code/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码整洁之道">代码整洁之道</span>
+            <span class="post-date" title="2024-03-01 14:30:08">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/03/01/software_rule/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面向对象设计的基本原则">面向对象设计的基本原则</span>
+            <span class="post-date" title="2024-03-01 14:30:02">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/29/lazygit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git/Lazygit版本控制">Git/Lazygit版本控制</span>
+            <span class="post-date" title="2024-02-29 17:44:04">2024/02/29</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/28/yabai/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="yabai窗口管理器键位配置">yabai窗口管理器键位配置</span>
+            <span class="post-date" title="2024-02-28 13:01:35">2024/02/28</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/27/joshuto/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="joshuto的键位配置">joshuto的键位配置</span>
+            <span class="post-date" title="2024-02-27 19:43:49">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/02/26/behaviour_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="行为型的设计模式">行为型的设计模式</span>
+            <span class="post-date" title="2024-02-26 20:11:27">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/02/26/vimium/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome中vimium键位">Chrome中vimium键位</span>
+            <span class="post-date" title="2024-02-26 20:03:26">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/02/25/build_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="创建型的设计模式">创建型的设计模式</span>
+            <span class="post-date" title="2024-02-25 15:27:36">2024/02/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-kalman" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">卡尔曼滤波数学推导</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="控制基础">控制基础</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-06-01 14:10:10'>2024-06-01 14:10</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B"><span class="toc-text">推导过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%AD%A5%E9%AA%A4"><span class="toc-text">计算步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="toc-text">扩展卡尔曼滤波</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E8%BF%87%E7%A8%8B"><span class="toc-text">推导过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%AD%A5%E9%AA%A4"><span class="toc-text">计算步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2"><span class="toc-text">扩展卡尔曼滤波</span></a></li></ol></div></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li><p>根据状态空间方程, 可以得到一个系统的状态$X_k$的精确值: $X_k &#x3D; AX_{k-1} + Bu_{k} + \omega$​.</p>
+<ul>
+<li>其中, $u_k$是系统输入, $\omega$是噪声, 噪声没有办法精确估计, $\omega \sim N(0, Q)$, 其中$Q &#x3D; E[\omega\omega^{k}]$是$w$的协方差矩阵.</li>
+</ul>
+</li>
+<li><p>测量值$Z_k &#x3D; HX_k + v$, 其中:</p>
+<ul>
+<li>$H$取决于传感器.</li>
+<li>$v$表示测量误差, $v \sim N(0, R)$.</li>
+</ul>
+</li>
+<li><p>在实际过程中, 可以得到以下两个数值:</p>
+<ul>
+<li>$X_k$的先验估计$\hat{X_k}$, 这个是用$\hat{X_k} &#x3D; AX_{k-1} + Bu_k$计算得到的.</li>
+<li>测量值$Z_k$, 根据测量值, 也可以得到$X_k$的测量值$\hat{X_k} &#x3D; H^{-1}Z_k$.</li>
+</ul>
+</li>
+<li><p>现在, 已经有了关于$X_k$的先验估计值和测量值, 需要把这两个值进行融合, 来让$X_k$的波动最小, 从而获得更精确的$X_k$的后验估计值, 这个过程就叫做卡尔曼滤波.</p>
+</li>
+</ul>
+<h2 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h2><ul>
+<li>假设$X_k$是一个$n$维向量, $X_k &#x3D; (x_1, x_2, …, x_n)^T$</li>
+<li>假设符号$\bar{X_k}$就表示卡尔曼滤波计算得到的后验估计值.</li>
+<li>后验估计值:</li>
+</ul>
+<p>$$<br>\bar{X_k} &#x3D; (I_n - G_k)\hat{X_k} + G_kH^{-1}Z_k &#x3D; \hat{X_k} + G_k(H^{-1}Z_k - \hat{X_k})<br>$$</p>
+<ul>
+<li>令$G_k &#x3D; K_kH$, 其中$K_k$叫做卡尔曼增益.</li>
+</ul>
+<p>$$<br>\bar{X_k} &#x3D; \hat{X_k} + K_{k}(Z_k - H\hat{X_k})<br>$$</p>
+<ul>
+<li>定义误差$e_k &#x3D; X_k - \bar{X_k}$, 这个误差同样服从高斯分布$e_k \sim N(0, P_k)$, 其中$P_k$是协方差矩阵, 首先计算$e_k$的表达式:</li>
+</ul>
+<p>$$<br>e_k &#x3D; X_k - \bar{X_k} &#x3D; X_k - \hat{X_k} - K_kZ_k + K_kH\hat{X_k}<br>$$</p>
+<ul>
+<li>然后, 将$Z_k &#x3D; HX_k + v$代入, 可以得到 (其中, $\hat{e_k}$叫做先验误差,  $\hat{e_k} &#x3D; X_k - \hat{X_k}$)</li>
+</ul>
+<p>$$<br>e_k &#x3D; X_k - \hat{X_k} - K_kHX_k - K_kv + K_kH\hat{X_k} &#x3D; (X_k - \hat{X_k}) - K_kH(X_k - \hat{X_k}) - K_kv \<br>&#x3D;(I - K_kH)(X_k - \hat{X_k}) - K_kv &#x3D; (I - K_kH)\hat{e_k} - K_kv<br>$$</p>
+<ul>
+<li>然后, 计算$e_ke_k^{T}$的表达式:</li>
+</ul>
+<p>$$<br>e_ke_k^{T} &#x3D; [(I - K_kH)\hat{e_k} - K_k v][\hat{e_k}^T(I - H^TK_k^T) - v^TK_k^T] &#x3D; \<br>(I - K_kH)\hat{e_k}\hat{e_k}^T(I - H^TK_k^T) - (I - K_kH)\hat{e_k}v^{T}K_k^{T} - K_kv\hat{e_k}^T(I - H^TK_k^T) + K_kvv^TK_k^T<br>$$</p>
+<ul>
+<li>然后需要计算误差的协方差矩阵$P_k &#x3D; e_ke_k^{T}$<ul>
+<li>$E[(I - K_kH)\hat{e_k}v^{T}K_k^{T}] &#x3D; (I - K_kH)E[\hat{e_k}v^{T}]K_k^T$.<ul>
+<li>然后, 由于$\hat{e_k}$和$v^T$独立, 可以得到上面的表达式等于: $(I - K_kH)E[\hat{e_k}]E[v^{T}]K_k^T$​ </li>
+<li>又由于$E[\hat{e_k}] &#x3D; E[v^{T}] &#x3D; 0$, 这个表达式最终等于0.</li>
+</ul>
+</li>
+<li>同理, $E[K_kv\hat{e_k}^T(I - H^TK_k^T)]$最终也是0.</li>
+<li>$E[(I - K_kH)\hat{e_k}\hat{e_k}^T(I - H^TK_k^T)] &#x3D; (I - K_kH)\hat{P_k}(I - H^TK_k^T)$, 因为$\hat{P_k}&#x3D; E[\hat{e_k}\hat{e_k}^T]$.</li>
+<li>$E[K_kvv^TK_k^T] &#x3D; K_k RK_k^T$.</li>
+<li>那么, $P_k$最终的结果就是:</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>P_k &#x3D; (I - K_kH)\hat{P_k}(I - H^TK_k^T) + K_k RK_k^T &#x3D; \<br>\hat{P_k} - \hat{P_k}H^TK_k^{T} - K_kH\hat{P_k} + K_kH\hat{P_k}H^TK_k^{T} + K_{k}RK_k^{T}<br>$$</p>
+<ul>
+<li>然后, 总体的优化目标是让$tr({P_k})$最小, 需要让$\frac{tr({P_k})}{K_k} &#x3D; 0$.</li>
+</ul>
+<p>$$<br>tr(P_k) &#x3D; tr(\hat{P_k}) - 2tr(K_kH\hat{P_k}) + tr(K_kH\hat{P_k}H^TK_k^{T}) + tr(K_kRK_k^T)<br>$$</p>
+<ul>
+<li>然后计算$\frac{tr(P_k)}{K_k}$:</li>
+</ul>
+<p>$$<br>\frac{tr(P_k)}{K_k} &#x3D; 0 - 2(H\hat{P_k})^T + 2K_kH\hat{P_k}H^T + 2K_kR &#x3D; 0<br>$$</p>
+<ul>
+<li>然后, 根据协方差矩阵的性质$\hat{P_k} &#x3D; \hat{P_k}^T$, 可以求出:</li>
+</ul>
+<p>$$<br>K_k &#x3D; \frac{\hat{P_k}H^T}{H\hat{P_k}H^T + R}<br>$$</p>
+<ul>
+<li>现在需要计算$\hat{P_k}$, $\hat{P_k} &#x3D; E[\hat{e_k}\hat{e_k}^T]$.</li>
+<li>其中:</li>
+</ul>
+<p>$$<br>\hat{e_k} &#x3D; X_k - \hat{X_k} &#x3D; AX_{k-1} + Bu_{k} + \omega - A\hat{X}<em>{k-1} - Bu_k &#x3D; A(X</em>{k-1} - \hat{X}<em>{k-1}) + \omega &#x3D; A\hat{e}</em>{k-1} + \omega<br>$$</p>
+<ul>
+<li>然后, 计算$\hat{e}_k\hat{e}_k^T$:</li>
+</ul>
+<p>$$<br>(A\hat{e}<em>{k-1} + \omega)(\hat{e}</em>{k-1}^TA^T + \omega^T) &#x3D; A\hat{e}<em>{k-1}\hat{e}</em>{k-1}^TA^T + A\hat{e}<em>{k-1}\omega^T + \omega\hat{e}</em>{k-1}A^T + \omega\omega^T<br>$$</p>
+<ul>
+<li>其中, $\hat{e}_{k-1}$和$\omega$相互独立, 并且它们的期望都是0, 因此, $\hat{P_k}$可以写成:</li>
+</ul>
+<p>$$<br>\hat{P_k} &#x3D; AE[\hat{e}<em>{k-1}\hat{e</em>{k-1}}^T]A^T + Q &#x3D; A\hat{P}_{k-1}A^T + Q<br>$$</p>
+<ul>
+<li><p>在这里, 对于$\hat{P}<em>{k-1}$, 由于我们会修正误差的协方差矩阵, 这里可以改成$\bar{P}</em>{k-1}$, 因此, $\hat{P}_k$的表达式是:<br>$$<br>\hat{P_k} &#x3D; A\bar{P}_k A^T + Q<br>$$</p>
+</li>
+<li><p>而将$\hat{P}_k$修正为$\bar{P}_k$, 可以用:</p>
+</li>
+</ul>
+<p>$$<br>\bar{P}_k &#x3D; \hat{P_k} - \hat{P_k}H^TK_k^{T} - K_kH\hat{P_k} + K_k(H\hat{P_k}H^T + R)K_k^{T}<br>$$</p>
+<ul>
+<li>将$K_k &#x3D; \frac{\hat{P_k}H^T}{H\hat{P_k}H^T + R}$带入, 可以得到:</li>
+</ul>
+<p>$$<br>\bar{P_k} &#x3D; \hat{P_k} - \hat{P_k}H^TK_k^{T} - K_kH\hat{P_k} + \hat{P}_kH^TK_k^{T} &#x3D; (I - K_kH)\hat{P}_k<br>$$</p>
+<h2 id="计算步骤"><a href="#计算步骤" class="headerlink" title="计算步骤"></a>计算步骤</h2><ul>
+<li><p>第一步, 需要先设定初始值$\hat{X}_0$以及$\bar{P}_0$.</p>
+</li>
+<li><p>第二步, 计算先验估计$\hat{X}_k$, 以及先验误差估计$\hat{P}_k$</p>
+<ul>
+<li>$\hat{X}<em>k &#x3D; A\hat{X}</em>{k-1} + Bu_{k}$​.</li>
+<li>$\hat{P}<em>k &#x3D; A\bar{P}</em>{k-1}A^T + Q$</li>
+</ul>
+</li>
+<li><p>第三步: 计算卡尔曼增益$K_k$:</p>
+<ul>
+<li>$K_k &#x3D; \frac{\bar{P_k}H^T}{H\bar{P_k}H^T + R}$</li>
+</ul>
+</li>
+<li><p>第四步, 根据$K_k$和测量值$Z_k$, 求出后验估计$\bar{X_k}$以及$\bar{P_k}$ </p>
+<ul>
+<li>$\bar{X_k} &#x3D; \hat{X_k} + K_{k}(Z_k - H\hat{X_k})$</li>
+<li>$\bar{P}_k &#x3D; (I - K_kH)\hat{P}_k$</li>
+</ul>
+</li>
+</ul>
+<h2 id="扩展卡尔曼滤波"><a href="#扩展卡尔曼滤波" class="headerlink" title="扩展卡尔曼滤波"></a>扩展卡尔曼滤波</h2><ul>
+<li>对于一个非线性系统, 它的方程是: $\omega$这里需要变成$\omega_{k-1}$, 因为正态分布经过非线性系统后, 不再成为正态分布.</li>
+</ul>
+<p>$$<br>X_k &#x3D; f(X_{k-1}, u_{k}, \omega_{k-1}) \<br>Z_k &#x3D; h(X_k, v_{k-1})<br>$$</p>
+<ul>
+<li>如果要对这个系统进行卡尔曼滤波, 需要把这个系统进行线性化, 这样的卡尔曼滤波叫做扩展卡尔曼滤波(EKF).</li>
+<li>当计算$X_k$的值时, 可以将函数$f$在$(\bar{X}_{k-1}, u_k, 0)$处进行线性化.<ul>
+<li>其中$A$是$f$关于$(X_{k-1}, u_k, \omega_{k-1})$的雅可比矩阵在$(\bar{X}<em>{k-1}, u_k, 0)$上的值 (假设$\omega</em>{k-1} &#x3D; 0$).</li>
+<li>$B$是$f$关于$(X_{k-1}, u_k, \omega_{k-1})$的雅可比矩阵在$(\bar{X}_{k-1}, u_k, 0)$上的值.</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>X_k &#x3D; f(\bar{X}<em>{k-1}, u_k, 0) + A(X_k - \bar{X}</em>{k-1}) + B\omega_{k-1}<br>$$</p>
+<ul>
+<li>同理, 将$h$在$X_k &#x3D; f(\bar{X}_{k-1}, u_k, 0)$​上线性化:<ul>
+<li>其中$H$是$h$关于$({X_k}, v_{k-1})$的雅可比矩阵在$(\bar{X}_{k}, 0)$上的值.</li>
+<li>其中$J$是$h$关于$({X_k}, v_{k-1})$的雅可比矩阵在$(\bar{X}_{k}, 0)$上的值.</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>Z_k &#x3D; h(\bar{X}<em>k, 0) + H(X_k - \bar{X_k}) + Jv</em>{k-1}<br>$$</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©B1ueDrops
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
