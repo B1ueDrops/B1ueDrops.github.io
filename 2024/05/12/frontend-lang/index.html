@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="前端语言使用日记 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="[TOC] 信号分类&#x2F;常见信号  连续信号: : 其中是连续的时间. 离散信号: : 其中是采样点. 周期信号:  连续: , 其中, 是最小正周期. 离散: .   奇信号:  . .   偶信号:  . .     任何一个信号都可以拆分成奇信号和偶信号拼接的形式, 并且拆法唯一.     信号的能量:    信号的功率: .   单位阶跃信号:   在​处没有定义, 可以等于任何值. 区间上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信号与系统">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/06/06/signal_process/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="[TOC] 信号分类&#x2F;常见信号  连续信号: : 其中是连续的时间. 离散信号: : 其中是采样点. 周期信号:  连续: , 其中, 是最小正周期. 离散: .   奇信号:  . .   偶信号:  . .     任何一个信号都可以拆分成奇信号和偶信号拼接的形式, 并且拆法唯一.     信号的能量:    信号的功率: .   单位阶跃信号:   在​处没有定义, 可以等于任何值. 区间上">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-06-06T01:44:06.747Z">
+<meta property="article:modified_time" content="2024-06-06T01:44:06.748Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -1096,7 +1096,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-19 21:02:28'>2024-05-12 21:13</time>
+            Created At : <time class="date" title='Updated At: 2024-06-15 14:24:44'>2024-05-12 21:13</time>
         
     </div>
     <div class="article-meta">
@@ -1107,7 +1107,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">ES6语法糖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Vue3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">slot插槽</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">ES6语法糖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Vue3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">使用bootstrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%AE%9A%E4%B9%89"><span class="toc-text">组件定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6%E7%BB%99%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE"><span class="toc-text">父组件给子组件传递数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%A0%87%E7%AD%BE%E6%98%BE%E7%A4%BA"><span class="toc-text">控制标签显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6"><span class="toc-text">绑定事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%86%85%E9%83%A8%E4%BA%8B%E4%BB%B6"><span class="toc-text">组件内部事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0%E7%88%B6%E7%BB%84%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-text">子组件更新父组件信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%A0%87%E7%AD%BE"><span class="toc-text">循环标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%86%85%E5%AE%B9%E7%BB%91%E5%AE%9A%E5%88%B0%E5%8F%98%E9%87%8F"><span class="toc-text">组件内容绑定到变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1"><span class="toc-text">配置路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%BB%99Vue%E7%BB%84%E4%BB%B6"><span class="toc-text">路由参数给Vue组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue%E7%BB%84%E4%BB%B6%E7%82%B9%E5%87%BB%E5%88%87%E6%8D%A2%E8%B7%AF%E7%94%B1"><span class="toc-text">Vue组件点击切换路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">vuex维护全局状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#actions%E4%B8%AD%E8%B0%83%E7%94%A8mutations"><span class="toc-text">actions中调用mutations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">组件中使用全局变量</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1282,27 +1282,237 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm i -g @vue/cli<br></code></pre></td></tr></table></figure>
 </li>
 <li>
-<p>要创建一个Vue项目: 用<code>vue ui</code>按照图形化界面引导创建.</p>
+<p>要创建Vue项目:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vue ui<br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>插件:</p>
+<ul>
+<li><code>vue-router</code></li>
+<li><code>vuex</code></li>
+<li><code>@popperjs/core</code></li>
+<li><code>bootstrap</code></li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
 <p>启动项目:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vue serve<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 调试环境</span><br>vue serve<br><br><span class="hljs-comment"># 生产环境</span><br>vue build<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>路由文件: <code>src/router/index.js</code></p>
+<ul>
+<li>将<code>createWebHashHistory</code>改成<code>createWebHistory</code>, 浏览器地址栏就不会出现<code>#</code>.</li>
+</ul>
+</li>
+<li>
+<p>主页面: <code>src/public/index.html</code></p>
 </li>
 </ul>
-<h3><code>slot</code>插槽</h3>
+<h3>使用<code>bootstrap</code></h3>
+<ul>
+<li>下面代码放到<code>main.js</code>:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;bootstrap/dist/css/bootstrap.css&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;bootstrap/dist/js/bootstrap&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="组件定义"><a href="#组件定义" class="headerlink" title="组件定义"></a>组件定义</h3>
 <ul>
 <li>
-<p><code>slot</code>插槽相当于一个<code>Component</code>的“参数”:</p>
-<ul>
-<li>
-<p>假设定义了一个组件叫<code>MainFrame.vue</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;!-- MainFrame.vue --&gt;<br>&lt;template&gt;<br>	&lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;<br>	&lt;slot name=&quot;main&quot;&gt;&lt;/slot&gt;<br>	&lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<p>需要这样写</p>
 </li>
 <li>
-<p>如果在其他组件中想要调用这个组件, 并且向<code>slot</code>中填充内容:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;MainFrame&gt;<br>  <br>	&lt;template #header&gt;<br>  	&lt;!-- 这里放header内容 --&gt;<br>  &lt;/template&gt;<br>  <br>  &lt;template #main&gt;<br>  	&lt;!-- 这里放main内容 --&gt;<br>  &lt;/template&gt;<br>  <br>  &lt;template #footer&gt;<br>  	&lt;!-- 这里放footer内容 --&gt;<br>  &lt;/template&gt;<br>  <br>&lt;/MainFrame&gt;<br></code></pre></td></tr></table></figure>
+<pre><code><span class="hl-source hl-js"><span class="hl-meta hl-export hl-js"><span class="hl-keyword hl-control hl-import-export hl-js">export</span> <span class="hl-keyword hl-control hl-import-export hl-js">default</span> <span class="hl-meta hl-object-literal hl-js"><span class="hl-punctuation hl-section hl-block hl-js">{</span>
+  <span class="hl-meta hl-object-literal hl-key hl-js">name</span><span class="hl-punctuation hl-separator hl-key-value hl-js">:</span> <span class="hl-string hl-quoted hl-single hl-js"><span class="hl-punctuation hl-definition hl-string hl-begin hl-js">&#39;</span>你当前组件的名字<span class="hl-punctuation hl-definition hl-string hl-end hl-js">&#39;</span></span><span class="hl-punctuation hl-separator hl-comma hl-js">,</span>
+  <span class="hl-comment hl-line hl-double-slash hl-js"><span class="hl-punctuation hl-definition hl-comment hl-js">//</span> 你当前组件中用到的所有子组件
+</span>  <span class="hl-meta hl-object-literal hl-key hl-js">components</span><span class="hl-punctuation hl-separator hl-key-value hl-js">:</span> <span class="hl-meta hl-object-literal hl-js"><span class="hl-punctuation hl-section hl-block hl-js">{</span>
+    <span class="hl-variable hl-other hl-readwrite hl-js">NavBar</span><span class="hl-punctuation hl-separator hl-comma hl-js">,</span>
+  <span class="hl-punctuation hl-section hl-block hl-js">}</span></span>
+<span class="hl-punctuation hl-section hl-block hl-js">}</span></span>
+<span class="hl-keyword hl-operator hl-relational hl-js">&lt;</span><span class="hl-keyword hl-operator hl-logical hl-js">!</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-variable hl-other hl-readwrite hl-js">code</span></span>￼<span class="hl-constant hl-numeric hl-js">14</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-keyword hl-operator hl-relational hl-js">&gt;</span>
+
+<span class="hl-keyword hl-operator hl-arithmetic hl-js">*</span> <span class="hl-string hl-template hl-js"><span class="hl-variable hl-function hl-tagged-template hl-js">子组件会把</span><span class="hl-punctuation hl-definition hl-string hl-template hl-begin hl-js">`</span>hahaha<span class="hl-punctuation hl-definition hl-string hl-template hl-end hl-js">`</span></span><span class="hl-string hl-template hl-js"><span class="hl-variable hl-function hl-tagged-template hl-js">渲染到</span><span class="hl-punctuation hl-definition hl-string hl-template hl-begin hl-js">`</span>slot<span class="hl-punctuation hl-definition hl-string hl-template hl-end hl-js">`</span></span><span class="hl-entity hl-name hl-label hl-js">中</span><span class="hl-punctuation hl-separator hl-js">:</span>
+
+  <span class="hl-keyword hl-operator hl-relational hl-js">&lt;</span><span class="hl-keyword hl-operator hl-logical hl-js">!</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-variable hl-other hl-readwrite hl-js">code</span>￼<span class="hl-constant hl-numeric hl-js">15</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-keyword hl-operator hl-relational hl-js">&gt;</span>
+
+
+
+<span class="hl-keyword hl-operator hl-relational hl-js">&gt;</span> <span class="hl-variable hl-other hl-readwrite hl-js">多个参数的情况</span>
+
+<span class="hl-keyword hl-operator hl-arithmetic hl-js">*</span> <span class="hl-string hl-template hl-js"><span class="hl-variable hl-function hl-tagged-template hl-js">子组件叫</span><span class="hl-punctuation hl-definition hl-string hl-template hl-begin hl-js">`</span>MainFrame.vue<span class="hl-punctuation hl-definition hl-string hl-template hl-end hl-js">`</span></span><span class="hl-punctuation hl-separator hl-comma hl-js">,</span> <span class="hl-variable hl-other hl-readwrite hl-js">有三个参数</span>
+
+  <span class="hl-keyword hl-operator hl-relational hl-js">&lt;</span><span class="hl-keyword hl-operator hl-logical hl-js">!</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-variable hl-other hl-readwrite hl-js">code</span>￼<span class="hl-constant hl-numeric hl-js">16</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-keyword hl-operator hl-relational hl-js">&gt;</span>
+
+<span class="hl-keyword hl-operator hl-arithmetic hl-js">*</span> <span class="hl-variable hl-other hl-readwrite hl-js">如果在其他组件中想要调用这个组件</span><span class="hl-punctuation hl-separator hl-comma hl-js">,</span> <span class="hl-string hl-template hl-js"><span class="hl-variable hl-function hl-tagged-template hl-js">并且向</span><span class="hl-punctuation hl-definition hl-string hl-template hl-begin hl-js">`</span>slot<span class="hl-punctuation hl-definition hl-string hl-template hl-end hl-js">`</span></span><span class="hl-entity hl-name hl-label hl-js">中填充内容</span><span class="hl-punctuation hl-separator hl-js">:</span>
+
+  <span class="hl-keyword hl-operator hl-relational hl-js">&lt;</span><span class="hl-keyword hl-operator hl-logical hl-js">!</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-variable hl-other hl-readwrite hl-js">code</span>￼<span class="hl-constant hl-numeric hl-js">17</span><span class="hl-keyword hl-operator hl-arithmetic hl-js">--</span><span class="hl-keyword hl-operator hl-relational hl-js">&gt;</span>
+
+
+
+
+</span></code></pre>
 </li>
 </ul>
+<h3 id="父组件给子组件传递数据"><a href="#父组件给子组件传递数据" class="headerlink" title="父组件给子组件传递数据"></a>父组件给子组件传递数据</h3>
+<ul>
+<li>
+<p>首先在父组件中定义数据:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; ref, reactive &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>	<span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 定义的数据</span><br>    <span class="hljs-comment">// reactive只可以定义Object</span><br>  	<span class="hljs-keyword">const</span> user = <span class="hljs-title function_">reactive</span>(&#123;<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;haha&#x27;</span>,<br>      <span class="hljs-attr">age</span>: <span class="hljs-number">18</span><br>    &#125;)<br>    <span class="hljs-comment">// ref可以定义其他类型变量</span><br>    <span class="hljs-keyword">const</span> myname = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;haha&#x27;</span>)<br>    <span class="hljs-comment">/* ref定义的值需要用myname.value进行访问/修改 */</span><br>    <span class="hljs-comment">// 最后return出去</span><br>    <span class="hljs-keyword">return</span> &#123;<br>      user, myname<br>    &#125;<br>	&#125; <br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>给子组件传递数据:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">Child</span> <span class="hljs-attr">:user</span>=<span class="hljs-string">”user“</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>这个<code>:</code>是<code>v-bind</code>的缩写, 当使用<code>:</code>的时候, 后面的<code>""</code>里面就不是字符串, 而是一个表达式, 其他标签也可以使用:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;photo.address&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>子组件接收数据:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-comment">// 接收的参数</span><br>    <span class="hljs-attr">user</span>: &#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,<br>      <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>然后, 在<code>template</code>中, 直接用<code>{{ user.username }}</code>展示即可.</li>
+</ul>
+</li>
+<li>
+<p>如果子组件需要一些通过基本数据组合而成的数据:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">props</span>) &#123;<br>    <span class="hljs-keyword">let</span> fullName = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      props.<span class="hljs-property">user</span>.<span class="hljs-property">userName</span> + props.<span class="hljs-property">user</span>.<span class="hljs-property">lastName</span><br>    &#125;)<br>    <br>    <span class="hljs-keyword">return</span> &#123;<br>      fullName,<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>也就是说<code>setup</code>中既可以定义数据, 也可以用父组件传的参数.</li>
+</ul>
+</li>
+</ul>
+<h3 id="控制标签显示"><a href="#控制标签显示" class="headerlink" title="控制标签显示"></a>控制标签显示</h3>
+<ul>
+<li>
+<p>如果要用一个变量控制标签是否显示, 可以用<code>v-if</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;!user.is_followed&quot;</span>&gt;</span><br>  +关注<br><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>v-if</code>对应<code>v-else</code>, 表示<code>v-if</code>条件不满足就显示<code>v-else</code>的东西.</p>
+</li>
+</ul>
+<h3 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h3>
+<h4 id="组件内部事件"><a href="#组件内部事件" class="headerlink" title="组件内部事件"></a>组件内部事件</h4>
+<ul>
+<li>
+<p>在组件的<code>setup</code>中定义所有用到的函数:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">props</span>) &#123;<br>    <br>    <span class="hljs-keyword">let</span> <span class="hljs-title function_">handler</span> = (<span class="hljs-params">a</span>) =&gt; &#123;<br>      <span class="hljs-comment">//...</span><br>    &#125;<br>    <br>    <span class="hljs-comment">// 别忘记return出去</span><br>    <span class="hljs-keyword">return</span> &#123;<br>      handler<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后用<code>@</code> 绑定:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!--click是点击事件--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handler(a)&quot;</span>&gt;</span><br>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="子组件更新父组件信息"><a href="#子组件更新父组件信息" class="headerlink" title="子组件更新父组件信息"></a>子组件更新父组件信息</h4>
+<ul>
+<li>
+<p>首先, 子组件中事件的处理函数, 使用<code>context.emit</code>, 调用父组件中的处理函数:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">props, context</span>) &#123;<br>    <span class="hljs-comment">// follow是父组件的事件</span><br>    context.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;follow&#x27;</span>, 参数<span class="hljs-number">1</span>, 参数<span class="hljs-number">2</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后在父组件调用子组件时, 绑定一个<code>follow</code>事件:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!--第一个follow是事件, 第二个是函数--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">Child</span> @<span class="hljs-attr">follow</span>=<span class="hljs-string">&quot;follow&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Child</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后在父组件的<code>setup</code>中更新即可.</p>
+</li>
+</ul>
+<h3 id="循环标签"><a href="#循环标签" class="headerlink" title="循环标签"></a>循环标签</h3>
+<ul>
+<li>
+<p>用<code>v-for</code>, 但是需要保证<code>key</code>是唯一的(不推荐使用下标)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;div v-for=&quot;item in array&quot; :key=&quot;item.id&quot;&gt;<br>  &lt;!--会把里面的东西循环--&gt;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="组件内容绑定到变量"><a href="#组件内容绑定到变量" class="headerlink" title="组件内容绑定到变量"></a>组件内容绑定到变量</h3>
+<ul>
+<li>
+<p>首先需要在<code>setup</code>中定义一个变量:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params">props, context</span>) &#123;<br>    <br>    <span class="hljs-keyword">let</span> myname = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;haha&#x27;</span>)<br>    <br>    <span class="hljs-keyword">return</span> &#123;<br>      myname<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后, 在标签中, 用<code>v-model</code>进行绑定:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;textarea v-model=&#x27;content&#x27;&gt;<br>&lt;/textarea&gt;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后, 在输入框内输入什么, <code>content</code>就会显示什么, 在<code>template</code>中也可以用<code>{{ content }}</code>实时渲染.</p>
+</li>
+</ul>
+<h3 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h3>
+<ul>
+<li>
+<p>在<code>src/router/index.js</code>中, 导入所有组件配置.</p>
+<ul>
+<li>这样可以通过地址栏切换页面.</li>
+</ul>
+</li>
+<li>
+<p>每一项中:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> routes = [<br>  &#123;<br>    <span class="hljs-comment">// 这里, 最好最后面一个字符是/</span><br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/userprofile/&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;userprofile&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">UserProfileView</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4>
+<p>如果地址栏输入不存在的路由, 需要重定向到一个404页面, 可以在<code>routes</code>上加上:</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/:catchAll(.*)&#x27;</span>,<br>    <span class="hljs-attr">redirect</span>: <span class="hljs-string">&quot;/404/&quot;</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+<h4 id="路由参数给Vue组件"><a href="#路由参数给Vue组件" class="headerlink" title="路由参数给Vue组件"></a>路由参数给Vue组件</h4>
+<ul>
+<li>
+<p>浏览器路由中传参数给Vue组件:</p>
+<ul>
+<li>
+<p>首先, <code>routes</code>里面:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/userprofile/:userId/&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;userprofile&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">UserProfileView</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后, 在组件<code>UserProfileView</code>中:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; useRoute &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> route = <span class="hljs-title function_">userRoute</span>();<br>    <span class="hljs-comment">// 访问路由中的变量</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">userId</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Vue组件点击切换路由"><a href="#Vue组件点击切换路由" class="headerlink" title="Vue组件点击切换路由"></a>Vue组件点击切换路由</h4>
+<ul>
+<li>首先导入:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// @表示src目录</span><br><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/router/index&#x27;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>然后, 在绑定的事件函数中:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">router.<span class="hljs-title function_">push</span>(&#123;<br>  <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/userprofile&quot;</span>,<br>	<span class="hljs-attr">params</span>: &#123;<br>    <span class="hljs-attr">userId</span>: userId,<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3><code>vuex</code>维护全局状态</h3>
+<ul>
+<li>
+<p><code>vuex</code>中的所有文件在<code>store/</code>中.</p>
+</li>
+<li>
+<p>全局状态可以分模块存储, 每一个模块对应一个<code>.js</code>文件, 每一个<code>js</code>文件的格式是:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">ModuleUser</span> = &#123;<br>  <span class="hljs-attr">state</span>: &#123;<br>    <br>  &#125;,<br>  <span class="hljs-attr">getters</span>: &#123;<br>    <br>  &#125;,<br>  <span class="hljs-attr">mutations</span>: &#123;<br>    <span class="hljs-title function_">update</span>(<span class="hljs-params">state, ...</span>) &#123;<br>     <br>    &#125;<br>  &#125;,<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <br>  &#125;,<br>  <span class="hljs-attr">modules</span>: &#123;<br>    <br>  &#125;<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">ModuleUser</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>state</code>: 定义全局要维护的状态.</li>
+<li><code>getters</code>: 通过状态变量计算得到的值.</li>
+<li><code>mutations</code>: 更新状态变量的操作, 不是异步操作.</li>
+<li><code>actions</code>: 对<code>state</code>变量的一些操作, 是异步操作.</li>
+<li><code>modules</code>: 需要用到的子模块.</li>
+</ul>
+</li>
+</ul>
+<h4 id="actions中调用mutations"><a href="#actions中调用mutations" class="headerlink" title="actions中调用mutations"></a>actions中调用mutations</h4>
+<ul>
+<li>在<code>actions</code>中定义的函数需要加上一个参数叫<code>context</code>.
+<ul>
+<li>然后用<code>context.commit('函数名字', {'函数参数'})</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="组件中使用全局变量"><a href="#组件中使用全局变量" class="headerlink" title="组件中使用全局变量"></a>组件中使用全局变量</h4>
+<ul>
+<li>
+<p>在组件中:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;script&gt;<br>	<br>  import &#123; useStore &#125; from &#x27;vuex&#x27;;<br>  <br>  setup() &#123;<br>    const store = useStore();<br>    <br>    // 获取变量<br>    <br>    // 使用actions中的函数<br>    store.dispatch(&#x27;函数名称&#x27;, &#123;&#x27;函数参数&#x27;&#125;);<br>    // 调用mutations中的函数用store.commit();<br>    // 用法和dispatch一样<br>  &#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 
