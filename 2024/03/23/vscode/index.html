@@ -1141,13 +1141,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="C-C-LSP">C/C++ LSP</h2>
+        <h2 id="C-C-LSP"><a href="#C-C-LSP" class="headerlink" title="C/C++ LSP"></a>C/C++ LSP</h2>
 <p>首先可以使用CMake或者Bear生成整个项目的<code>compile_commands.json</code>.</p>
 <p>语法解析可以使用<code>clangd</code>插件.</p>
 <p>对于具体项目, 可以在项目中新建<code>.vscode/settings.json</code>.</p>
 <p>然后在其中添加:</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;clangd.arguments&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;--compile-commands-dir=这里就是你的compile_commands.json的路径&quot;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h2 id="Task-Manager">Task Manager</h2>
+<h2 id="Task-Manager"><a href="#Task-Manager" class="headerlink" title="Task Manager"></a>Task Manager</h2>
 <p>Task Manager可以让你预定义一些与项目有关的任务.</p>
 <p>首先在项目中新建<code>.vscode/tasks.json</code>.</p>
 <p>然后按这个模板:</p>

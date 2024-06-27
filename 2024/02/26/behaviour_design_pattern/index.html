@@ -1142,9 +1142,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">行为型设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">策略模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">模板方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">命令模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F"><span class="toc-text">责任链模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F"><span class="toc-text">状态模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">中介模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">访问者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F"><span class="toc-text">备忘录模式</span></a></li></ol></div></p>
-<h2 id="行为型设计模式">行为型设计模式</h2>
+<h2 id="行为型设计模式"><a href="#行为型设计模式" class="headerlink" title="行为型设计模式"></a>行为型设计模式</h2>
 <p>行为型设计模式用来描述类/对象之间如何通过协作, 以耦合度最小的前提下完成任务.</p>
-<h2 id="策略模式">策略模式</h2>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2>
 <p>如果一个需求可以用非常多的代替算法实现, 那么就可以考虑策略模式.</p>
 <p>实现方式:</p>
 <ul>
@@ -1163,7 +1163,7 @@
 <li>策略模式的使用方式:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  <span class="hljs-type">Context</span> <span class="hljs-variable">context</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Context</span>();<br>  <span class="hljs-comment">// 利用多态选择一个策略</span><br>  <span class="hljs-type">Strategy</span> <span class="hljs-variable">strategy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteStrategy</span>();<br>  <span class="hljs-comment">// 将选定的策略设置给Context</span><br>  context.setStrategy(strategy);<br>  <span class="hljs-comment">// Context执行策略</span><br>  context.strategyMethod();<br>  <span class="hljs-comment">// 之后换了策略, 只要给Context重新设置一个策略即可</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="观察者模式">观察者模式</h2>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2>
 <p>如果当一个对象的状态发生改变时, 依赖这个对象的所有对象都需要发生变化, 就可以考虑使用观察者模式.</p>
 <p>实现方式:</p>
 <ul>
@@ -1182,7 +1182,7 @@
 <li>实现<code>Subject</code>:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteSubject</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">notifyObserver</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">for</span> (Object obs: observers) &#123;<br>      obs.response();<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="模板方法模式">模板方法模式</h2>
+<h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1206,7 +1206,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TemplateMethodPattern</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span><br>    &#123;<br>        AbstractClass tm=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteClass</span>();<br>        tm.TemplateMethod();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="命令模式">命令模式</h2>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1237,7 +1237,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-comment">// 用多态切换Command</span><br>  <span class="hljs-type">Command</span> <span class="hljs-variable">cmd</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteCommand</span>();<br>  <span class="hljs-type">Invoker</span> <span class="hljs-variable">invoker</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Invoker</span>(cmd);<br>  invoker.call();<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="责任链模式">责任链模式</h2>
+<h2 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1260,7 +1260,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ChainOfResponsibilityPattern</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//组装责任链 </span><br>        Handler handler1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteHandler1</span>(); <br>        Handler handler2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteHandler2</span>(); <br>        handler1.setNext(handler2); <br>        <span class="hljs-comment">//提交请求 </span><br>        handler1.handleRequest(<span class="hljs-string">&quot;two&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="状态模式">状态模式</h2>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1287,7 +1287,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StatePatternClient</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span><br>    &#123;       <br>        Context context=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Context</span>();    <span class="hljs-comment">//创建环境       </span><br>        context.Handle();    <span class="hljs-comment">//处理请求</span><br>        context.Handle();<br>        context.Handle();<br>        context.Handle();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="中介模式">中介模式</h2>
+<h2 id="中介模式"><a href="#中介模式" class="headerlink" title="中介模式"></a>中介模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1318,7 +1318,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MediatorPattern</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>      <br>        <span class="hljs-type">Mediator</span> <span class="hljs-variable">mediator</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteMediator</span>();<br>      <br>        <span class="hljs-type">Colleague</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteColleague1</span>();<br>        Colleague c2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteColleague2</span>();<br>      <br>        mediator.register(c1);<br>        mediator.register(c2);<br>      <br>        c1.send();<br>        c2.send();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="迭代器模式">迭代器模式</h2>
+<h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1349,7 +1349,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-type">Set</span> <span class="hljs-variable">set</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteSet</span>();<br>  <span class="hljs-type">Iterator</span> <span class="hljs-variable">iter</span> <span class="hljs-operator">=</span> set.getIterator();<br>  <br>  <span class="hljs-keyword">while</span> (iter.hasNext) &#123;<br>    <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> iter.next();<br>    <span class="hljs-comment">//...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="访问者模式">访问者模式</h2>
+<h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2>
 <ul>
 <li>适用场景:
 <ul>
@@ -1385,7 +1385,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>    <span class="hljs-type">System</span> <span class="hljs-variable">sys</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">System</span>();<br>  <br>    sys.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteElementA</span>());<br>    sys.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteElementB</span>());<br>  <br>    Visitor visitor=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteVisitorA</span>();<br>  <br>    sys.accept(visitor);<br><br>    visitor=<span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcreteVisitorB</span>();<br>  <br>    sys.accept(visitor);<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="备忘录模式">备忘录模式</h2>
+<h2 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h2>
 <ul>
 <li>适用场景:
 <ul>

@@ -1141,7 +1141,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="配置环境">配置环境</h2>
+        <h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2>
 <ul>
 <li>
 <p>官网下载<code>pkg</code>.</p>
@@ -1151,7 +1151,7 @@
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> GO111MODULE=on<br><span class="hljs-built_in">export</span> GOROOT=/usr/local/go<br><span class="hljs-built_in">export</span> GOPATH=<span class="hljs-variable">$HOME</span>/go<br><span class="hljs-built_in">export</span> GOPROXY=https://goproxy.cn<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$GOROOT</span>/bin<br></code></pre></td></tr></table></figure>
-<h2 id="命名规范">命名规范</h2>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2>
 <ul>
 <li>package: 小写单词, 不用下划线.</li>
 <li>文件名: 小写单词, 下划线.</li>
@@ -1159,7 +1159,7 @@
 <li>函数: 驼峰.</li>
 <li>结构体: 驼峰.</li>
 </ul>
-<h2 id="实数">实数</h2>
+<h2 id="实数"><a href="#实数" class="headerlink" title="实数"></a>实数</h2>
 <ul>
 <li>
 <p>Go语言中有两种浮点数:</p>
@@ -1206,7 +1206,7 @@
 <p>如果没有为指数形式(例如<code>24e18</code>)指明类型, 那么默认是<code>float64</code>类型.</p>
 </li>
 </ul>
-<h2 id="整数">整数</h2>
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2>
 <ul>
 <li>
 <p>最常用的有符号整数类型是<code>int</code>, 无符号的是<code>uint</code>.</p>
@@ -1283,22 +1283,22 @@
 <p>用<code>fmt.Printf</code>打印时, 通用的占位符类型是<code>%v</code>.</p>
 </li>
 </ul>
-<h2 id="字符串">字符串</h2>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2>
 <ul>
 <li>
 <p>字符串的类型是<code>string</code>.</p>
 </li>
 <li>
-<p>字符串的零值是<code>&quot;&quot;</code>.</p>
+<p>字符串的零值是<code>""</code>.</p>
 </li>
 <li>
 <p>字符串字面值和原始字符串字面值(raw string literal):</p>
 <ul>
 <li>
-<p>字符串字面值会处理转义字符: <code>fmt.Println(&quot;haha\nhaha&quot;)</code></p>
+<p>字符串字面值会处理转义字符: <code>fmt.Println("haha\nhaha")</code></p>
 </li>
 <li>
-<p>原始字符串字面值不用<code>&quot;&quot;</code>, 不会处理其中的转义字符.</p>
+<p>原始字符串字面值不用<code>""</code>, 不会处理其中的转义字符.</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go">fmt.Println(<span class="hljs-string">`haha\nhaha`</span>)<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -1369,7 +1369,7 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go">a := <span class="hljs-string">&quot;haha&quot;</span><br><br><span class="hljs-keyword">for</span> _, c := <span class="hljs-keyword">range</span> a &#123;<br>  fmt.Printf(<span class="hljs-string">&quot;%v %c&quot;</span>, i, c);<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="类型转换">类型转换</h2>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2>
 <ul>
 <li>
 <p>直接连接字符串和数值会报错:</p>
@@ -1404,14 +1404,14 @@
 </ul>
 </li>
 <li>
-<p>整数转字符串: <code>strconv.Itoa(10)</code>, 可以把10转为<code>&quot;10&quot;</code>.</p>
+<p>整数转字符串: <code>strconv.Itoa(10)</code>, 可以把10转为<code>"10"</code>.</p>
 </li>
 <li>
 <p>字符串转整数:</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go">data, err := strconv.Atoi(<span class="hljs-string">&quot;10&quot;</span>)<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="函数">函数</h2>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2>
 <ul>
 <li>
 <p>函数声明: <code>func</code></p>
@@ -1429,14 +1429,14 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>  fmt.Println(<span class="hljs-string">&quot;只用一次的匿名函数&quot;</span>)<br>&#125;()<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="方法">方法</h2>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2>
 <ul>
 <li>
 <p>方法不一定要和<code>struct</code>绑定, 可以和你自己声明的任何类型绑定:</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 通过type声明的新类型</span><br><span class="hljs-keyword">type</span> TypeA <span class="hljs-type">int32</span><br><br><span class="hljs-comment">// 为TypeA绑定方法</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a TypeA)</span></span> getNum() i32 &#123;<br>  <br>&#125;<br><br><span class="hljs-keyword">var</span> a TypeA = <span class="hljs-number">2</span><br>a.getNum()<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="数组">数组</h2>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2>
 <ul>
 <li>
 <p>数组是一种固定长度的数据类型:</p>
@@ -1491,7 +1491,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="切片">切片</h2>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2>
 <ul>
 <li>
 <p><code>slice</code>是数组某一部分的副本.</p>
@@ -1563,7 +1563,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="map">map</h2>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2>
 <ul>
 <li>
 <p>声明map, 必须指明key和value的类型:</p>
@@ -1602,7 +1602,7 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">for</span> key, value := <span class="hljs-keyword">range</span> temperature &#123;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="struct">struct</h2>
+<h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2>
 <ul>
 <li>
 <p>声明结构体:</p>
@@ -1632,7 +1632,7 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> &#123;<br>  name <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;Name&quot;`</span><br>  age <span class="hljs-type">int</span> <span class="hljs-string">`json:&quot;Age&quot;`</span><br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li>
-<p>需要<code>import &quot;encoding/json&quot;</code></p>
+<p>需要<code>import "encoding/json"</code></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 转换成功可以得到[]byte</span><br>bytes, err := json.Marshal(student)<br>fmt.Printf(<span class="hljs-string">&quot;%+v&quot;</span>, <span class="hljs-type">string</span>(bytes))<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -1647,7 +1647,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="接口">接口</h2>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2>
 <ul>
 <li>
 <p>接口定义了一个类型必须实现的一种方法.</p>
@@ -1660,10 +1660,10 @@
 <p>接口类型的含义: 例如<code>t talker</code>, 表示所有实现了<code>talker</code>接口的变量</p>
 </li>
 <li>
-<p><code>interface&#123;&#125;</code>这个类型表达式, 表示什么类型都行.</p>
+<p><code>interface{}</code>这个类型表达式, 表示什么类型都行.</p>
 </li>
 </ul>
-<h2 id="指针">指针</h2>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2>
 <ul>
 <li>
 <p>通过<code>&amp;</code>可以获得变量的指针, 解引用用<code>*</code>.</p>
@@ -1699,7 +1699,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="nil">nil</h2>
+<h2 id="nil"><a href="#nil" class="headerlink" title="nil"></a>nil</h2>
 <ul>
 <li>
 <p><code>nil</code>是指针, slice, map, 接口, 函数类型的零值.</p>
@@ -1724,14 +1724,14 @@
 <p>对值为<code>nil</code>的map进行读取, 不会<code>panic</code>, 但是插入值会发生<code>panic</code>.</p>
 </li>
 </ul>
-<h2 id="异常处理">异常处理</h2>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2>
 <ul>
 <li>
 <p>按照惯例, 函数在返回错误时, 最后面的返回值应该表示错误, 如果没有错误返回<code>nil</code>.</p>
 <ul>
 <li>如果有错误, 返回<code>error</code>类型的变量, <code>error</code>类型是一个接口类型, 表示所有实现了<code>Error</code>接口的变量</li>
 <li><code>import errors</code></li>
-<li>如果要返回, 就返回<code>return errors.New(&quot;错误信息&quot;)</code></li>
+<li>如果要返回, 就返回<code>return errors.New("错误信息")</code></li>
 </ul>
 </li>
 <li>
@@ -1762,20 +1762,20 @@
 </ul>
 </li>
 </ul>
-<h2 id="package">package</h2>
+<h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2>
 <ul>
 <li>假设你有一个文件夹<code>utils</code>, 里面所有的<code>.go</code>文件, 第一行都是<code>package utils</code></li>
 <li>里面的<code>.go</code>文件, 各种成分互相调用, 不用写<code>import</code>.</li>
 <li>需要别的包调用的, 记得名字<font color="blue">首字母大写</font>, 不需要的小写.</li>
 <li>在另外一个package中, 调用其他package的成分:
 <ul>
-<li>写上<code>import &quot;Go项目的名字/package文件夹的路径&quot;</code></li>
+<li>写上<code>import "Go项目的名字/package文件夹的路径"</code></li>
 <li><code>package</code>文件夹的路径就是相对于Go项目根目录的路径.</li>
 </ul>
 </li>
 </ul>
-<h2 id="MPG并发模型">MPG并发模型</h2>
-<p>假设一个机器中有$n$个CPU, 那么这个机器就有$n$个进程.</p>
+<h2 id="MPG并发模型"><a href="#MPG并发模型" class="headerlink" title="MPG并发模型"></a>MPG并发模型</h2>
+<p>假设一个机器中有<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"/></g></g></g></svg>个CPU, 那么这个机器就有<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"/></g></g></g></svg>个进程.</p>
 <ul>
 <li>M: 全称是Machine, 是在用户态对于CPU的一种抽象, 一个进程对应一个Machine, 用于真正执行Goroutine.</li>
 <li>P: 全称是Processor, 可以理解为存储Goroutine的一个队列.</li>
@@ -1805,7 +1805,7 @@
 <li>这个Machine仍在处理发生I/O的Goroutine, 直到结束.</li>
 <li>结束后, 这个Machine会处于短暂的空闲状态</li>
 </ul>
-<h2 id="协程">协程</h2>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2>
 <p>Go语言中, 创建协程的办法是在函数调用之前加上一个<code>go</code>, 例如:</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span></span> &#123;<br>  fmt.Println(<span class="hljs-string">&quot;Hello&quot;</span>)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>  <span class="hljs-comment">// 创建了一个运行foo函数的协程</span><br>  <span class="hljs-keyword">go</span> foo()<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><font color="red">注意, 使用<code>go</code>创建的所有协程, 它们并不存在父子关系, 在调度层面是并列关系.</font></p>
@@ -1814,15 +1814,15 @@
 <li>主协程结束会导致所有其他协程强制结束.</li>
 <li>其他协程如果出现panic, 会导致主协程也强制结束, 这个需要避免.</li>
 </ul>
-<h3 id="主协程等待子协程">主协程等待子协程</h3>
-<p>如果要让主协程等待所有子协程完成之后再结束, 可以使用<code>sync.WaitGroup&#123;&#125;</code>.</p>
+<h3 id="主协程等待子协程"><a href="#主协程等待子协程" class="headerlink" title="主协程等待子协程"></a>主协程等待子协程</h3>
+<p>如果要让主协程等待所有子协程完成之后再结束, 可以使用<code>sync.WaitGroup{}</code>.</p>
 <p>具体例子如下:</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;sync&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>  <br>  wg := sync.WaitGroup&#123;&#125;<br>  <br>  <span class="hljs-comment">/* 这里的2是main协程需要等待的子协程的个数 */</span><br>  wg.Add(<span class="hljs-number">2</span>)<br>  <br>  <span class="hljs-comment">/* 创建两个子协程, 然后子协程运行结束后执行Done */</span><br>  <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> wg.Done()<br>    fmt.Println(<span class="hljs-string">&quot;...&quot;</span>)<br>  &#125;()<br>  <br>  <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">defer</span> wg.Done()<br>    fmt.Println(<span class="hljs-string">&quot;....&quot;</span>)<br>  &#125;()<br>  <br>  <span class="hljs-comment">/* main协程等待子协程 */</span><br>  wg.Wait()<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>这个<code>WaitGroup</code>可以写很多个, 最终的效果等于所有写的WaitGroup拼接起来.</p>
-<h3 id="子协程故障不导致主协程挂">子协程故障不导致主协程挂</h3>
+<h3 id="子协程故障不导致主协程挂"><a href="#子协程故障不导致主协程挂" class="headerlink" title="子协程故障不导致主协程挂"></a>子协程故障不导致主协程挂</h3>
 <p>如果要子协程发生<code>panic</code>后不让主协程挂掉, 只需要在可能会发生<code>panic</code>的子协程的函数最前面加上这句话:</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span></span> &#123;<br>  <br>  <span class="hljs-comment">/* 如果发生了panic, 那么最终还会执行这个defer */</span><br>  <span class="hljs-keyword">defer</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>    <br>    err := <span class="hljs-built_in">recover</span>()<br>    <span class="hljs-comment">/* 如果err不是nil, 证明发生了panic, 后面是panic的处理逻辑 */</span><br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>      fmt.Println(err)<br>    &#125;<br>    <br>  &#125;<br>  <br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="临界区和锁">临界区和锁</h2>
+<h2 id="临界区和锁"><a href="#临界区和锁" class="headerlink" title="临界区和锁"></a>临界区和锁</h2>
 <p>临界区(Critical Section): 临界区是指一个协程中的一段代码, 这段代码中涉及修改全局变量的部分.</p>
 <p>需要保证: <font color="red">同一时间段内, 有且仅有一个协程能够进入它的临界区.</font></p>
 <p>实现这个原则可以通过两种方式:</p>
@@ -1832,8 +1832,8 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;sync&quot;</span><br><br><span class="hljs-comment">/* mutex锁是全局变量 */</span><br><span class="hljs-keyword">var</span> lock = sync.Mutex&#123;&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span></span> &#123;<br>  <br>  <br>  lock.lock()<br>  <span class="hljs-comment">/* 临界区代码 */</span><br>  lock.unlock()<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="Channel">Channel</h2>
-<p>Channel的本质是一个固定长度的队列, 它的类型关键词是<code>chan type</code>, 其中<code>type</code>可以是<code>int</code>或者<code>struct&#123;&#125;</code>这种数据类型.</p>
+<h2 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h2>
+<p>Channel的本质是一个固定长度的队列, 它的类型关键词是<code>chan type</code>, 其中<code>type</code>可以是<code>int</code>或者<code>struct{}</code>这种数据类型.</p>
 <ul>
 <li>Channel可以使用<code>make</code>创建:</li>
 </ul>
@@ -1864,23 +1864,23 @@
 <p>关闭Channel可以使用: <code>close(ch)</code>, 注意: <font color="red">关闭Channel仅代表不可以向Channel中写入元素, 但是还可以读取</font>.</p>
 </li>
 </ul>
-<h3 id="使用Channel实现主协程等待子协程">使用Channel实现主协程等待子协程</h3>
+<h3 id="使用Channel实现主协程等待子协程"><a href="#使用Channel实现主协程等待子协程" class="headerlink" title="使用Channel实现主协程等待子协程"></a>使用Channel实现主协程等待子协程</h3>
 <p>借助Channel可以阻塞协程的特性, 可以实现主协程等待一个子协程:</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>  <br>  <span class="hljs-comment">/* 1. 创建一个没有buffer的Channel */</span><br>  ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;, <span class="hljs-number">0</span>)<br>  <br>  <span class="hljs-comment">/* 一个子协程 */</span><br>  <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-comment">/* 协程代码 */</span><br>    <br>    <span class="hljs-comment">/* 3. 需要被等待的子协程再结束后写入Channel, 唤醒main协程 */</span><br>    <span class="hljs-keyword">defer</span> ch&lt;-<span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>  &#125;<br>  <br>  <span class="hljs-comment">/* 2. 读取Channel, 由于Channel容量为0, main协程会被阻塞 */</span><br>  &lt;-ch<br>&#125;<br></code></pre></td></tr></table></figure>
 <blockquote>
-<p>为什么Channel的数据类型是<code>struct&#123;&#125;</code> ?</p>
+<p>为什么Channel的数据类型是<code>struct{}</code> ?</p>
 </blockquote>
-<p>因为<code>struct&#123;&#125;</code>这种类型在创建实例<code>struct&#123;&#125;&#123;&#125;</code>时, 并不实际占用内存.</p>
+<p>因为<code>struct{}</code>这种类型在创建实例<code>struct{}{}</code>时, 并不实际占用内存.</p>
 <blockquote>
 <p>什么是没有Buffer的Channel</p>
 </blockquote>
-<p>如果使用<code>ch := make(chan struct&#123;&#125;, 0)</code>或者<code>ch := make(chan struct&#123;&#125;)</code>创建一个Channel, 那么这个Channel就是没有Buffer的, 此时, <font color="red">向这个Channel中读/写元素都会导致Channel被阻塞.</font></p>
+<p>如果使用<code>ch := make(chan struct{}, 0)</code>或者<code>ch := make(chan struct{})</code>创建一个Channel, 那么这个Channel就是没有Buffer的, 此时, <font color="red">向这个Channel中读/写元素都会导致Channel被阻塞.</font></p>
 <p><font color="purple">因此, 借助这个思路, 对于每一个协程之间的先后关系, 都可以通过一个容量为0的Channel进行实现.</font></p>
-<h2 id="死锁">死锁</h2>
-<h3 id="例子1">例子1</h3>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2>
+<h3 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h3>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<br>	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;, <span class="hljs-number">0</span>)<br><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-comment">/* 向没有Buffer的Channel写入会阻塞协程 */</span><br>		ch &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>		fmt.Println(<span class="hljs-string">&quot;Hello&quot;</span>)<br>	&#125;()<br>	<span class="hljs-comment">/* main协程也会被阻塞 */</span><br>	ch &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>在这个例子中, 子协程和main协程都会被永远阻塞, go语言会爆出deadlock的运行时异常.</p>
-<h3 id="例子2">例子2</h3>
+<h3 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h3>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;time&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<br>	ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;, <span class="hljs-number">0</span>)<br><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-comment">/* 向没有Buffer的Channel写入会阻塞协程 */</span><br>		ch &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>		fmt.Println(<span class="hljs-string">&quot;Hello&quot;</span>)<br>	&#125;()<br><br>	<span class="hljs-comment">/* 增加一个子协程 */</span><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		time.Sleep(<span class="hljs-number">1</span> * time.Hour)<br>	&#125;()<br><br>	<span class="hljs-comment">/* main协程也会被阻塞 */</span><br>	ch &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>这个例子在上面的基础上增加了一个休眠1小时的子协程, 运行这个代码, go语言居然就不会爆deadlock的Error了.</p>
 <p>这是因为: 增加一个子协程后, 在运行时子协程休眠了, 但是Go语言不知道它后面会执行什么代码, 有可能要执行的代码会帮助解除main协程或前面协程的阻塞, 因此是有希望不出现deadlock的, 所以go语言没有爆deadlock.</p>
