@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(75)</small>
+                <small>(77)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(12)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="75">
+<input type="hidden" id="yelog_site_posts_number" value="77">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -382,6 +382,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/06/19/python_matplotlib/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用matplotlib做可视化">使用matplotlib做可视化</span>
+            <span class="post-date" title="2024-06-19 18:47:34">2024/06/19</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/06/19/python_pandas/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="利用Pandas做数据分析的思路">利用Pandas做数据分析的思路</span>
+            <span class="post-date" title="2024-06-19 17:32:09">2024/06/19</span>
+        </a>
         
         
         <a  class="All 控制基础 "
@@ -694,7 +712,7 @@
            href="/2024/04/07/python_many/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Python用到什么学什么">Python用到什么学什么</span>
+            <span class="post-title" title="Python的一些基础">Python的一些基础</span>
             <span class="post-date" title="2024-04-07 10:46:59">2024/04/07</span>
         </a>
         
@@ -1107,7 +1125,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">进程结构体PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">创建进程fork()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">进程执行exec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B"><span class="toc-text">孤儿进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">僵尸进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">进程回收wait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">wait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">waitpid</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BB%93%E6%9E%84%E4%BD%93PCB"><span class="toc-text">进程结构体PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8Bfork"><span class="toc-text">创建进程fork()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%89%A7%E8%A1%8Cexec"><span class="toc-text">进程执行exec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B"><span class="toc-text">孤儿进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B"><span class="toc-text">僵尸进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%9B%9E%E6%94%B6wait"><span class="toc-text">进程回收wait</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wait"><span class="toc-text">wait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#waitpid"><span class="toc-text">waitpid</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1123,7 +1141,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2>进程结构体<code>PCB</code></h2>
+        <h2 id="进程结构体PCB">进程结构体<code>PCB</code></h2>
 <p>Linux上的PCB (Process Control Block) 本质上是一个叫做<code>task_struct</code>的结构体, 需要包含以下信息:</p>
 <ul>
 <li><code>pid</code>: 进程的唯一ID.</li>
@@ -1137,7 +1155,7 @@
 <li>用户id, 用户组id.</li>
 <li>进程使用资源上限, 通过<code>ulimit -a</code>可以查看.</li>
 </ul>
-<h2>创建进程<code>fork()</code></h2>
+<h2 id="创建进程fork">创建进程<code>fork()</code></h2>
 <ul>
 <li>
 <p>头文件: <code>#include &lt;unistd.h&gt;</code></p>
@@ -1173,13 +1191,13 @@
 <p>假设<code>for (int i = 0; i &lt; 3; i ++)</code>改成<code>for (int i = 0; i &lt; n; i ++)</code>, 那么会创建多少个进程?</p>
 <ul>
 <li>
-<p><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewbox="0 -675.5 1007.3 675.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-1-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-1-TEX-N-32"/></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"/></g></g></g></g></svg>.</p>
+<p>$2^n$.</p>
 </li>
 <li>
 <p>注意, Linux中, 两个进程不能通过全局变量来进行交互.</p>
 </li>
 </ul>
-<h2>进程执行<code>exec</code></h2>
+<h2 id="进程执行exec">进程执行<code>exec</code></h2>
 <p>进程控制一般用到<code>execl</code>和<code>execlp</code>这两个函数, 两个函数都在<code>&lt;unistd.h&gt;</code>中:</p>
 <ul>
 <li><code>int execl(const char *path, const char *arg, ...);</code>
@@ -1200,7 +1218,7 @@
 <p>例子: 在子进程中执行<code>ls -l</code></p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">pid_t</span> pid = fork();<br><br>    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;I&#x27;m father&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        execlp(<span class="hljs-string">&quot;ls&quot;</span>, <span class="hljs-string">&quot;-l&quot;</span>, <span class="hljs-literal">NULL</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h2>
+<h2 id="孤儿进程">孤儿进程</h2>
 <blockquote>
 <p>孤儿进程是怎么产生的?</p>
 </blockquote>
@@ -1224,7 +1242,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>    <span class="hljs-type">pid_t</span> pid = fork();<br><br>    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;I&#x27;m father&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 子进程睡眠, 让父进程运行</span><br>        <span class="hljs-built_in">sleep</span>(<span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child PID: %d, Father PID: %d\n&quot;</span>, <span class="hljs-built_in">getpid</span>(), <span class="hljs-built_in">getppid</span>());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">I&#x27;m father<br>Child PID: 78608, Father PID: 1<br></code></pre></td></tr></table></figure>
-<h2 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h2>
+<h2 id="僵尸进程">僵尸进程</h2>
 <blockquote>
 <p>僵尸进程是怎么产生的?</p>
 </blockquote>
@@ -1243,8 +1261,8 @@
 <li>杀死僵尸进程的父进程即可.</li>
 <li>用<code>kill</code>无法杀死僵尸进程.</li>
 </ul>
-<h2>进程回收<code>wait</code></h2>
-<h3><code>wait</code></h3>
+<h2 id="进程回收wait">进程回收<code>wait</code></h2>
+<h3 id="wait"><code>wait</code></h3>
 <p>为了避免僵尸进程的产生, 需要让父进程回收子进程资源, 这个回收方式分为两种类型:</p>
 <ul>
 <li>阻塞回收.</li>
@@ -1268,7 +1286,7 @@
 </ul>
 <p>例子:</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">pid_t</span> pid;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i ++) &#123;<br>      <span class="hljs-comment">// 创建5个子进程</span><br>        pid = fork();<br>        <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">pid_t</span> ret = wait(<span class="hljs-literal">NULL</span>);<br>          <span class="hljs-comment">// 如果成功回收</span><br>            <span class="hljs-keyword">if</span> (ret &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child %d PCB freed\n&quot;</span>, ret);<br>            &#125;<br>          <span class="hljs-comment">// 如果没子进程可等了, 就退出</span><br>            <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child process freed error\n&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (pid == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;I m father process\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3><code>waitpid</code></h3>
+<h3 id="waitpid"><code>waitpid</code></h3>
 <ul>
 <li><code>waitpid</code>是<code>wait</code>的升级版本, 可以对回收行为做进一步的控制.</li>
 <li><code>waitpid</code>也是在<code>&lt;sys/wait.h&gt;</code>中:
