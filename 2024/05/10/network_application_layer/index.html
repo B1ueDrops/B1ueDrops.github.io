@@ -1125,7 +1125,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-text">HTTP的报文结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E5%B8%B8%E8%A7%81header"><span class="toc-text">HTTP的常见header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%9C%BA%E5%88%B6"><span class="toc-text">HTTP的长连接机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E5%B8%B8%E8%A7%81%E7%9A%84status-code"><span class="toc-text">HTTP协议常见的status code</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">面试题</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">HTTP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-text">HTTP的报文结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E5%B8%B8%E8%A7%81header"><span class="toc-text">HTTP的常见header</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%9C%BA%E5%88%B6"><span class="toc-text">HTTP的长连接机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E5%B8%B8%E8%A7%81%E7%9A%84status-code"><span class="toc-text">HTTP协议常见的status code</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">面试题</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1141,8 +1141,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1>
-<h2 id="HTTP的报文结构"><a href="#HTTP的报文结构" class="headerlink" title="HTTP的报文结构"></a>HTTP的报文结构</h2>
+        <h1>HTTP协议</h1>
+<h2 id="HTTP的报文结构">HTTP的报文结构</h2>
 <ul>
 <li>
 <p>HTTP请求报文的结构是:</p>
@@ -1160,7 +1160,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="HTTP的常见header"><a href="#HTTP的常见header" class="headerlink" title="HTTP的常见header"></a>HTTP的常见header</h2>
+<h2 id="HTTP的常见header">HTTP的常见header</h2>
 <ul>
 <li>常见的HTTP请求报文中, <code>request-headers</code>:</li>
 </ul>
@@ -1189,7 +1189,8 @@
 <td>这个是个日期, 如果请求的资源在这个日期后被修改, 就返回200 OK+资源, 否则返回304 Not Modified, 并且数据可以从缓存读取,  只可以用在<code>GET/HEAD</code>请求.</td>
 </tr>
 <tr>
-<td colspan="2"></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1221,16 +1222,17 @@
 <td>如果请求的文件在<code>If-Modified-Since</code>后没被修改, 这个头部就有<code>Last-Modified</code>, 标识资源上次被修改的时间.</td>
 </tr>
 <tr>
-<td colspan="2"></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="HTTP的长连接机制"><a href="#HTTP的长连接机制" class="headerlink" title="HTTP的长连接机制"></a>HTTP的长连接机制</h2>
+<h2 id="HTTP的长连接机制">HTTP的长连接机制</h2>
 <ul>
 <li>HTTP的长连接机制是通过重用一个TCP连接, 来处理多个HTTP请求, 用来减少创建TCP连接的开销.</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/caoweixiong/p/14720254.html">https://www.cnblogs.com/caoweixiong/p/14720254.html</a></p>
-<h2 id="HTTP协议常见的status-code"><a href="#HTTP协议常见的status-code" class="headerlink" title="HTTP协议常见的status code"></a>HTTP协议常见的status code</h2>
+<h2 id="HTTP协议常见的status-code">HTTP协议常见的status code</h2>
 <table>
 <thead>
 <tr>
@@ -1282,7 +1284,7 @@
 <ul>
 <li>500 Internal Server Error: 服务端在处理的时候忽然抛出了异常.:</li>
 </ul>
-<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1>
+<h1>面试题</h1>
 <blockquote>
 <p>网页浏览的全过程?</p>
 </blockquote>
