@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(77)</small>
+                <small>(82)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(14)</small>
+            <small>(17)</small>
         </div>
         
     </li>
@@ -142,7 +142,7 @@
         <div data-rel="工具/环境">
             
             工具/环境
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -262,7 +262,7 @@
         <div data-rel="体系结构">
             
             体系结构
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="77">
+<input type="hidden" id="yelog_site_posts_number" value="82">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -385,6 +385,51 @@
         
         
         <a  class="All 编程语言 "
+           href="/2024/07/04/raii/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RAII的概念">RAII的概念</span>
+            <span class="post-date" title="2024-07-04 16:16:39">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/04/char_encode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="字符编码深度理解">字符编码深度理解</span>
+            <span class="post-date" title="2024-07-04 11:32:31">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/07/04/ieee_754/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="体系结构中的浮点数">体系结构中的浮点数</span>
+            <span class="post-date" title="2024-07-04 11:24:35">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/06/29/numpy_torch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="numpy和torch常见的张量操作">numpy和torch常见的张量操作</span>
+            <span class="post-date" title="2024-06-29 21:03:34">2024/06/29</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/06/29/conda_workflow/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="conda的工作流">conda的工作流</span>
+            <span class="post-date" title="2024-06-29 15:03:32">2024/06/29</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
            href="/2024/06/19/python_matplotlib/"
            data-tag=""
            data-author="" >
@@ -424,7 +469,7 @@
            href="/2024/06/01/transformer/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="简单理解Transformer">简单理解Transformer</span>
+            <span class="post-title" title="理解Transformer">理解Transformer</span>
             <span class="post-date" title="2024-06-01 20:53:28">2024/06/01</span>
         </a>
         
@@ -1141,7 +1186,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="协程顺序">协程顺序</h2>
+        <h2 id="协程顺序"><a href="#协程顺序" class="headerlink" title="协程顺序"></a>协程顺序</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/print-in-order/description/">https://leetcode.cn/problems/print-in-order/description/</a></p>
 </blockquote>
@@ -1153,7 +1198,7 @@
 </ul>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-keyword">var</span> c1 = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;)<br><span class="hljs-keyword">var</span> c2 = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;)<br><span class="hljs-keyword">var</span> c3 = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span></span> &#123;<br>	fmt.Println(<span class="hljs-string">&quot;first&quot;</span>)<br>	<span class="hljs-comment">/* f1执行完毕，解除f2的阻塞 */</span><br>	c1 &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f2</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">/* 等待f1 */</span><br>	&lt;-c1<br>	fmt.Println(<span class="hljs-string">&quot;second&quot;</span>)<br>	<span class="hljs-comment">/* f2执行完毕， 解除f3的阻塞 */</span><br>	c2 &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f3</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">/* 等待f2 */</span><br>	&lt;-c2<br>	fmt.Println(<span class="hljs-string">&quot;third&quot;</span>)<br>	<span class="hljs-comment">/* f3执行完毕， 解除main的阻塞 */</span><br>	c3 &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>&#125;<br><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<br>	routineMap := <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-number">1</span>: f1,<br>		<span class="hljs-number">2</span>: f2,<br>		<span class="hljs-number">3</span>: f3,<br>	&#125;<br><br>	<span class="hljs-keyword">for</span> _, f := <span class="hljs-keyword">range</span> routineMap &#123;<br>		<span class="hljs-keyword">go</span> f()<br>	&#125;<br><br>  <span class="hljs-keyword">defer</span> <span class="hljs-built_in">close</span>(c1)<br>  <span class="hljs-keyword">defer</span> <span class="hljs-built_in">close</span>(c2)<br>  <span class="hljs-keyword">defer</span> <span class="hljs-built_in">close</span>(c3)<br>  <br>	&lt;-c3<br>	<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <p><font color="red">注意: 一定要用<code>close</code>关掉Channel !!!, 还要注意要多定义一个Channel用来阻塞main协程.</font></p>
-<h2 id="协程交替打印">协程交替打印</h2>
+<h2 id="协程交替打印"><a href="#协程交替打印" class="headerlink" title="协程交替打印"></a>协程交替打印</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/print-foobar-alternately/description/">https://leetcode.cn/problems/print-foobar-alternately/description/</a></p>
 </blockquote>
@@ -1169,7 +1214,7 @@
 <li>然后循环.</li>
 </ul>
 <figure class="highlight go"><table><tr><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;sync&quot;</span><br>)<br><br><span class="hljs-comment">/* 创建两个Channel */</span><br><span class="hljs-keyword">var</span> c1 = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;, <span class="hljs-number">1</span>)<br><span class="hljs-keyword">var</span> c2 = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>&#123;&#125;)<br><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">/* 初始化c1有一个元素 */</span><br>	c1 &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>	<br>	<span class="hljs-comment">/* 创建WaitGroup */</span><br>	wg := sync.WaitGroup&#123;&#125;<br>	wg.Add(<span class="hljs-number">2</span>)<br>	<br><br>	<span class="hljs-keyword">var</span> n <span class="hljs-type">int</span><br><br>	<span class="hljs-comment">/* 从标准输入读入n */</span><br>	fmt.Scanf(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n)<br><br>	<span class="hljs-comment">/* 开启协程 */</span><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; n; i ++ &#123;<br>			&lt;-c1<br>			fmt.Print(<span class="hljs-string">&quot;Foo&quot;</span>)<br>			c2 &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>		&#125;<br>		wg.Done()<br>	&#125;()<br><br>	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> &#123;<br>		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; n; i ++ &#123;<br>			&lt;-c2<br>			fmt.Print(<span class="hljs-string">&quot;Bar&quot;</span>)<br>			c1 &lt;- <span class="hljs-keyword">struct</span>&#123;&#125;&#123;&#125;<br>		&#125;<br>		wg.Done()<br>	&#125;()<br><br>	<span class="hljs-comment">/* 延迟关闭管道 */</span><br>	<span class="hljs-keyword">defer</span> <span class="hljs-built_in">close</span>(c1)<br>	<span class="hljs-keyword">defer</span> <span class="hljs-built_in">close</span>(c2)<br><br><br>	wg.Wait()<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="协程屏障">协程屏障</h2>
+<h2 id="协程屏障"><a href="#协程屏障" class="headerlink" title="协程屏障"></a>协程屏障</h2>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/building-h2o/description/">https://leetcode.cn/problems/building-h2o/description/</a></p>
 </blockquote>

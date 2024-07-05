@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(77)</small>
+                <small>(82)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(14)</small>
+            <small>(17)</small>
         </div>
         
     </li>
@@ -142,7 +142,7 @@
         <div data-rel="工具/环境">
             
             工具/环境
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -262,7 +262,7 @@
         <div data-rel="体系结构">
             
             体系结构
-            <small>(3)</small>
+            <small>(4)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="77">
+<input type="hidden" id="yelog_site_posts_number" value="82">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -385,6 +385,51 @@
         
         
         <a  class="All 编程语言 "
+           href="/2024/07/04/raii/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RAII的概念">RAII的概念</span>
+            <span class="post-date" title="2024-07-04 16:16:39">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/04/char_encode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="字符编码深度理解">字符编码深度理解</span>
+            <span class="post-date" title="2024-07-04 11:32:31">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/07/04/ieee_754/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="体系结构中的浮点数">体系结构中的浮点数</span>
+            <span class="post-date" title="2024-07-04 11:24:35">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/06/29/numpy_torch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="numpy和torch常见的张量操作">numpy和torch常见的张量操作</span>
+            <span class="post-date" title="2024-06-29 21:03:34">2024/06/29</span>
+        </a>
+        
+        
+        <a  class="All 工具/环境 "
+           href="/2024/06/29/conda_workflow/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="conda的工作流">conda的工作流</span>
+            <span class="post-date" title="2024-06-29 15:03:32">2024/06/29</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
            href="/2024/06/19/python_matplotlib/"
            data-tag=""
            data-author="" >
@@ -424,7 +469,7 @@
            href="/2024/06/01/transformer/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="简单理解Transformer">简单理解Transformer</span>
+            <span class="post-title" title="理解Transformer">理解Transformer</span>
             <span class="post-date" title="2024-06-01 20:53:28">2024/06/01</span>
         </a>
         
@@ -1141,7 +1186,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="多线程模型">多线程模型</h2>
+        <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2>
 <ul>
 <li>
 <p>最基础的模型: 单个CPU, 多个线程, 线程通过上下文切换的方式在CPU上执行.</p>
@@ -1165,10 +1210,10 @@
 <li>非阻塞I/O就是当I/O未完成, 线程不会被阻塞, 而是可以去执行其他任务.</li>
 <li>当I/O Task完成后, 会通知线程处理.</li>
 </ul>
-<h2 id="协程模型">协程模型</h2>
+<h2 id="协程模型"><a href="#协程模型" class="headerlink" title="协程模型"></a>协程模型</h2>
 <p>协程的出现是为了减少CPU线程上下文切换时的开销.</p>
 <p>协程是比线程更细粒度的调度单位, 协程的切换不需要切换到内核态, 可以在用户态实现轻量级的任务调度.</p>
-<h2 id="async-await模型">async/await模型</h2>
+<h2 id="async-await模型"><a href="#async-await模型" class="headerlink" title="async/await模型"></a>async/await模型</h2>
 <p>借助非阻塞I/O和I/O多路复用的思想, 以及协程模型, 可以实现在单线程基础上的异步编程模型, 最典型的是async/await编程模型.</p>
 <p>在async/await模型中, 只有一个线程, 线程中有一个部分叫做<code>EventLoop</code>, 负责调度不同的Task.</p>
 <p>对于用户而言, 一般需要定义一个协程函数(Coroutine Function), 里面写入业务逻辑.</p>
