@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Jetbrains系列IDE的配置 | B1ueDrops</title>
+  <title>Jetbrains系列IDE的使用 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Jetbrains系列IDE的配置 | B1ueDrops">
+  <meta name="description" content="Jetbrains系列IDE的使用 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1009,15 +1009,6 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/bfs/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="广度优先搜索">广度优先搜索</span>
-            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
-        </a>
-        
-        
-        <a  class="All 算法 "
            href="/2024/03/02/binary-search/"
            data-tag=""
            data-author="" >
@@ -1026,11 +1017,20 @@
         </a>
         
         
+        <a  class="All 算法 "
+           href="/2024/03/02/bfs/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广度优先搜索">广度优先搜索</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
         <a  class="All 工具/环境 "
            href="/2024/03/02/jetbrains/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Jetbrains系列IDE的配置">Jetbrains系列IDE的配置</span>
+            <span class="post-title" title="Jetbrains系列IDE的使用">Jetbrains系列IDE的使用</span>
             <span class="post-date" title="2024-03-02 19:00:15">2024/03/02</span>
         </a>
         
@@ -1135,7 +1135,7 @@
     <div class="pjax">
         <article id="post-jetbrains" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Jetbrains系列IDE的配置</h1>
+        <h1 class="article-title">Jetbrains系列IDE的使用</h1>
     
     <div class="article-meta">
         
@@ -1153,7 +1153,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-04 12:36:23'>2024-03-02 19:00</time>
+            Created At : <time class="date" title='Updated At: 2024-07-10 20:17:30'>2024-03-02 19:00</time>
         
     </div>
     <div class="article-meta">
@@ -1164,7 +1164,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%80%9A%E7%94%A8%E8%AE%BE%E7%BD%AE"><span class="toc-text">一些通用设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ideavim"><span class="toc-text">ideavim</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E9%BB%98%E8%AE%A4%E8%AE%BE%E7%BD%AE"><span class="toc-text">非默认设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-text">插件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">好用的功能</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1180,94 +1180,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一些通用设置"><a href="#一些通用设置" class="headerlink" title="一些通用设置"></a>一些通用设置</h2>
+        <h2 id="非默认设置"><a href="#非默认设置" class="headerlink" title="非默认设置"></a>非默认设置</h2>
 <ul>
-<li>
-<p>字体, 大小</p>
-</li>
-<li>
-<p>颜色主题</p>
-</li>
-<li>
-<p>插件:</p>
+<li><strong>字体:</strong>
 <ul>
-<li>Nerdtree</li>
-<li>Ideavim</li>
+<li>字体设置分为三类:
+<ul>
+<li><strong>代码字体:</strong> <code>Editor -&gt; Font</code>.</li>
+<li><strong>系统字体:</strong> <code>Appearance &amp; Behavior -&gt; Appearance</code>.
+<ul>
+<li>推荐使用<code>Droid Sans</code>字体.</li>
+</ul>
+</li>
+<li><strong>终端字体:</strong> <code>Editor -&gt; Color Scheme -&gt; Console Font</code></li>
 </ul>
 </li>
 </ul>
-<h2 id="ideavim"><a href="#ideavim" class="headerlink" title="ideavim"></a>ideavim</h2>
-<p>基本配置和neovim一致.</p>
-<table>
-<thead>
-<tr>
-<th>键位</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>gh</code></td>
-<td>显示Hover信息</td>
-</tr>
-<tr>
-<td><code>gd</code></td>
-<td>跳转定义</td>
-</tr>
-<tr>
-<td><code>gr</code></td>
-<td>跳转reference</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;r</code></td>
-<td>重新加载配置文件</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;m</code></td>
-<td>全屏窗口</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;e</code></td>
-<td>跳转到nerdtree</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;z</code></td>
-<td>开启Zen Mode</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;b</code></td>
-<td>在这一行打断点</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;d</code></td>
-<td>Debug</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;q</code></td>
-<td>查找可用的action</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;t</code></td>
-<td>打开终端</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;p</code></td>
-<td>Project Manager</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;c</code></td>
-<td>修改运行配置</td>
-</tr>
-<tr>
-<td><code>&lt;LEADER&gt;;</code></td>
-<td>运行代码</td>
-</tr>
-<tr>
-<td rowspan="2" colspan="2"></td>
-</tr>
-<tr></tr>
-</tbody>
-</table>
+</li>
+<li><strong>View布局:</strong>
+<ul>
+<li>通过顶部栏的<code>View -&gt; Appearance</code>可以调整各种面板的布局.
+<ul>
+<li>勾选<code>View -&gt; Appearance -&gt; Details in Tree View</code>, 可以在文档树中查看文件详细信息.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>终端</strong>:
+<ul>
+<li>在<code>Settings -&gt; Tools -&gt; Terminal</code>中设置.</li>
+<li>将<code>Copy to clipboard on Selection</code>勾选, 选中终端内容等价于复制.</li>
+<li>右键终端等于粘贴.</li>
+<li>启用New Terminal.</li>
+</ul>
+</li>
+<li><strong>命令行启动:</strong>
+<ul>
+<li>使用ToolBox可以将各种IDE的启动脚本配置到环境变量中, 系统会自动完成.</li>
+</ul>
+</li>
+<li><strong>空白字符显示:</strong> <code>Editor -&gt; General -&gt; Appearance</code>.</li>
+<li>**Tab的设置: ** <code>Editor -&gt; Code Style -&gt; 语言</code>
+<ul>
+<li>注意, 尽量将<code>Use Tab Character</code>和<code>Smart Tab</code> (根据上下文选择用哪种字符当Tab) 勾选.</li>
+</ul>
+</li>
+</ul>
+<h2 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h2>
+<ul>
+<li><strong>IdeaVim</strong>.</li>
+<li><strong>AI assistant</strong>.</li>
+<li><strong>Python Inlay Hints</strong>: 这个插件能够在Python变量第一次定义的时候以inlay hints的方式展示类型.</li>
+</ul>
+<h2 id="好用的功能"><a href="#好用的功能" class="headerlink" title="好用的功能"></a>好用的功能</h2>
+<ul>
+<li>**多光标: ** 使用<code>option</code>和鼠标即可插入多光标.</li>
+<li>**NERDTree的操作: **
+<ul>
+<li>将NERDTree全屏: <code>A</code>.</li>
+<li>将选中的文件在另一个Screen显示: <code>s</code>.</li>
+</ul>
+</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
