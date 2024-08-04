@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>多进程/多线程编程模型 | B1ueDrops</title>
+  <title>SSVEP刺激设计 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="多进程/多线程编程模型 | B1ueDrops">
+  <meta name="description" content="SSVEP刺激设计 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1157,9 +1157,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-multithread" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ssvep_stimulus" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">多进程/多线程编程模型</h1>
+        <h1 class="article-title">SSVEP刺激设计</h1>
     
     <div class="article-meta">
         
@@ -1169,7 +1169,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="UNIX编程">UNIX编程</a>
+            <a  data-rel="科研">科研</a>
             
         </span>
         
@@ -1177,7 +1177,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-05-12 13:01:59'>2024-03-30 16:47</time>
+            Created At : <time class="date" title='Updated At: 2024-08-04 12:57:09'>2024-08-04 12:01</time>
         
     </div>
     <div class="article-meta">
@@ -1188,7 +1188,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%81"><span class="toc-text">锁</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A0%87%E5%87%86"><span class="toc-text">设计标准</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1204,37 +1204,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2>
+        <h2 id="设计标准"><a href="#设计标准" class="headerlink" title="设计标准"></a>设计标准</h2>
+<p><img src="/2024/08/04/ssvep_stimulus/image-20240804122048217.png" alt="SSVEP刺激"></p>
 <ul>
-<li><strong>锁的本质是一个内存中的整数, 对这个整数的操作都是原子操作</strong>.
+<li>设计成键盘形状, 被试比较熟悉键盘布局, 容易更快(less distraction) 地找到对应的target.</li>
+<li>被试需要在灯光暗的房间里(dim room), 坐在舒适的椅子上(comfortable chair).</li>
+<li>视距60cm时, 信号质量会比较高.
 <ul>
-<li>锁只能存储在内存中, 不能放到寄存器中(因为只有内存才可以在CPU之间共享, 寄存器一个CPU有一套).</li>
-<li>对锁进行操作, <font color="red">一定是通过指针去处理</font>, 不能通过变量名, 因为对指针的操作能够确保一定是访问内存.
-<ul>
-<li>如果对变量名读写, 那么编译器优化后, 很可能通过寄存器读写.</li>
-</ul>
-</li>
-<li><strong>锁的实现:</strong>
-<ul>
-<li>锁的值如果是0, 表示当前没有线程上锁, 如果是1, 表示有线程上锁.</li>
-<li>当线程尝试获取锁时, 先让一个寄存器置1, 然后用CPU的原子指令把寄存器和锁内存交换.</li>
-<li>互换后, 判断寄存器的值:
-<ul>
-<li>如果寄存器的值是0: 没有上锁, 可以读写共享数据.</li>
-<li>如果寄存器的值是1: 上锁了, 线程需要等待/让出时间片.</li>
-</ul>
-</li>
-<li>线程释放锁时, 直接将锁的值赋值为0.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>锁的分类</strong>:
-<ul>
-<li>自旋锁(spinlock): 进程获取锁失败后, 会一直轮训, 不会睡眠.</li>
-<li>互斥锁(mutex): 进程获取锁失败后, 可能会睡眠, 等待OS唤醒.</li>
-<li>在中断上下文中, 不能使用mutex, 因为中断需要快速处理, 不能睡眠.</li>
-<li>spinlock一般用在内核多进程场景, mutex一般用在用户多线程场景.</li>
+<li>如果有条件的话, 刺视距和刺激光强可以相互调节. 实现Adaptive.</li>
+<li>当有多个target时, 视距会影响两个相邻target之间的视角.</li>
 </ul>
 </li>
 </ul>
