@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>体系结构中的浮点数 | B1ueDrops</title>
+  <title>服务发现架构设计 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="体系结构中的浮点数 | B1ueDrops">
+  <meta name="description" content="服务发现架构设计 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1193,9 +1193,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ieee_754" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-service_discovery" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">体系结构中的浮点数</h1>
+        <h1 class="article-title">服务发现架构设计</h1>
     
     <div class="article-meta">
         
@@ -1205,7 +1205,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="体系结构">体系结构</a>
+            <a  data-rel="软件工程">软件工程</a>
             
         </span>
         
@@ -1213,7 +1213,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-04 11:25:12'>2024-07-04 11:24</time>
+            Created At : <time class="date" title='Updated At: 2024-08-05 20:27:29'>2024-08-05 20:02</time>
         
     </div>
     <div class="article-meta">
@@ -1224,7 +1224,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8E%A2%E6%B4%BB"><span class="toc-text">服务探活</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%8F%98%E6%9B%B4%E6%8E%A8%E9%80%81"><span class="toc-text">地址变更推送</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1240,7 +1240,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>
+<p>当客户端的请求到达HTTP服务器后, 服务器会调用RPC服务, RPC服务之间也可能会相互调用, 这个时候, 调用者就需要知道这些服务调用的网络地址.</p>
+<ul>
+<li>
+<p>服务发现就是为了让每个服务知道所有可调用服务的网络地址.</p>
+</li>
+<li>
+<p>服务发现一般用一个<strong>服务注册中心</strong>实现:</p>
+<ul>
+<li>服务注册中心负责管理每个可调用服务的地址.</li>
+<li>服务启动后, 会自动将地址注册到服务注册中心.</li>
+<li>服务推出时, 会在服务注册中心注销 .</li>
+<li>如果服务地址出现变动, 服务注册中心会推送所有的调用者.</li>
+<li><font color="red">服务注册中心应该具有对已注册服务的探活能力, 防止服务挂掉, 但是没来得及注销.</font></li>
+</ul>
+</li>
+</ul>
+<h2 id="服务探活"><a href="#服务探活" class="headerlink" title="服务探活"></a>服务探活</h2>
+<ul>
+<li>服务注册中心有两种方式对已注册服务进行探活:
+<ul>
+<li>轮询: 服务注册中心周期性地向已注册服务发送探测请求.
+<ul>
+<li>大体量的服务, 一般已注册的服务巨多, 采用这种方式不现实.</li>
+</ul>
+</li>
+<li>心跳检测:
+<ul>
+<li>服务注册中心为每个服务记录一个最近心跳时间, 并启动定时器.</li>
+<li>服务每隔一段时间就像服务注册中心发送心跳包.</li>
+<li>服务注册中心收到心跳包后, 更新最近心跳时间, 并重启定时器.</li>
+<li>如果超时, 那么服务不可用, 服务注册中心将地址摘除.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>心跳检测的危险之处?</p>
+</blockquote>
+<ul>
+<li>如果服务注册中心的摘除逻辑有bug, 导致所有服务均被摘除, 那么服务就会瘫痪.</li>
+<li>如果网络出现故障, 但是服务本身没挂, 心跳包有可能会晚到服务注册中心, 也可能导致服务注册中心摘除.
+<ul>
+<li>此时, 如果服务的总QPS过高, 就会把剩余的服务全部压垮, 导致故障.</li>
+</ul>
+</li>
+<li><strong>解决方案:</strong> 在服务摘除到了某一个阈值时, 停止摘除, 并且告警.</li>
+</ul>
+<h2 id="地址变更推送"><a href="#地址变更推送" class="headerlink" title="地址变更推送"></a>地址变更推送</h2>
+<ul>
+<li>
+<p>如果出现了服务地址变更, 需要有一种机制让所有调用者知道, 但是调用者很可能有多个服务, 每个服务还有可能有多个实例, 推送可能严重占用网络带宽.</p>
+</li>
+<li>
+<p>解决方式:</p>
+<ul>
+<li>部署多个服务注册中心, 分摊到每一个中心的推送量会减少.</li>
+<li>推送的数据形式是增量形式 (新增/废除了哪些地址), 减少带宽压力.</li>
+<li>只给某些服务推送, 其他服务可以周期性拉取.</li>
+</ul>
+</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
@@ -1251,47 +1314,6 @@
 
 
 
-
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<input type="hidden" id="MathJax-js"
-        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</input>
 
     
 

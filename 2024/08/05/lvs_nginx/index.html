@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>体系结构中的浮点数 | B1ueDrops</title>
+  <title>LVS/Nginx-服务器调度的技术 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="体系结构中的浮点数 | B1ueDrops">
+  <meta name="description" content="LVS/Nginx-服务器调度的技术 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1193,9 +1193,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ieee_754" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-lvs_nginx" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">体系结构中的浮点数</h1>
+        <h1 class="article-title">LVS/Nginx-服务器调度的技术</h1>
     
     <div class="article-meta">
         
@@ -1205,7 +1205,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="体系结构">体系结构</a>
+            <a  data-rel="软件工程">软件工程</a>
             
         </span>
         
@@ -1213,7 +1213,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-07-04 11:25:12'>2024-07-04 11:24</time>
+            Created At : <time class="date" title='Updated At: 2024-08-05 19:54:15'>2024-08-05 14:46</time>
         
     </div>
     <div class="article-meta">
@@ -1224,7 +1224,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E5%9F%BA%E7%A1%80"><span class="toc-text">Nginx基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">Nginx的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">Nginx配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">http配置块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">Nginx负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-text">Nginx服务发现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LVS%E5%AE%9E%E7%8E%B0Nginx%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86"><span class="toc-text">LVS实现Nginx集群管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LVS%E7%9A%84%E8%BD%AC%E5%8F%91%E6%A8%A1%E5%BC%8F"><span class="toc-text">LVS的转发模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#NAT%E6%A8%A1%E5%BC%8F"><span class="toc-text">NAT模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FULLNAT%E6%A8%A1%E5%BC%8F"><span class="toc-text">FULLNAT模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TUN%E6%A8%A1%E5%BC%8F"><span class="toc-text">TUN模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LVS%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-text">LVS的高可用问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LVS-Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B0%83%E5%BA%A6%E5%B1%82"><span class="toc-text">LVS+Nginx服务器调度层</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1240,7 +1240,166 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>
+<p>客户端的请求连接到机房后, 机房的入口设备需要负责把请求转发到某一台具体的服务器中.</p>
+<p>如果没有转发, 那么就是最简单的架构:</p>
+<ul>
+<li>DNS直接解析出来服务器的公网IP地址.</li>
+<li>客户端直接访问IP地址.</li>
+</ul>
+<p>这种架构有如下问题:</p>
+<ul>
+<li>可用性问题: 如果服务器垮了, 那么DNS服务器不能快速感知到IP地址不可用.</li>
+<li>安全性问题: 所有服务器如果都有公网IP, 那么存在安全隐患.</li>
+<li>扩展性问题: 如果一个服务需要扩容(增加服务器数量), 那么就需要额外配置DNS服务器.
+<ul>
+<li>但是DNS缓存有TTL值, 需要等到缓存失效, 额外配置的服务器IP地址才能生效, 新的服务器不能马上派上用场.</li>
+</ul>
+</li>
+</ul>
+<p>因此, 为了解决这些问题, 需要加一层调度层:</p>
+<ul>
+<li>DNS需要将域名映射到调度层机器的公网IP.</li>
+<li>调度层负责将请求进行转发, 需要有很高的性能.</li>
+</ul>
+<h2 id="Nginx基础"><a href="#Nginx基础" class="headerlink" title="Nginx基础"></a>Nginx基础</h2>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3>
+<p>代理模式分为两种:</p>
+<ul>
+<li>正向代理(forward proxy): 代理客户端, 客户端负责把请求发给正向代理, 让代理办事, 例如VPN代理.</li>
+<li>反向代理(reverse proxy): 代理服务器: 反向代理负责接收客户端请求, 然后转发到内部网络的服务器.</li>
+</ul>
+<h3 id="Nginx的介绍"><a href="#Nginx的介绍" class="headerlink" title="Nginx的介绍"></a>Nginx的介绍</h3>
+<ul>
+<li>Nginx可以作为:
+<ul>
+<li>HTTP服务器.</li>
+<li>各种服务器的反向代理服务器, 并且内置负载均衡器.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Nginx配置文件"><a href="#Nginx配置文件" class="headerlink" title="Nginx配置文件"></a>Nginx配置文件</h3>
+<p>Nginx的配置文件是<code>nginx.conf</code>.</p>
+<p>例子:</p>
+<h4><code>http</code>配置块</h4>
+<figure class="highlight ini"><table><tr><td class="code"><pre><code class="hljs ini">http &#123;<br>	<br>	upstream api_feed &#123;<br>		server 10.1.0.1:8080<span class="hljs-comment">;</span><br>		server 10.1.0.2:8080<span class="hljs-comment">;</span><br>	&#125;<br>	<br>	upstream api_like &#123;<br>		server 10.1.0.1:8081<span class="hljs-comment">;</span><br>		server 10.1.0.1:8081<span class="hljs-comment">;</span><br>	&#125;<br>	<br>	server &#123;<br>		listen 80<span class="hljs-comment">;</span><br>		server_name: www.haha.com<br>		<br>		location /feed &#123;<br>			proxy_pass http://api_feed<span class="hljs-comment">;</span><br>			proxy_pass http://api_like<span class="hljs-comment">;</span><br>		&#125;<br>		<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>http</code>配置块包括两个重要的子配置: <code>server</code>和<code>upstream</code>:</p>
+<ul>
+<li><code>server</code>: Nginx作为HTTP服务器启动时需要的各种参数, 包括:
+<ul>
+<li><code>listen</code>: 监听本地哪个端口.</li>
+<li><code>server_name</code>:
+<ul>
+<li>首先, 一个机器上可能会部署多个HTTP服务器, 也就会有多个<code>server</code>配置块.</li>
+<li>此时, HTTP请求来了之后, 会将header中的<code>HOST</code>字段和<code>server_name</code>对比, 然后才知道请求被哪个<code>server</code>配置处理.</li>
+</ul>
+</li>
+<li><code>location</code>: 根据API, 看这个HTTP请求要被哪个<code>upstream</code>块处理.</li>
+</ul>
+</li>
+<li><code>upstream</code>: Nginx作为反向代理服务器启动时需要的各种参数.
+<ul>
+<li>其中包含多个服务池, 每个服务池中是服务器实例的内网IP.</li>
+<li>如果没有额外配置, Nginx会采用Round-Robin策略, 选择一个服务器实例进行转发.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Nginx负载均衡"><a href="#Nginx负载均衡" class="headerlink" title="Nginx负载均衡"></a>Nginx负载均衡</h3>
+<ul>
+<li>
+<p>Round-Robin: 轮询.</p>
+<ul>
+<li>可以加权, 每次优先选择权值最高的转发.</li>
+</ul>
+</li>
+<li>
+<p>IP Hash:</p>
+<ul>
+<li>根据每个客户端IP地址的哈希结果进行转发.</li>
+<li>同一个IP地址总是会分配到同一个机器, 不保证负载均衡.</li>
+</ul>
+</li>
+<li>
+<p>URL Hash:</p>
+<ul>
+<li>根据客户端URL哈希结果进行转发.</li>
+</ul>
+</li>
+<li>
+<p>least_conn:</p>
+<ul>
+<li>将请求转发给连接数最少的服务器.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Nginx服务发现"><a href="#Nginx服务发现" class="headerlink" title="Nginx服务发现"></a>Nginx服务发现</h3>
+<ul>
+<li>如果一个服务需要扩容, 那么就需要频繁修改<code>nginx.conf</code>, 不太现实.</li>
+<li>Nginx为了实现热更新, 有如下两个模块:
+<ul>
+<li><code>ngx_lua</code>: 内置Lua解释器, 可以编写Lua脚本部署到Nginx上执行.</li>
+<li><code>ngx_http_dyups_module</code>: 热更新upstream配置.</li>
+<li>这样, 从服务发现中心获取最新<code>upstream</code>配置后, 就可以热更新到Nginx工作进程.</li>
+</ul>
+</li>
+</ul>
+<h2 id="LVS实现Nginx集群管理"><a href="#LVS实现Nginx集群管理" class="headerlink" title="LVS实现Nginx集群管理"></a>LVS实现Nginx集群管理</h2>
+<ul>
+<li>由于单台Nginx服务器能承载的用户请求有限, 因此, 当用户数量增多时, 就需要Nginx集群才能顶住压力, 此时还需要一个中间层, 将请求转发到Nginx服务器, 这个中间层就是Linux Virtual Server (LVS).
+<ul>
+<li>也就是说, LVS可以将对公网的请求转发到自身内网的服务器.</li>
+<li>LVS内置在Linux内核中, 性能更高.</li>
+</ul>
+</li>
+<li>LVS工作在网络层.</li>
+</ul>
+<h3 id="LVS的转发模式"><a href="#LVS的转发模式" class="headerlink" title="LVS的转发模式"></a>LVS的转发模式</h3>
+<h4 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h4>
+<p>NAT模式的工作流程如下:</p>
+<ul>
+<li>客户端发送请求到LVS服务器.</li>
+<li>LVS服务器选择一个内网机器, 然后修改客户端请求的目的IP, 变成服务器内网IP, 然后转发.</li>
+<li>RS处理之后, 返回响应, 其中packet的源IP是自己的内网IP, 目的IP是客户端的IP.</li>
+<li>到达LVS服务器后, LVS服务器作为网关, 会将packet的源IP设置为自己的公网IP, 然后给客户端.</li>
+</ul>
+<p>NAT模式要求:</p>
+<ul>
+<li>LVS服务器有两个网卡, 一个提供公网IP, 一个提供内网IP.</li>
+<li>LVS服务器需要和内网服务器在一个局域网, 并且是网关, 否则内网服务器的响应不会经过LVS.</li>
+</ul>
+<p>NAT模式的缺点: LVS服务器需要同时修改请求和响应, 网络带宽压力较大.</p>
+<h4 id="FULLNAT模式"><a href="#FULLNAT模式" class="headerlink" title="FULLNAT模式"></a>FULLNAT模式</h4>
+<ul>
+<li>NAT模式的优化: LVS服务器收到客户端请求时:
+<ul>
+<li>请求源IP地址改为LVS服务器的内网IP.</li>
+<li>请求目的IP地址改为内网服务器的内网IP.</li>
+<li>LVS服务器需要存储客户端IP地址, 内网服务器返回响应时需要修改目的IP为客户端IP地址.</li>
+</ul>
+</li>
+<li>FULLNAT的缺点: 内网服务器无法获取客户端的IP.</li>
+</ul>
+<h4 id="TUN模式"><a href="#TUN模式" class="headerlink" title="TUN模式"></a>TUN模式</h4>
+<p>TUN模式采用了IP隧道实现.</p>
+<h3 id="LVS的高可用问题"><a href="#LVS的高可用问题" class="headerlink" title="LVS的高可用问题"></a>LVS的高可用问题</h3>
+<ul>
+<li>LVS服务器一般是单点, 为了保证LVS服务器高可用, 需要实现双机热备.</li>
+</ul>
+<h2 id="LVS-Nginx服务器调度层"><a href="#LVS-Nginx服务器调度层" class="headerlink" title="LVS+Nginx服务器调度层"></a>LVS+Nginx服务器调度层</h2>
+<ul>
+<li>服务器调度层的架构如下:
+<ul>
+<li>配置多台高可用(实现双机热备)的LVS服务器的公网IP, 并且配置DNS, 让这些公网IP指向同一个域名.
+<ul>
+<li>客户端通过DNS轮询决定访问哪个LVS.</li>
+</ul>
+</li>
+<li>LVS使用FULLNAT模式, 将请求转发到某台Nginx服务器上.</li>
+<li>Nginx服务器再根据URL, 以及负载均衡策略, 将请求转发到后端一台真实的服务器.</li>
+</ul>
+</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
