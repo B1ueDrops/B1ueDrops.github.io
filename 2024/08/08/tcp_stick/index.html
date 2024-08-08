@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>线性代数 | B1ueDrops</title>
+  <title>如何解决TCP粘包问题 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="线性代数 | B1ueDrops">
+  <meta name="description" content="如何解决TCP粘包问题 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="TCP粘包是什么?  假设TCP的客户端发送了A和B. 接收端调用两次recv, 从缓冲区中可能拿到的是:  0.5A, 0.5A + B. A + 0.5B, 0.5B.    这个现象就是TCP粘包问题. 为什么会有TCP粘包?  TCP是字节流式传输, 连续两次发送的数据之间边界信息会失去.   UDP为什么没有粘包?   UDP不是流式传输, 而是以UDP数据报的形式. UDP的服务端是以">
 <meta property="og:type" content="article">
@@ -1220,9 +1220,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-linear_algebra" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-tcp_stick" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">线性代数</h1>
+        <h1 class="article-title">如何解决TCP粘包问题</h1>
     
     <div class="article-meta">
         
@@ -1232,7 +1232,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="控制基础">控制基础</a>
+            <a  data-rel="计算机网络">计算机网络</a>
             
         </span>
         
@@ -1240,7 +1240,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-06-01 15:30:34'>2024-06-01 15:30</time>
+            Created At : <time class="date" title='Updated At: 2024-08-08 18:19:20'>2024-08-08 17:52</time>
         
     </div>
     <div class="article-meta">
@@ -1251,7 +1251,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E7%B2%98%E5%8C%85%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">TCP粘包是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89TCP%E7%B2%98%E5%8C%85"><span class="toc-text">为什么会有TCP粘包?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3TCP%E7%B2%98%E5%8C%85"><span class="toc-text">如何解决TCP粘包?</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1267,7 +1267,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="TCP粘包是什么"><a href="#TCP粘包是什么" class="headerlink" title="TCP粘包是什么?"></a>TCP粘包是什么?</h2>
+<ul>
+<li>假设TCP的客户端发送了A和B.</li>
+<li>接收端调用两次<code>recv</code>, 从缓冲区中可能拿到的是:
+<ul>
+<li>0.5A, 0.5A + B.</li>
+<li>A + 0.5B, 0.5B.</li>
+</ul>
+</li>
+</ul>
+<p>这个现象就是TCP粘包问题.</p>
+<h2 id="为什么会有TCP粘包"><a href="#为什么会有TCP粘包" class="headerlink" title="为什么会有TCP粘包?"></a>为什么会有TCP粘包?</h2>
+<ul>
+<li>TCP是字节流式传输, 连续两次发送的数据之间边界信息会失去.</li>
+</ul>
+<blockquote>
+<p>UDP为什么没有粘包?</p>
+</blockquote>
+<ul>
+<li>UDP不是流式传输, 而是以UDP数据报的形式.</li>
+<li>UDP的服务端是以UDP数据报为单位提取的.</li>
+</ul>
+<h2 id="如何解决TCP粘包"><a href="#如何解决TCP粘包" class="headerlink" title="如何解决TCP粘包?"></a>如何解决TCP粘包?</h2>
+<ul>
+<li>假设要发送的数据大小是<code>S</code>.</li>
+<li>TCP客户端:
+<ul>
+<li>首先发送数据大小, 数据大小所占的字节长度需要已知, 可以使用python的<code>struct</code>库.</li>
+<li>然后, 发送序列化的真实数据.</li>
+</ul>
+</li>
+<li>TCP服务端:
+<ul>
+<li>首先, 第一次接受的buffer需要根据前面定长的数据大小来接受.</li>
+<li>然后, 根据数据大小来拼数据.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>TCP客户端代码:</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">import</span> struct<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPClient</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br><br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>		self.socket.connect((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">send_data</span>(<span class="hljs-params">self, data</span>):<br>		serialized_data = pickle.dumps(data)<br>		data_len = struct.pack(<span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-built_in">len</span>(serialized_data))<br>		self.socket.send(data_len)<br>		self.socket.send(serialized_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">close</span>(<span class="hljs-params">self</span>):<br>		self.socket.close()<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPServer</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>		self.socket.bind((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>		self.socket.listen(<span class="hljs-number">5</span>)<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			client_socket, addr = self.socket.accept()<br>			data = client_socket.recv(<span class="hljs-number">4</span>)<br>			data_len = struct.unpack(<span class="hljs-string">&#x27;i&#x27;</span>, data)[<span class="hljs-number">0</span>]<br>			packet = <span class="hljs-string">b&#x27;&#x27;</span><br>			<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>				<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(packet) == data_len:<br>					<span class="hljs-keyword">break</span><br>				client_data = client_socket.recv(<span class="hljs-number">1024</span>)<br>				packet += client_data<br>			true_data = pickle.loads(packet)<br>			self.process(true_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">process</span>(<span class="hljs-params">self, true_data</span>):<br>		<span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
+
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
@@ -1278,47 +1320,6 @@
 
 
 
-
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<input type="hidden" id="MathJax-js"
-        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</input>
 
     
 
