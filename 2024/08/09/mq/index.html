@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>后端微服务的架构 | B1ueDrops</title>
+  <title>消息中间件技术 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="后端微服务的架构 | B1ueDrops">
+  <meta name="description" content="消息中间件技术 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="TCP粘包是什么?  假设TCP的客户端发送了A和B. 接收端调用两次recv, 从缓冲区中可能拿到的是:  0.5A, 0.5A + B. A + 0.5B, 0.5B.    这个现象就是TCP粘包问题. 为什么会有TCP粘包?  TCP是字节流式传输, 连续两次发送的数据之间边界信息会失去.   UDP为什么没有粘包?   UDP不是流式传输, 而是以UDP数据报的形式. UDP的服务端是以">
-<meta property="og:type" content="article">
-<meta property="og:title" content="如何解决TCP粘包问题">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/08/08/tcp_stick/index.html">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="TCP粘包是什么?  假设TCP的客户端发送了A和B. 接收端调用两次recv, 从缓冲区中可能拿到的是:  0.5A, 0.5A + B. A + 0.5B, 0.5B.    这个现象就是TCP粘包问题. 为什么会有TCP粘包?  TCP是字节流式传输, 连续两次发送的数据之间边界信息会失去.   UDP为什么没有粘包?   UDP不是流式传输, 而是以UDP数据报的形式. UDP的服务端是以">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-08-08T09:52:08.842Z">
-<meta property="article:modified_time" content="2024-08-08T10:19:20.258Z">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(91)</small>
+                <small>(92)</small>
             
         </div>
     </li>
@@ -232,7 +232,7 @@
         <div data-rel="软件工程">
             
             软件工程
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="91">
+<input type="hidden" id="yelog_site_posts_number" value="92">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -384,6 +384,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All 软件工程 "
+           href="/2024/08/09/mq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="消息中间件技术">消息中间件技术</span>
+            <span class="post-date" title="2024-08-09 19:45:40">2024/08/09</span>
+        </a>
+        
+        
         <a  class="All 计算机网络 "
            href="/2024/08/08/tcp_stick/"
            data-tag=""
@@ -403,10 +412,10 @@
         
         
         <a  class="All 软件工程 "
-           href="/2024/08/06/rpc_architecture/"
+           href="/2024/08/06/storage_rpc/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="后端微服务的架构">后端微服务的架构</span>
+            <span class="post-title" title="存储微服务的架构">存储微服务的架构</span>
             <span class="post-date" title="2024-08-06 16:53:34">2024/08/06</span>
         </a>
         
@@ -1220,9 +1229,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-rpc_architecture" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-mq" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">后端微服务的架构</h1>
+        <h1 class="article-title">消息中间件技术</h1>
     
     <div class="article-meta">
         
@@ -1240,7 +1249,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-06 20:03:38'>2024-08-06 16:53</time>
+            Created At : <time class="date" title='Updated At: 2024-08-09 21:17:27'>2024-08-09 19:45</time>
         
     </div>
     <div class="article-meta">
@@ -1251,7 +1260,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">存储服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">MySQL的高可用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F"><span class="toc-text">主从模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MHA-%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F%E7%AE%A1%E7%90%86%E8%80%85"><span class="toc-text">MHA-主从模式管理者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MMM-%E5%8F%8C%E4%B8%BB%E6%A8%A1%E5%BC%8F%E7%AE%A1%E7%90%86%E8%80%85"><span class="toc-text">MMM-双主模式管理者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MGR"><span class="toc-text">MGR</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">Redis的高可用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F-1"><span class="toc-text">主从模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-text">哨兵模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">集群模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E5%8C%96%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">中心化集群模式</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8B"><span class="toc-text">消息队列模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">Kafka的原理</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1267,99 +1276,104 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>
+        <h2 id="消息队列模型"><a href="#消息队列模型" class="headerlink" title="消息队列模型"></a>消息队列模型</h2>
 <ul>
-<li>后端架构由如下几个部分组成:
+<li>消息队列模型是一种生产者和消费者的异步通信模型:
 <ul>
-<li>微服务: 可以包括HTTP服务, RPC服务, 数据库/分布式缓存服务等.</li>
-<li>消息中间件: 使用生产者-消费者模式, 将各种微服务进行互联.</li>
+<li>生产者只需要向消息队列中塞信息, 就可以去干其他事情了.</li>
+<li>消费者如果有了消费能力, 就会从消息队列中拿走信息处理.</li>
+</ul>
+</li>
+<li>消息队列的好处:
+<ul>
+<li><strong>异步化:</strong> 假设一个用户请求的微服务调用链是<code>A-&gt;B-&gt;C-&gt;D</code>.
+<ul>
+<li>如果采用同步的方式, 那么用户的响应时间是<code>T(A) + T(B) + T(C) + T(D)</code>.</li>
+<li>如果采用消息队列, 那么<code>A</code>完成后就可以响应用户, 然后写入消息队列就可以了.</li>
+</ul>
+</li>
+<li><strong>流量削峰:</strong> 如果请求速率过高, 可以经过消息队列进行平滑, 然后消费者根据自己能力决定是否处理请求.</li>
+<li><strong>解耦合:</strong>
+<ul>
+<li>假设没有消息队列, 一个微服务<code>A</code>要调用微服务<code>B</code>:
+<ul>
+<li>需要考虑微服务<code>B</code>的各种情况, 因此<code>A</code>, <code>B</code>耦合在一起.</li>
+</ul>
+</li>
+<li>如果有了消息队列, 那么<code>A</code>只需要将消息写到<code>B</code>中, <code>B</code>怎么样完全不需要理会.</li>
 </ul>
 </li>
 </ul>
-<h2 id="存储服务"><a href="#存储服务" class="headerlink" title="存储服务"></a>存储服务</h2>
-<h3 id="MySQL的高可用架构"><a href="#MySQL的高可用架构" class="headerlink" title="MySQL的高可用架构"></a>MySQL的高可用架构</h3>
-<h4 id="主从模式"><a href="#主从模式" class="headerlink" title="主从模式"></a>主从模式</h4>
-<p>主从模式下:</p>
-<ul>
-<li>有一台MySQL服务器作为Master, 处理写请求, 其余MySQL服务器作为Slave.</li>
-<li>Master与Slave通过主从复制保持数据一致性.</li>
-<li>Master宕机后, 某个Slave会变成Master.</li>
+</li>
 </ul>
-<blockquote>
-<p>异步主从复制原理:</p>
-</blockquote>
+<h2 id="Kafka的原理"><a href="#Kafka的原理" class="headerlink" title="Kafka的原理"></a>Kafka的原理</h2>
 <ul>
 <li>
-<p>Master数据发生变化后, 将数据变更日志写入二进制日志文件<code>binlog</code>.</p>
+<p>Kafka是一个高性能, 高可用, 高扩展性的分布式消息队列系统.</p>
+</li>
+<li>
+<p>Kafka的组成部分:</p>
 <ul>
-<li>MySQL会启动<code>binlog server</code>进程, 如果MySQL进程挂了, 还可以通过<code>binlog server</code>获取<code>binlog</code>.</li>
+<li>Producer.</li>
+<li>Consumer.</li>
+<li>Topic: 消息类型.
+<ul>
+<li>Producer可以指定自己能生产的Topic.</li>
+<li>Consumer可以订阅自己能处理的Topic.</li>
+</ul>
+</li>
+<li>Partition: Kafka分布式存储数据的基本单位.
+<ul>
+<li>每个Partition存储的消息都是基于Key有序的.</li>
+<li>不同Partition之间的消息不保证有序.</li>
+<li>一个Topic的消息可以分布式地存储在多个Partition上.</li>
+</ul>
+</li>
+<li>Broker:
+<ul>
+<li>是部署在真实服务器上的服务.</li>
+<li>一个Broker上会有多个Partition.</li>
+<li>负责接收Producer的消息, 并存储在Partition上.</li>
+</ul>
+</li>
+<li>Consumer Group:
+<ul>
+<li>消费同一个Topic类型消息的所有Consumer组成一个Consumer Group.</li>
+<li>规定: 在同一时刻, 对于一个Topic的一个Partition, 只允许一个Consumer进行消费.</li>
+</ul>
+</li>
+<li>ZooKeeper:
+<ul>
+<li>维护Topic和Partition之间的映射关系.</li>
+<li>维护Partition和Broker之间的映射关系.</li>
+<li>维护Consumer Group和Topic的映射关系.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
-<p>Slave启动I/O线程, 与Master进行连接, 读取最新<code>binlog</code>, 保存在自身的<code>relaylog</code>.</p>
+<p>Kafka的工作原理:</p>
+<ul>
+<li>
+<p>Producer产生某个Topic的消息, 现在要决定存储在哪个Partition上:</p>
+<ul>
+<li>可以指定Partition.</li>
+<li>可以指定Key, 通过哈希映射到Partition.</li>
+<li>都没有指定, 则轮询选择.</li>
+</ul>
 </li>
 <li>
-<p>Slave启动专门的SQL线程, 从<code>relaylog</code>中获取日志, 在本地重新执行Master执行过的SQL语句, 保持Master和Slave数据一致.</p>
+<p>决定之后, 通过ZooKeeper, Producer可以获取Partition对应Broker的IP地址.</p>
+</li>
+<li>
+<p>Broker接收Topic, 将消息写入本地磁盘.</p>
+</li>
+<li>
+<p>Consumer根据自身能力, 通过拉取(pull)的方式消费Partition中的消息.</p>
 </li>
 </ul>
-<blockquote>
-<p>异步主从复制的隐患:</p>
-</blockquote>
-<ul>
-<li>Master提交事务, 和写入<code>binlog</code>之间的时间间隔内, 如果宕机, 那么Slave无法获取更新.</li>
-</ul>
-<blockquote>
-<p>半同步主从复制原理:</p>
-</blockquote>
-<ul>
-<li>Master提交事务前, 就写入<code>binlog</code>, 然后等待Slave连接读取<code>binlog</code>.</li>
-<li>至少一个Slave连接成功并读取<code>binlog</code>, 并且将更新保存到<code>relaylog</code>之后, 向Master发送ACK.</li>
-<li>Master收到至少一个ACK之后, 再提交事务.</li>
-</ul>
-<blockquote>
-<p>半同步主从复制的缺陷:</p>
-</blockquote>
-<ul>
-<li>适合对数据一致性要求较高的业务场景, 例如金融交易系统.</li>
-</ul>
-<blockquote>
-<p>主从复制模式的改进:</p>
-</blockquote>
-<ul>
-<li>如果所有Slave都连接Master, 那么Master压力会过大.</li>
-<li>因此, 只有某些Slave连接Master, 而其余的Slave通过复制后的Slave进行更新.</li>
-</ul>
-<h4 id="MHA-主从模式管理者"><a href="#MHA-主从模式管理者" class="headerlink" title="MHA-主从模式管理者"></a>MHA-主从模式管理者</h4>
-<ul>
-<li>MHA的全称是Master High Availability, 包括如下几个部分:
-<ul>
-<li>MHA Manager: 通常部署在单独的服务器上.</li>
-<li>MHA Node: 部署在每台MySQL服务器上.</li>
-</ul>
 </li>
-<li>MHA的工作原理如下:
-<ul>
-<li>MHA Manager周期性地探测所有MySQL集群中Master的心跳, 如果4次检测不到心跳:
-<ul>
-<li>有可能是MHA Manager与Master之间的网络问题, 此时MHA Manager会通知Slave (MHA Node)通过SSH对Master进行连接.</li>
-<li>如果再连接不上, 则认为Master宕机.</li>
 </ul>
-</li>
-<li>如果Master宕机, 则MHA Manager会通过SSH连接到<code>binlog server</code>, 获取Master的<code>binlog</code>文件.</li>
-<li>之后, MHA Manager识别哪个Slave的<code>relaylog</code>更新, 最新的哪个就是新的Master.</li>
-<li>Slave之间通过增量的方式同步<code>relaylog</code>.</li>
-<li>MHA Manager通过增量的方式同步<code>binlog</code>和Slave之间的<code>relaylog</code>.</li>
-</ul>
-</li>
-<li>MHA和半同步复制模式一起使用, 可以大幅度降低数据丢失的风险.</li>
-</ul>
-<h4 id="MMM-双主模式管理者"><a href="#MMM-双主模式管理者" class="headerlink" title="MMM-双主模式管理者"></a>MMM-双主模式管理者</h4>
-<h4 id="MGR"><a href="#MGR" class="headerlink" title="MGR"></a>MGR</h4>
-<h3 id="Redis的高可用架构"><a href="#Redis的高可用架构" class="headerlink" title="Redis的高可用架构"></a>Redis的高可用架构</h3>
-<h4 id="主从模式-1"><a href="#主从模式-1" class="headerlink" title="主从模式"></a>主从模式</h4>
-<h4 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h4>
-<h4 id="集群模式"><a href="#集群模式" class="headerlink" title="集群模式"></a>集群模式</h4>
-<h4 id="中心化集群模式"><a href="#中心化集群模式" class="headerlink" title="中心化集群模式"></a>中心化集群模式</h4>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
@@ -1371,47 +1385,6 @@
 
 
 
-
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<input type="hidden" id="MathJax-js"
-        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
-</input>
 
     
 

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>脑电的原理 | B1ueDrops</title>
+  <title>存储微服务的架构 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="脑电的原理 | B1ueDrops">
+  <meta name="description" content="存储微服务的架构 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1229,9 +1229,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-eeg_device" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-storage_rpc" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">脑电的原理</h1>
+        <h1 class="article-title">存储微服务的架构</h1>
     
     <div class="article-meta">
         
@@ -1241,7 +1241,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="脑机接口">脑机接口</a>
+            <a  data-rel="软件工程">软件工程</a>
             
         </span>
         
@@ -1249,7 +1249,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-20 19:15:45'>2024-04-06 10:35</time>
+            Created At : <time class="date" title='Updated At: 2024-08-09 19:40:46'>2024-08-06 16:53</time>
         
     </div>
     <div class="article-meta">
@@ -1260,7 +1260,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#International-10-20-system"><span class="toc-text">International 10-20 system</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%91%E7%94%B5%E5%B9%B2%E6%B9%BF%E7%94%B5%E6%9E%81"><span class="toc-text">脑电干湿电极</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EEG%E4%BA%94%E7%A7%8D%E9%A2%91%E6%AE%B5"><span class="toc-text">EEG五种频段</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">MySQL的高可用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F"><span class="toc-text">主从模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MHA-%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F%E7%AE%A1%E7%90%86%E8%80%85"><span class="toc-text">MHA-主从模式管理者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MGR"><span class="toc-text">MGR</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">Redis的高可用架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E6%A8%A1%E5%BC%8F-1"><span class="toc-text">主从模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-text">哨兵模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">集群模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gossip%E5%8D%8F%E8%AE%AE"><span class="toc-text">Gossip协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E5%BF%83%E5%8C%96%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">中心化集群模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">NoSQL数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LSM-Tree"><span class="toc-text">LSM Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">文档数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">列式数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">全文搜索数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NewSQL"><span class="toc-text">NewSQL</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1276,27 +1276,304 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="International-10-20-system"><a href="#International-10-20-system" class="headerlink" title="International 10-20 system"></a>International 10-20 system</h2>
-<p><img src="/2024/04/06/eeg_device/10_20_system.svg" alt="International 10-20 system (21电极)"></p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2>
 <ul>
-<li>Nasion: 鼻根</li>
-<li>Inion: 枕骨隆突</li>
-<li>Fp: pre-frontal lobe, 前额叶</li>
-<li>F: frontal lobe, 额叶</li>
-<li>T: temporal lobe, 颞叶, 头颅两侧靠近耳朵的地方</li>
-<li>P: parietal lobe, 顶叶</li>
-<li>O: occipital lobe, 枕叶</li>
-<li>C: center</li>
-<li>Fz, Cz, Pz: 用于参考.</li>
-<li>奇数编号在左, 偶数编号在右.</li>
+<li>后端架构由如下几个部分组成:
+<ul>
+<li>微服务: 可以包括HTTP服务, RPC服务, 数据库/分布式缓存服务等.</li>
+<li>消息中间件: 使用生产者-消费者模式, 将各种微服务进行互联.</li>
 </ul>
-<h2 id="脑电干湿电极"><a href="#脑电干湿电极" class="headerlink" title="脑电干湿电极"></a>脑电干湿电极</h2>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/540101050">你知道该如何选择脑电采集电极吗?</a></p>
-<h2 id="EEG五种频段"><a href="#EEG五种频段" class="headerlink" title="EEG五种频段"></a>EEG五种频段</h2>
-<p><img src="/2024/04/06/eeg_device/image-20240420191030209.png" alt="五种脑电波的介绍"></p>
+</li>
+</ul>
+<h2 id="MySQL的高可用架构"><a href="#MySQL的高可用架构" class="headerlink" title="MySQL的高可用架构"></a>MySQL的高可用架构</h2>
+<h3 id="主从模式"><a href="#主从模式" class="headerlink" title="主从模式"></a>主从模式</h3>
+<p>主从模式下:</p>
 <ul>
-<li>EEG中, 运动想象对Alpha波和Beta波的影响最大, 当人在脑中想象肢体运动的时候, Alpha波和Beta波出现明显的振幅衰减.</li>
-<li>如果是运动想象(motor imagery), 一般想象左手, 右手或者脚的运动, 左手MI变化来自于C3, 右手来自于C4, 脚来自于Cz.</li>
+<li>有一台MySQL服务器作为Master, 处理写请求, 其余MySQL服务器作为Slave.</li>
+<li>Master与Slave通过主从复制保持数据一致性.</li>
+<li>Master宕机后, 某个Slave会变成Master.</li>
+</ul>
+<blockquote>
+<p>异步主从复制原理:</p>
+</blockquote>
+<ul>
+<li>
+<p>Master数据发生变化后, 将数据变更日志写入二进制日志文件<code>binlog</code>.</p>
+<ul>
+<li>MySQL会启动<code>binlog server</code>进程, 如果MySQL进程挂了, 还可以通过<code>binlog server</code>获取<code>binlog</code>.</li>
+</ul>
+</li>
+<li>
+<p>Slave启动I/O线程, 与Master进行连接, 读取最新<code>binlog</code>, 保存在自身的<code>relaylog</code>.</p>
+</li>
+<li>
+<p>Slave启动专门的SQL线程, 从<code>relaylog</code>中获取日志, 在本地重新执行Master执行过的SQL语句, 保持Master和Slave数据一致.</p>
+</li>
+</ul>
+<blockquote>
+<p>异步主从复制的隐患:</p>
+</blockquote>
+<ul>
+<li>Master提交事务, 和写入<code>binlog</code>之间的时间间隔内, 如果宕机, 那么Slave无法获取更新.</li>
+</ul>
+<blockquote>
+<p>半同步主从复制原理:</p>
+</blockquote>
+<ul>
+<li>Master提交事务前, 就写入<code>binlog</code>, 然后等待Slave连接读取<code>binlog</code>.</li>
+<li>至少一个Slave连接成功并读取<code>binlog</code>, 并且将更新保存到<code>relaylog</code>之后, 向Master发送ACK.</li>
+<li>Master收到至少一个ACK之后, 再提交事务.</li>
+</ul>
+<blockquote>
+<p>半同步主从复制的缺陷:</p>
+</blockquote>
+<ul>
+<li>适合对数据一致性要求较高的业务场景, 例如金融交易系统.</li>
+</ul>
+<blockquote>
+<p>主从复制模式的改进:</p>
+</blockquote>
+<ul>
+<li>如果所有Slave都连接Master, 那么Master压力会过大.</li>
+<li>因此, 只有某些Slave连接Master, 而其余的Slave通过复制后的Slave进行更新.</li>
+</ul>
+<h3 id="MHA-主从模式管理者"><a href="#MHA-主从模式管理者" class="headerlink" title="MHA-主从模式管理者"></a>MHA-主从模式管理者</h3>
+<ul>
+<li>MHA的全称是Master High Availability, 包括如下几个部分:
+<ul>
+<li>MHA Manager: 通常部署在单独的服务器上.</li>
+<li>MHA Node: 部署在每台MySQL服务器上.</li>
+</ul>
+</li>
+<li>MHA的工作原理如下:
+<ul>
+<li>MHA Manager周期性地探测所有MySQL集群中Master的心跳, 如果4次检测不到心跳:
+<ul>
+<li>有可能是MHA Manager与Master之间的网络问题, 此时MHA Manager会通知Slave (MHA Node)通过SSH对Master进行连接.</li>
+<li>如果再连接不上, 则认为Master宕机.</li>
+</ul>
+</li>
+<li>如果Master宕机, 则MHA Manager会通过SSH连接到<code>binlog server</code>, 获取Master的<code>binlog</code>文件.</li>
+<li>之后, MHA Manager识别哪个Slave的<code>relaylog</code>更新, 最新的哪个就是新的Master.</li>
+<li>Slave之间通过增量的方式同步<code>relaylog</code>.</li>
+<li>MHA Manager通过增量的方式同步<code>binlog</code>和Slave之间的<code>relaylog</code>.</li>
+</ul>
+</li>
+<li>MHA和半同步复制模式一起使用, 可以大幅度降低数据丢失的风险.</li>
+</ul>
+<h3 id="MGR"><a href="#MGR" class="headerlink" title="MGR"></a>MGR</h3>
+<ul>
+<li>MGR的全称是MySQL Group Replication, 它有如下几个特点:
+<ul>
+<li>一致性强: 基于分布式共识算法Paxos, 可以保证多个节点数据一致性.
+<ul>
+<li>代价是: 性能不如异步主从/半同步主从.</li>
+</ul>
+</li>
+<li>容错性强: <code>2N + 1</code>个节点的Group中, 可以容忍<code>N</code>个节点宕机.</li>
+<li>灵活性强: 同时支持单主/多主.</li>
+</ul>
+</li>
+<li>MGR的适用场景:
+<ul>
+<li>要求数据强一致性.</li>
+<li>写操作的请求量不是很大.</li>
+</ul>
+</li>
+<li>单主MGR的工作原理:</li>
+</ul>
+<h2 id="Redis的高可用架构"><a href="#Redis的高可用架构" class="headerlink" title="Redis的高可用架构"></a>Redis的高可用架构</h2>
+<h3 id="主从模式-1"><a href="#主从模式-1" class="headerlink" title="主从模式"></a>主从模式</h3>
+<ul>
+<li>Redis主从模式的工作原理:
+<ul>
+<li>Slave与Master首次建立连接后, 向Master发送<code>PSYNC</code>命令准备复制数据.</li>
+<li>Master收到<code>PSYNC</code>命令, 执行<code>BGSAVE</code>, 生成全部数据的Snapshot <code>RDB</code>文件, 并创建buffer, 用来记录之后Master执行的数据变更命令.</li>
+<li>Master向所有Slave发送<code>RDB</code>文件.</li>
+<li>Slave收到<code>RDB</code>文件后, 先保存到磁盘, 然后从磁盘加载数据到内存, 然后准备接收Master的数据变更命令.</li>
+<li>Master一进行数据变更, 就会向Slave发送数据变更命令.</li>
+</ul>
+</li>
+</ul>
+<h3 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h3>
+<ul>
+<li>
+<p>主从模式中, 如果Master宕机了, 那么需要手动选一个Slave作为Master.</p>
+</li>
+<li>
+<p>哨兵(Sentinel) 模式用来自动选择一个Slave作为Master.</p>
+</li>
+<li>
+<p>哨兵模式的工作原理:</p>
+<ul>
+<li>一个Redis Server除了作为Master/Slave, 还可以作为Sentinel.
+<ul>
+<li>Sentinel负责在Master/Slave宕机之后, 自动选一个Slave重新作为Master.</li>
+</ul>
+</li>
+<li>在主从模式Redis架构中, 部署若干Sentinel节点组成Sentinel集群, Sentinel集群会与Master/Slave维持心跳.</li>
+<li>超过<code>N</code>个Sentinel节点如果认为Master宕机, 那么Sentinel集群会选一个Slave作为新的Master, 并且与这个新的Master建立连接.</li>
+</ul>
+</li>
+<li>
+<p>在哨兵模式下, 访问Redis首先需要访问Sentinel集群, 从而获取Redis Master的地址.</p>
+</li>
+</ul>
+<h3 id="集群模式"><a href="#集群模式" class="headerlink" title="集群模式"></a>集群模式</h3>
+<ul>
+<li>在哨兵模式下,  只有一个Master对外提供服务, 如果有大量数据存储, 或者海量请求, 那么单个Master难以处理.
+<ul>
+<li>也就是没有解决在线扩容的问题.</li>
+</ul>
+</li>
+<li>集群模式可以解决:
+<ul>
+<li>数据分布式存储到各个Redis节点.</li>
+<li>可以接受海量请求访问.</li>
+</ul>
+</li>
+<li>Redis集群模式工作原理:
+<ul>
+<li>Redis整体分成若干Redis集群(Redis Cluster), 一个Redis集群有Master, Slave.
+<ul>
+<li>每个Redis集群中保存所有数据的一部分, 数据分片算法采用哈希槽算法.
+<ul>
+<li>当向Redis中写入数据时, 会进行CRC16校验, 然后和16384进行取模决定放到哪个槽.</li>
+</ul>
+</li>
+<li>每个Redis集群采用主从模式保证高可用, Master宕机后会自动选取一个Slave.</li>
+<li>在Redis集群中的每个服务器都有一个哈希槽和Master的映射关系, 这个通过Gossip协议实现.</li>
+</ul>
+</li>
+<li>客户端访问流程是:
+<ul>
+<li>客户端访问Redis集群中的任意一个服务器, 获取哈希槽和Master映射关系.</li>
+<li>客户端读写数据, 首先基于数据算出哈希槽, 然后获取Master, 然后访问Master.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h4>
+<ul>
+<li>
+<p>Redis集群中, 通过Gossip协议让每个节点都知道哈希槽与Master IP地址的映射关系.</p>
+</li>
+<li>
+<p>Gossip协议的内容:</p>
+<ul>
+<li>核心: 在节点数量有限的网络中, 每个节点随机和部分节点通信, 经过多次迭代, 多个节点信息会在一定时间内达成一致.</li>
+</ul>
+</li>
+<li>
+<p>Gossip协议的缺点:</p>
+<ul>
+<li>如果Redis集群节点过多, 那么Gossip协议会严重占用带宽.</li>
+</ul>
+</li>
+</ul>
+<h3 id="中心化集群模式"><a href="#中心化集群模式" class="headerlink" title="中心化集群模式"></a>中心化集群模式</h3>
+<ul>
+<li>中心化集群模式: 为了解决Gossip协议严重占用带宽, 采用中心化的服务器同步哈希槽与Master的存储关系.</li>
+</ul>
+<h2 id="NoSQL数据库"><a href="#NoSQL数据库" class="headerlink" title="NoSQL数据库"></a>NoSQL数据库</h2>
+<h3 id="LSM-Tree"><a href="#LSM-Tree" class="headerlink" title="LSM Tree"></a>LSM Tree</h3>
+<ul>
+<li>LSM Tree (Log-Structured Merge Tree) 是一种支持高并发写, 查询效率较高的数据结构, 是No SQL数据库的核心, 可以实现高效的键值存储系统.</li>
+<li>LSM Tree的核心:
+<ul>
+<li>对于内存/磁盘等存储介质, 顺序读写的性能远高于随机读写.
+<ul>
+<li>顺序读写: 按照文件中数据的顺序有序地读写, 例如追加写就是顺序写.</li>
+<li>随机读写: 不遵循文件中数据的顺序进行读写.</li>
+</ul>
+</li>
+<li>LSM Tree将数据的随机读写转化成数据的顺序读写, 大大提高性能.</li>
+</ul>
+</li>
+</ul>
+<h3 id="文档数据库"><a href="#文档数据库" class="headerlink" title="文档数据库"></a>文档数据库</h3>
+<ul>
+<li>文档数据库可以理解为一个键值存储系统:
+<ul>
+<li>键: 字符串.</li>
+<li>值: JSON对象, 这个对象可以扩展字段.</li>
+</ul>
+</li>
+<li>文档数据库的适用场景:
+<ul>
+<li>数据字段定义不明确, 且会不断变化, 例如不同商品的参数.</li>
+</ul>
+</li>
+<li>不适用场景:
+<ul>
+<li>需要支持事务的强一致性系统.</li>
+<li>需要支持复杂查询, 例如join等.</li>
+</ul>
+</li>
+</ul>
+<h3 id="列式数据库"><a href="#列式数据库" class="headerlink" title="列式数据库"></a>列式数据库</h3>
+<ul>
+<li>传统的关系型数据库以行为单位进行存储:
+<ul>
+<li>如果需要进行Groupby之类的数据分析, 需要读取所有行数据, 磁盘I/O过多.</li>
+</ul>
+</li>
+<li>列式数据库按照列为单位进行存储:
+<ul>
+<li>一次可以高效地读取一列的数据.</li>
+</ul>
+</li>
+<li>列式数据库可以大幅提高空间利用率:
+<ul>
+<li>如果列对应的数据类型是有限枚举(性别等), 可以将原数据映射到枚举值(占用空间小), 然后只存储枚举值.</li>
+<li>数据量越大, 空间利用率越高.</li>
+</ul>
+</li>
+<li>列式数据库的场景:
+<ul>
+<li>数据分析场景: 需要针对某列进行数据分析.</li>
+<li>海量数据插入, 但是数据修改极少的场景(诸多的日志监控系统).</li>
+</ul>
+</li>
+<li>列式数据库不适用的场景:
+<ul>
+<li>数据需要高频写.</li>
+<li>需要支持事务的强一致性系统.</li>
+</ul>
+</li>
+</ul>
+<h3 id="全文搜索数据库"><a href="#全文搜索数据库" class="headerlink" title="全文搜索数据库"></a>全文搜索数据库</h3>
+<ul>
+<li>关系型数据库如果需要全文搜索需要使用<code>like</code>进行模糊查询, 效率低下, 需要使用<code>ElasticSearch</code>等全文搜索数据库.</li>
+<li>原理: 倒排索引(Inverted Index)
+<ul>
+<li>存储每一个关键词在文档中的位置.</li>
+</ul>
+</li>
+<li>全文搜索数据库的场景:
+<ul>
+<li>关键词检索.</li>
+<li>海量数据复杂查询.</li>
+<li>数据统计.</li>
+</ul>
+</li>
+<li>不适用的场景:
+<ul>
+<li>数据需要高频写.</li>
+<li>需要支持事务的强一致性系统.</li>
+</ul>
+</li>
+</ul>
+<h3 id="NewSQL"><a href="#NewSQL" class="headerlink" title="NewSQL"></a>NewSQL</h3>
+<ul>
+<li>各种数据库的优势/劣势:
+<ul>
+<li>关系型数据库: 可以承担高频写, 并且是强一致性系统.</li>
+<li>NoSQL: 可以针对特定场景提供高性能的查询.</li>
+</ul>
+</li>
+<li>NewSQL数据库是在NoSQL的基础上, 提供关系型数据库的事务能力.</li>
 </ul>
 
       
@@ -1309,6 +1586,47 @@
 
 
 
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
 
     
 
