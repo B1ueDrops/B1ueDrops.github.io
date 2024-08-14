@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(92)</small>
+                <small>(95)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(17)</small>
+            <small>(18)</small>
         </div>
         
     </li>
@@ -232,7 +232,7 @@
         <div data-rel="软件工程">
             
             软件工程
-            <small>(13)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -332,7 +332,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="92">
+<input type="hidden" id="yelog_site_posts_number" value="95">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -382,6 +382,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/08/12/python_package/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python项目组织">Python项目组织</span>
+            <span class="post-date" title="2024-08-12 18:32:33">2024/08/12</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/08/10/concurrent_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高并发架构通用设计">高并发架构通用设计</span>
+            <span class="post-date" title="2024-08-10 20:06:08">2024/08/10</span>
+        </a>
+        
+        
+        <a  class="All 软件工程 "
+           href="/2024/08/10/data_replication_center/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机房高可用技术">机房高可用技术</span>
+            <span class="post-date" title="2024-08-10 20:04:18">2024/08/10</span>
+        </a>
         
         
         <a  class="All 软件工程 "
@@ -1249,7 +1276,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-08 18:19:20'>2024-08-08 17:52</time>
+            Created At : <time class="date" title='Updated At: 2024-08-13 18:56:52'>2024-08-08 17:52</time>
         
     </div>
     <div class="article-meta">
@@ -1317,7 +1344,7 @@
 <blockquote>
 <p>TCP客户端代码:</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">import</span> struct<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPClient</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br><br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>		self.socket.connect((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">send_data</span>(<span class="hljs-params">self, data</span>):<br>		serialized_data = pickle.dumps(data)<br>		data_len = struct.pack(<span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-built_in">len</span>(serialized_data))<br>		self.socket.send(data_len)<br>		self.socket.send(serialized_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">close</span>(<span class="hljs-params">self</span>):<br>		self.socket.close()<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPServer</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>		self.socket.bind((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>		self.socket.listen(<span class="hljs-number">5</span>)<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			client_socket, addr = self.socket.accept()<br>			data = client_socket.recv(<span class="hljs-number">4</span>)<br>			data_len = struct.unpack(<span class="hljs-string">&#x27;i&#x27;</span>, data)[<span class="hljs-number">0</span>]<br>			packet = <span class="hljs-string">b&#x27;&#x27;</span><br>			<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>				<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(packet) == data_len:<br>					<span class="hljs-keyword">break</span><br>				client_data = client_socket.recv(<span class="hljs-number">1024</span>)<br>				packet += client_data<br>			true_data = pickle.loads(packet)<br>			self.process(true_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">process</span>(<span class="hljs-params">self, true_data</span>):<br>		<span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">import</span> struct<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPClient</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br><br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>		self.socket.connect((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">send_data</span>(<span class="hljs-params">self, data</span>):<br>		serialized_data = pickle.dumps(data)<br>		data_len = struct.pack(<span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-built_in">len</span>(serialized_data))<br>		self.socket.send(data_len)<br>		self.socket.send(serialized_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">close</span>(<span class="hljs-params">self</span>):<br>		self.socket.close()<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPServer</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="hljs-number">1</span>)<br>		self.socket.bind((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>		self.socket.listen(<span class="hljs-number">5</span>)<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			client_socket, addr = self.socket.accept()<br>			data = client_socket.recv(<span class="hljs-number">4</span>)<br>			data_len = struct.unpack(<span class="hljs-string">&#x27;i&#x27;</span>, data)[<span class="hljs-number">0</span>]<br>			packet = <span class="hljs-string">b&#x27;&#x27;</span><br>			<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>				<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(packet) == data_len:<br>					<span class="hljs-keyword">break</span><br>				client_data = client_socket.recv(<span class="hljs-number">1024</span>)<br>				packet += client_data<br>			true_data = pickle.loads(packet)<br>			self.process(true_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">process</span>(<span class="hljs-params">self, true_data</span>):<br>		<span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
