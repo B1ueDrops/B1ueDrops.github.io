@@ -154,21 +154,6 @@
             
                 
     <li>
-        <div data-rel="工具/环境">
-            
-            工具/环境
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="后端技术">
             
             后端技术
@@ -202,7 +187,7 @@
         <div data-rel="开发工具">
             
             开发工具
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -468,7 +453,7 @@
         </a>
         
         
-        <a  class="All 工具/环境 "
+        <a  class="All 开发工具 "
            href="/2024/08/16/lazygit/"
            data-tag=""
            data-author="" >
@@ -1063,19 +1048,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1099,19 +1084,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/graph/"
+           href="/2024/03/02/greedy/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="图论">图论</span>
+            <span class="post-title" title="贪心算法">贪心算法</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/greedy/"
+           href="/2024/03/02/graph/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-title" title="图论">图论</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1252,7 +1237,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="TCP粘包是什么">TCP粘包是什么?</h2>
+        <h2 id="TCP粘包是什么"><a href="#TCP粘包是什么" class="headerlink" title="TCP粘包是什么?"></a>TCP粘包是什么?</h2>
 <ul>
 <li>假设TCP的客户端发送了A和B.</li>
 <li>接收端调用两次<code>recv</code>, 从缓冲区中可能拿到的是:
@@ -1263,7 +1248,7 @@
 </li>
 </ul>
 <p>这个现象就是TCP粘包问题.</p>
-<h2 id="为什么会有TCP粘包">为什么会有TCP粘包?</h2>
+<h2 id="为什么会有TCP粘包"><a href="#为什么会有TCP粘包" class="headerlink" title="为什么会有TCP粘包?"></a>为什么会有TCP粘包?</h2>
 <ul>
 <li>TCP是字节流式传输, 连续两次发送的数据之间边界信息会失去.</li>
 </ul>
@@ -1274,7 +1259,7 @@
 <li>UDP不是流式传输, 而是以UDP数据报的形式.</li>
 <li>UDP的服务端是以UDP数据报为单位提取的.</li>
 </ul>
-<h2 id="如何解决TCP粘包">如何解决TCP粘包?</h2>
+<h2 id="如何解决TCP粘包"><a href="#如何解决TCP粘包" class="headerlink" title="如何解决TCP粘包?"></a>如何解决TCP粘包?</h2>
 <ul>
 <li>假设要发送的数据大小是<code>S</code>.</li>
 <li>TCP客户端:

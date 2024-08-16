@@ -154,21 +154,6 @@
             
                 
     <li>
-        <div data-rel="工具/环境">
-            
-            工具/环境
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="后端技术">
             
             后端技术
@@ -202,7 +187,7 @@
         <div data-rel="开发工具">
             
             开发工具
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -468,7 +453,7 @@
         </a>
         
         
-        <a  class="All 工具/环境 "
+        <a  class="All 开发工具 "
            href="/2024/08/16/lazygit/"
            data-tag=""
            data-author="" >
@@ -1063,19 +1048,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1099,19 +1084,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/graph/"
+           href="/2024/03/02/greedy/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="图论">图论</span>
+            <span class="post-title" title="贪心算法">贪心算法</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/greedy/"
+           href="/2024/03/02/graph/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-title" title="图论">图论</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1252,7 +1237,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="多线程模型">多线程模型</h2>
+        <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2>
 <ul>
 <li>
 <p>最基础的模型: 单个CPU, 多个线程, 线程通过上下文切换的方式在CPU上执行.</p>
@@ -1276,10 +1261,10 @@
 <li>非阻塞I/O就是当I/O未完成, 线程不会被阻塞, 而是可以去执行其他任务.</li>
 <li>当I/O Task完成后, 会通知线程处理.</li>
 </ul>
-<h2 id="协程模型">协程模型</h2>
+<h2 id="协程模型"><a href="#协程模型" class="headerlink" title="协程模型"></a>协程模型</h2>
 <p>协程的出现是为了减少CPU线程上下文切换时的开销.</p>
 <p>协程是比线程更细粒度的调度单位, 协程的切换不需要切换到内核态, 可以在用户态实现轻量级的任务调度.</p>
-<h2 id="async-await模型">async/await模型</h2>
+<h2 id="async-await模型"><a href="#async-await模型" class="headerlink" title="async/await模型"></a>async/await模型</h2>
 <p>借助非阻塞I/O和I/O多路复用的思想, 以及协程模型, 可以实现在单线程基础上的异步编程模型, 最典型的是async/await编程模型.</p>
 <p>在async/await模型中, 只有一个线程, 线程中有一个部分叫做<code>EventLoop</code>, 负责调度不同的Task.</p>
 <p>对于用户而言, 一般需要定义一个协程函数(Coroutine Function), 里面写入业务逻辑.</p>

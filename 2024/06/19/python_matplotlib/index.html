@@ -154,21 +154,6 @@
             
                 
     <li>
-        <div data-rel="工具/环境">
-            
-            工具/环境
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="后端技术">
             
             后端技术
@@ -202,7 +187,7 @@
         <div data-rel="开发工具">
             
             开发工具
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -468,7 +453,7 @@
         </a>
         
         
-        <a  class="All 工具/环境 "
+        <a  class="All 开发工具 "
            href="/2024/08/16/lazygit/"
            data-tag=""
            data-author="" >
@@ -1063,19 +1048,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1099,19 +1084,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/graph/"
+           href="/2024/03/02/greedy/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="图论">图论</span>
+            <span class="post-title" title="贪心算法">贪心算法</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/greedy/"
+           href="/2024/03/02/graph/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-title" title="图论">图论</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1236,7 +1221,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">导入模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAfigure%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建figure对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAaxes%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建axes对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#axes%E5%AF%B9%E8%B1%A1%E9%85%8D%E7%BD%AE"><span class="toc-text">axes对象配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E5%88%86%E7%94%BB%E5%B8%83"><span class="toc-text">等分画布</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">导入模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">创建figure对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAaxes%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建axes对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#axes%E5%AF%B9%E8%B1%A1%E9%85%8D%E7%BD%AE"><span class="toc-text">axes对象配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89%E5%88%86%E7%94%BB%E5%B8%83"><span class="toc-text">等分画布</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1252,9 +1237,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="导入模块">导入模块</h2>
+        <h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt<br></code></pre></td></tr></table></figure>
-<h2 id="创建figure对象">创建<code>figure</code>对象</h2>
+<h2>创建<code>figure</code>对象</h2>
 <p>figure对象可以理解成一个画布(canvas).</p>
 <ul>
 <li><code>fig = plt.figure()</code>:
@@ -1264,7 +1249,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="创建axes对象">创建axes对象</h2>
+<h2 id="创建axes对象"><a href="#创建axes对象" class="headerlink" title="创建axes对象"></a>创建axes对象</h2>
 <p>axes对象是一个绘图区域:</p>
 <ul>
 <li><code>ax = fig.add_axes([x, y, width, height])</code>:
@@ -1273,7 +1258,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="axes对象配置">axes对象配置</h2>
+<h2 id="axes对象配置"><a href="#axes对象配置" class="headerlink" title="axes对象配置"></a>axes对象配置</h2>
 <ul>
 <li>
 <p>设置title: <code>ax.set_title('title')</code></p>
@@ -1301,7 +1286,7 @@
 <p>如果要在一个<code>ax</code>上画很多线, 那么就要调用多次<code>ax.plot</code>.</p>
 </li>
 </ul>
-<h2 id="等分画布">等分画布</h2>
+<h2 id="等分画布"><a href="#等分画布" class="headerlink" title="等分画布"></a>等分画布</h2>
 <ul>
 <li>通过<code>fig, axes = plt.subplots(nrows, ncols)</code>, 可以等分画布, 得到一个<code>nrows x ncols</code>的矩阵.
 <ul>

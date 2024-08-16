@@ -154,21 +154,6 @@
             
                 
     <li>
-        <div data-rel="工具/环境">
-            
-            工具/环境
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="后端技术">
             
             后端技术
@@ -202,7 +187,7 @@
         <div data-rel="开发工具">
             
             开发工具
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -468,7 +453,7 @@
         </a>
         
         
-        <a  class="All 工具/环境 "
+        <a  class="All 开发工具 "
            href="/2024/08/16/lazygit/"
            data-tag=""
            data-author="" >
@@ -1063,19 +1048,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1099,19 +1084,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/graph/"
+           href="/2024/03/02/greedy/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="图论">图论</span>
+            <span class="post-title" title="贪心算法">贪心算法</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/greedy/"
+           href="/2024/03/02/graph/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-title" title="图论">图论</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1252,16 +1237,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一些预备知识">一些预备知识</h2>
+        <h2 id="一些预备知识"><a href="#一些预备知识" class="headerlink" title="一些预备知识"></a>一些预备知识</h2>
 <ul>
 <li><code>JoinHandle&lt;T&gt;</code>类型:
 <ul>
-<li>使用<code>let handle = thread::spawn(|| &#123;&#125;)</code>的返回值是<code>JoinHandle&lt;T&gt;</code>类型, 其中<code>T</code>是线程的返回值类型.</li>
+<li>使用<code>let handle = thread::spawn(|| {})</code>的返回值是<code>JoinHandle&lt;T&gt;</code>类型, 其中<code>T</code>是线程的返回值类型.</li>
 <li>可以通过<code>handle.join()</code>获取线程的返回值, 返回值类型是<code>Result&lt;T, E&gt;</code>.</li>
 </ul>
 </li>
 </ul>
-<h2 id="线程池的设计">线程池的设计</h2>
+<h2 id="线程池的设计"><a href="#线程池的设计" class="headerlink" title="线程池的设计"></a>线程池的设计</h2>
 <ul>
 <li>工作线程结构体<code>Worker</code>:
 <ul>
@@ -1305,7 +1290,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="线程池的源代码">线程池的源代码</h2>
+<h2 id="线程池的源代码"><a href="#线程池的源代码" class="headerlink" title="线程池的源代码"></a>线程池的源代码</h2>
 <figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">use</span> std::thread;<br><span class="hljs-keyword">use</span> std::sync::&#123;Arc, Mutex, mpsc&#125;;<br><br><span class="hljs-comment">// Job是一个闭包类型</span><br><span class="hljs-keyword">type</span> <span class="hljs-title class_">Job</span> = <span class="hljs-type">Box</span>&lt;<span class="hljs-keyword">dyn</span> <span class="hljs-title function_ invoke__">FnOnce</span>() + <span class="hljs-built_in">Send</span> + <span class="hljs-symbol">&#x27;static</span>&gt;;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Worker</span> &#123;<br>    <span class="hljs-comment">// 工作线程的id</span><br>    id: <span class="hljs-type">usize</span>,<br>    <span class="hljs-comment">// 实际的OS线程</span><br>    thread: <span class="hljs-type">Option</span>&lt;thread::JoinHandle&lt;()&gt;&gt;<br>&#125;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Worker</span> &#123;<br>    <span class="hljs-comment">// 每一个Worker有一个接收端, 接收线程池发送的Job</span><br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(id: <span class="hljs-type">usize</span>, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) <span class="hljs-punctuation">-&gt;</span> Worker &#123;<br>        <span class="hljs-comment">// 每一个Worker持续尝试获取receiver的lock, 获取后尝试执行job</span><br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">thread</span> = thread::<span class="hljs-title function_ invoke__">spawn</span>(<span class="hljs-keyword">move</span> || <span class="hljs-keyword">loop</span> &#123;<br>            <span class="hljs-keyword">let</span> <span class="hljs-variable">message</span> = receiver.<span class="hljs-title function_ invoke__">lock</span>().<span class="hljs-title function_ invoke__">unwrap</span>().<span class="hljs-title function_ invoke__">recv</span>();<br>            <span class="hljs-keyword">match</span> message &#123;<br>                <span class="hljs-title function_ invoke__">Ok</span>(job) =&gt; &#123;<br>                    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Worker &#123;id&#125; got a job; executing&quot;</span>);<br>                    <span class="hljs-title function_ invoke__">job</span>();<br>                &#125;<br>                <span class="hljs-title function_ invoke__">Err</span>(_) =&gt; &#123;<br>                    <span class="hljs-comment">// 线程池drop后</span><br>                    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Worker &#123;id&#125; disconnected, shutting down&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>        &#125;);<br>        Worker &#123; id, thread: <span class="hljs-title function_ invoke__">Some</span>(thread) &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">ThreadPool</span> &#123;<br>    <span class="hljs-comment">// 线程池中所有的工作线程</span><br>    workers: <span class="hljs-type">Vec</span>&lt;Worker&gt;,<br>    <span class="hljs-comment">// 工作线程从线程池中获取Job</span><br>    sender: <span class="hljs-type">Option</span>&lt;mpsc::Sender&lt;Job&gt;&gt;, <br>&#125;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">ThreadPool</span> &#123;<br><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(size: <span class="hljs-type">usize</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        <span class="hljs-built_in">assert!</span>(size &gt; <span class="hljs-number">0</span>);<br>        <br>        <span class="hljs-comment">// 线程池通过channel给Worker分配任务</span><br>        <span class="hljs-keyword">let</span> (tx, rx) = mpsc::<span class="hljs-title function_ invoke__">channel</span>();<br><br>        <span class="hljs-comment">// 让每一个Worker都能持有rx</span><br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">rx</span> = Arc::<span class="hljs-title function_ invoke__">new</span>(Mutex::<span class="hljs-title function_ invoke__">new</span>(rx));<br><br>        <span class="hljs-comment">// 创建所有的Worker线程</span><br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">workers</span> = <span class="hljs-type">Vec</span>::<span class="hljs-title function_ invoke__">with_capacity</span>(size);<br><br>        <span class="hljs-comment">// 把receiver的copy发送给Worker</span><br>        <span class="hljs-keyword">for</span> <span class="hljs-variable">id</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..size &#123;<br>            workers.<span class="hljs-title function_ invoke__">push</span>(Worker::<span class="hljs-title function_ invoke__">new</span>(id, Arc::<span class="hljs-title function_ invoke__">clone</span>(&amp;rx)));<br>        &#125;<br><br>        ThreadPool &#123; workers, sender: <span class="hljs-title function_ invoke__">Some</span>(tx) &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 执行时, 根据闭包创建Job, 然后通过channel发送</span><br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">execute</span>&lt;F&gt;(&amp;<span class="hljs-keyword">self</span>, f: F) <span class="hljs-keyword">where</span> F: <span class="hljs-title function_ invoke__">FnOnce</span>() + <span class="hljs-built_in">Send</span> + <span class="hljs-symbol">&#x27;static</span> &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">job</span> = <span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(f);<br>        <span class="hljs-comment">// 注意unwrap会拿走所有权, 需要用as_ref转成引用</span><br>        <span class="hljs-keyword">self</span>.sender.<span class="hljs-title function_ invoke__">as_ref</span>().<span class="hljs-title function_ invoke__">unwrap</span>().<span class="hljs-title function_ invoke__">send</span>(job).<span class="hljs-title function_ invoke__">unwrap</span>();<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Drop</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">ThreadPool</span> &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">drop</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-comment">// drop sender, 这样所有worker线程的channel都会报错</span><br>        <span class="hljs-title function_ invoke__">drop</span>(<span class="hljs-keyword">self</span>.sender.<span class="hljs-title function_ invoke__">take</span>());<br>        <span class="hljs-comment">// 对所有的线程调用join, 等待所有工作线程结束后再结束</span><br>        <span class="hljs-keyword">for</span> <span class="hljs-variable">worker</span> <span class="hljs-keyword">in</span> &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>.workers &#123;<br>            <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Shutting down worker &#123;&#125;&quot;</span>, worker.id);<br>            <span class="hljs-comment">// take方法可以拿走Option中值的所有权</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(thread) = worker.thread.<span class="hljs-title function_ invoke__">take</span>() &#123;<br>                thread.<span class="hljs-title function_ invoke__">join</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
       

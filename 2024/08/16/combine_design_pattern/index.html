@@ -154,21 +154,6 @@
             
                 
     <li>
-        <div data-rel="工具/环境">
-            
-            工具/环境
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
-        
-            
-                
-    <li>
         <div data-rel="后端技术">
             
             后端技术
@@ -202,7 +187,7 @@
         <div data-rel="开发工具">
             
             开发工具
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -468,7 +453,7 @@
         </a>
         
         
-        <a  class="All 工具/环境 "
+        <a  class="All 开发工具 "
            href="/2024/08/16/lazygit/"
            data-tag=""
            data-author="" >
@@ -1063,19 +1048,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1099,19 +1084,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/graph/"
+           href="/2024/03/02/greedy/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="图论">图论</span>
+            <span class="post-title" title="贪心算法">贪心算法</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/greedy/"
+           href="/2024/03/02/graph/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-title" title="图论">图论</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1252,9 +1237,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="组合型设计模式">组合型设计模式</h2>
+        <h2 id="组合型设计模式"><a href="#组合型设计模式" class="headerlink" title="组合型设计模式"></a>组合型设计模式</h2>
 <p>组合型设计模式用于将类/对象以耦合度低的方式组织成更大的对象.</p>
-<h2 id="代理模式">代理模式</h2>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2>
 <ul>
 <li>适用场景: 在调用一个对象的方法时, 需要<code>pre</code>处理, 以及<code>post</code>处理, 这个时候可以提供一个代理.</li>
 </ul>
@@ -1273,7 +1258,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Proxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Subject</span> &#123;<br>  <br>  <span class="hljs-keyword">private</span> RealSubject realSubject;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">Request</span><span class="hljs-params">()</span> &#123;<br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.realSubject == <span class="hljs-literal">null</span>) &#123;<br>      <span class="hljs-built_in">this</span>.realSubject = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RealSubject</span>();  <br>    &#125;<br>    <br>    preRequest();<br>    realSubject.Request();<br>    postRequest();<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">preRequest</span><span class="hljs-params">()</span> &#123;<br>  	<span class="hljs-comment">//...  </span><br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">postRequest</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="适配器模式">适配器模式</h2>
+<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2>
 <ul>
 <li>适用场景: 我现在有一个类, 我要把这个类的接口通过一层适配器转换成目标接口的格式:</li>
 </ul>
@@ -1307,7 +1292,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <span class="hljs-type">Adaptee</span> <span class="hljs-variable">adaptee</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adaptee</span>();<br>  <span class="hljs-type">Target</span> <span class="hljs-variable">target</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Adapter</span>(adaptee);<br>  target.request();<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="桥接模式">桥接模式</h2>
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2>
 <ul>
 <li>适用场景: 某些对象具有多种特征维度的变化, 例如m种颜色和n种大小, 那么就会有mxn种的子类.</li>
 </ul>
@@ -1335,7 +1320,7 @@
 </li>
 </ul>
 <p>本质上来说, 就是把最主要的Feature用继承解决, 其他的Feature都用组合解决.</p>
-<h2 id="装饰模式">装饰模式</h2>
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2>
 <ul>
 <li>适用场景: 在保持原来对象的结构不变的情况下, 动态增加新的功能.</li>
 </ul>
@@ -1358,7 +1343,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConcreteDecorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">SubjectDecorator</span> &#123;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">ConcreteDecorator</span><span class="hljs-params">(Subject subject)</span> &#123;<br>    <span class="hljs-built_in">super</span>(subject);<br>  &#125;<br>  <br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">operation</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// super.operation和我自己加什么功能组合</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="外观模式">外观模式</h2>
+<h2 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h2>
 <ul>
 <li>适用场景: 外观模式负责将若干个不同的子系统整合成一个大的系统, 并向用户提供简单的接口, 掩饰系统的复杂性.</li>
 </ul>
@@ -1377,7 +1362,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>  <br>  <span class="hljs-type">Facade</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Facade</span>();<br>  f.method();<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="组合模式">组合模式</h2>
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2>
 <ul>
 <li>适用场景: 当你的系统中出现了树状逻辑结果, 例如文件/文件夹等, 组合模式可以让你的系统中, 单一对象和复合对象具有相同的接口, 简化系统设计.</li>
 </ul>
@@ -1400,7 +1385,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">Component</span> <span class="hljs-variable">c0</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Composite</span>(); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Composite</span>(); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;1&quot;</span>); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;2&quot;</span>); <br>    <span class="hljs-type">Component</span> <span class="hljs-variable">leaf3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Leaf</span>(<span class="hljs-string">&quot;3&quot;</span>);<br>  <br>    c0.add(leaf1); <br>    c0.add(c1);<br>    c1.add(leaf2); <br>    c1.add(leaf3);          <br>    c0.operation(); <br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="享元模式">享元模式</h2>
+<h2 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h2>
 <ul>
 <li>适用场景: 程序中要出现大量的相同对象 (例如不同颜色的棋子、 图形), 享元模式可以共享这些对象相同的部分, 节省系统资源.</li>
 </ul>
