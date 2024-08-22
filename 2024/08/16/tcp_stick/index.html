@@ -358,7 +358,7 @@
            href="/2024/08/17/ai-quant-int8/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="AI模型的量化">AI模型的量化</span>
+            <span class="post-title" title="AI模型的量化部署">AI模型的量化部署</span>
             <span class="post-date" title="2024-08-17 20:56:58">2024/08/17</span>
         </a>
         
@@ -1084,19 +1084,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1174,19 +1174,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/binary-search/"
+           href="/2024/03/02/bfs/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="二分系列">二分系列</span>
+            <span class="post-title" title="广度优先搜索">广度优先搜索</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/bfs/"
+           href="/2024/03/02/binary-search/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="广度优先搜索">广度优先搜索</span>
+            <span class="post-title" title="二分系列">二分系列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1246,7 +1246,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-16 13:46:38'>2024-08-16 13:46</time>
+            Created At : <time class="date" title='Updated At: 2024-08-19 18:44:25'>2024-08-16 13:46</time>
         
     </div>
     <div class="article-meta">
@@ -1312,7 +1312,7 @@
 </li>
 </ul>
 <blockquote>
-<p>TCP客户端代码:</p>
+<p>TCP客户端与服务端代码:</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">import</span> struct<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPClient</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br><br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>		self.socket.connect((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">send_data</span>(<span class="hljs-params">self, data</span>):<br>		serialized_data = pickle.dumps(data)<br>		data_len = struct.pack(<span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-built_in">len</span>(serialized_data))<br>		self.socket.send(data_len)<br>		self.socket.send(serialized_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">close</span>(<span class="hljs-params">self</span>):<br>		self.socket.close()<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TCPServer</span>:<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, ip, port</span>):<br>		self.ip = ip<br>		self.port = port<br>		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="hljs-number">1</span>)<br>		self.socket.bind((self.ip, self.port))<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>		self.socket.listen(<span class="hljs-number">5</span>)<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			client_socket, addr = self.socket.accept()<br>			data = client_socket.recv(<span class="hljs-number">4</span>)<br>			data_len = struct.unpack(<span class="hljs-string">&#x27;i&#x27;</span>, data)[<span class="hljs-number">0</span>]<br>			packet = <span class="hljs-string">b&#x27;&#x27;</span><br>			<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>				<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(packet) == data_len:<br>					<span class="hljs-keyword">break</span><br>				client_data = client_socket.recv(<span class="hljs-number">1024</span>)<br>				packet += client_data<br>			true_data = pickle.loads(packet)<br>			self.process(true_data)<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">process</span>(<span class="hljs-params">self, true_data</span>):<br>		<span class="hljs-keyword">pass</span><br><br></code></pre></td></tr></table></figure>
 
