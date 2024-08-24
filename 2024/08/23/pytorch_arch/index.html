@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>试用LazyGit进行版本控制 | B1ueDrops</title>
+  <title>Pytorch的整体架构 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="试用LazyGit进行版本控制 | B1ueDrops">
+  <meta name="description" content="Pytorch的整体架构 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Pytorch的组成部分  Pytorch主要由三个大部分组成:  前端: 由Python编写, 方便构建模型的原型, 并且测试模型性能. 后端: 张量计算的引擎, 例如CPU上的GEMM Kernel或者GPU的cuDNN等, 一般是C++编写. 执行模式: 根据科研需求和生产部署需求, 分别有Eager Mode (动态图模式)和Graph Model (静态图模式).  Eager Mode">
 <meta property="og:type" content="article">
@@ -1235,9 +1235,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-lazygit" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-pytorch_arch" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">试用LazyGit进行版本控制</h1>
+        <h1 class="article-title">Pytorch的整体架构</h1>
     
     <div class="article-meta">
         
@@ -1247,7 +1247,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="开发工具">开发工具</a>
+            <a  data-rel="AI加速">AI加速</a>
             
         </span>
         
@@ -1255,7 +1255,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-16 13:50:07'>2024-08-16 13:45</time>
+            Created At : <time class="date" title='Updated At: 2024-08-24 16:16:28'>2024-08-23 12:39</time>
         
     </div>
     <div class="article-meta">
@@ -1266,7 +1266,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9B%9E%E6%BB%9A%E6%93%8D%E4%BD%9C"><span class="toc-text">正确的回滚操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interactive-Rebasing"><span class="toc-text">Interactive Rebasing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%86%99commit%E4%BF%A1%E6%81%AF"><span class="toc-text">改写commit信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commit%E6%A0%BC%E5%BC%8F"><span class="toc-text">Commit格式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pytorch%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-text">Pytorch的组成部分</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1282,34 +1282,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>在一个pane中使用<code>?</code>可以查看cheetsheet.</p>
+        <h2 id="Pytorch的组成部分"><a href="#Pytorch的组成部分" class="headerlink" title="Pytorch的组成部分"></a>Pytorch的组成部分</h2>
+<ul>
+<li>Pytorch主要由三个大部分组成:
+<ul>
+<li><strong>前端</strong>: 由Python编写, 方便构建模型的原型, 并且测试模型性能.</li>
+<li><strong>后端</strong>: 张量计算的引擎, 例如CPU上的GEMM Kernel或者GPU的cuDNN等, 一般是C++编写.</li>
+<li><strong>执行模式</strong>: 根据科研需求和生产部署需求, 分别有Eager Mode (动态图模式)和Graph Model (静态图模式).
+<ul>
+<li>Eager Mode: 算子一个一个执行, 不构建图, 一般用于科研.</li>
+<li>Graph Mode: 将张量计算先转换为一个DAG, 然后对DAG进行特定优化, 一般用于模型部署.</li>
+<li>Pytorch原生支持Eager Mode, 用户体验极好, 但是对Graph Mode做了很多尝试, 例如FX Graph.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Pytorch的源码架构?</p>
 </blockquote>
-<h2 id="正确的回滚操作"><a href="#正确的回滚操作" class="headerlink" title="正确的回滚操作"></a>正确的回滚操作</h2>
 <ul>
-<li>第一: 基于当前分支新建分支(branch pane中使用<code>n</code>).</li>
-<li>第二: 切换到新建分支 (branch pane中使用空格).</li>
-<li>第三: 回滚到特定的commit (commit pane中选中特定的commit之后, 用<code>g</code>, 基于<code>git reset</code>进行修改).</li>
-<li>第四: 选择暂存区中需要保留或舍弃的修改(file pane中使用<code>d</code>或者空格).</li>
-<li>第五: 将暂存区中的修改进行commit之后, 就可以在回滚分支进行开发.</li>
+<li>在Pytorch的源码中, 有两个部分:
+<ul>
+<li><code>torch</code>: 对应Pytorch的前端部分, 由Python编写.</li>
+<li><code>aten</code>: 全称是A Tensor Library, 由C++编写, 包含了各种Kernel和硬件平台的算子实现.</li>
 </ul>
-<h2 id="Interactive-Rebasing"><a href="#Interactive-Rebasing" class="headerlink" title="Interactive Rebasing"></a>Interactive Rebasing</h2>
-<p>在commit pane中, 对于某次commit使用<code>e</code>后, 这次commit及其上面的所有commit都会进入interactive-rebasing的状态.</p>
-<p>每个commit都会有四种状态:</p>
+</li>
+<li>用<code>pip install torch</code>时, <code>aten</code>部分会用动态链接库的形式下载, 然后在<code>torch</code>的<code>__init__.py</code>中进行链接.
 <ul>
-<li><code>pick</code>: 保留这次commit.</li>
-<li><code>squash</code>: 和下面的commit合并, 其中commit的信息也会被合并.</li>
-<li><code>drop</code>: 删除此次commit.</li>
-<li><code>fixup</code>: 和下面的commit合并, 但是这次commit的信息会消失.</li>
+<li>Pytorch后端的链接库<code>libtorch.so</code>也可以自己使用, 不借助任何Pytorch前端.</li>
 </ul>
-<p>对于每个commit设置完状态之后, 使用<code>m</code>, 选择<code>continue</code>, 就可以生效.</p>
-<h2 id="改写commit信息"><a href="#改写commit信息" class="headerlink" title="改写commit信息"></a>改写commit信息</h2>
-<p>在commit pane中, 使用<code>r</code>就可以改写commit信息.</p>
-<h2 id="Commit格式"><a href="#Commit格式" class="headerlink" title="Commit格式"></a>Commit格式</h2>
-<ul>
-<li>
-<p>标题:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">[&lt;type&gt;](&lt;scope&gt;) &lt;subject&gt; (#pr)<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -1323,6 +1325,47 @@
 
 
 
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
 
     
 

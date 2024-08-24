@@ -2,19 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>AI模型的量化部署 | B1ueDrops</title>
+  <title>AI模型的量化 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="AI模型的量化部署 | B1ueDrops">
+  <meta name="description" content="AI模型的量化 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="Pytorch的组成部分  Pytorch主要由三个大部分组成:  前端: 由Python编写, 方便构建模型的原型, 并且测试模型性能. 后端: 张量计算的引擎, 例如CPU上的GEMM Kernel或者GPU的cuDNN等, 一般是C++编写. 执行模式: 根据科研需求和生产部署需求, 分别有Eager Mode (动态图模式)和Graph Model (静态图模式).  Eager Mode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch的整体架构">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/08/23/pytorch_arch/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="Pytorch的组成部分  Pytorch主要由三个大部分组成:  前端: 由Python编写, 方便构建模型的原型, 并且测试模型性能. 后端: 张量计算的引擎, 例如CPU上的GEMM Kernel或者GPU的cuDNN等, 一般是C++编写. 执行模式: 根据科研需求和生产部署需求, 分别有Eager Mode (动态图模式)和Graph Model (静态图模式).  Eager Mode">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-08-23T04:39:42.339Z">
+<meta property="article:modified_time" content="2024-08-24T08:16:28.255Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(95)</small>
+                <small>(96)</small>
             
         </div>
     </li>
@@ -262,7 +262,7 @@
         <div data-rel="AI加速">
             
             AI加速
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -302,7 +302,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="95">
+<input type="hidden" id="yelog_site_posts_number" value="96">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -355,10 +355,19 @@
         
         
         <a  class="All AI加速 "
-           href="/2024/08/17/ai-quant-int8/"
+           href="/2024/08/23/pytorch_arch/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="AI模型的量化部署">AI模型的量化部署</span>
+            <span class="post-title" title="Pytorch的整体架构">Pytorch的整体架构</span>
+            <span class="post-date" title="2024-08-23 12:39:42">2024/08/23</span>
+        </a>
+        
+        
+        <a  class="All AI加速 "
+           href="/2024/08/17/pytorch_quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI模型的量化">AI模型的量化</span>
             <span class="post-date" title="2024-08-17 20:56:58">2024/08/17</span>
         </a>
         
@@ -1084,19 +1093,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1226,9 +1235,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ai-quant-int8" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-pytorch_quant" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">AI模型的量化部署</h1>
+        <h1 class="article-title">AI模型的量化</h1>
     
     <div class="article-meta">
         
@@ -1246,7 +1255,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-22 19:33:01'>2024-08-17 20:56</time>
+            Created At : <time class="date" title='Updated At: 2024-08-24 16:53:17'>2024-08-17 20:56</time>
         
     </div>
     <div class="article-meta">
@@ -1257,7 +1266,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-text">模型量化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-text">模型量化设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="toc-text">模型量化流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%A1%E5%87%86"><span class="toc-text">数据校准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%B2%92%E5%BA%A6"><span class="toc-text">量化粒度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-text">量化算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="toc-text">一些细节</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-text">模型量化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-text">模型量化设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="toc-text">模型量化流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%A1%E5%87%86"><span class="toc-text">数据校准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%B2%92%E5%BA%A6"><span class="toc-text">量化粒度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-text">量化算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="toc-text">一些细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pytorch%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-text">Pytorch模型量化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E5%88%86%E7%B1%BB"><span class="toc-text">量化分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E5%90%8E%E7%AB%AF"><span class="toc-text">量化后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eager-Mode-Quantization"><span class="toc-text">Eager Mode Quantization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Quant"><span class="toc-text">Dynamic Quant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Static-Quant"><span class="toc-text">Static Quant</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FX-Graph-Mode-Quantization"><span class="toc-text">FX Graph Mode Quantization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Quant-1"><span class="toc-text">Dynamic Quant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Static-Quant-1"><span class="toc-text">Static Quant</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E6%96%B9%E5%BC%8F%E9%80%89%E6%8B%A9%E6%A0%87%E5%87%86"><span class="toc-text">量化方式选择标准</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1273,7 +1282,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-text">模型量化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-text">模型量化设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="toc-text">模型量化流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%A1%E5%87%86"><span class="toc-text">数据校准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%B2%92%E5%BA%A6"><span class="toc-text">量化粒度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-text">量化算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="toc-text">一些细节</span></a></li></ol></li></ol></div></p>
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-text">模型量化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-text">模型量化设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E6%B5%81%E7%A8%8B"><span class="toc-text">模型量化流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%A1%E5%87%86"><span class="toc-text">数据校准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%B2%92%E5%BA%A6"><span class="toc-text">量化粒度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-text">量化算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="toc-text">一些细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pytorch%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-text">Pytorch模型量化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E5%88%86%E7%B1%BB"><span class="toc-text">量化分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E5%90%8E%E7%AB%AF"><span class="toc-text">量化后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eager-Mode-Quantization"><span class="toc-text">Eager Mode Quantization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Quant"><span class="toc-text">Dynamic Quant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Static-Quant"><span class="toc-text">Static Quant</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FX-Graph-Mode-Quantization"><span class="toc-text">FX Graph Mode Quantization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Quant-1"><span class="toc-text">Dynamic Quant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Static-Quant-1"><span class="toc-text">Static Quant</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E6%96%B9%E5%BC%8F%E9%80%89%E6%8B%A9%E6%A0%87%E5%87%86"><span class="toc-text">量化方式选择标准</span></a></li></ol></li></ol></div></p>
 <h2 id="模型量化"><a href="#模型量化" class="headerlink" title="模型量化"></a>模型量化</h2>
 <ul>
 <li>模型量化本质上是一个<strong>离散化</strong>算法, 它可以将模型数据从<code>float</code>类型映射到<code>int8/uint8</code>类型.
@@ -1388,6 +1397,77 @@
 <ul>
 <li>还有<code>ReLU</code>的模型会考虑到<code>uint8</code>.</li>
 <li>或者需要看CPU/GPU是否对<code>int8 * uint8</code>有特殊支持.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Pytorch模型量化"><a href="#Pytorch模型量化" class="headerlink" title="Pytorch模型量化"></a>Pytorch模型量化</h2>
+<blockquote>
+<p>官方文档: <a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/quantization.html">https://pytorch.org/docs/stable/quantization.html</a></p>
+<p>官方实例代码: <a target="_blank" rel="noopener" href="https://pytorch.org/blog/quantization-in-practice/">https://pytorch.org/blog/quantization-in-practice/</a></p>
+</blockquote>
+<h3 id="量化分类"><a href="#量化分类" class="headerlink" title="量化分类"></a>量化分类</h3>
+<ul>
+<li>根据Activation的量化方式, Pytorch的量化可以分为以下类型:
+<ul>
+<li>Post Training Quantization (PTQ): 在训练结束之后再开始量化:
+<ul>
+<li><strong>Weights Only</strong>: 不对Activation进行量化.</li>
+<li><strong>Dynamic Quantization</strong>: Activation在模型进行推理时, 动态确定量化参数, 读取时是以浮点数类型进行.</li>
+<li><strong>Static Quantization</strong>: Activation在模型进行推理时提前量化好, 需要进行Calibration确定量化参数.</li>
+</ul>
+</li>
+<li>Quantization-Aware Training (QAT): 在模型训练时, 考虑上量化参数, 用来提高精度.</li>
+</ul>
+</li>
+<li>根据Pytorch的执行模式, 量化也可以分为三种模式:
+<ul>
+<li>Eager Mode Quantization.</li>
+<li>FX Graph Mode Quantization.</li>
+<li>Pytorch 2 Export Quantization.</li>
+</ul>
+</li>
+</ul>
+<h3 id="量化后端"><a href="#量化后端" class="headerlink" title="量化后端"></a>量化后端</h3>
+<p>进行量化之前, 要明确Pytorch的后端是哪个, 可以通过<code>torch.backends.quantized.supported_engines</code>查看. 一般来说分为三种引擎:</p>
+<ul>
+<li><code>fbgemm</code>: <code>x86</code>机器上的引擎.</li>
+<li><code>qnnpack</code>: <code>ARM</code>机器上的引擎, 可适配移动端.</li>
+<li><code>TensorRT/cuDNN</code>: GPU上的引擎.</li>
+</ul>
+<h3 id="Eager-Mode-Quantization"><a href="#Eager-Mode-Quantization" class="headerlink" title="Eager Mode Quantization"></a>Eager Mode Quantization</h3>
+<ul>
+<li>由于在Eager Mode中, 算子是一步一步执行的, 没有构建计算图, 因此, 量化模块和反量化模块需要作为一个算子手动添加到模块内部.</li>
+</ul>
+<h4 id="Dynamic-Quant"><a href="#Dynamic-Quant" class="headerlink" title="Dynamic Quant"></a>Dynamic Quant</h4>
+<ul>
+<li>
+<p>代码实例:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.nn.init <span class="hljs-keyword">as</span> init<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br><br>	<span class="hljs-comment"># Define Simple Model</span><br>	net = nn.Sequential(<br>		nn.Linear(<span class="hljs-number">784</span>, <span class="hljs-number">256</span>),<br>		nn.ReLU(),<br>		nn.Linear(<span class="hljs-number">256</span>, <span class="hljs-number">10</span>)<br>	)<br><br>	<span class="hljs-comment"># Init parameter</span><br>	<span class="hljs-keyword">for</span> layer <span class="hljs-keyword">in</span> net:<br>		<span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(layer, nn.Linear):<br>			init.xavier_uniform_(layer.weight)<br>			<span class="hljs-keyword">if</span> layer.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>				init.zeros_(layer.bias)<br><br>	<span class="hljs-comment"># Quantize</span><br>	net.<span class="hljs-built_in">eval</span>()<br>  <span class="hljs-comment"># 这里要根据你的架构设置</span><br>	torch.backends.quantized.engine = <span class="hljs-string">&#x27;qnnpack&#x27;</span><br>  <br>  <span class="hljs-comment"># qconfig_spec表示参与量化的layer</span><br>  <span class="hljs-comment"># inplace=False表示不修改原模型</span><br>	quantized_net = torch.quantization.quantize_dynamic(<br>		model=net, qconfig_spec=&#123;nn.Linear&#125;, dtype=torch.qint8, inplace=<span class="hljs-literal">False</span><br>	)<br><br>	<span class="hljs-comment"># Inference</span><br>	quantized_net.<span class="hljs-built_in">eval</span>()<br>	input_data = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">784</span>)<br>	<span class="hljs-keyword">with</span> torch.no_grad():<br>		output = net(input_data)<br>		q_output = quantized_net(input_data)<br>		<span class="hljs-built_in">print</span>(output)<br>		<span class="hljs-built_in">print</span>(q_output)<br><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Static-Quant"><a href="#Static-Quant" class="headerlink" title="Static Quant"></a>Static Quant</h4>
+<h3 id="FX-Graph-Mode-Quantization"><a href="#FX-Graph-Mode-Quantization" class="headerlink" title="FX Graph Mode Quantization"></a>FX Graph Mode Quantization</h3>
+<h4 id="Dynamic-Quant-1"><a href="#Dynamic-Quant-1" class="headerlink" title="Dynamic Quant"></a>Dynamic Quant</h4>
+<ul>
+<li>
+<p>实例代码: 注意, <code>prepare_fx</code>中, 需要提供<code>example_input</code>来帮助生成FX Graph.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> copy<br><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.nn.init <span class="hljs-keyword">as</span> init<br><span class="hljs-keyword">from</span> torch.quantization <span class="hljs-keyword">import</span> quantize_fx<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br><br>	<span class="hljs-comment"># Define Simple Model</span><br>	net = nn.Sequential(<br>		nn.Linear(<span class="hljs-number">784</span>, <span class="hljs-number">256</span>),<br>		nn.ReLU(),<br>		nn.Linear(<span class="hljs-number">256</span>, <span class="hljs-number">10</span>)<br>	)<br><br>	<span class="hljs-comment"># Init parameter</span><br>	<span class="hljs-keyword">for</span> layer <span class="hljs-keyword">in</span> net:<br>		<span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(layer, nn.Linear):<br>			init.xavier_uniform_(layer.weight)<br>			<span class="hljs-keyword">if</span> layer.bias <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>				init.zeros_(layer.bias)<br><br>	<span class="hljs-comment"># Quantize</span><br>	net.<span class="hljs-built_in">eval</span>()<br>	<span class="hljs-comment"># 用于prepare_fx中确定输入tensor的shape</span><br>	example_input = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">784</span>)<br>	torch.backends.quantized.engine = <span class="hljs-string">&#x27;qnnpack&#x27;</span><br>	qconfig_dict = &#123;<span class="hljs-string">&quot;&quot;</span>: torch.quantization.default_dynamic_qconfig&#125;<br>  <br>  <span class="hljs-comment"># 输入example_input的原因是: Pytorch需要构建FX Graph</span><br>	prepared_net = quantize_fx.prepare_fx(net, qconfig_dict, example_input)<br>	quantized_net = quantize_fx.convert_fx(prepared_net)<br><br>	<span class="hljs-comment"># Inference</span><br>	quantized_net.<span class="hljs-built_in">eval</span>()<br>	input_data = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">784</span>)<br>	<span class="hljs-keyword">with</span> torch.no_grad():<br>		output = net(input_data)<br>		q_output = quantized_net(input_data)<br>		<span class="hljs-built_in">print</span>(output)<br>		<span class="hljs-built_in">print</span>(q_output)<br><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Static-Quant-1"><a href="#Static-Quant-1" class="headerlink" title="Static Quant"></a>Static Quant</h4>
+<h3 id="量化方式选择标准"><a href="#量化方式选择标准" class="headerlink" title="量化方式选择标准"></a>量化方式选择标准</h3>
+<blockquote>
+<p>Static Quant vs. Dynamic Quant ?</p>
+</blockquote>
+<ul>
+<li>这个主要看模型数据的特性:
+<ul>
+<li>Dynamic Quant适合数据具有控制流特性的模型, 例如语言, NLP模型及其对应的算子(<code>nn.RNN</code>, <code>nn.LSTM</code>等).</li>
+<li>Static Quant适合数据不具有控制流特性, 但是分布较稳定的模型, 例如图片, CV类模型(<code>nn.Conv</code>).
+<ul>
+<li>这个也解释了为什么<code>nn.Conv</code>不能用Dynamic Quant.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
