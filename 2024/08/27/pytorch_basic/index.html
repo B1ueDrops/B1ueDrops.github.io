@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="Pytorch构建模型的基础知识 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="def get_logger(level&#x3D;logging.DEBUG):	# Block matplotlib logging	logging.getLogger(&#x27;matplotlib&#x27;).setLevel(logging.CRITICAL)	target_logger &#x3D; logging.getLogger()	target_logger.setLevel(level)	#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python现成的日志函数">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/08/28/python_logging/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="def get_logger(level&#x3D;logging.DEBUG):	# Block matplotlib logging	logging.getLogger(&#x27;matplotlib&#x27;).setLevel(logging.CRITICAL)	target_logger &#x3D; logging.getLogger()	target_logger.setLevel(level)	#">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-08-28T10:00:06.772Z">
+<meta property="article:modified_time" content="2024-08-28T10:26:32.841Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(95)</small>
+                <small>(96)</small>
             
         </div>
     </li>
@@ -127,7 +127,7 @@
         <div data-rel="编程语言">
             
             编程语言
-            <small>(18)</small>
+            <small>(19)</small>
         </div>
         
     </li>
@@ -302,7 +302,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="95">
+<input type="hidden" id="yelog_site_posts_number" value="96">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -352,6 +352,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/08/28/python_logging/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python现成的日志函数">Python现成的日志函数</span>
+            <span class="post-date" title="2024-08-28 18:00:06">2024/08/28</span>
+        </a>
         
         
         <a  class="All AI加速 "
@@ -1246,7 +1255,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-27 20:36:39'>2024-08-27 15:23</time>
+            Created At : <time class="date" title='Updated At: 2024-08-28 17:57:05'>2024-08-27 15:23</time>
         
     </div>
     <div class="article-meta">
@@ -1257,7 +1266,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%90%8E%E7%AB%AF"><span class="toc-text">计算后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensor%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">Tensor预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">模型定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Linear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Conv2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.BatchNorm2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">F.softmax</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-text">训练评估指标</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%90%8E%E7%AB%AF"><span class="toc-text">计算后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensor%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">Tensor预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">模型定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Linear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Conv2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.BatchNorm2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">F.softmax</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-text">训练评估指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E6%88%90%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83-%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="toc-text">现成的机器学习训练&#x2F;测试脚本</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1480,6 +1489,7 @@
 <li>**准确率 (Accuracy): **<code>(TP + TN) / (TP + TN + FP + FN)</code>.</li>
 <li><strong>F1 Score</strong>: : <code>2 * (Recall * Accuracy) / (Recall + Accuracy)</code>.</li>
 </ul>
+<h2 id="现成的机器学习训练-测试脚本"><a href="#现成的机器学习训练-测试脚本" class="headerlink" title="现成的机器学习训练/测试脚本"></a>现成的机器学习训练/测试脚本</h2>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
