@@ -700,7 +700,7 @@
            href="/2024/06/01/transformer/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="对Transformer的基本理解">对Transformer的基本理解</span>
+            <span class="post-title" title="对Transformer架构的理解">对Transformer架构的理解</span>
             <span class="post-date" title="2024-06-01 20:53:28">2024/06/01</span>
         </a>
         
@@ -1228,7 +1228,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-08-28 17:57:05'>2024-08-27 15:23</time>
+            Created At : <time class="date" title='Updated At: 2024-09-01 19:47:15'>2024-08-27 15:23</time>
         
     </div>
     <div class="article-meta">
@@ -1239,7 +1239,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%90%8E%E7%AB%AF"><span class="toc-text">计算后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensor%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">Tensor预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">模型定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Linear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Conv2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.BatchNorm2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">F.softmax</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-text">训练评估指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E6%88%90%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83-%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="toc-text">现成的机器学习训练&#x2F;测试脚本</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%90%8E%E7%AB%AF"><span class="toc-text">计算后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensor%E9%A2%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%AE%A1%E7%AE%97"><span class="toc-text">Tensor预处理与计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">torch自带的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">rearrange</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">torch.einsum</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">模型定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Parameter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Linear</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.Conv2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">nn.BatchNorm2d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">F.softmax</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5"><span class="toc-text">残差连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-text">训练评估指标</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1269,70 +1269,81 @@
 </ul>
 </li>
 </ul>
-<h2 id="Tensor预处理"><a href="#Tensor预处理" class="headerlink" title="Tensor预处理"></a>Tensor预处理</h2>
-<blockquote>
-<p>获取Tensor的维度信息:</p>
-</blockquote>
+<h2 id="Tensor预处理与计算"><a href="#Tensor预处理与计算" class="headerlink" title="Tensor预处理与计算"></a>Tensor预处理与计算</h2>
+<h3><code>torch</code>自带的函数</h3>
 <ul>
-<li><code>output.shape</code>: 返回元组.</li>
-<li><code>output.size()</code>: 返回<code>torch.Size</code>对象.</li>
+<li>获取维度: <code>x.shape</code></li>
+<li>生成<svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="7.038ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 3110.7 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/><path id="MJX-1-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D441" xlink:href="#MJX-1-TEX-I-1D441"/></g><g data-mml-node="mo" transform="translate(888,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"/></g><g data-mml-node="mn" transform="translate(1277,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"/></g><g data-mml-node="mo" transform="translate(1777,0)"><use data-c="2C" xlink:href="#MJX-1-TEX-N-2C"/></g><g data-mml-node="mn" transform="translate(2221.7,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"/></g><g data-mml-node="mo" transform="translate(2721.7,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"/></g></g></g></svg>, 形状是<code>(a, b, c, d)</code>的随机张量: <code>torch.randn(a, b, c, d)</code></li>
+<li>删除大小是1的维度: <code>x = x.squeeze()</code></li>
+<li>在下标为<code>n</code>的维度前面加上大小是1的维度: <code>x = x.unsqueeze(n)</code></li>
 </ul>
-<p>一般两者可以互换使用, <code>torch.Size</code>兼容元组操作.</p>
-<blockquote>
-<p>生成随机Tensor:</p>
-</blockquote>
+<h3><code>rearrange</code></h3>
 <ul>
-<li>生成特定维度的随机Tensor:
+<li>
+<p><code>rearrange</code>用于调整Tensor的维度顺序, 或者组合/拆分某些维度:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> einops <span class="hljs-keyword">import</span> rearrange<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>下面假设张量<code>x</code>的维度是<code>(b, c, h, w)</code>:</p>
 <ul>
-<li><code>torch.randn(a, b, c, d)</code>: 用于生成一个维度是<code>(a, b, c, d)</code>的, 服从<svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="7.038ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 3110.7 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/><path id="MJX-1-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D441" xlink:href="#MJX-1-TEX-I-1D441"/></g><g data-mml-node="mo" transform="translate(888,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"/></g><g data-mml-node="mn" transform="translate(1277,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"/></g><g data-mml-node="mo" transform="translate(1777,0)"><use data-c="2C" xlink:href="#MJX-1-TEX-N-2C"/></g><g data-mml-node="mn" transform="translate(2221.7,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"/></g><g data-mml-node="mo" transform="translate(2721.7,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"/></g></g></g></svg>的张量.</li>
-<li><code>torch.rand(a, b, c, d)</code>: 生成的数据服从<code>[0, 1)</code>的均匀分布.</li>
+<li>
+<p>交换维度:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">x = rearrange(x, <span class="hljs-string">&#x27;b c h w -&gt; b h w c&#x27;</span>)<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>组合维度:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">x = rearrange(x, <span class="hljs-string">&#x27;b c h w -&gt; b c (h w)&#x27;</span>)<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>拆分维度:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">x = rearrange(x, <span class="hljs-string">&#x27;b e (h n) -&gt; b h e n&#x27;</span>, h = xxx)<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>如果要将<code>rearrange</code>作为模型的一个层:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> einops.layers.torch <span class="hljs-keyword">import</span> Rearrange<br><br>Rearrange(<span class="hljs-string">&#x27;b e h w -&gt; b (h w) e&#x27;</span>) <span class="hljs-comment"># layer</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3><code>torch.einsum</code></h3>
+<ul>
+<li>
+<p><code>einsum</code>的计算模型: 例如<code>C = einsum('ik, kj -&gt; ij', A, B)</code>:</p>
+<ul>
+<li>
+<p>翻译成Python的循环是:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(A.size(<span class="hljs-number">0</span>)):<br>  <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(B.size(<span class="hljs-number">1</span>)):<br>    <br>    total = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(A.size(<span class="hljs-number">1</span>)):<br>      total += A[i][k] * B[k][j]<br>    <br>    C[i][j] = total<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>理解方法:</p>
+<ul>
+<li>首先, 看左侧比右侧多了哪些下标, 在这里是<code>k</code>.</li>
+<li>然后, 想象有一个指针, 在<code>k</code>这个维度从上向下扫描, 其他下标固定, 两个矩阵的元素对应相乘求和.</li>
+<li>之后, 将得到的值累加到固定的下标, 在这里是<code>C[i][j]</code>.</li>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>将Feature map转为全连接层的输入:</p>
-</blockquote>
-<ul>
-<li><code>x.view(x.size(0), -1)</code>:
-<ul>
-<li>例如<code>x</code>是一个维度为<code>(B, C, H, W)</code>的Tensor, 那么经过这个操作可以得到<code>(B, C * H * W)</code>的Tensor.</li>
-</ul>
 </li>
 </ul>
-<blockquote>
-<p>增加/删除一个新维度:</p>
-</blockquote>
-<ul>
-<li><code>x = x.unsqueeze(0)</code>: 在第0维度前面加上一个维度.
-<ul>
-<li>假设Tensor维度是<code>(3, 4)</code>, 经过<code>unsqueeze(0)</code>变成<code>(1, 3, 4)</code>.</li>
-<li><code>unsqueeze(-1)</code>在最后一个位置增加新维度.</li>
-</ul>
-</li>
-<li><code>x = x.squeeze()</code>: 删除所有大小是1的维度.</li>
-</ul>
-<blockquote>
-<p>维度交换:</p>
-</blockquote>
-<p><code>x = x.permute(0, 2, 1, 3)</code>: 将原来维度编号是<code>(0, 1, 2, 3)</code>的Tensor变成<code>(0, 2, 1, 3)</code>.</p>
 <h2 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a>模型定义</h2>
 <ul>
 <li>实现<code>__init__</code>和<code>forward</code>函数即可:</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><br><span class="hljs-comment"># infer: x = SimpleModel(x)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleModel</span>(nn.Module):<br>  <br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">super</span>(SimpleModel, self).__init__()<br>    <span class="hljs-comment">#...</span><br>   <br> 	<span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-comment">#...</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><br><span class="hljs-comment"># infer: x = SimpleModel(x)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleModel</span>(nn.Module):<br>  <br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">super</span>().__init__()<br>    <span class="hljs-comment">#...</span><br>   <br> 	<span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-comment">#...</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>一般将网络的每个Block分布式定义, 然后把子模块进行拼接.</li>
 </ul>
+<h4><code>nn.Parameter</code></h4>
 <h4><code>nn.Linear</code></h4>
 <ul>
 <li>
 <p>API的全名是: <code>nn.Linear(in_features, out_features, bias=True)</code></p>
 <ul>
 <li>
-<p>首先, 输入的Tensor的维度必须是<code>(batch_size, in_features)</code>形式.</p>
+<p>首先, 输入的Tensor的维度必须是<code>(batch_size, *, in_features)</code>形式, <code>*</code>表示可以有中间维度, 但是不会被处理.</p>
 </li>
 <li>
-<p>输入<code>(batch_size, in_features)</code>的Tensor, 输出<code>(batch_size, out_features)</code>的Tensor.</p>
+<p>输入<code>(batch_size, *, in_features)</code>的Tensor, 输出<code>(batch_size, *, out_features)</code>的Tensor.</p>
 </li>
 </ul>
 </li>
@@ -1448,6 +1459,23 @@
 </ul>
 </li>
 </ul>
+<h4 id="残差连接"><a href="#残差连接" class="headerlink" title="残差连接"></a>残差连接</h4>
+<ul>
+<li>
+<p>梯度消失问题: 当神经网络层数过多时, 反向传播会导致梯度变小, 神经网络会收敛缓慢.</p>
+</li>
+<li>
+<p>解决方案: 残差连接 (输出和输入拼接, 作为下一个block的输入)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ResidualAdd</span>(nn.Module):<br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, fn</span>):<br>		<span class="hljs-built_in">super</span>().__init__()<br>		self.fn = fn<br><br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x, **kwargs</span>):<br>		res = x<br>		x = self.fn(x, **kwargs)<br>		x += res<br>		<span class="hljs-keyword">return</span> x<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>更加本质的理解:</p>
+<ul>
+<li>如果一个模型套上了残差连接模块, 那么就相当于这个模型学习的是相对原输入<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.294ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 572 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-18-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D465" xlink:href="#MJX-18-TEX-I-1D465"/></g></g></g></svg>的增量<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="3.179ex" height="1.645ex" role="img" focusable="false" viewbox="0 -716 1405 727" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-19-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"/><path id="MJX-19-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-19-TEX-N-394"/></g><g data-mml-node="mi" transform="translate(833,0)"><use data-c="1D465" xlink:href="#MJX-19-TEX-I-1D465"/></g></g></g></svg>.</li>
+<li><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="7.239ex" height="1.805ex" role="img" focusable="false" viewbox="0 -716 3199.4 798" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-20-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/><path id="MJX-20-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/><path id="MJX-20-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D465" xlink:href="#MJX-20-TEX-I-1D465"/></g><g data-mml-node="mo" transform="translate(794.2,0)"><use data-c="2B" xlink:href="#MJX-20-TEX-N-2B"/></g><g data-mml-node="mi" transform="translate(1794.4,0)"><use data-c="394" xlink:href="#MJX-20-TEX-N-394"/></g><g data-mml-node="mi" transform="translate(2627.4,0)"><use data-c="1D465" xlink:href="#MJX-20-TEX-I-1D465"/></g></g></g></svg>就是残差模型的输出.</li>
+</ul>
+</li>
+</ul>
 <h2 id="训练评估指标"><a href="#训练评估指标" class="headerlink" title="训练评估指标"></a>训练评估指标</h2>
 <ul>
 <li><strong>TP (True Positive)</strong>: 模型预测对了, 本身是目标类, 预测也是目标类.</li>
@@ -1462,7 +1490,6 @@
 <li>**准确率 (Accuracy): **<code>(TP + TN) / (TP + TN + FP + FN)</code>.</li>
 <li><strong>F1 Score</strong>: : <code>2 * (Recall * Accuracy) / (Recall + Accuracy)</code>.</li>
 </ul>
-<h2 id="现成的机器学习训练-测试脚本"><a href="#现成的机器学习训练-测试脚本" class="headerlink" title="现成的机器学习训练/测试脚本"></a>现成的机器学习训练/测试脚本</h2>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
