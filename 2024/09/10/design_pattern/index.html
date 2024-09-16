@@ -1174,7 +1174,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-09-11 12:34:56'>2024-09-10 18:29</time>
+            Created At : <time class="date" title='Updated At: 2024-09-15 20:19:40'>2024-09-10 18:29</time>
         
     </div>
     <div class="article-meta">
@@ -1185,7 +1185,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">系统的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input-Output%E5%8F%AF%E5%8F%98"><span class="toc-text">Input&#x2F;Output可变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Executor%E5%8F%AF%E5%8F%98"><span class="toc-text">Executor可变</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">系统的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Input%E8%AE%BE%E8%AE%A1"><span class="toc-text">Input设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Executor%E8%AE%BE%E8%AE%A1"><span class="toc-text">Executor设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1"><span class="toc-text">系统功能设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">观察者模式</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1203,35 +1203,22 @@
       
         <h2 id="系统的结构"><a href="#系统的结构" class="headerlink" title="系统的结构"></a>系统的结构</h2>
 <ul>
-<li>一个系统有三个部分, 分别是Input, Output, 以及Executor.
+<li>系统有三个部分: Input, Executor, Output.</li>
+<li>其中, Input, Executor可变, 需要通过设计模式增强代码的健壮性.</li>
+</ul>
+<h2 id="Input设计"><a href="#Input设计" class="headerlink" title="Input设计"></a>Input设计</h2>
 <ul>
-<li>任何一个复杂的系统, 都可以拆分成这样一个递归的Input, Executor, Output的结构.</li>
-<li>这三个部分都可能可变, 可以采用不同的策略提高系统稳定性.</li>
+<li>为所有Input设计一套通用接口, 不同Input实现接口, 实现时注意:
+<ul>
+<li>成员变量在构造函数内部提供默认值, 如需修改在通用接口中提供Getter/Setter方法.</li>
+<li>在Executor中, 将Input接口类型作为成员变量.</li>
 </ul>
 </li>
 </ul>
-<h2 id="Input-Output可变"><a href="#Input-Output可变" class="headerlink" title="Input/Output可变"></a>Input/Output可变</h2>
-<ul>
-<li>如果Input/Output可变:
-<ul>
-<li>定制一个Input/Output抽象接口, 接口中提供足量函数供后面的Executor调用.</li>
-<li>不同的Input/Output实现这个接口, 实现时注意:
-<ul>
-<li>所有的成员变量需要在<strong>构造函数内部</strong>提供默认值 (签名处不用定义成员变量), 如果要修改成员变量, 在接口中暴露<code>getter/setter</code>方法.
-<ul>
-<li>因为Input/Output的参数不一定有经常需要改变的需求.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在Executor中, 将Input/Output作为成员变量, 成员变量类型定义为抽象接口类型, 并且只使用接口中的方法完成任务.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Executor可变"><a href="#Executor可变" class="headerlink" title="Executor可变"></a>Executor可变</h2>
+<h2 id="Executor设计"><a href="#Executor设计" class="headerlink" title="Executor设计"></a>Executor设计</h2>
 <ul>
 <li>
-<p>Executor中的成员变量需要在<strong>构造函数签名</strong>处提供默认值, 因为很可能需要对不同配置的Executor进行实验.</p>
+<p>Executor中, 除了Input之外的成员变量需要在<strong>构造函数签名</strong>处提供默认值.</p>
 </li>
 <li>
 <p>Executor可变可以分为不同类型:</p>
@@ -1248,6 +1235,31 @@
 <li>模板方法对象用组合方式整合到Executor中.</li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>策略模式的一个问题: 假设实现某个算法, 有多种方法, 多种方法需要的参数不同, 如何写保证代码质量? 如果实现这些方法需要父模块的一些信息呢?</p>
+</blockquote>
+<ul>
+<li>需要的参数不同: 参数应该不暴露给用户, 方法内部应该自行确定.</li>
+<li>需要父模块的信息: 这个时候, 继承更好, 让类变成抽象类, 父模块信息作为成员变量.</li>
+</ul>
+<h2 id="系统功能设计"><a href="#系统功能设计" class="headerlink" title="系统功能设计"></a>系统功能设计</h2>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3>
+<ul>
+<li><strong>使用场景:</strong> Input到达之后, Executor中的状态需要改变.</li>
+<li><strong>实现方式:</strong>
+<ul>
+<li>提供观察者接口, 接口中的方法提供足量参数, 让状态更新自己.</li>
+<li>Executor中需要改变的状态实现观察者接口.</li>
+<li>提供一个抽象类:
+<ul>
+<li>抽象类中有列表成员变量, 存储所有需要改变状态的成分, 类型是观察者接口类型.</li>
+<li>抽象类中的方法需要让Executor更新所有观察者的状态.</li>
+</ul>
+</li>
+<li>Executor实现抽象类.</li>
 </ul>
 </li>
 </ul>
