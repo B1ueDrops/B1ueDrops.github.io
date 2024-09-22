@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>资源管理中RAII的概念 | B1ueDrops</title>
+  <title>x86-CPU的体系结构基础 | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="资源管理中RAII的概念 | B1ueDrops">
+  <meta name="description" content="x86-CPU的体系结构基础 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1181,9 +1181,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-raii" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-x86_arch" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">资源管理中RAII的概念</h1>
+        <h1 class="article-title">x86-CPU的体系结构基础</h1>
     
     <div class="article-meta">
         
@@ -1193,7 +1193,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="编程语言">编程语言</a>
+            <a  data-rel="AI-HPC">AI-HPC</a>
             
         </span>
         
@@ -1201,7 +1201,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-09-06 14:20:49'>2024-07-04 16:16</time>
+            Created At : <time class="date" title='Updated At: 2024-09-22 13:24:34'>2024-09-22 13:23</time>
         
     </div>
     <div class="article-meta">
@@ -1212,7 +1212,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RAII%E7%9A%84%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3"><span class="toc-text">RAII的概念理解</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -1228,36 +1228,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="RAII的概念理解"><a href="#RAII的概念理解" class="headerlink" title="RAII的概念理解"></a>RAII的概念理解</h2>
-<ul>
-<li>
-<p>计算机中, 有很多资源, 例如内存, 文件描述符, socket, 互斥锁等, 如果要使用这些资源, 就必须遵循以下三个步骤:</p>
-<ul>
-<li>申请资源.</li>
-<li>使用资源.</li>
-<li>释放资源.</li>
-</ul>
-</li>
-<li>
-<p>如果没有及时释放资源, 那么就会出现资源泄漏.</p>
-</li>
-<li>
-<p>但是, 如果你每次都手动释放资源, 代码就会变的臃肿不堪, 难以维护, 并且很可能程序出现异常时, 没有执行到释放资源的语句, 这时, 就需要RAII的机制.</p>
-</li>
-<li>
-<p><strong>RAII (Resource Acquisition Is Initialization)</strong>:</p>
-<ul>
-<li>抽象来说, RAII就是在全局提供一种机制, 统一管理资源的申请/释放.</li>
-<li>具体来说, 以C++为例:
-<ul>
-<li>C++中, 系统的资源不具有自动释放的功能, 但是C++的类具有自动调用析构函数的功能.</li>
-<li>如果把资源的管理放在一个类中, 释放资源的代码放到析构函数中, 就可以实现RAII. 例如, 智能指针.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
     </div>
@@ -1268,6 +1239,47 @@
 
 
 
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
 
     
 
