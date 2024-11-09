@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CPU后端上的GEMM优化 | B1ueDrops</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="CPU后端上的GEMM优化 | B1ueDrops">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:author" content="B1ueDrops">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpeg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpeg"/>
+</a>
+<div class="author">
+    <span>B1ueDrops</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/B1ueDrops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:bluedrops@yeah.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2381446488&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(93)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="编程语言">
+            
+            编程语言
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="操作系统">
+            
+            操作系统
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端技术">
+            
+            后端技术
+            <small>(19)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="金融知识">
+            
+            金融知识
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发工具">
+            
+            开发工具
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="数学">
+            
+            数学
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="算法">
+            
+            算法
+            <small>(25)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="体系结构">
+            
+            体系结构
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI-HPC">
+            
+            AI-HPC
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="English">
+            
+            English
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">About</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="93">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All 算法 "
+           href="/2024/11/09/valuable-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="一些其他的算法题题解">一些其他的算法题题解</span>
+            <span class="post-date" title="2024-11-09 18:21:12">2024/11/09</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/11/09/jianzhi_offer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="剑指Offer题解">剑指Offer题解</span>
+            <span class="post-date" title="2024-11-09 18:17:29">2024/11/09</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/07/cpu_gemm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CPU后端上的GEMM优化">CPU后端上的GEMM优化</span>
+            <span class="post-date" title="2024-11-07 14:16:48">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/11/07/time_complexity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="时间复杂度的一些知识">时间复杂度的一些知识</span>
+            <span class="post-date" title="2024-11-07 12:12:58">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/kalman/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
+            <span class="post-date" title="2024-11-07 12:08:35">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/linear_algebra/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性代数">线性代数</span>
+            <span class="post-date" title="2024-11-07 12:08:22">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-11-07 12:08:01">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-11-07 12:07:42">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/probability/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="概率论与数理统计">概率论与数理统计</span>
+            <span class="post-date" title="2024-11-07 12:07:18">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/10/31/acwing_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AcWing算法基础课题解">AcWing算法基础课题解</span>
+            <span class="post-date" title="2024-10-31 20:05:59">2024/10/31</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/10/31/acwing_improve/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AcWing算法提高课题解">AcWing算法提高课题解</span>
+            <span class="post-date" title="2024-10-31 19:36:46">2024/10/31</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/10/27/leetcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LeetCode-1000题题解">LeetCode-1000题题解</span>
+            <span class="post-date" title="2024-10-27 11:06:02">2024/10/27</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/10/14/economics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="资源与可持续发展">资源与可持续发展</span>
+            <span class="post-date" title="2024-10-14 12:41:46">2024/10/14</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/09/27/jetbrains/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetbrains系列IDE的使用方式">Jetbrains系列IDE的使用方式</span>
+            <span class="post-date" title="2024-09-27 22:37:32">2024/09/27</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/22/x86_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86-CPU的体系结构基础">x86-CPU的体系结构基础</span>
+            <span class="post-date" title="2024-09-22 13:23:27">2024/09/22</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/20/program_time/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="理解程序运行的时间">理解程序运行的时间</span>
+            <span class="post-date" title="2024-09-20 14:22:52">2024/09/20</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transformer的工作原理">Transformer的工作原理</span>
+            <span class="post-date" title="2024-09-17 14:16:16">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/roofline_model/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="性能分析的Roofline Model">性能分析的Roofline Model</span>
+            <span class="post-date" title="2024-09-17 14:16:00">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/pytorch_quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI模型量化的理论和实现">AI模型量化的理论和实现</span>
+            <span class="post-date" title="2024-09-17 14:15:30">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/pytorch_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Pytorch的前后端架构">Pytorch的前后端架构</span>
+            <span class="post-date" title="2024-09-17 14:15:03">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/ai_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI的基本模型和实现">AI的基本模型和实现</span>
+            <span class="post-date" title="2024-09-17 14:14:52">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/welford/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Welford算法计算方差">Welford算法计算方差</span>
+            <span class="post-date" title="2024-09-17 14:14:12">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/data-augmentation-metric/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="理解数据增广的本质">理解数据增广的本质</span>
+            <span class="post-date" title="2024-09-17 14:14:03">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/09/10/design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式的实际操作">设计模式的实际操作</span>
+            <span class="post-date" title="2024-09-10 18:29:51">2024/09/10</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/09/08/windows_msys2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Windows环境配置">Windows环境配置</span>
+            <span class="post-date" title="2024-09-08 13:53:44">2024/09/08</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/09/06/network_application_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-应用层">计算机网络-应用层</span>
+            <span class="post-date" title="2024-09-06 14:31:30">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/09/06/network_tcp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-传输层">计算机网络-传输层</span>
+            <span class="post-date" title="2024-09-06 14:31:18">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="All 操作系统 "
+           href="/2024/08/16/concurrent_sketch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="并发编程的概述">并发编程的概述</span>
+            <span class="post-date" title="2024-08-16 13:48:22">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 操作系统 "
+           href="/2024/08/16/multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多进程/多线程编程模型">多进程/多线程编程模型</span>
+            <span class="post-date" title="2024-08-16 13:48:12">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 操作系统 "
+           href="/2024/08/16/linux_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux上的进程控制">Linux上的进程控制</span>
+            <span class="post-date" title="2024-08-16 13:48:03">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/network_network_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-网络层">计算机网络-网络层</span>
+            <span class="post-date" title="2024-08-16 13:46:58">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/network_datalink_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-数据链路层">计算机网络-数据链路层</span>
+            <span class="post-date" title="2024-08-16 13:46:50">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/tcp_stick/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何解决TCP粘包问题">如何解决TCP粘包问题</span>
+            <span class="post-date" title="2024-08-16 13:46:38">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/vimium/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome中vimium键位">Chrome中vimium键位</span>
+            <span class="post-date" title="2024-08-16 13:46:08">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/yabai/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="yabai窗口管理器键位配置">yabai窗口管理器键位配置</span>
+            <span class="post-date" title="2024-08-16 13:45:41">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/lazygit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="试用LazyGit进行版本控制">试用LazyGit进行版本控制</span>
+            <span class="post-date" title="2024-08-16 13:45:31">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/tmux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="tmux键位配置">tmux键位配置</span>
+            <span class="post-date" title="2024-08-16 13:45:09">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/build_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="创建型的设计模式">创建型的设计模式</span>
+            <span class="post-date" title="2024-08-16 13:35:12">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/behaviour_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="行为型的设计模式">行为型的设计模式</span>
+            <span class="post-date" title="2024-08-16 13:35:00">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/combine_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="组合型的设计模式">组合型的设计模式</span>
+            <span class="post-date" title="2024-08-16 13:33:52">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/dns/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DNS-客户端连接到机房的技术">DNS-客户端连接到机房的技术</span>
+            <span class="post-date" title="2024-08-16 13:33:38">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/lvs_nginx/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LVS/Nginx-服务器调度的技术">LVS/Nginx-服务器调度的技术</span>
+            <span class="post-date" title="2024-08-16 13:33:27">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/service_discovery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="服务发现架构设计">服务发现架构设计</span>
+            <span class="post-date" title="2024-08-16 13:33:15">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/storage_rpc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="存储微服务的架构">存储微服务的架构</span>
+            <span class="post-date" title="2024-08-16 13:33:00">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/mq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="消息中间件技术">消息中间件技术</span>
+            <span class="post-date" title="2024-08-16 13:32:10">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/concurrent_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高并发架构通用设计">高并发架构通用设计</span>
+            <span class="post-date" title="2024-08-16 13:31:33">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/10/data_replication_center/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机房高可用技术">机房高可用技术</span>
+            <span class="post-date" title="2024-08-10 20:04:18">2024/08/10</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/05/parser/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译原理-Parser的知识合集">编译原理-Parser的知识合集</span>
+            <span class="post-date" title="2024-07-05 16:29:19">2024/07/05</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/04/raii/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="资源管理中RAII的概念">资源管理中RAII的概念</span>
+            <span class="post-date" title="2024-07-04 16:16:39">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/04/char_encode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="字符集与字符编码的深度理解">字符集与字符编码的深度理解</span>
+            <span class="post-date" title="2024-07-04 11:32:31">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/07/04/ieee_754/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="体系结构中的浮点数">体系结构中的浮点数</span>
+            <span class="post-date" title="2024-07-04 11:24:35">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/05/22/quant_analysis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="金融量化分析模型">金融量化分析模型</span>
+            <span class="post-date" title="2024-05-22 18:08:38">2024/05/22</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/17/car-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="汽车英语">汽车英语</span>
+            <span class="post-date" title="2024-05-17 13:37:34">2024/05/17</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/14/regular_expression/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="正则表达式原理和实战">正则表达式原理和实战</span>
+            <span class="post-date" title="2024-05-14 20:14:59">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/13/restaurant_english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="饭店英语">饭店英语</span>
+            <span class="post-date" title="2024-05-13 20:25:52">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/12/frontend-lang/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Javascript原理与实战">Javascript原理与实战</span>
+            <span class="post-date" title="2024-05-12 21:13:45">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/hotel-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="酒店英语">酒店英语</span>
+            <span class="post-date" title="2024-05-12 12:29:02">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/10/airport-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机场英语">机场英语</span>
+            <span class="post-date" title="2024-05-10 10:12:57">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/09/practical-go/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Go语言原理与实战">Go语言原理与实战</span>
+            <span class="post-date" title="2024-05-09 20:48:25">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/05/09/database-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostgreSQL数据库教程">PostgreSQL数据库教程</span>
+            <span class="post-date" title="2024-05-09 20:24:37">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/05/09/cache-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cache的基础知识与设计策略">Cache的基础知识与设计策略</span>
+            <span class="post-date" title="2024-05-09 20:12:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/13/practical-rust/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust原理与实战">Rust原理与实战</span>
+            <span class="post-date" title="2024-04-13 17:05:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/07/python_many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python原理与实战">Python原理与实战</span>
+            <span class="post-date" title="2024-04-07 10:46:59">2024/04/07</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/30/binary-tree/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二叉树系列">二叉树系列</span>
+            <span class="post-date" title="2024-03-30 17:07:34">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/28/linkedlist/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="链表系列">链表系列</span>
+            <span class="post-date" title="2024-03-28 09:53:10">2024/03/28</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/shell_script/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shell脚本基础与实战">Shell脚本基础与实战</span>
+            <span class="post-date" title="2024-03-22 12:50:32">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/modern_cpp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Modern C++基础与实战">Modern C++基础与实战</span>
+            <span class="post-date" title="2024-03-22 11:31:11">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/linear-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性DP">线性DP</span>
+            <span class="post-date" title="2024-03-20 18:11:22">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/tree-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树形DP">树形DP</span>
+            <span class="post-date" title="2024-03-20 18:10:56">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-method/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Methodology">英语科技论文写作模型-Methodology</span>
+            <span class="post-date" title="2024-03-20 16:53:17">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-abstract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Abstract">英语科技论文写作模型-Abstract</span>
+            <span class="post-date" title="2024-03-20 16:49:54">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-conclusion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Conclusion">英语科技论文写作模型-Conclusion</span>
+            <span class="post-date" title="2024-03-20 16:49:46">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-results/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Results">英语科技论文写作模型-Results</span>
+            <span class="post-date" title="2024-03-20 16:49:31">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/19/sci-writing-introduction/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Introduction">英语科技论文写作模型-Introduction</span>
+            <span class="post-date" title="2024-03-19 10:16:07">2024/03/19</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/10/catalan/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡特兰数系列">卡特兰数系列</span>
+            <span class="post-date" title="2024-03-10 12:47:19">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/03/knapsack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背包问题">背包问题</span>
+            <span class="post-date" title="2024-03-03 16:22:21">2024/03/03</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/virtualmem/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="虚拟内存的基础知识和设计">虚拟内存的基础知识和设计</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/sim-plus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高精度加减乘除">高精度加减乘除</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/prefix-sum-diff/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前缀和/差分">前缀和/差分</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/parathesis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/other-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/mathematic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数学问题">数学问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/interval/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="区间问题">区间问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/greedy/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/graph/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="图论">图论</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/dfs/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="深度优先搜索">深度优先搜索</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/cache-coherence/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="缓存一致性">缓存一致性</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/catch-rain/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="接雨水问题">接雨水问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/bfs/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广度优先搜索">广度优先搜索</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/binary-search/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二分系列">二分系列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/03/01/clean_code/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码整洁之道">代码整洁之道</span>
+            <span class="post-date" title="2024-03-01 14:30:08">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/03/01/software_rule/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面向对象设计的基本原则">面向对象设计的基本原则</span>
+            <span class="post-date" title="2024-03-01 14:30:02">2024/03/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-cpu_gemm" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">CPU后端上的GEMM优化</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="AI-HPC">AI-HPC</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-11-07 14:39:11'>2024-11-07 14:16</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+       <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©B1ueDrops
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
