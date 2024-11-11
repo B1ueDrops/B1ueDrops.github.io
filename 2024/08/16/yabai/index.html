@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="yabai窗口管理器键位配置 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="向阳而生, 喜欢聪明的人.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B1ueDrops">
-<meta property="og:url" content="https://b1uedrops.github.io/about.html">
+<meta name="description" content="字符串的split函数  Split函数可以将一个字符串, 按照其中出现的某个字符t, 切割成若干的pieces. 实现可参考:  vector&lt;string&gt; split(string str, char t) &#123;    str +&#x3D; t;    vector&lt;string&gt; items;    for (int i &#x3D; 0; i &lt; str.size()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="其他的算法题题解">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/11/09/valuable-algorithm/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:description" content="字符串的split函数  Split函数可以将一个字符串, 按照其中出现的某个字符t, 切割成若干的pieces. 实现可参考:  vector&lt;string&gt; split(string str, char t) &#123;    str +&#x3D; t;    vector&lt;string&gt; items;    for (int i &#x3D; 0; i &lt; str.size()">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
-<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
+<meta property="article:published_time" content="2024-11-09T10:21:12.164Z">
+<meta property="article:modified_time" content="2024-11-11T12:46:38.253Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(93)</small>
+                <small>(92)</small>
             
         </div>
     </li>
@@ -217,7 +217,7 @@
         <div data-rel="算法">
             
             算法
-            <small>(25)</small>
+            <small>(24)</small>
         </div>
         
     </li>
@@ -287,7 +287,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="93">
+<input type="hidden" id="yelog_site_posts_number" value="92">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -343,7 +343,7 @@
            href="/2024/11/09/valuable-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="一些其他的算法题题解">一些其他的算法题题解</span>
+            <span class="post-title" title="其他的算法题题解">其他的算法题题解</span>
             <span class="post-date" title="2024-11-09 18:21:12">2024/11/09</span>
         </a>
         
@@ -352,7 +352,7 @@
            href="/2024/11/09/jianzhi_offer/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="剑指Offer题解">剑指Offer题解</span>
+            <span class="post-title" title="《剑指Offer》题解">《剑指Offer》题解</span>
             <span class="post-date" title="2024-11-09 18:17:29">2024/11/09</span>
         </a>
         
@@ -916,15 +916,6 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/28/linkedlist/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="链表系列">链表系列</span>
-            <span class="post-date" title="2024-03-28 09:53:10">2024/03/28</span>
-        </a>
-        
-        
-        <a  class="All 算法 "
            href="/2024/03/24/data-struct/"
            data-tag=""
            data-author="" >
@@ -1060,19 +1051,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1240,7 +1231,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关闭SIP的方法">关闭SIP的方法</h2>
+        <h2 id="关闭SIP的方法"><a href="#关闭SIP的方法" class="headerlink" title="关闭SIP的方法"></a>关闭SIP的方法</h2>
 <ol>
 <li>首先, 进入Mac的Recovery Mode.</li>
 <li>进入终端: [实用工具]-[终端].</li>
@@ -1249,7 +1240,7 @@
 <li>之后, 在终端运行: <code>sudo nvram boot-args=-arm64e_preview_abi</code>.</li>
 <li>然后重启.</li>
 </ol>
-<h2 id="下载完yabai之后">下载完yabai之后</h2>
+<h2 id="下载完yabai之后"><a href="#下载完yabai之后" class="headerlink" title="下载完yabai之后"></a>下载完yabai之后</h2>
 <p>在<code>/etc/sudoers.d</code>中, 创建<code>yabai</code>, 写入:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">&lt;user&gt; ALL=(root) NOPASSWD: sha256:&lt;hash&gt; &lt;yabai&gt; --load-sa<br></code></pre></td></tr></table></figure>
 <ul>
@@ -1258,7 +1249,7 @@
 <li><code>yabai</code>: <code>which yabai</code>的输出.</li>
 </ul>
 <p><font color="red">注意, yabai更新之后, hash的值会改变, 需要重新修改.</font></p>
-<h2 id="yabai的键位配置">yabai的键位配置</h2>
+<h2 id="yabai的键位配置"><a href="#yabai的键位配置" class="headerlink" title="yabai的键位配置"></a>yabai的键位配置</h2>
 <table>
 <thead>
 <tr>
@@ -1325,7 +1316,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="sketchybar下载依赖">sketchybar下载依赖</h2>
+<h2 id="sketchybar下载依赖"><a href="#sketchybar下载依赖" class="headerlink" title="sketchybar下载依赖"></a>sketchybar下载依赖</h2>
 <ul>
 <li>sketchybar-app-font: <a href="https://b1uedrops.github.io/static/files/sketchybar-app-font.ttf">https://b1uedrops.github.io/static/files/sketchybar-app-font.ttf</a></li>
 </ul>
