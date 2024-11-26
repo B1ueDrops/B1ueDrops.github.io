@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI模型量化的理论和实现 | B1ueDrops</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="AI模型量化的理论和实现 | B1ueDrops">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Basic Question  监督学习:   给定一个矩阵$X &#x3D; [x_1, x_2, …, x_m] \in R^{n\times m}$, 和一个结果矩阵$Y \in R^{n \times 1}$  $n$是样本的个数. $m$是feature的个数.   用这个矩阵$X$作为训练集, 得到一个拟合函数$f$, 输入新的样本$x_i \in R^{1 \times m}$, 经过$y &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础机器学习的一些内容">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/11/25/ml/index.html">
+<meta property="og:site_name" content="B1ueDrops">
+<meta property="og:description" content="Basic Question  监督学习:   给定一个矩阵$X &#x3D; [x_1, x_2, …, x_m] \in R^{n\times m}$, 和一个结果矩阵$Y \in R^{n \times 1}$  $n$是样本的个数. $m$是feature的个数.   用这个矩阵$X$作为训练集, 得到一个拟合函数$f$, 输入新的样本$x_i \in R^{1 \times m}$, 经过$y &#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-25T08:02:38.494Z">
+<meta property="article:modified_time" content="2024-11-25T12:45:03.429Z">
+<meta property="article:author" content="B1ueDrops">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpeg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpeg"/>
+</a>
+<div class="author">
+    <span>B1ueDrops</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/B1ueDrops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:bluedrops@yeah.net"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2381446488&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(94)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="编程语言">
+            
+            编程语言
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="操作系统">
+            
+            操作系统
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端技术">
+            
+            后端技术
+            <small>(19)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="金融知识">
+            
+            金融知识
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发工具">
+            
+            开发工具
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="数学">
+            
+            数学
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="算法">
+            
+            算法
+            <small>(24)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="体系结构">
+            
+            体系结构
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="AI-HPC">
+            
+            AI-HPC
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="English">
+            
+            English
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  site_url"
+               
+               href="/about">About</a>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="94">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/25/ml/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基础机器学习的一些内容">基础机器学习的一些内容</span>
+            <span class="post-date" title="2024-11-25 16:02:38">2024/11/25</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/25/pytorch_quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI模型量化的理论和实现">AI模型量化的理论和实现</span>
+            <span class="post-date" title="2024-11-25 15:54:55">2024/11/25</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/25/pytorch_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Pytorch的前后端架构">Pytorch的前后端架构</span>
+            <span class="post-date" title="2024-11-25 15:54:48">2024/11/25</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/21/cuda_env/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CUDA理论和实战">CUDA理论和实战</span>
+            <span class="post-date" title="2024-11-21 13:11:31">2024/11/21</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/11/09/valuable-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="其他的算法题题解">其他的算法题题解</span>
+            <span class="post-date" title="2024-11-09 18:21:12">2024/11/09</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/11/09/jianzhi_offer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="《剑指Offer》题解">《剑指Offer》题解</span>
+            <span class="post-date" title="2024-11-09 18:17:29">2024/11/09</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/07/cpu_gemm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CPU后端上的GEMM优化">CPU后端上的GEMM优化</span>
+            <span class="post-date" title="2024-11-07 14:16:48">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/11/07/time_complexity/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="时间复杂度的一些知识">时间复杂度的一些知识</span>
+            <span class="post-date" title="2024-11-07 12:12:58">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/kalman/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡尔曼滤波数学推导">卡尔曼滤波数学推导</span>
+            <span class="post-date" title="2024-11-07 12:08:35">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/linear_algebra/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性代数">线性代数</span>
+            <span class="post-date" title="2024-11-07 12:08:22">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/quaternion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="描述旋转的几种方式">描述旋转的几种方式</span>
+            <span class="post-date" title="2024-11-07 12:08:01">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/signal_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="信号与系统">信号与系统</span>
+            <span class="post-date" title="2024-11-07 12:07:42">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 数学 "
+           href="/2024/11/07/probability/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="概率论与数理统计">概率论与数理统计</span>
+            <span class="post-date" title="2024-11-07 12:07:18">2024/11/07</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/10/31/acwing_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AcWing算法基础课题解">AcWing算法基础课题解</span>
+            <span class="post-date" title="2024-10-31 20:05:59">2024/10/31</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/10/31/acwing_improve/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AcWing算法提高课题解">AcWing算法提高课题解</span>
+            <span class="post-date" title="2024-10-31 19:36:46">2024/10/31</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/10/27/leetcode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LeetCode-1000题题解">LeetCode-1000题题解</span>
+            <span class="post-date" title="2024-10-27 11:06:02">2024/10/27</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/10/14/economics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="资源与可持续发展">资源与可持续发展</span>
+            <span class="post-date" title="2024-10-14 12:41:46">2024/10/14</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/09/27/jetbrains/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetbrains系列IDE的使用方式">Jetbrains系列IDE的使用方式</span>
+            <span class="post-date" title="2024-09-27 22:37:32">2024/09/27</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/22/x86_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="x86-CPU的体系结构基础">x86-CPU的体系结构基础</span>
+            <span class="post-date" title="2024-09-22 13:23:27">2024/09/22</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/20/program_time/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="理解程序运行的时间">理解程序运行的时间</span>
+            <span class="post-date" title="2024-09-20 14:22:52">2024/09/20</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/transformer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transformer的工作原理">Transformer的工作原理</span>
+            <span class="post-date" title="2024-09-17 14:16:16">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/roofline_model/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="性能分析的Roofline Model">性能分析的Roofline Model</span>
+            <span class="post-date" title="2024-09-17 14:16:00">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/ai_basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI的基本模型和实现">AI的基本模型和实现</span>
+            <span class="post-date" title="2024-09-17 14:14:52">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/welford/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Welford算法计算方差">Welford算法计算方差</span>
+            <span class="post-date" title="2024-09-17 14:14:12">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/09/17/data-augmentation-metric/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="理解数据增广的本质">理解数据增广的本质</span>
+            <span class="post-date" title="2024-09-17 14:14:03">2024/09/17</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/09/10/design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式的实际操作">设计模式的实际操作</span>
+            <span class="post-date" title="2024-09-10 18:29:51">2024/09/10</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/09/08/windows_msys2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Windows环境配置">Windows环境配置</span>
+            <span class="post-date" title="2024-09-08 13:53:44">2024/09/08</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/09/06/network_application_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-应用层">计算机网络-应用层</span>
+            <span class="post-date" title="2024-09-06 14:31:30">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/09/06/network_tcp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-传输层">计算机网络-传输层</span>
+            <span class="post-date" title="2024-09-06 14:31:18">2024/09/06</span>
+        </a>
+        
+        
+        <a  class="All 操作系统 "
+           href="/2024/08/16/concurrent_sketch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="并发编程的概述">并发编程的概述</span>
+            <span class="post-date" title="2024-08-16 13:48:22">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 操作系统 "
+           href="/2024/08/16/multithread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="多进程/多线程编程模型">多进程/多线程编程模型</span>
+            <span class="post-date" title="2024-08-16 13:48:12">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 操作系统 "
+           href="/2024/08/16/linux_process/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux上的进程控制">Linux上的进程控制</span>
+            <span class="post-date" title="2024-08-16 13:48:03">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/network_network_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-网络层">计算机网络-网络层</span>
+            <span class="post-date" title="2024-08-16 13:46:58">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/network_datalink_layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络-数据链路层">计算机网络-数据链路层</span>
+            <span class="post-date" title="2024-08-16 13:46:50">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/tcp_stick/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何解决TCP粘包问题">如何解决TCP粘包问题</span>
+            <span class="post-date" title="2024-08-16 13:46:38">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/vimium/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chrome中vimium键位">Chrome中vimium键位</span>
+            <span class="post-date" title="2024-08-16 13:46:08">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/yabai/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="yabai窗口管理器键位配置">yabai窗口管理器键位配置</span>
+            <span class="post-date" title="2024-08-16 13:45:41">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/lazygit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="试用LazyGit进行版本控制">试用LazyGit进行版本控制</span>
+            <span class="post-date" title="2024-08-16 13:45:31">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/08/16/tmux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="tmux键位配置">tmux键位配置</span>
+            <span class="post-date" title="2024-08-16 13:45:09">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/build_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="创建型的设计模式">创建型的设计模式</span>
+            <span class="post-date" title="2024-08-16 13:35:12">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/behaviour_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="行为型的设计模式">行为型的设计模式</span>
+            <span class="post-date" title="2024-08-16 13:35:00">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/combine_design_pattern/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="组合型的设计模式">组合型的设计模式</span>
+            <span class="post-date" title="2024-08-16 13:33:52">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/dns/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DNS-客户端连接到机房的技术">DNS-客户端连接到机房的技术</span>
+            <span class="post-date" title="2024-08-16 13:33:38">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/lvs_nginx/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LVS/Nginx-服务器调度的技术">LVS/Nginx-服务器调度的技术</span>
+            <span class="post-date" title="2024-08-16 13:33:27">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/service_discovery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="服务发现架构设计">服务发现架构设计</span>
+            <span class="post-date" title="2024-08-16 13:33:15">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/storage_rpc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="存储微服务的架构">存储微服务的架构</span>
+            <span class="post-date" title="2024-08-16 13:33:00">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/mq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="消息中间件技术">消息中间件技术</span>
+            <span class="post-date" title="2024-08-16 13:32:10">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/16/concurrent_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高并发架构通用设计">高并发架构通用设计</span>
+            <span class="post-date" title="2024-08-16 13:31:33">2024/08/16</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/08/10/data_replication_center/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机房高可用技术">机房高可用技术</span>
+            <span class="post-date" title="2024-08-10 20:04:18">2024/08/10</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/05/parser/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译原理-Parser的知识合集">编译原理-Parser的知识合集</span>
+            <span class="post-date" title="2024-07-05 16:29:19">2024/07/05</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/04/raii/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="资源管理中RAII的概念">资源管理中RAII的概念</span>
+            <span class="post-date" title="2024-07-04 16:16:39">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/07/04/char_encode/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="字符集与字符编码的深度理解">字符集与字符编码的深度理解</span>
+            <span class="post-date" title="2024-07-04 11:32:31">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/07/04/ieee_754/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="体系结构中的浮点数">体系结构中的浮点数</span>
+            <span class="post-date" title="2024-07-04 11:24:35">2024/07/04</span>
+        </a>
+        
+        
+        <a  class="All 金融知识 "
+           href="/2024/05/22/quant_analysis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="金融量化分析模型">金融量化分析模型</span>
+            <span class="post-date" title="2024-05-22 18:08:38">2024/05/22</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/17/car-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="汽车英语">汽车英语</span>
+            <span class="post-date" title="2024-05-17 13:37:34">2024/05/17</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/14/regular_expression/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="正则表达式原理和实战">正则表达式原理和实战</span>
+            <span class="post-date" title="2024-05-14 20:14:59">2024/05/14</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/13/restaurant_english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="饭店英语">饭店英语</span>
+            <span class="post-date" title="2024-05-13 20:25:52">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/12/frontend-lang/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用Vue快速搭建网站原型">使用Vue快速搭建网站原型</span>
+            <span class="post-date" title="2024-05-12 21:13:45">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/12/hotel-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="酒店英语">酒店英语</span>
+            <span class="post-date" title="2024-05-12 12:29:02">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/05/10/airport-english/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="机场英语">机场英语</span>
+            <span class="post-date" title="2024-05-10 10:12:57">2024/05/10</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/05/09/practical-go/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Go语言原理与实战">Go语言原理与实战</span>
+            <span class="post-date" title="2024-05-09 20:48:25">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/05/09/database-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PostgreSQL数据库教程">PostgreSQL数据库教程</span>
+            <span class="post-date" title="2024-05-09 20:24:37">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/05/09/cache-basic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cache的基础知识与设计策略">Cache的基础知识与设计策略</span>
+            <span class="post-date" title="2024-05-09 20:12:19">2024/05/09</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/13/practical-rust/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Rust原理与实战">Rust原理与实战</span>
+            <span class="post-date" title="2024-04-13 17:05:26">2024/04/13</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/04/07/python_many/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Python原理与实战">Python原理与实战</span>
+            <span class="post-date" title="2024-04-07 10:46:59">2024/04/07</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/30/binary-tree/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二叉树系列">二叉树系列</span>
+            <span class="post-date" title="2024-03-30 17:07:34">2024/03/30</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/24/data-struct/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据结构系列">数据结构系列</span>
+            <span class="post-date" title="2024-03-24 14:10:22">2024/03/24</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/shell_script/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Shell脚本基础与实战">Shell脚本基础与实战</span>
+            <span class="post-date" title="2024-03-22 12:50:32">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 编程语言 "
+           href="/2024/03/22/modern_cpp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Modern C++基础与实战">Modern C++基础与实战</span>
+            <span class="post-date" title="2024-03-22 11:31:11">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/linear-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="线性DP">线性DP</span>
+            <span class="post-date" title="2024-03-20 18:11:22">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/20/tree-dp/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="树形DP">树形DP</span>
+            <span class="post-date" title="2024-03-20 18:10:56">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-method/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Methodology">英语科技论文写作模型-Methodology</span>
+            <span class="post-date" title="2024-03-20 16:53:17">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-abstract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Abstract">英语科技论文写作模型-Abstract</span>
+            <span class="post-date" title="2024-03-20 16:49:54">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-conclusion/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Conclusion">英语科技论文写作模型-Conclusion</span>
+            <span class="post-date" title="2024-03-20 16:49:46">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/20/sci-writing-results/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Results">英语科技论文写作模型-Results</span>
+            <span class="post-date" title="2024-03-20 16:49:31">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All English "
+           href="/2024/03/19/sci-writing-introduction/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英语科技论文写作模型-Introduction">英语科技论文写作模型-Introduction</span>
+            <span class="post-date" title="2024-03-19 10:16:07">2024/03/19</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/10/catalan/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="卡特兰数系列">卡特兰数系列</span>
+            <span class="post-date" title="2024-03-10 12:47:19">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/03/knapsack/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背包问题">背包问题</span>
+            <span class="post-date" title="2024-03-03 16:22:21">2024/03/03</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/virtualmem/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="虚拟内存的基础知识和设计">虚拟内存的基础知识和设计</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/sim-plus/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="高精度加减乘除">高精度加减乘除</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/prefix-sum-diff/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="前缀和/差分">前缀和/差分</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/parathesis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/other-algorithm/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/mathematic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数学问题">数学问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/interval/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="区间问题">区间问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/graph/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="图论">图论</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/greedy/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/dfs/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="深度优先搜索">深度优先搜索</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 体系结构 "
+           href="/2024/03/02/cache-coherence/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="缓存一致性">缓存一致性</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/catch-rain/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="接雨水问题">接雨水问题</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/bfs/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="广度优先搜索">广度优先搜索</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 算法 "
+           href="/2024/03/02/binary-search/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="二分系列">二分系列</span>
+            <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/03/01/clean_code/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="代码整洁之道">代码整洁之道</span>
+            <span class="post-date" title="2024-03-01 14:30:08">2024/03/01</span>
+        </a>
+        
+        
+        <a  class="All 后端技术 "
+           href="/2024/03/01/software_rule/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面向对象设计的基本原则">面向对象设计的基本原则</span>
+            <span class="post-date" title="2024-03-01 14:30:02">2024/03/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-pytorch_quant" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">AI模型量化的理论和实现</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="AI-HPC">AI-HPC</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-11-25 15:54:55'>2024-11-25 15:54</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-text">模型量化的理论基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%85%AC%E5%BC%8F"><span class="toc-text">基本公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E7%9A%84%E9%87%8F%E5%8C%96"><span class="toc-text">矩阵乘法的量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">量化模型的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReLU%E7%9A%84%E9%87%8F%E5%8C%96"><span class="toc-text">ReLU的量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conv2d-BatchNorm%E5%90%88%E5%B9%B6"><span class="toc-text">Conv2d-BatchNorm合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conv2d-ReLU%E5%90%88%E5%B9%B6"><span class="toc-text">Conv2d-ReLU合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eltwise-Add%E9%87%8F%E5%8C%96"><span class="toc-text">Eltwise Add量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Concat%E9%87%8F%E5%8C%96"><span class="toc-text">Concat量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FakeQuantize"><span class="toc-text">FakeQuantize</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96pipeline"><span class="toc-text">模型量化pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E9%87%8F%E5%8C%96%E5%90%8E%E7%AB%AF"><span class="toc-text">指定量化后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E5%88%86%E7%B1%BB"><span class="toc-text">量化分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Observer"><span class="toc-text">Observer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FakeQuantize-2"><span class="toc-text">FakeQuantize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QConfig-QConfigMapping"><span class="toc-text">QConfig&#x2F;QConfigMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Post-Training-Quant"><span class="toc-text">Post Training Quant</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FX-Graph-Mode"><span class="toc-text">FX Graph Mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eager-Mode"><span class="toc-text">Eager Mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quant-Aware-Training"><span class="toc-text">Quant-Aware Training</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FX-Graph-Mode-2"><span class="toc-text">FX Graph Mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eager-Mode-2"><span class="toc-text">Eager Mode</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pytorch%E9%87%8F%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text">Pytorch量化的一些问题</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-text">模型量化的理论基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%85%AC%E5%BC%8F"><span class="toc-text">基本公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E7%9A%84%E9%87%8F%E5%8C%96"><span class="toc-text">矩阵乘法的量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-text">量化模型的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReLU%E7%9A%84%E9%87%8F%E5%8C%96"><span class="toc-text">ReLU的量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conv2d-BatchNorm%E5%90%88%E5%B9%B6"><span class="toc-text">Conv2d-BatchNorm合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conv2d-ReLU%E5%90%88%E5%B9%B6"><span class="toc-text">Conv2d-ReLU合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eltwise-Add%E9%87%8F%E5%8C%96"><span class="toc-text">Eltwise Add量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Concat%E9%87%8F%E5%8C%96"><span class="toc-text">Concat量化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FakeQuantize"><span class="toc-text">FakeQuantize</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96pipeline"><span class="toc-text">模型量化pipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E9%87%8F%E5%8C%96%E5%90%8E%E7%AB%AF"><span class="toc-text">指定量化后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E5%88%86%E7%B1%BB"><span class="toc-text">量化分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Observer"><span class="toc-text">Observer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FakeQuantize-2"><span class="toc-text">FakeQuantize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QConfig-QConfigMapping"><span class="toc-text">QConfig&#x2F;QConfigMapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Post-Training-Quant"><span class="toc-text">Post Training Quant</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FX-Graph-Mode"><span class="toc-text">FX Graph Mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eager-Mode"><span class="toc-text">Eager Mode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quant-Aware-Training"><span class="toc-text">Quant-Aware Training</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FX-Graph-Mode-2"><span class="toc-text">FX Graph Mode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Eager-Mode-2"><span class="toc-text">Eager Mode</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pytorch%E9%87%8F%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-text">Pytorch量化的一些问题</span></a></li></ol></div></p>
+<h2 id="模型量化的理论基础">模型量化的理论基础</h2>
+<h3 id="基本公式">基本公式</h3>
+<ul>
+<li>浮点数量化本质上是一个离散化算法, 这个算法将范围内的浮点数映射到整数.
+<ul>
+<li>假设整数的取值范围是$[I_{min}, I_{max}]$, 浮点数的取值范围是$[f_{min}, f_{max}]$.</li>
+<li>对于一个浮点数$f$, 映射到对应整数$I$的方式可以是一种线性量化:</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>
+I = round[I_{min} + \frac{I_{max} - I_{min}}{f_{max} - f_{min}} \times (f - f_{min})]<br>
+$$</p>
+<ul>
+<li>
+<p>这种线性量化方式有两个问题:</p>
+<ul>
+<li>$[f_{min}, f_{max}]$过于庞大, 导致很多浮点数都会映射到同一个整数$I$, rounding error过大.
+<ul>
+<li>解决方案: 在进行量化之前, 对于张量中的浮点数, 动态统计$f_{min}$和$f_{max}$, 然后映射, 统计的过程叫做Calibration.</li>
+</ul>
+</li>
+<li>$f_{min}$和$f_{max}$距离数据分布集中的地方较远
+<ul>
+<li>解决方案: Calibration的过程中, 将$f_{min}$和$f_{max}$的值设置成数据分布集中区域的下界和上界, 超出上下界的部分直接映射成上下界, 这个过程叫clip.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>实际的线性量化一般有两个参数分别是$s, z$, 其中$s$都是浮点数, 而$z$是整数, 量化方式为:<br>
+$$<br>
+I = clip[round(\frac{f}{s}) + z,\ q_{max},\ q_{min}]<br>
+$$</p>
+<ul>
+<li>其中, $s = \frac{f_{max} - f_{min}}{q_{max} - q_{min}}$, 其中$q_{max}, q_{min}$表示量化后整数数据类型的最大/最小值, $f_{max}, f_{min}$表示经过Calibration统计出的浮点数最大值和最小值.
+<ul>
+<li>$s$一般大于1.0, 表示将浮点数区间缩减到量化区间$[q_{min}, q_{max}]$.</li>
+</ul>
+</li>
+<li>$z$表示浮点数的0.0映射到整数的位置.</li>
+</ul>
+</li>
+</ul>
+<h3 id="矩阵乘法的量化">矩阵乘法的量化</h3>
+<ul>
+<li>
+<p>假设矩阵乘法$C = A \times B$, 每个矩阵的量化参数分别为:</p>
+<ul>
+<li>
+<p>$A: S_a, Z_a$</p>
+</li>
+<li>
+<p>$B: S_b, Z_b$</p>
+</li>
+<li>
+<p>$C: S_c, Z_c$</p>
+</li>
+<li>
+<p>注意: 在AI模型中, 其中的一个矩阵一般是Weights, 另一个矩阵是Activation, 得到的计算结果是下一层的Activation, Weights和Activation的量化参数一般是在Calibration阶段得到的.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>矩阵乘法可以写成:</p>
+</li>
+</ul>
+<p>$$<br>
+S_c(Q_c - Z_c) = S_a(Q_a - Z_a) \times S_b(Q_b - Z_b)<br>
+$$</p>
+<ul>
+<li>
+<p>整合后可以变成:<br>
+$$<br>
+Q_c = \frac{S_aS_b}{S_c}(Q_a - Z_a)(Q_b - Z_b) + Z_c = MQ + Z_c<br>
+$$</p>
+</li>
+<li>
+<p>其中, 除了$M = \frac{S_aS_b}{S_c}$以外, 所有的运算都是整数运算, $Q$可以提前计算好, 那么如何将$M$进行量化?</p>
+<ul>
+<li>首先, 经过大量实验统计, $M$的范围都在$(0, 1)$范围内, 那么$M$就可以写成$M = M_0 \times 2^{-n}$, 相当于把一个整数小数点向左移动$n$位, $n$可以提前计算出来.</li>
+</ul>
+</li>
+<li>
+<p>自此, 就完成了矩阵乘法的量化, 卷积可以等价为矩阵乘法, 也可以量化.</p>
+</li>
+</ul>
+<h3 id="量化模型的基本结构">量化模型的基本结构</h3>
+<img src="/2024/11/25/pytorch_quant/quantized_model.png" alt="quantized_model" style="zoom:50%;">
+<ul>
+<li>模型的每一层前后都会保存输入的Activation和输出的Activation的量化参数(量化参数可以体现Tensor的分布).
+<ul>
+<li>输入Activation的量化参数: $S_i, Z_i$.</li>
+<li>模型权重的量化参数: $S_w, Z_w$.</li>
+<li>输出Activation的量化参数: $S_o, Z_o$.</li>
+</ul>
+</li>
+<li>每次infer时, 都会通过$Q_c = M_0 \times 2^{-n}(Q_a - Z_a)(Q_b - Z_b) + Z_c$ (矩阵乘法)进行输出, 输出的结果是量化后的Activation.</li>
+</ul>
+<h3 id="ReLU的量化">ReLU的量化</h3>
+<ul>
+<li>
+<p>没有量化的ReLU是:<br>
+$$<br>
+ReLU(x) = max(x, 0)<br>
+$$</p>
+</li>
+<li>
+<p>量化后的ReLU是:<br>
+$$<br>
+ReLU(x) = max(x, Z_o) = max(x, Z_i)<br>
+$$</p>
+</li>
+<li>
+<p>推导:</p>
+<ul>
+<li>ReLU之后, 数据的分布会发生变化, 小于0的部分都会消失, 那么经过Calibration, $S_o, Z_o$都会发生变化.</li>
+<li>但是实际上, 大于0的部分都没有变化, 如果要将这部分反量化, 就必须用原来的$S_i, Z_i$.</li>
+<li>因此, 对于ReLU这个模块, 必须让$S_i = S_o, Z_i = Z_o$.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Conv2d-BatchNorm合并">Conv2d-BatchNorm合并</h3>
+<ul>
+<li>
+<p>在推理阶段, <code>Conv2d</code>层可以和<code>BatchNorm</code>层进行合并.</p>
+</li>
+<li>
+<p>BatchNorm的计算过程如下, 假设batch size是<code>m</code>, $X_i, i \in [1, m]$是Batch中的一个数据.</p>
+<ul>
+<li>
+<p>首先计算均值和标准差:<br>
+$$<br>
+\mu = \frac{1}{m} \sum_{i=1}^mX_i\\sigma = \sqrt{\frac{1}{m}\sum_{i=1}^{m}(X_i - \mu)^2}<br>
+$$</p>
+</li>
+<li>
+<p>然后将Batch中的每一个张量进行变换:<br>
+$$<br>
+Y_i = \gamma\frac{X_i  - \mu}{\sigma + \epsilon} + \beta<br>
+$$</p>
+<ul>
+<li>其中$\gamma$和$\beta$是BatchNorm的可学习参数, 在推理阶段, 参数是固定的.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>卷积层的计算过程可以表示为: $Z = WX_i + B$.</p>
+</li>
+<li>
+<p>卷积层和BatchNorm层的输出可以表示为:<br>
+$$<br>
+Y_i = \gamma\frac{WX_i + B  - \mu}{\sigma + \epsilon} + \beta = \ \frac{\gamma W}{\sigma + \epsilon}X_i + \frac{\gamma (B - \mu)}{\sigma + \epsilon} + \beta<br>
+$$</p>
+<ul>
+<li>在推理的阶段, 所有的参数都是固定的, 只要把BatchNorm的参数合并到Conv2d即可.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Conv2d-ReLU合并">Conv2d-ReLU合并</h3>
+<ul>
+<li>
+<p><code>Conv2d</code>和<code>ReLU</code>只有在量化的时候才能合并, 如果是全精度模型则无法合并.</p>
+</li>
+<li>
+<p>假设一个网络模块是<code>-&gt;Conv2d -&gt; ReLU-&gt;</code>.</p>
+<ul>
+<li>此时, 我不统计<code>Conv2d-&gt;ReLU</code>之间的这个Activation的量化参数, 只统计输入<code>Conv2d</code>的量化参数$S_i, Z_i$, 和ReLU输出的量化参数$S_o, Z_o$.</li>
+<li>然后, 我把<code>Conv2d-&gt;ReLU</code>合并成一个模块<code>Conv2dReLU</code>, 直接用$S_i, Z_i, S_o, Z_o$作为前后Activation的量化参数, 就完成了Conv2d和ReLU的合并.</li>
+<li>这个操作的本质是利用量化本身的<code>clip</code>操作实现ReLU.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Eltwise-Add量化">Eltwise Add量化</h3>
+<ul>
+<li>
+<p>Eltwise Add就是对相同尺寸/广播之后相同尺寸的张量, 按照元素级别进行相加.</p>
+</li>
+<li>
+<p>首先对于$f_3 = f_1 + f_2$, 用量化的式子展开:<br>
+$$<br>
+S_3(Q_3 - Z_3) = S_1(Q_1 - Z_1) + S_2(Q_2 - Z_2)<br>
+$$</p>
+</li>
+<li>
+<p>整理之后, 可以变成:<br>
+$$<br>
+Q_3 = \frac{S_1}{S_3}(Q_1 - Z_1) + \frac{S_2}{S_3}(Q_2 - Z_2) + Z_3<br>
+$$</p>
+</li>
+<li>
+<p>其中的$\frac{S_1}{S_3}$和$\frac{S_2}{S_3}$可以用定点模拟.</p>
+</li>
+</ul>
+<h3 id="Concat量化">Concat量化</h3>
+<ul>
+<li>
+<p>Concat操作就是拼接两个张量, 例如:<br>
+$$<br>
+f_3 = [f_1, f_2]<br>
+$$</p>
+</li>
+<li>
+<p>量化:<br>
+$$<br>
+S_3(Q_3 - Z_3) = [S_1(Q_1 - Z_1), S_2(Q_2 - Z_2)]<br>
+$$</p>
+</li>
+<li>
+<p>那么最后结果就是:<br>
+$$<br>
+Q_3 = [\frac{S_1}{S_3}(Q_1 - Z_1) + Z_3, \frac{S_2}{S_3}(Q_2 - Z_2) + Z_3]<br>
+$$</p>
+</li>
+</ul>
+<h3 id="FakeQuantize">FakeQuantize</h3>
+<ul>
+<li>
+<p>FakeQuantize是一个算子, 用来模拟量化操作产生的误差.</p>
+</li>
+<li>
+<p>假设输入FakeQuantize的是浮点张量$f$, FakeQuantize的输出就是:<br>
+$$<br>
+q(f) = s \times {clip[round(\frac{f}{s}) + z, q_{min}, q_{max}] - z}<br>
+$$</p>
+</li>
+<li>
+<p>FakeQuantize的梯度: $\frac{\partial q(f)}{\partial f}$</p>
+<ul>
+<li>
+<p>首先要知道$\frac{d\ round(x)}{dx} = 1$.</p>
+</li>
+<li>
+<p>然后最终的结果是:<br>
+$$<br>
+\frac{\partial q(f)}{\partial f} = \begin{cases}<br>
+1, f\in[q_{min}, q_{max}] \<br>
+0, f \notin [q_{min}, q_{max}]<br>
+\end{cases}<br>
+$$</p>
+</li>
+<li>
+<p>$\frac{\partial q(f)}{\partial s}$和$\frac{\partial q(f)}{\partial z}$的求解同理, 这个梯度用于QAT训练时进行反向传播.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="模型量化pipeline">模型量化pipeline</h2>
+<p>模型量化主要分为一下几个步骤:</p>
+<ul>
+<li>指定量化后端(CPU, GPU, 架构等).</li>
+<li>PTQ (Post-Training Quantization).</li>
+<li>尝试退回将某些量化的部分.</li>
+<li>QAT (Quantize-Aware Training).</li>
+</ul>
+<h3 id="指定量化后端">指定量化后端</h3>
+<p>首先, 需要明确模型需要跑在什么架构上, 然后指定后端:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># x86架构</span><br>torch.backends.quantized.engine = <span class="hljs-string">&#x27;x86&#x27;</span><br><span class="hljs-comment"># ARM架构</span><br>torch.backends.quantized.engine = <span class="hljs-string">&#x27;qnnpack&#x27;</span><br></code></pre></td></tr></table></figure>
+<h3 id="量化分类">量化分类</h3>
+<ul>
+<li>
+<p>量化大体上可以分为两类:</p>
+<ul>
+<li>Post Training Quant: 训练结束后, 将模型进行量化.</li>
+<li>Quant-Aware Training: 量化参数会作为可学习参数, 让模型进行训练.</li>
+</ul>
+</li>
+<li>
+<p>Pytorch中, 有两种执行模式, 分别是Eager Mode和FX Graph Mode, 两种执行模式下量化的实现方式不同.</p>
+<ul>
+<li>
+<p>如果需要用FX Graph Mode, 模型需要满足<code>symbolic traceable</code>, 判定条件是下面的代码不会出现异常:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br>traced_model = torch.fx.symbolic_trace(model)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>einops</code>中的<code>Rearrange, rearrange</code>操作不满足<code>symbolic traceable</code>, 可以用<code>torch</code>的原生操作<code>permute</code>或者<code>view</code>代替.</li>
+<li>一般来说, 不含控制流的模型都可以满足<code>symbolic traceable</code>, 例如CV类模型.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Observer">Observer</h3>
+<ul>
+<li>
+<p>Observer是一种算法, 用于根据观测到的浮点数据调整量化参数.</p>
+<ul>
+<li>pytorch中是: <code>torch.ao.quantization.observer</code>.</li>
+</ul>
+</li>
+<li>
+<p>Observer是一个类, 其中常用的参数是:</p>
+<ul>
+<li>
+<p><code>dtype</code>: 量化的数据类型, 默认是<code>torch.quint8</code>.</p>
+</li>
+<li>
+<p><code>quant_min</code>: 指定量化后数据的最小值, 默认是<code>None</code>, 表示使用0.</p>
+</li>
+<li>
+<p><code>quant_max</code>: 指定量化后数据的最大值, 默认是<code>None</code>, 表示使用255 (<code>torch.quint8</code>的最大值).</p>
+</li>
+<li>
+<p><code>qscheme</code>: 用来指定量化的类型和粒度, 常用的有如下几个:</p>
+<ul>
+<li><code>torch.per_tensor_affine</code></li>
+<li><code>torch.per_channel_affine</code></li>
+<li><code>torch.per_tensor_symmetric</code></li>
+<li><code>torch.per_channel_symmetric</code></li>
+</ul>
+</li>
+<li>
+<p><code>reduce_range</code>: 是一个<code>bool</code>值, 如果是<code>True</code>, 那么会在原来的量化范围下进行缩减, 具体看下表:</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th><code>quant_min</code></th>
+<th><code>quant_max</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>qint8</code></td>
+<td>-128</td>
+<td>127</td>
+</tr>
+<tr>
+<td><code>qint8 reduced range</code></td>
+<td>-64</td>
+<td>63</td>
+</tr>
+<tr>
+<td><code>quint8</code></td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr>
+<td><code>quint8 reduced range</code></td>
+<td>0</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>Activation常用的Observer:</p>
+<ul>
+<li>Activation一般使用<code>torch.quint8</code>类型.</li>
+<li>Activation一般采用<code>torch.per_tensor_affine</code>量化.</li>
+<li><code>HistogramObserver</code>: 会采用一个直方图记录Activation的分布情况, 并且根据分布情况计算出最合适的<code>scale</code>和<code>zero point</code>.</li>
+</ul>
+</li>
+<li>
+<p>Weights常用的Observer:</p>
+<ul>
+<li>Weights一般使用<code>torch.int8</code>类型.</li>
+<li>Activation一般采用<code>torch.per_channel_symmetric</code>量化.</li>
+<li>Weights可以直接采用封装好的Observer: <code>torch.ao.quantization.default_fused_per_channel_wt_fake_quant</code>来调试.</li>
+</ul>
+</li>
+</ul>
+<h3 id="FakeQuantize-2">FakeQuantize</h3>
+<ul>
+<li>
+<p><code>FakeQuantize</code>是一个模块, 用来模拟量化和反量化的操作:</p>
+<ul>
+<li>
+<p>这个模块在: <code>torch.ao.quantization.fake_quantize</code>中.</p>
+</li>
+<li>
+<p>这个模块的运算是:</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">x_out = ( <br>	clamp( <br>		round( x / scale + zero_point ), quant_min, quant_max<br>	) - zero_point<br>) * scale<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><code>FakeQuantize</code>也是一个类, 最常用的参数是<code>observer</code>, 用来指定需要用到的<code>Observer</code>类.</p>
+</li>
+</ul>
+<h3 id="QConfig-QConfigMapping">QConfig/QConfigMapping</h3>
+<ul>
+<li>
+<p><code>QConfig</code>用来配置Activation和Weights所用到的FakeQuantize类.</p>
+<ul>
+<li><code>QConfig</code>在<code>torch.ao.quantization</code>中.</li>
+<li><code>QConfig</code>有<code>weight</code>和<code>activation</code>两个参数, 用来指定对应的FakeQuantize类.</li>
+</ul>
+</li>
+<li>
+<p><code>QConfigMapping</code>用来将模型不同模块映射到不同的<code>QConfig</code>.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 对模型所有模块用一个QConfig</span><br>qconfig_mapping = QConfigMapping().set_global(global_qconfig)<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Post-Training-Quant">Post Training Quant</h3>
+<h4 id="FX-Graph-Mode">FX Graph Mode</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">from</span> torchinfo <span class="hljs-keyword">import</span> summary<br><span class="hljs-keyword">from</span> torch.ao.quantization <span class="hljs-keyword">import</span> QConfig, QConfigMapping<br><span class="hljs-keyword">from</span> torch.ao.quantization.fake_quantize <span class="hljs-keyword">import</span> FakeQuantize<br><span class="hljs-keyword">from</span> torch.ao.quantization.observer <span class="hljs-keyword">import</span> HistogramObserver<br><span class="hljs-keyword">from</span> torch.ao.quantization.quantize_fx <span class="hljs-keyword">import</span> prepare_fx, convert_fx<br><span class="hljs-keyword">from</span> torch.profiler <span class="hljs-keyword">import</span> profile, record_function, ProfilerActivity<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">calibration</span>(<span class="hljs-params">dataset, model</span>):<br>	logger.info(<span class="hljs-string">&#x27;FX static calibration...&#x27;</span>)<br>	<span class="hljs-keyword">with</span> torch.inference_mode():<br>    <span class="hljs-comment"># 选取一些典型的input, 放到这里进行推理</span><br>		<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-number">20</span>)):<br>			data, target = dataset.signal_list[i], dataset.target_list[i]<br>			data = data.unsqueeze(<span class="hljs-number">0</span>)<br>			output = model(data)<br><br><span class="hljs-comment"># 测试模型性能</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">evaluate_performance</span>(<span class="hljs-params">model</span>):<br>	torch.set_num_threads(<span class="hljs-number">1</span>)<br>	example_input = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">500</span>)<br>	<span class="hljs-keyword">with</span> profile(activities=[ProfilerActivity.CPU], record_shapes=<span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> prof:<br>		<span class="hljs-keyword">with</span> record_function(<span class="hljs-string">&quot;model_inference&quot;</span>):<br>			model(example_input)<br>  <span class="hljs-comment"># 函数会打印模型的CPU time</span><br>	<span class="hljs-built_in">print</span>(prof.key_averages().table(sort_by=<span class="hljs-string">&quot;cpu_time_total&quot;</span>, row_limit=<span class="hljs-number">10</span>))<br><br><br><span class="hljs-comment"># 指定量化的后端</span><br>torch.backends.quantized.engine = <span class="hljs-string">&#x27;qnnpack&#x27;</span><br><br><span class="hljs-comment"># Activation的量化配置</span><br>act_fake_quant = FakeQuantize.with_args(observer=HistogramObserver.with_args(<br>	reduce_range=<span class="hljs-literal">False</span>,<br>	dtype=torch.quint8, quant_min=<span class="hljs-number">0</span>, quant_max=<span class="hljs-number">255</span>,<br>	qscheme=torch.per_tensor_affine,<br>))<br><br><span class="hljs-comment"># Weight的量化配置</span><br>wt_fake_quant = torch.ao.quantization.default_fused_per_channel_wt_fake_quant<br><br><span class="hljs-comment"># 构建QConfigMapping</span><br>global_qconfig = QConfig(<br>	activation=act_fake_quant, weight=wt_fake_quant<br>)<br>qconfig_mapping = QConfigMapping().set_global(global_qconfig)<br><br>example_input = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">500</span>)<br>fake_quant_model = prepare_fx(model, qconfig_mapping, (example_input,))<br><br>dataset = Benchmark()<br><br><span class="hljs-comment"># Calibration确定量化参数</span><br>calibration(dataset, fake_quant_model)<br><br><span class="hljs-comment"># 将Fake Quantized模型转换为真实的int8模型</span><br>quant_model = convert_fx(fake_quant_model)<br>torch.save(quant_model.state_dict(), <span class="hljs-string">&#x27;model/fx_static_model.pth&#x27;</span>)<br><br>logger.info(<span class="hljs-string">&#x27;Evaluating PTQ FX Mode Static Quant...&#x27;</span>)<br><br><span class="hljs-comment"># 测试量化后模型的准确率和推理时间</span><br>evaluate_performance(quant_model)<br>evaluate_accuracy(quant_model, dataset)<br><br></code></pre></td></tr></table></figure>
+<h4 id="Eager-Mode">Eager Mode</h4>
+<h3 id="Quant-Aware-Training">Quant-Aware Training</h3>
+<h4 id="FX-Graph-Mode-2">FX Graph Mode</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">from</span> torchinfo <span class="hljs-keyword">import</span> summary<br><span class="hljs-keyword">from</span> torch.ao.quantization <span class="hljs-keyword">import</span> QConfig, QConfigMapping<br><span class="hljs-keyword">from</span> torch.ao.quantization.quantize_fx <span class="hljs-keyword">import</span> prepare_fx, convert_fx, prepare_qat_fx<br><span class="hljs-keyword">from</span> torch.profiler <span class="hljs-keyword">import</span> profile, record_function, ProfilerActivity<br><span class="hljs-keyword">from</span> torch.ao.quantization.observer <span class="hljs-keyword">import</span> HistogramObserver, PerChannelMinMaxObserver<br><span class="hljs-keyword">from</span> torch.ao.quantization._learnable_fake_quantize <span class="hljs-keyword">import</span> _LearnableFakeQuantize <span class="hljs-keyword">as</span> LearnableFakeQuantize<br><br><br><span class="hljs-comment"># 设置后端</span><br>torch.backends.quantized.engine = <span class="hljs-string">&#x27;qnnpack&#x27;</span><br><span class="hljs-comment"># 利用</span><br>act_learnable = <span class="hljs-keyword">lambda</span> <span class="hljs-built_in">range</span>: LearnableFakeQuantize.with_args(<br>		observer=HistogramObserver,<br>		quant_min=<span class="hljs-number">0</span>,<br>		quant_max=<span class="hljs-number">255</span>,<br>		dtype=torch.quint8,<br>		qscheme=torch.per_tensor_affine,<br>		scale=<span class="hljs-built_in">range</span> / <span class="hljs-number">255.0</span>,<br>		zero_point=<span class="hljs-number">0.0</span>,<br>		use_grad_scaling=<span class="hljs-literal">True</span>,<br>)<br><span class="hljs-comment"># Weight中如果有Conv2d, 那么这个模块就有channel, 用per channel</span><br>wt_learnable = <span class="hljs-keyword">lambda</span> channels: LearnableFakeQuantize.with_args(<br>		observer=PerChannelMinMaxObserver,<br>		quant_min=-<span class="hljs-number">128</span>,<br>		quant_max=<span class="hljs-number">127</span>,<br>		dtype=torch.qint8,<br>		qscheme=torch.per_channel_symmetric,<br>		scale=<span class="hljs-number">0.1</span>,<br>		zero_point=<span class="hljs-number">0.0</span>,<br>		use_grad_scaling=<span class="hljs-literal">True</span>,<br>		channel_len=channels,<br>)<br><br><span class="hljs-comment"># 全局的一些量化配置</span><br>act_fake_quant = LearnableFakeQuantize.with_args(observer=HistogramObserver.with_args(<br>	reduce_range=<span class="hljs-literal">False</span>,<br>	dtype=torch.quint8, quant_min=<span class="hljs-number">0</span>, quant_max=<span class="hljs-number">255</span>,<br>	qscheme=torch.per_tensor_affine,<br>))<br>wt_fake_quant = torch.ao.quantization.default_fused_per_channel_wt_fake_quant<br>global_qconfig = QConfig(<br>	activation=act_fake_quant, weight=wt_fake_quant<br>)<br>qconfig_mapping = QConfigMapping().set_global(global_qconfig)<br><br><span class="hljs-comment"># 给卷积模块设置activation和weight的LearnableFakeQuantize</span><br><span class="hljs-keyword">for</span> name, module <span class="hljs-keyword">in</span> model.named_modules():<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">hasattr</span>(module, <span class="hljs-string">&#x27;out_channels&#x27;</span>):<br>		qconfig = torch.quantization.QConfig(<br>			activation=act_learnable(<span class="hljs-built_in">range</span>=<span class="hljs-number">2</span>),<br>			weight=wt_learnable(channels=module.out_channels)<br>		)<br>		qconfig_mapping.set_module_name(name, qconfig)<br><br>example_input = torch.randn(<span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">500</span>)<br>qat_model = prepare_qat_fx(model, qconfig_mapping, (example_input,))<br><br><span class="hljs-comment"># Training on qat_model</span><br>trainer = Trainer(qat_model)<br>qat_model = trainer.start_train()<br><br><span class="hljs-comment"># Convert it to true model</span><br>quant_model = convert_fx(qat_model)<br>logger.info(<span class="hljs-string">&#x27;Saving Quant Model...&#x27;</span>)<br>torch.save(quant_model.state_dict(), <span class="hljs-string">&#x27;model/qat_model.pth&#x27;</span>)<br><br>dataset = Benchmark()<br>logger.info(<span class="hljs-string">&#x27;Evaluating QAT Quant...&#x27;</span>)<br>evaluate_performance(quant_model)<br>evaluate_accuracy(quant_model, dataset)<br></code></pre></td></tr></table></figure>
+<h4 id="Eager-Mode-2">Eager Mode</h4>
+<h2 id="Pytorch量化的一些问题">Pytorch量化的一些问题</h2>
+<blockquote>
+<p>在卷积等操作中, 会出现相乘再相加这种情况, 如果若干个<code>int8</code>相乘相加, 可能会爆<code>int8</code>, 怎么办?</p>
+</blockquote>
+<ul>
+<li>用<code>int32</code>来存储中间结果.</li>
+<li>最后再通过<code>Requantize</code>这个操作, 将<code>int32</code>转为<code>int8</code>.</li>
+</ul>
+<blockquote>
+<p>量化涉及到哪些计算图层面的优化?</p>
+</blockquote>
+<ul>
+<li>在可量化的算子序列前后插入了<code>Quantize</code>和<code>Dequantize</code>模块.</li>
+<li>可量化的算子序列中, 有可能会出现算子融合.</li>
+</ul>
+<blockquote>
+<p>量化后的<code>int8</code>模型总会带来推理速度的提升吗?</p>
+</blockquote>
+<ul>
+<li>不一定, <code>Quantize</code>和<code>Dequantize</code>模块插入过多, 会对量化造成影响.</li>
+<li>如果可量化的算子比较分散, 那么<code>Quantize</code>和<code>Dequantize</code>会过多, 可能推理速度会下降.</li>
+</ul>
+<blockquote>
+<p>量化后的<code>int8</code>模型的精度下降太多, 可能有哪些原因? 怎么改进?</p>
+</blockquote>
+<ul>
+<li>Calibration的数据集不够具有代表性.</li>
+<li>某些浮点算子不应该被量化, 例如<code>softmax</code>函数.</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©B1ueDrops
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

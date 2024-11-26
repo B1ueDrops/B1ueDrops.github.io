@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="虚拟内存的基础知识和设计 | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="配环境  CUDA ToolKit下载地址:  https:&#x2F;&#x2F;developer.nvidia.com&#x2F;cuda-toolkit-archive    CUDA有两个组成部分, 一个是显卡驱动, 一个是CUDA Toolkit.  可以通过nvidia-smi查看驱动&#x2F;CUDA Toolkit的版本. CUDA Toolkit的版本也可以通过nvcc --version查看.    配置CUDA">
+<meta name="description" content="Basic Question  监督学习:   给定一个矩阵$X &#x3D; [x_1, x_2, …, x_m] \in R^{n\times m}$, 和一个结果矩阵$Y \in R^{n \times 1}$  $n$是样本的个数. $m$是feature的个数.   用这个矩阵$X$作为训练集, 得到一个拟合函数$f$, 输入新的样本$x_i \in R^{1 \times m}$, 经过$y &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUDA理论和实战">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/11/21/cuda_env/index.html">
+<meta property="og:title" content="基础机器学习的一些内容">
+<meta property="og:url" content="https://b1uedrops.github.io/2024/11/25/ml/index.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="配环境  CUDA ToolKit下载地址:  https:&#x2F;&#x2F;developer.nvidia.com&#x2F;cuda-toolkit-archive    CUDA有两个组成部分, 一个是显卡驱动, 一个是CUDA Toolkit.  可以通过nvidia-smi查看驱动&#x2F;CUDA Toolkit的版本. CUDA Toolkit的版本也可以通过nvcc --version查看.    配置CUDA">
+<meta property="og:description" content="Basic Question  监督学习:   给定一个矩阵$X &#x3D; [x_1, x_2, …, x_m] \in R^{n\times m}$, 和一个结果矩阵$Y \in R^{n \times 1}$  $n$是样本的个数. $m$是feature的个数.   用这个矩阵$X$作为训练集, 得到一个拟合函数$f$, 输入新的样本$x_i \in R^{1 \times m}$, 经过$y &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-21T05:11:31.666Z">
-<meta property="article:modified_time" content="2024-11-24T12:45:48.835Z">
+<meta property="article:published_time" content="2024-11-25T08:02:38.494Z">
+<meta property="article:modified_time" content="2024-11-25T12:45:03.429Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(93)</small>
+                <small>(94)</small>
             
         </div>
     </li>
@@ -247,7 +247,7 @@
         <div data-rel="AI-HPC">
             
             AI-HPC
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -287,7 +287,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="93">
+<input type="hidden" id="yelog_site_posts_number" value="94">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -337,6 +337,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/25/ml/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="基础机器学习的一些内容">基础机器学习的一些内容</span>
+            <span class="post-date" title="2024-11-25 16:02:38">2024/11/25</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/25/pytorch_quant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AI模型量化的理论和实现">AI模型量化的理论和实现</span>
+            <span class="post-date" title="2024-11-25 15:54:55">2024/11/25</span>
+        </a>
+        
+        
+        <a  class="All AI-HPC "
+           href="/2024/11/25/pytorch_arch/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Pytorch的前后端架构">Pytorch的前后端架构</span>
+            <span class="post-date" title="2024-11-25 15:54:48">2024/11/25</span>
+        </a>
         
         
         <a  class="All AI-HPC "
@@ -507,24 +534,6 @@
            data-author="" >
             <span class="post-title" title="性能分析的Roofline Model">性能分析的Roofline Model</span>
             <span class="post-date" title="2024-09-17 14:16:00">2024/09/17</span>
-        </a>
-        
-        
-        <a  class="All AI-HPC "
-           href="/2024/09/17/pytorch_quant/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="AI模型量化的理论和实现">AI模型量化的理论和实现</span>
-            <span class="post-date" title="2024-09-17 14:15:30">2024/09/17</span>
-        </a>
-        
-        
-        <a  class="All AI-HPC "
-           href="/2024/09/17/pytorch_arch/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Pytorch的前后端架构">Pytorch的前后端架构</span>
-            <span class="post-date" title="2024-09-17 14:15:03">2024/09/17</span>
         </a>
         
         
@@ -1060,19 +1069,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1240,7 +1249,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="虚拟-物理内存的映射"><a href="#虚拟-物理内存的映射" class="headerlink" title="虚拟/物理内存的映射"></a>虚拟/物理内存的映射</h2>
+        <h2 id="虚拟-物理内存的映射">虚拟/物理内存的映射</h2>
 <p>虚拟地址空间, 取决于CPU的位数, 例如对于32位CPU, 虚拟地址空间是4GB, 地址空间的范围是: <code>[0, 0xffffffff]</code>.</p>
 <p>物理地址空间一般小于虚拟地址空间.</p>
 <p>对于物理地址空间, 一般划分为若干个Frame, 称为Physical Frame.</p>
@@ -1258,20 +1267,20 @@
 </ul>
 <p>内存的虚拟化, 本质上就是将每一个Virtual Page, 映射到Physicl Frame以及磁盘. 再本质上来说, 就是建立VPN到PFN的映射.</p>
 <p>CPU中, 完成VPN到PPN映射的硬件就是MMU (Memory Management Unit).</p>
-<h2 id="线性页表映射"><a href="#线性页表映射" class="headerlink" title="线性页表映射"></a>线性页表映射</h2>
+<h2 id="线性页表映射">线性页表映射</h2>
 <p>在CPU中, 用页表(Page Table)来存储VPN到PFN的映射关系, 页表一般位于物理内存之中, 当进程创建时, 会自动在物理内存中分配一块作为页表的空间.</p>
 <p>线性页表就是使用一个页表存储所有VPN到PFN的映射.</p>
-<h3 id="为什么使用页表"><a href="#为什么使用页表" class="headerlink" title="为什么使用页表?"></a>为什么使用页表?</h3>
+<h3 id="为什么使用页表">为什么使用页表?</h3>
 <p>页表能够使得一个Virtual Page能够和任意一个Physical Frame建立映射关系.</p>
-<h3 id="页表如何寻址"><a href="#页表如何寻址" class="headerlink" title="页表如何寻址?"></a>页表如何寻址?</h3>
+<h3 id="页表如何寻址">页表如何寻址?</h3>
 <p>CPU中有一种寄存器叫做PTR (Page Table Register), 存储了页表的起始物理地址, 当页表被创建时, PTR也会被设置好.</p>
-<p>理想情况下, 页表应该能够存储所有Virtual Page的映射关系, 那么页表项(Page Table Entry, PTE)的个数就是: <code>2^{VPN的位数}</code>.</p>
+<p>理想情况下, 页表应该能够存储所有Virtual Page的映射关系, 那么页表项(Page Table Entry, PTE)的个数就是: <code>2^&#123;VPN的位数&#125;</code>.</p>
 <p>那么, 如果要定位一个页表项, 就可以用: <code>PTR + VPN * (一个页表项的大小)</code>.</p>
-<p>如果是线性页表, 那么页表项中就会存储对应的PFN, <code>{PFN, Offset}</code>就是最终翻译完成的物理地址.</p>
-<h3 id="线性页表的缺陷"><a href="#线性页表的缺陷" class="headerlink" title="线性页表的缺陷"></a>线性页表的缺陷</h3>
-<p>一个进程需要的页表空间是: <code>PTE个数 * PTE大小 = 2 ^ {VPN的位数} * PTE大小</code>.</p>
+<p>如果是线性页表, 那么页表项中就会存储对应的PFN, <code>&#123;PFN, Offset&#125;</code>就是最终翻译完成的物理地址.</p>
+<h3 id="线性页表的缺陷">线性页表的缺陷</h3>
+<p>一个进程需要的页表空间是: <code>PTE个数 * PTE大小 = 2 ^ &#123;VPN的位数&#125; * PTE大小</code>.</p>
 <p>一般系统中要运行特别多进程, 采用线性页表太费内存.</p>
-<h2 id="多级页表映射"><a href="#多级页表映射" class="headerlink" title="多级页表映射"></a>多级页表映射</h2>
+<h2 id="多级页表映射">多级页表映射</h2>
 <p>假设以三级页表为例.</p>
 <p>如果要采用多级页表映射, 首先需要对虚拟地址进行重新划分:</p>
 <ul>
@@ -1295,18 +1304,18 @@
 <li>VPN0占用的比特少, 一级页表中的页表项就少很多.</li>
 <li>后面的二级页表, 三级页表可以按需创建.</li>
 </ul>
-<h2 id="Page-Fault"><a href="#Page-Fault" class="headerlink" title="Page Fault"></a>Page Fault</h2>
-<h3 id="进程的swap空间"><a href="#进程的swap空间" class="headerlink" title="进程的swap空间"></a>进程的swap空间</h3>
+<h2 id="Page-Fault">Page Fault</h2>
+<h3 id="进程的swap空间">进程的swap空间</h3>
 <p>当创建一个进程时, OS会在磁盘上为这个进程开辟一块空间, 专门用来存储一个进程的所有Physical Frame.这个空间叫做进程的swap空间.</p>
 <p>开辟swap空间后, OS还会在物理内存中创建一个swap表, 用来记录VPN和磁盘位置的映射关系, 这个表格的结构和页表类似.</p>
-<h3 id="物理内存的写入"><a href="#物理内存的写入" class="headerlink" title="物理内存的写入"></a>物理内存的写入</h3>
+<h3 id="物理内存的写入">物理内存的写入</h3>
 <p>物理内存本质上是磁盘的Cache, 当进程尝试写某一个Physical Frame时, 对应的页表项的Dirty bit就会设置为1.</p>
 <p>当这个Physical Frame被移出物理内存时, 对应的内容就会被写入磁盘的swap空间.</p>
 <p>但是, 如果CPU使用了Write Back类型的D-Cache, 那么还需要在写入磁盘前, 检查一下D-Cache中是否存储有这个Physical Frame的数据, 并且Dirty bit是否为1, 如果是, 那么需要将D-Cache的内容同步到Physical Frame, 然后再写入.</p>
 <ul>
 <li>这样就要求CPU提供对应指令, 让OS能够管理D-Cache.</li>
 </ul>
-<h3 id="Page-Fault的处理流程"><a href="#Page-Fault的处理流程" class="headerlink" title="Page Fault的处理流程"></a>Page Fault的处理流程</h3>
+<h3 id="Page-Fault的处理流程">Page Fault的处理流程</h3>
 <p>在页表项中一般有一位叫做Valid, 如果是1, VPN已经和某一个PFN建立了映射关系.</p>
 <p>当进行地址转换时, 如果发现PTE的Valid为0, 那么这个VPN就没有和PFN建立映射关系, MMU就会触发Page Fault.</p>
 <p>Page Fault的处理流程如下:</p>
@@ -1318,7 +1327,7 @@
 <p>跳转到OS中对于Page Fault的处理程序.</p>
 </li>
 <li>
-<p>如果D-Cache采用了Write&nbsp;Back:</p>
+<p>如果D-Cache采用了Write Back:</p>
 <ul>
 <li>如果硬件提供了相应的位来实现LRU算法, 那么OS会首先将D-Cache中所有的操作同步到PTE中.</li>
 </ul>
@@ -1337,7 +1346,7 @@
 <p>CPU从Page Fault Handler返回, 导致Page Fault的指令重新执行, CPU会再次将虚拟地址发送给MMU.</p>
 </li>
 </ul>
-<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3>
+<h3 id="页面置换算法">页面置换算法</h3>
 <p>实际的页面置换算法是硬件和软件协同实现的, 采用的算法是伪LRU算法.</p>
 <ul>
 <li>
@@ -1358,7 +1367,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h2>
+<h2 id="内存保护">内存保护</h2>
 <p>在系统中运行着不同的进程, 这些进程会运行在不同的权限(privilege mode).</p>
 <ul>
 <li>用户进程不能随便修改操作系统的内容, 但是可以读取操作系统的一些内容, 例如系统调用等.</li>
@@ -1370,19 +1379,19 @@
 <li>如果采用多级页表, 可以实现粗粒度和细粒度结合的权限控制. 例如一级页表可以控制大范围Physical Frame的权限, 二级页表可以更加细粒度.</li>
 </ul>
 <p>如果违反了访问权限, MMU会向CPU报告异常, 然后进入OS对应的Exception Handler, OS可以选择终止进程.</p>
-<h2 id="禁止缓存"><a href="#禁止缓存" class="headerlink" title="禁止缓存"></a>禁止缓存</h2>
+<h2 id="禁止缓存">禁止缓存</h2>
 <p>在某些情况下, 如果使用虚拟地址读取数据后, Physical Frame中对应的内容是不能被缓存到Cache中的.</p>
 <ul>
 <li>例如, 虚拟地址对应外设寄存器.</li>
 </ul>
 <p>此时, 可以在PTE中添加一个bit, 标记这个Physical Frame是不可以被缓存的(Cacheable), MMU经过地址转换后就不会让这个Physical Frame中的数据送到Cache中.</p>
-<h2 id="TLB"><a href="#TLB" class="headerlink" title="TLB"></a>TLB</h2>
-<h3 id="TLB的必要性"><a href="#TLB的必要性" class="headerlink" title="TLB的必要性"></a>TLB的必要性</h3>
+<h2 id="TLB">TLB</h2>
+<h3 id="TLB的必要性">TLB的必要性</h3>
 <p>进行地址转换需要多次访问页表(物理内存), 耗时很长, 因此需要为页表准备一个Cache, 用来缓存最近使用过的PTE, 这个缓存就叫TLB (Translation Lookahead Buffer).</p>
 <ul>
 <li>地址转换具有明显的时间相关性(现在访问的Physical Frame有可能将来再访问), 但是没有明显的空间相关性 (不用Prefetch).</li>
 </ul>
-<h3 id="TLB的架构"><a href="#TLB的架构" class="headerlink" title="TLB的架构"></a>TLB的架构</h3>
+<h3 id="TLB的架构">TLB的架构</h3>
 <p>TLB本质上也是一个Cache.</p>
 <ul>
 <li>Tag部分就是VPN.</li>
@@ -1393,7 +1402,7 @@
 <li>第一级TLB是全相连Cache (Fully Associative Cache), 分为I-TLB和D-TLB, 容量较小.</li>
 <li>第二级TLB是组相连Cache, 指令和数据共享, 容量较大.</li>
 </ul>
-<h3 id="TLB的工作原理"><a href="#TLB的工作原理" class="headerlink" title="TLB的工作原理"></a>TLB的工作原理</h3>
+<h3 id="TLB的工作原理">TLB的工作原理</h3>
 <p>CPU会拿着虚拟地址的VPN去TLB中找:</p>
 <ul>
 <li>如果TLB Hit, 那么直接读出PFN, 就可以得到最终的物理地址.</li>
@@ -1438,9 +1447,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="TLB的置换算法"><a href="#TLB的置换算法" class="headerlink" title="TLB的置换算法"></a>TLB的置换算法</h3>
+<h3 id="TLB的置换算法">TLB的置换算法</h3>
 <p>TLB一般采用Random替换算法, 采用Clock Algorithm实现的伪随机算法.</p>
-<h3 id="TLB的写入"><a href="#TLB的写入" class="headerlink" title="TLB的写入"></a>TLB的写入</h3>
+<h3 id="TLB的写入">TLB的写入</h3>
 <blockquote>
 <p>TLB的写入是什么意思?</p>
 </blockquote>
@@ -1457,7 +1466,7 @@
 <p>在页表中, 所有PTE的use, dirty位的信息可能过时, 最新信息可能在TLB中.</p>
 <p>但是发生Page Fault时, OS需要利用这些信息去选择Physical Frame进行置换.</p>
 <p>因此, OS需要先将TLB的信息同步到Physical Frame, 然后在进行页面置换, 同步的过程需要大量访问物理内存, 效率低.</p>
-<p>因此, 可以有这个假设: 所有被TLB缓存的PTE对应的Physical&nbsp;Frame都不允许被置换. OS可以想办法知道哪些PTE是存储在TLB中的.</p>
+<p>因此, 可以有这个假设: 所有被TLB缓存的PTE对应的Physical Frame都不允许被置换. OS可以想办法知道哪些PTE是存储在TLB中的.</p>
 <blockquote>
 <p>TLB写入的另一个问题</p>
 </blockquote>
@@ -1481,7 +1490,7 @@
 </li>
 <li>由于TLB缓存的PTE对应的Physical Frame不参与页面置换, 所以不需要在Page Fault时同步TLB的操作.</li>
 </ul>
-<h3 id="TLB的管理指令"><a href="#TLB的管理指令" class="headerlink" title="TLB的管理指令"></a>TLB的管理指令</h3>
+<h3 id="TLB的管理指令">TLB的管理指令</h3>
 <p>如果一个VPN到PFN的映射在页表中不存在了, 那么它在TLB中也不应该存在.</p>
 <p>一般来说, 如果VPN到PFN的映射不存在, 可能会是如下原因:</p>
 <ul>
@@ -1494,9 +1503,9 @@
 <li>将某个进程的I-TLB和D-TLB中所有表项置为无效.</li>
 <li>将某个VPN对应的I-TLB和D-TLB中的表项置为无效.</li>
 </ul>
-<h2 id="使用虚拟地址的Cache"><a href="#使用虚拟地址的Cache" class="headerlink" title="使用虚拟地址的Cache"></a>使用虚拟地址的Cache</h2>
-<h3 id="虚拟缓存的设计问题"><a href="#虚拟缓存的设计问题" class="headerlink" title="虚拟缓存的设计问题"></a>虚拟缓存的设计问题</h3>
-<h4 id="重名问题-Aliasing"><a href="#重名问题-Aliasing" class="headerlink" title="重名问题(Aliasing)"></a>重名问题(Aliasing)</h4>
+<h2 id="使用虚拟地址的Cache">使用虚拟地址的Cache</h2>
+<h3 id="虚拟缓存的设计问题">虚拟缓存的设计问题</h3>
+<h4 id="重名问题-Aliasing">重名问题(Aliasing)</h4>
 <p>重名问题是指: 不同进程, 不同的虚拟地址可以映射到同一个物理地址.</p>
 <p>例如两个进程的<code>printf</code>函数, 两个进程中<code>printf</code>函数的虚拟地址可能不一样, 但是物理地址是一样的.</p>
 <p>此时, 如果这两个不同的虚拟地址占用了两个不同的Cache Line, 那么就会出现重名问题.</p>
@@ -1519,15 +1528,15 @@
 <p>如何解决重名问题?</p>
 </blockquote>
 <p>解决重名问题的核心, 就是想办法保证: 如果两个虚拟地址映射到同一个物理地址, 那么它们也会映射到同一个Cache Line.</p>
-<p>现在假设索引Cache的地址位数大于虚拟地址Offset所占的位数, 多出了<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"/></g></g></g></svg>位.</p>
-<p>那么, 我就将原来的Cache等分成<svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewbox="0 -675.5 1007.3 675.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-2-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-2-TEX-N-32"/></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"/></g></g></g></g></svg>个Cache Bank.</p>
-<p>当来一个虚拟地址VA时, 我可以根据Offset位, 从<svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewbox="0 -675.5 1007.3 675.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-3-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-3-TEX-N-32"/></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-3-TEX-I-1D45B"/></g></g></g></g></svg>个Cache Bank读出<svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewbox="0 -675.5 1007.3 675.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-4-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-4-TEX-N-32"/></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-4-TEX-I-1D45B"/></g></g></g></g></svg>个Cache Line, 这些Cache Line就是可能与这个VA映射到同一个物理地址的所有虚拟地址所在的Cache Line.</p>
+<p>现在假设索引Cache的地址位数大于虚拟地址Offset所占的位数, 多出了$n$位.</p>
+<p>那么, 我就将原来的Cache等分成$2^n$个Cache Bank.</p>
+<p>当来一个虚拟地址VA时, 我可以根据Offset位, 从$2^n$个Cache Bank读出$2^n$个Cache Line, 这些Cache Line就是可能与这个VA映射到同一个物理地址的所有虚拟地址所在的Cache Line.</p>
 <p>在读取这些Cache Line的同时, TLB/MMU会进行地址转换, 得到对应的物理地址.</p>
-<p>在物理地址的PFN中, 取最后的<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-5-TEX-I-1D45B"/></g></g></g></svg>位, 送入多路选择器, 选择出来的Cache Line就是最终的Cache Line.</p>
+<p>在物理地址的PFN中, 取最后的$n$位, 送入多路选择器, 选择出来的Cache Line就是最终的Cache Line.</p>
 <p>之后, PFN中剩余的比特当作Tag, 用来判断Cache是否命中.</p>
 <p>如果两个虚拟地址映射到了同一个物理地址, 那么:</p>
 <ul>
-<li>他们Offset相同, 那么他们对应的Cache Line一定是这<svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewbox="0 -675.5 1007.3 675.5" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-6-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-6-TEX-N-32"/></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-6-TEX-I-1D45B"/></g></g></g></g></svg>个Cache Line中的其中一个.</li>
+<li>他们Offset相同, 那么他们对应的Cache Line一定是这$2^n$个Cache Line中的其中一个.</li>
 <li>他们物理地址相同, 那么最终多路选择器只会选择出来一个Cache Line, 因此他们就映射到了同一个Cache Line.</li>
 </ul>
 <p>设计缺点:</p>
@@ -1536,7 +1545,7 @@
 <li>Cache的输入需要送到所有bank读出数据, 输入端负载变大, 功耗大.</li>
 </ul>
 <p>本质上, 这个就是VIPT类型的Cache的基本思想.</p>
-<h4 id="同名问题-Homonyms"><a href="#同名问题-Homonyms" class="headerlink" title="同名问题(Homonyms)"></a>同名问题(Homonyms)</h4>
+<h4 id="同名问题-Homonyms">同名问题(Homonyms)</h4>
 <p>同名问题就是不同的进程, 相同的虚拟地址会映射到不同的物理地址. 进程切换后, 需要对Cache中的数据进行调整.</p>
 <p>解决方法: 将虚拟地址进行扩展, 新的虚拟地址又两部分组成:</p>
 <ul>
@@ -1562,7 +1571,7 @@
 <li>当进程总数大于PID能表示的范围时, OS需要选择一个进程, 将它的TLB, 以及PTR清空(页表的内容还在, 因为这个进程没被杀死), 并且将这个PID分配给新的进程.</li>
 <li>OS还需要保留原来进程的页表PTR, 当恢复进程时需要恢复PTR.</li>
 </ul>
-<h3 id="对Cache的控制"><a href="#对Cache的控制" class="headerlink" title="对Cache的控制"></a>对Cache的控制</h3>
+<h3 id="对Cache的控制">对Cache的控制</h3>
 <p>有下面几种情况需要对Cache进行控制:</p>
 <ul>
 <li>当DMA要把数据从物理内存搬到其他地方 (物理内存中的数据的最新版本可能还在Cache中).</li>
@@ -1580,8 +1589,8 @@
 <li>将D-Cache中所有Cache Line同步到物理内存, 并置为无效.</li>
 <li>将D-Cache中某个Cache Line同步到物理内存, 并置为无效.</li>
 </ul>
-<h3 id="几种缓存流水线设计"><a href="#几种缓存流水线设计" class="headerlink" title="几种缓存流水线设计"></a>几种缓存流水线设计</h3>
-<h4 id="PIPT"><a href="#PIPT" class="headerlink" title="PIPT"></a>PIPT</h4>
+<h3 id="几种缓存流水线设计">几种缓存流水线设计</h3>
+<h4 id="PIPT">PIPT</h4>
 <p>TLB用来缓存虚拟地址到物理地址的映射, Cache用来缓存物理地址到数据的映射, 如果采用PIPT (Physically Index, Physically Tagged Cache), 就要先从TLB/MMU中进行完地址转换, 然后在用物理地址索引Cache, 这两个操作对应流水线的两个stage.</p>
 <p>缺点:</p>
 <ul>
@@ -1589,7 +1598,7 @@
 <li>对于I-Cache来说, 流水线级数增加, 会增加分支预测失败的penalty.</li>
 </ul>
 <p>因此, 可以让Cache直接缓存虚拟地址到数据的映射, 当Cache Miss时, 再通过TLB/MMU转换后访问物理内存.</p>
-<h4 id="VIPT"><a href="#VIPT" class="headerlink" title="VIPT"></a>VIPT</h4>
+<h4 id="VIPT">VIPT</h4>
 <p>VIPT的全称是Virtually Indexed, Physical Tagged. 也就是说, 使用虚拟地址的一部分寻址Cache, 使用物理地址的一部分作为Tag来判断是否Cache Hit. 这样做有如下好处:</p>
 <ul>
 <li>访问Cache的过程和TLB/MMU进行地址转换的过程可以同时进行.</li>
@@ -1615,15 +1624,15 @@
 </blockquote>
 <p>首先, L1 Cache和L2 Cache的关系需要是inclusive的.</p>
 <p>L2 Cache一般采用PIPT的方式实现.</p>
-<p>假设索引Cache所用的位数比虚拟地址Offset的位数多<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-7-TEX-I-1D45B"/></g></g></g></svg>位.</p>
+<p>假设索引Cache所用的位数比虚拟地址Offset的位数多$n$位.</p>
 <p>当一个虚拟地址索引L1 Cache时(此时TLB/MMU同时会进行地址转换), 假设Cache Miss:</p>
 <ul>
-<li>如果在L2 Cache中也出现了Cache Miss, 那么写入L2 Cache时, 会将虚拟地址中多出来的那<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-8-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-8-TEX-I-1D45B"/></g></g></g></svg>位也写入L2 Cache对应的Cache Line.</li>
-<li>如果在L2 Cache中Hit了, 那么L2 Cache会检查那多存储的<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-9-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-9-TEX-I-1D45B"/></g></g></g></svg>位:
+<li>如果在L2 Cache中也出现了Cache Miss, 那么写入L2 Cache时, 会将虚拟地址中多出来的那$n$位也写入L2 Cache对应的Cache Line.</li>
+<li>如果在L2 Cache中Hit了, 那么L2 Cache会检查那多存储的$n$位:
 <ul>
-<li>如果这<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-10-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-10-TEX-I-1D45B"/></g></g></g></svg>位和我这个虚拟地址的<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-11-TEX-I-1D45B"/></g></g></g></svg>位不相等, 那么就说明L1 Cache中存在一个Cache Line, 对应的虚拟地址和我重名, 此时需要:
+<li>如果这$n$位和我这个虚拟地址的$n$位不相等, 那么就说明L1 Cache中存在一个Cache Line, 对应的虚拟地址和我重名, 此时需要:
 <ul>
-<li>根据L2 Cache中存的这<svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewbox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-12-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-12-TEX-I-1D45B"/></g></g></g></svg>位, 以及虚拟地址的Offset从L1 Cache中找到对应的Cache Line.
+<li>根据L2 Cache中存的这$n$位, 以及虚拟地址的Offset从L1 Cache中找到对应的Cache Line.
 <ul>
 <li>直接把这两部分拼起来索引L1 Cache就行.</li>
 </ul>
@@ -1637,7 +1646,7 @@
 </li>
 </ul>
 <p>通过这种方法, 就能保证所有重名的虚拟地址只有一个在L1 Cache中.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+<h2 id="总结">总结</h2>
 <p>对于虚拟地址和Cache来说, 总共有四种结构:</p>
 <ul>
 <li>TLB</li>
