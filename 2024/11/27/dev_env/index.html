@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Shell脚本基础与实战 | B1ueDrops</title>
+  <title>快速配置完备开发环境(本地/服务器) | B1ueDrops</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Shell脚本基础与实战 | B1ueDrops">
+  <meta name="description" content="快速配置完备开发环境(本地/服务器) | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:type" content="website">
@@ -1211,9 +1211,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-shell_script" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-dev_env" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Shell脚本基础与实战</h1>
+        <h1 class="article-title">快速配置完备开发环境(本地/服务器)</h1>
     
     <div class="article-meta">
         
@@ -1223,7 +1223,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="编程语言">编程语言</a>
+            <a  data-rel="开发工具">开发工具</a>
             
         </span>
         
@@ -1231,7 +1231,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-09-06 14:17:55'>2024-03-22 12:50</time>
+            Created At : <time class="date" title='Updated At: 2024-11-29 21:11:29'>2024-11-27 20:25</time>
         
     </div>
     <div class="article-meta">
@@ -1242,7 +1242,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Config"><span class="toc-text">Config</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="toc-text">Shell启动脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vscode"><span class="toc-text">vscode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vim-neovim"><span class="toc-text">vim&#x2F;neovim</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yazi"><span class="toc-text">yazi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zellij"><span class="toc-text">zellij</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1258,10 +1258,128 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>如果从网络上有一个文件夹的URL, 想用终端下载其中的所有内容, 可以使用:</li>
+        <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2>
+<blockquote>
+<p>本地</p>
+</blockquote>
+<ul>
+<li>
+<p>Homebrew: <a target="_blank" rel="noopener" href="https://docs.brew.sh/Installation">https://docs.brew.sh/Installation</a></p>
+</li>
+<li>
+<p>然后下面是Homebrew的下载配置: 假设文件名称叫<code>Brewfile</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">brew <span class="hljs-string">&quot;eza&quot;</span><br>brew <span class="hljs-string">&quot;bat&quot;</span><br>brew <span class="hljs-string">&quot;yazi&quot;</span><br>brew <span class="hljs-string">&quot;zellij&quot;</span><br>brew <span class="hljs-string">&quot;zoxide&quot;</span><br>brew <span class="hljs-string">&quot;neovim&quot;</span><br>brew <span class="hljs-string">&quot;ffmpeg&quot;</span><br>brew <span class="hljs-string">&quot;ripgrep&quot;</span><br>brew <span class="hljs-string">&quot;lazygit&quot;</span><br>brew <span class="hljs-string">&quot;wezterm&quot;</span><br>brew <span class="hljs-string">&quot;fastfetch&quot;</span><br>brew <span class="hljs-string">&quot;hammerspoon&quot;</span><br>brew <span class="hljs-string">&quot;ffmpegthumbnailer&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Typora下载: <a target="_blank" rel="noopener" href="https://typora.io/#feature">https://typora.io/#feature</a></p>
+</li>
+<li>
+<p>vscode下载: <a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a></p>
+<ul>
+<li>下载CLI版本, 二进制文件名称叫<code>code</code>.</li>
+<li>放入<code>~/bin</code>中.</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">wget -r -np -R <span class="hljs-string">&quot;index.html*&quot;</span> &lt;你的URL&gt;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h2>
+<h3 id="Shell启动脚本"><a href="#Shell启动脚本" class="headerlink" title="Shell启动脚本"></a>Shell启动脚本</h3>
+<blockquote>
+<p>本地</p>
+</blockquote>
+<ul>
+<li>位置是<code>~/.zshrc</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># All ALIAS</span><br><span class="hljs-built_in">alias</span> ra=<span class="hljs-string">&quot;yazi&quot;</span><br><span class="hljs-built_in">alias</span> nvim=<span class="hljs-string">&quot;lvim&quot;</span><br><span class="hljs-built_in">alias</span> lg=<span class="hljs-string">&quot;lazygit&quot;</span><br><span class="hljs-built_in">alias</span> <span class="hljs-built_in">ls</span>=<span class="hljs-string">&quot;eza --icons&quot;</span><br><span class="hljs-built_in">alias</span> la=<span class="hljs-string">&quot;eza --icons -a&quot;</span><br><span class="hljs-built_in">alias</span> lt=<span class="hljs-string">&quot;eza --icons -T&quot;</span><br><span class="hljs-built_in">alias</span> ll=<span class="hljs-string">&quot;eza --icons -l&quot;</span><br><span class="hljs-built_in">alias</span> ty=<span class="hljs-string">&quot;open -a typora&quot;</span><br><br><span class="hljs-comment"># ALL ENV VAR</span><br><span class="hljs-built_in">export</span> EDITOR=<span class="hljs-string">&#x27;lvim&#x27;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$HOME</span><span class="hljs-string">&#x27;/bin&#x27;</span>:<span class="hljs-variable">$&#123;PATH&#125;</span><br><br><span class="hljs-comment"># All Util Functions</span><br><span class="hljs-function"><span class="hljs-title">hide_icon</span></span>() &#123;<br>  defaults write com.apple.finder CreateDesktop -bool FALSE; killall Finder<br>&#125;<br><span class="hljs-function"><span class="hljs-title">show_icon</span></span>() &#123;<br>  defaults write com.apple.finder CreateDesktop -bool <span class="hljs-literal">true</span>; killall Finder<br>&#125;<br><br><span class="hljs-comment"># Start plugins</span><br><span class="hljs-built_in">bindkey</span> -v<br><span class="hljs-built_in">bindkey</span> <span class="hljs-string">&quot;^H&quot;</span> backward-delete-char<br><span class="hljs-built_in">bindkey</span> <span class="hljs-string">&quot;^?&quot;</span> backward-delete-char<br><span class="hljs-built_in">bindkey</span> -M vicmd <span class="hljs-string">&quot;B&quot;</span> vi-beginning-of-line<br><span class="hljs-built_in">bindkey</span> -M vicmd <span class="hljs-string">&quot;W&quot;</span> vi-end-of-line<br><span class="hljs-built_in">bindkey</span> -M vicmd <span class="hljs-string">&quot;H&quot;</span> vi-forward-word<br><span class="hljs-built_in">bindkey</span> -M vicmd <span class="hljs-string">&quot;L&quot;</span> vi-forward-word<br><span class="hljs-keyword">function</span> zle-keymap-select &#123;<br>	<span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;KEYMAP&#125;</span> == vicmd ]] || [[ <span class="hljs-variable">$1</span> = <span class="hljs-string">&#x27;block&#x27;</span> ]]; <span class="hljs-keyword">then</span><br>		<span class="hljs-built_in">echo</span> -ne <span class="hljs-string">&#x27;\e[1 q&#x27;</span><br>	<span class="hljs-keyword">elif</span> [[ <span class="hljs-variable">$&#123;KEYMAP&#125;</span> == main ]] || [[ <span class="hljs-variable">$&#123;KEYMAP&#125;</span> == viins ]] || [[ <span class="hljs-variable">$&#123;KEYMAP&#125;</span> = <span class="hljs-string">&#x27;&#x27;</span> ]] || [[ <span class="hljs-variable">$1</span> = <span class="hljs-string">&#x27;beam&#x27;</span> ]]; <span class="hljs-keyword">then</span><br>		<span class="hljs-built_in">echo</span> -ne <span class="hljs-string">&#x27;\e[5 q&#x27;</span><br>	<span class="hljs-keyword">fi</span><br>&#125;<br><span class="hljs-built_in">zle</span> -N zle-keymap-select<br></code></pre></td></tr></table></figure>
+<h3 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h3>
+<blockquote>
+<p>本地</p>
+</blockquote>
+<ul>
+<li>
+<p>Task配置: <code>.vscode/tasks.json</code></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2.0.0&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;tasks&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Name of your task&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;shell&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;command_name&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span> <span class="hljs-string">&quot;-pql&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;MoonVisual.py&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;MoonVisual&quot;</span> <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;options&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-attr">&quot;cwd&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;/src&quot;</span> <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="vim-neovim"><a href="#vim-neovim" class="headerlink" title="vim/neovim"></a>vim/neovim</h3>
+<blockquote>
+<p>本地</p>
+</blockquote>
+<ul>
+<li>可以选择LunarVim作为发行版: <a target="_blank" rel="noopener" href="https://www.lunarvim.org/docs/installation">https://www.lunarvim.org/docs/installation</a>
+<ul>
+<li>下载之后, 自定制的部分在: <code>~/.config/lvim/config.lua</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- LVIM Options</span><br>vim.o.expandtab = <span class="hljs-literal">false</span><br>vim.o.tabstop = <span class="hljs-number">4</span><br>vim.o.shiftwidth = <span class="hljs-number">4</span><br>vim.o.softtabstop = <span class="hljs-number">4</span><br><br><span class="hljs-comment">-- LVIM Mapping</span><br>lvim.keys.normal_mode[<span class="hljs-string">&#x27;H&#x27;</span>] = <span class="hljs-string">&quot;5h&quot;</span><br>lvim.keys.normal_mode[<span class="hljs-string">&#x27;J&#x27;</span>] = <span class="hljs-string">&quot;5j&quot;</span><br>lvim.lsp.buffer_mappings.normal_mode[<span class="hljs-string">&#x27;K&#x27;</span>] = <span class="hljs-literal">nil</span><br>lvim.keys.normal_mode[<span class="hljs-string">&#x27;K&#x27;</span>] = <span class="hljs-string">&quot;5k&quot;</span><br>lvim.keys.normal_mode[<span class="hljs-string">&#x27;L&#x27;</span>] = <span class="hljs-string">&quot;5l&quot;</span><br>lvim.keys.normal_mode[<span class="hljs-string">&#x27;B&#x27;</span>] = <span class="hljs-string">&quot;^&quot;</span><br>lvim.keys.normal_mode[<span class="hljs-string">&#x27;W&#x27;</span>] = <span class="hljs-string">&quot;$&quot;</span><br>lvim.keys.visual_mode[<span class="hljs-string">&#x27;H&#x27;</span>] = <span class="hljs-string">&quot;5h&quot;</span><br>lvim.keys.visual_mode[<span class="hljs-string">&#x27;J&#x27;</span>] = <span class="hljs-string">&quot;5j&quot;</span><br>lvim.keys.visual_mode[<span class="hljs-string">&#x27;K&#x27;</span>] = <span class="hljs-string">&quot;5k&quot;</span><br>lvim.keys.visual_mode[<span class="hljs-string">&#x27;L&#x27;</span>] = <span class="hljs-string">&quot;5l&quot;</span><br>lvim.keys.visual_mode[<span class="hljs-string">&#x27;B&#x27;</span>] = <span class="hljs-string">&quot;^&quot;</span><br>lvim.keys.visual_mode[<span class="hljs-string">&#x27;W&#x27;</span>] = <span class="hljs-string">&quot;$&quot;</span><br><br><span class="hljs-comment">-- LVIM Plugins</span><br>lvim.plugins = &#123;<br>	&#123;<br>		<span class="hljs-string">&quot;kylechui/nvim-surround&quot;</span>,<br>		version = <span class="hljs-string">&quot;*&quot;</span>, <span class="hljs-comment">-- Use for stability; omit to use `main` branch for the latest features</span><br>		event = <span class="hljs-string">&quot;VeryLazy&quot;</span>,<br>		<span class="hljs-built_in">config</span> = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span><br>			<span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;nvim-surround&quot;</span>).setup(&#123;<br>				<span class="hljs-comment">-- Configuration here, or leave empty to use defaults</span><br>			&#125;)<br>		<span class="hljs-keyword">end</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>服务器</p>
+</blockquote>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2>
+<h3 id="yazi"><a href="#yazi" class="headerlink" title="yazi"></a>yazi</h3>
+<ul>
+<li>常用键位:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>键位</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>z</code></td>
+<td>用zoxide跳转目录</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>查找目录</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>打开文件</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>跳转到home, downloads等常见目录</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>重命名文件</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td>Open Interactive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zellij"><a href="#zellij" class="headerlink" title="zellij"></a>zellij</h3>
+<ul>
+<li>常用键位:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>键位</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Alt+n</code></td>
+<td>新建Pane</td>
+</tr>
+<tr>
+<td><code>Alt+hjkl</code></td>
+<td>切换Pane Focus/Tab</td>
+</tr>
+<tr>
+<td><code>Alt+f</code></td>
+<td>新建Float Pane</td>
+</tr>
+</tbody>
+</table>
 
       
        <hr><span style="font-style: italic;color: gray;"> 向阳而生, 喜欢聪明的人. </span>

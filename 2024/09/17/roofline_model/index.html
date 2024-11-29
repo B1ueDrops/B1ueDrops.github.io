@@ -6,15 +6,15 @@
   <meta name="keywords" content="">
   <meta name="description" content="性能分析的Roofline Model | B1ueDrops">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Basic Question  监督学习:   给定一个矩阵$X &#x3D; [x_1, x_2, …, x_m] \in R^{n\times m}$, 和一个结果矩阵$Y \in R^{n \times 1}$  $n$是样本的个数. $m$是feature的个数.   用这个矩阵$X$作为训练集, 得到一个拟合函数$f$, 输入新的样本$x_i \in R^{1 \times m}$, 经过$y &#x3D;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="基础机器学习的一些内容">
-<meta property="og:url" content="https://b1uedrops.github.io/2024/11/25/ml/index.html">
+<meta name="description" content="向阳而生, 喜欢聪明的人.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="B1ueDrops">
+<meta property="og:url" content="https://b1uedrops.github.io/about.html">
 <meta property="og:site_name" content="B1ueDrops">
-<meta property="og:description" content="Basic Question  监督学习:   给定一个矩阵$X &#x3D; [x_1, x_2, …, x_m] \in R^{n\times m}$, 和一个结果矩阵$Y \in R^{n \times 1}$  $n$是样本的个数. $m$是feature的个数.   用这个矩阵$X$作为训练集, 得到一个拟合函数$f$, 输入新的样本$x_i \in R^{1 \times m}$, 经过$y &#x3D;">
+<meta property="og:description" content="向阳而生, 喜欢聪明的人.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-25T08:02:38.494Z">
-<meta property="article:modified_time" content="2024-11-25T12:45:03.429Z">
+<meta property="article:published_time" content="2024-02-09T08:49:59.399Z">
+<meta property="article:modified_time" content="2024-02-09T08:49:59.394Z">
 <meta property="article:author" content="B1ueDrops">
 <meta name="twitter:card" content="summary">
 
@@ -115,7 +115,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(94)</small>
+                <small>(95)</small>
             
         </div>
     </li>
@@ -187,7 +187,7 @@
         <div data-rel="开发工具">
             
             开发工具
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -287,7 +287,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="94">
+<input type="hidden" id="yelog_site_posts_number" value="95">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -337,6 +337,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/11/27/dev_env/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="快速配置完备开发环境(本地/服务器)">快速配置完备开发环境(本地/服务器)</span>
+            <span class="post-date" title="2024-11-27 20:25:06">2024/11/27</span>
+        </a>
+        
+        
+        <a  class="All 开发工具 "
+           href="/2024/11/27/jetbrains/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Jetbrains系列IDE的使用方式">Jetbrains系列IDE的使用方式</span>
+            <span class="post-date" title="2024-11-27 20:25:01">2024/11/27</span>
+        </a>
         
         
         <a  class="All AI-HPC "
@@ -489,15 +507,6 @@
            data-author="" >
             <span class="post-title" title="资源与可持续发展">资源与可持续发展</span>
             <span class="post-date" title="2024-10-14 12:41:46">2024/10/14</span>
-        </a>
-        
-        
-        <a  class="All 开发工具 "
-           href="/2024/09/27/jetbrains/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Jetbrains系列IDE的使用方式">Jetbrains系列IDE的使用方式</span>
-            <span class="post-date" title="2024-09-27 22:37:32">2024/09/27</span>
         </a>
         
         
@@ -1069,19 +1078,19 @@
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/parathesis/"
+           href="/2024/03/02/other-algorithm/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="括号序列">括号序列</span>
+            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
         
         <a  class="All 算法 "
-           href="/2024/03/02/other-algorithm/"
+           href="/2024/03/02/parathesis/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="其他算法/模拟题">其他算法/模拟题</span>
+            <span class="post-title" title="括号序列">括号序列</span>
             <span class="post-date" title="2024-03-02 19:59:34">2024/03/02</span>
         </a>
         
@@ -1249,7 +1258,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="七个基本指标">七个基本指标</h2>
+        <h2 id="七个基本指标"><a href="#七个基本指标" class="headerlink" title="七个基本指标"></a>七个基本指标</h2>
 <ul>
 <li>
 <p>参数总量: 模型大小, 或者参数数量.</p>
@@ -1267,7 +1276,7 @@
 <p>带宽: 访存总量 / 计算时间.</p>
 </li>
 </ul>
-<h2 id="Roofline-Model">Roofline Model</h2>
+<h2 id="Roofline-Model"><a href="#Roofline-Model" class="headerlink" title="Roofline Model"></a>Roofline Model</h2>
 <ul>
 <li>
 <p>对于一个算法来说, 它有独立于平台的核心指标, 就是<strong>计算总量</strong>和<strong>访存总量</strong>.</p>
@@ -1281,11 +1290,11 @@
 <li>
 <p>Roofline Model的核心在于: 我用计算平台的极限带宽去跑你的算法, 看看你的极限速度是多少:</p>
 <ul>
-<li>首先, 假设你自己的算法的计算量访存量之比是$I_0$, 平台的极限算力和带宽是$\pi, \beta$.</li>
-<li>然后计算用极限带宽跑你的算法, 能达到的算力: $\pi_0 = \frac{\pi}{\beta}I_0$
+<li>首先, 假设你自己的算法的计算量访存量之比是<svg style="vertical-align: -0.375ex;" xmlns="http://www.w3.org/2000/svg" width="1.983ex" height="1.92ex" role="img" focusable="false" viewbox="0 -683 876.6 848.6" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"/><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-1-TEX-I-1D43C"/></g><g data-mml-node="mn" transform="translate(473,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"/></g></g></g></g></svg>, 平台的极限算力和带宽是<svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="3.576ex" height="2.034ex" role="img" focusable="false" viewbox="0 -705 1580.7 899" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"/><path id="MJX-2-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/><path id="MJX-2-TEX-I-1D6FD" d="M29 -194Q23 -188 23 -186Q23 -183 102 134T186 465Q208 533 243 584T309 658Q365 705 429 705H431Q493 705 533 667T573 570Q573 465 469 396L482 383Q533 332 533 252Q533 139 448 65T257 -10Q227 -10 203 -2T165 17T143 40T131 59T126 65L62 -188Q60 -194 42 -194H29ZM353 431Q392 431 427 419L432 422Q436 426 439 429T449 439T461 453T472 471T484 495T493 524T501 560Q503 569 503 593Q503 611 502 616Q487 667 426 667Q384 667 347 643T286 582T247 514T224 455Q219 439 186 308T152 168Q151 163 151 147Q151 99 173 68Q204 26 260 26Q302 26 349 51T425 137Q441 171 449 214T457 279Q457 337 422 372Q380 358 347 358H337Q258 358 258 389Q258 396 261 403Q275 431 353 431Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70B" xlink:href="#MJX-2-TEX-I-1D70B"/></g><g data-mml-node="mo" transform="translate(570,0)"><use data-c="2C" xlink:href="#MJX-2-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(1014.7,0)"><use data-c="1D6FD" xlink:href="#MJX-2-TEX-I-1D6FD"/></g></g></g></svg>.</li>
+<li>然后计算用极限带宽跑你的算法, 能达到的算力: <svg style="vertical-align: -1.091ex;" xmlns="http://www.w3.org/2000/svg" width="9.185ex" height="2.672ex" role="img" focusable="false" viewbox="0 -698.8 4059.7 1180.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"/><path id="MJX-3-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/><path id="MJX-3-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/><path id="MJX-3-TEX-I-1D6FD" d="M29 -194Q23 -188 23 -186Q23 -183 102 134T186 465Q208 533 243 584T309 658Q365 705 429 705H431Q493 705 533 667T573 570Q573 465 469 396L482 383Q533 332 533 252Q533 139 448 65T257 -10Q227 -10 203 -2T165 17T143 40T131 59T126 65L62 -188Q60 -194 42 -194H29ZM353 431Q392 431 427 419L432 422Q436 426 439 429T449 439T461 453T472 471T484 495T493 524T501 560Q503 569 503 593Q503 611 502 616Q487 667 426 667Q384 667 347 643T286 582T247 514T224 455Q219 439 186 308T152 168Q151 163 151 147Q151 99 173 68Q204 26 260 26Q302 26 349 51T425 137Q441 171 449 214T457 279Q457 337 422 372Q380 358 347 358H337Q258 358 258 389Q258 396 261 403Q275 431 353 431Z"/><path id="MJX-3-TEX-I-1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D70B" xlink:href="#MJX-3-TEX-I-1D70B"/></g><g data-mml-node="mn" transform="translate(603,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-3-TEX-N-30"/></g></g><g data-mml-node="mo" transform="translate(1284.3,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"/></g><g data-mml-node="mfrac" transform="translate(2340.1,0)"><g data-mml-node="mi" transform="translate(220,394) scale(0.707)"><use data-c="1D70B" xlink:href="#MJX-3-TEX-I-1D70B"/></g><g data-mml-node="mi" transform="translate(221.4,-345) scale(0.707)"><use data-c="1D6FD" xlink:href="#MJX-3-TEX-I-1D6FD"/></g><rect width="603.1" height="60" x="120" y="220"/></g><g data-mml-node="msub" transform="translate(3183.2,0)"><g data-mml-node="mi"><use data-c="1D43C" xlink:href="#MJX-3-TEX-I-1D43C"/></g><g data-mml-node="mn" transform="translate(473,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-3-TEX-N-30"/></g></g></g></g></svg>
 <ul>
-<li>如果$\pi_0 &lt; \pi$,  那么说明, 即使你访存优化到极限, 还远远达不到平台的算力极限, 这个时候你优化访存的收益最大, 也就是memory-bound.</li>
-<li>如果$\pi_0 &gt; \pi$, 那么说明, 访存优化到极限, 算力也上不去, 这个时候就需要优化计算量, 来让优化缓存的潜在收益变大, 也就是compute-bound.</li>
+<li>如果<svg style="vertical-align: -0.375ex;" xmlns="http://www.w3.org/2000/svg" width="6.584ex" height="1.596ex" role="img" focusable="false" viewbox="0 -540 2910.1 705.6" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"/><path id="MJX-4-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/><path id="MJX-4-TEX-N-3C" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D70B" xlink:href="#MJX-4-TEX-I-1D70B"/></g><g data-mml-node="mn" transform="translate(603,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-4-TEX-N-30"/></g></g><g data-mml-node="mo" transform="translate(1284.3,0)"><use data-c="3C" xlink:href="#MJX-4-TEX-N-3C"/></g><g data-mml-node="mi" transform="translate(2340.1,0)"><use data-c="1D70B" xlink:href="#MJX-4-TEX-I-1D70B"/></g></g></g></svg>,  那么说明, 即使你访存优化到极限, 还远远达不到平台的算力极限, 这个时候你优化访存的收益最大, 也就是memory-bound.</li>
+<li>如果<svg style="vertical-align: -0.375ex;" xmlns="http://www.w3.org/2000/svg" width="6.584ex" height="1.596ex" role="img" focusable="false" viewbox="0 -540 2910.1 705.6" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"/><path id="MJX-5-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/><path id="MJX-5-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"/></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D70B" xlink:href="#MJX-5-TEX-I-1D70B"/></g><g data-mml-node="mn" transform="translate(603,-150) scale(0.707)"><use data-c="30" xlink:href="#MJX-5-TEX-N-30"/></g></g><g data-mml-node="mo" transform="translate(1284.3,0)"><use data-c="3E" xlink:href="#MJX-5-TEX-N-3E"/></g><g data-mml-node="mi" transform="translate(2340.1,0)"><use data-c="1D70B" xlink:href="#MJX-5-TEX-I-1D70B"/></g></g></g></svg>, 那么说明, 访存优化到极限, 算力也上不去, 这个时候就需要优化计算量, 来让优化缓存的潜在收益变大, 也就是compute-bound.</li>
 </ul>
 </li>
 </ul>
